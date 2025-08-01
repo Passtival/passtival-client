@@ -6,7 +6,7 @@ labels: "⛏️ refactor"
 body:
   - type: textarea
     attributes:
-      label: [Describe]
+      label: Describe
       description: 해당 리팩토링에 대한 목적 또는 개선하고자 하는 부분에 대해 설명해 주세요.
       placeholder: 해당 리팩토링에 대한 목적 또는 개선하고자 하는 부분에 대해 설명해 주세요.
     validations:
@@ -14,7 +14,7 @@ body:
 
   - type: textarea
     attributes:
-      label: [Tasks]
+      label: Tasks
       description: 리팩토링한 작업 부분에 대해서 설명해 주세요.
       placeholder: 리팩토링한 작업 부분에 대해서 설명해 주세요.
     validations:
@@ -22,6 +22,6 @@ body:
 
   - type: textarea
     attributes:
-      label: [Other Comments]
+      label: Other Comments
       description: 이외에 더 필요한 추가적인 부분에 대해 메모해 주세요.
       placeholder: 이외에 더 필요한 추가적인 부분에 대해 메모해 주세요.

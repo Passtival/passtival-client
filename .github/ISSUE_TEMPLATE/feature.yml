@@ -2,12 +2,11 @@ name: "📣  feature"
 description: "새로운 기능 추가"
 title: "[Feature] "
 labels: "📣  feature"
-assignees: ""
 
 body:
   - type: textarea
     attributes:
-      label: [Feature Describe]
+      label: Feature Describe
       description: 새롭게 추가한 기능에 대해 설명해 주세요.
       placeholder: |
         ex) 학교 축제 부스 맵을 추가하고, 각 부스의 상세 정보를 확인할 수 있도록 함
@@ -20,7 +19,7 @@ body:
 
   - type: textarea
     attributes:
-      label: [Context]
+      label: Context
       description: 해당 기능이 필요한 이유에 대해 간략히 설명해 주세요.
       placeholder: |
         해당 기능이 필요한 이유에 대해 간략히 설명해 주세요.
@@ -30,7 +29,7 @@ body:
 
   - type: textarea
     attributes:
-      label: [Task]
+      label: Task
       description: 이외에 더 추가해야 하는 기능들이 있다면 간략히 메모해 주세요.
       placeholder: |
         이외에 더 추가해야 하는 기능들이 있다면 간략히 메모해 주세요.
