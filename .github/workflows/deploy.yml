@@ -39,7 +39,7 @@ jobs:
 
           user-email: ${{ secrets.EMAIL }}
 
-          commit-message: ${{ github.event.commits[0].message }}
+          commit-message: ${{ github.event.head_commit.message }}
 
           target-branch: main
 
