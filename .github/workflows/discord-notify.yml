@@ -16,11 +16,11 @@ jobs:
           DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
 
         run: |
-          PR_ACTION="${{github.event.action}}"
-          PR_URL="${{github.event.pull_request.html_url}}"
-          PR_TITLE="${{github.event.pull_request.title}}"
-          PR_AUTHOR="${{github.event.pull_request.user.login}}"
-          PR_MERGED="${{github.event.pull_request.merged}}"
+          PR_ACTION="${{ github.event.action }}"
+          PR_URL="${{ github.event.pull_request.html_url }}"
+          PR_TITLE="${{ github.event.pull_request.title }}"
+          PR_AUTHOR="${{ github.event.pull_request.user.login }}"
+          PR_MERGED="${{ github.event.pull_request.merged }}"
 
           # PR Opened Notify
           if [[ "$PR_ACTION" == "opened" ]]; then
