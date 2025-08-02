@@ -23,14 +23,16 @@ steps:
       PR_MERGED="${{github.event.pull_request.merged}}"
 
       # PR Opened Notify
-      if [["$PR_ACTION" == "opened"]]; then
+      if [[ "$PR_ACTION" == "opened" ]]; then
         curl -X POST -H "Content-Type: application/json" \
           -d '{
-          "content" : "**🎉 새로운 부스가 열렸어요!**\n🔗 PR: '"$PR_URL"'\n📄 Title: '"$PR_TITLE"'\n👤 Author: '"$PR_AUTHOR"' "}' $DISCORD_WEBHOOK_URL
+            "content" : "**🎉 새로운 부스가 열렸어요!**\n🔗 PR: '"$PR_URL"'\n📄 Title: '"$PR_TITLE"'\n👤 Author: '"$PR_AUTHOR"'"
+          }' $DISCORD_WEBHOOK_URL
 
       # PR Closed Notify
-      elif [["$PR_ACTION" == "closed" && "$PR_MERGED" == "true"]]; then
+      elif [[ "$PR_ACTION" == "closed" && "$PR_MERGED" == "true" ]]; then
         curl -X POST -H "Content-Type: application/json" \
           -d '{
-          "content" : "**🎪 부스 영업 종료! 다음 부스로 가볼까요?**\n🔗 PR: '"$PR_URL"'\n📄 Title: '"$PR_TITLE"'\n👤 Author: '"$PR_AUTHOR"' "}' $DISCORD_WEBHOOK_URL
+            "content" : "**🎪 부스 영업 종료! 다음 부스로 가볼까요?**\n🔗 PR: '"$PR_URL"'\n📄 Title: '"$PR_TITLE"'\n👤 Author: '"$PR_AUTHOR"'"
+          }' $DISCORD_WEBHOOK_URL
       fi
