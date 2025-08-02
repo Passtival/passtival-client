@@ -2,7 +2,7 @@ name: Notify Discord on PR Events
 
 on:
   pull_request:
-    type:
+    types:
       - opened
       - closed
 
