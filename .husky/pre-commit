@@ -1,0 +1,5 @@
+echo "🐶 Husky pre-commit 실행합니다"
+
+pnpm lint-staged
+
+echo "문제 없음! 커밋 진행합니다"
