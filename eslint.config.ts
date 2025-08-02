@@ -42,6 +42,11 @@ export default tseslint.config([
       'import/newline-after-import': 'error',
       'import/no-duplicates': 'error',
       'import/no-unresolved': 'error',
+      '@typescript-eslint/explicit-module-boundary-types': 'off',
+      '@typescript-eslint/no-unused-vars': [
+        'warn',
+        { argsIgnorePattern: '^_|^args$' },
+      ],
     },
   },
 ]);
