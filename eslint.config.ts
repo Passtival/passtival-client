@@ -35,6 +35,13 @@ export default tseslint.config([
             'internal',
             ['parent', 'sibling', 'index'],
           ],
+          pathGroups: [
+            { pattern: '@layout/**', group: 'internal', position: 'after' },
+            { pattern: '@pages/**', group: 'internal', position: 'after' },
+            { pattern: '@routes/**', group: 'internal', position: 'after' },
+            { pattern: '@shared/**', group: 'internal', position: 'after' },
+          ],
+          pathGroupsExcludedImportTypes: ['builtin'],
           alphabetize: { order: 'asc', caseInsensitive: true },
           'newlines-between': 'always',
         },

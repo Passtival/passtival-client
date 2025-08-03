@@ -4,8 +4,8 @@
     "paths": {
       "@layout/*": ["src/layout/*"],
       "@pages/*": ["src/pages/*"],
-      "routes/*": ["src/routes/*"],
-      "shared/*": ["src/shared/*"]
+      "@routes/*": ["src/routes/*"],
+      "@shared/*": ["src/shared/*"]
     }
   },
   "files": [],
