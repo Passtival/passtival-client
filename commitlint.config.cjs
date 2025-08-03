@@ -22,7 +22,6 @@ module.exports = {
         'build', // 빌드 관련 작업
         'deploy', // 배포 관련 작업
         'merge', // 소문자 merge 허용
-        'Merge', // 대문자 Merge 허용
       ],
     ],
     // type은 항상 소문자
