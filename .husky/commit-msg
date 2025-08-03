@@ -1,0 +1,6 @@
+if pnpm commitlint --edit $1; then
+  echo "✅ 커밋 성공!"
+else
+  echo "❌ 커밋 실패!"
+  exit 1
+fi
