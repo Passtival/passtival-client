@@ -1,9 +1,7 @@
-import Body from "./components/body"
+import Body from '@pages/blind-match/components/body';
 
 const BlindMatch = () => {
-  return (
-    <Body/>
-  )
-}
+  return <Body />;
+};
 
-export default BlindMatch
+export default BlindMatch;
