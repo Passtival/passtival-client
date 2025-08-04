@@ -1,4 +1,4 @@
-import GlobalLayout from "@layout/GlobalLayout";
+import GlobalLayout from "@layout/globalLayout";
 import Home from "@pages/home/home";
 import type { RouteObject } from "react-router-dom";
 
