@@ -21,6 +21,16 @@ export default tseslint.config([
     plugins: {
       import: eslintPluginImport,
     },
+    settings: {
+      'import/resolver': {
+        typescript: {
+          project: './tsconfig.json',
+        },
+        node: {
+          extensions: ['.js', '.jsx', '.ts', '.tsx'],
+        },
+      },
+    },
     languageOptions: {
       ecmaVersion: 2020,
       globals: globals.browser,
@@ -35,6 +45,13 @@ export default tseslint.config([
             'internal',
             ['parent', 'sibling', 'index'],
           ],
+          pathGroups: [
+            { pattern: '@layout/**', group: 'internal', position: 'after' },
+            { pattern: '@pages/**', group: 'internal', position: 'after' },
+            { pattern: '@routes/**', group: 'internal', position: 'after' },
+            { pattern: '@shared/**', group: 'internal', position: 'after' },
+          ],
+          pathGroupsExcludedImportTypes: ['builtin'],
           alphabetize: { order: 'asc', caseInsensitive: true },
           'newlines-between': 'always',
         },
