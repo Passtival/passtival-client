@@ -27,7 +27,7 @@
     "paths": {
       "@layout/*": ["src/layout/*"],
       "@pages/*": ["src/pages/*"],
-      "@routes/*": ["src/routes/*"],
+      "@routes/*": ["src/router/routes/*"],
       "@shared/*": ["src/shared/*"]
     }
   },
