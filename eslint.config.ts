@@ -21,6 +21,16 @@ export default tseslint.config([
     plugins: {
       import: eslintPluginImport,
     },
+    settings: {
+      'import/resolver': {
+        typescript: {
+          project: './tsconfig.json',
+        },
+        node: {
+          extensions: ['.js', '.jsx', '.ts', '.tsx'],
+        },
+      },
+    },
     languageOptions: {
       ecmaVersion: 2020,
       globals: globals.browser,
