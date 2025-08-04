@@ -6,6 +6,8 @@ import { landRoutes } from "@routes/land-routes";
 import { loginRoutes } from "@routes/login-routes";
 import { lostItemsRoutes } from "@routes/lost-items-router";
 import { ticketRoutes } from "@routes/ticket";
+import { fallbackRoutes } from "@routes/fallback-routes";
+import { globalRoutes } from "@routes/global-routes";
 
 // 필요한 도메인 라우트 import
 // 나중에 fallbackRoutes, 글로벌 layout 등도 포함 가능
@@ -18,4 +20,6 @@ export const router = createBrowserRouter([
     ...loginRoutes,
     ...lostItemsRoutes,
     ...ticketRoutes,
+    ...fallbackRoutes,
+    ...globalRoutes
 ]);
