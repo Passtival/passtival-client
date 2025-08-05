@@ -1,16 +1,48 @@
-import GlobalLayout from "@layout/globalLayout";
-import Home from "@pages/home/home";
-import type { RouteObject } from "react-router-dom";
+// global-routes.tsx
 
-export const globalRoutes: RouteObject[] = [
+import { routeePath } from '../path';
+import {
+  BlindMatchPage,
+  BoothPage,
+  HomePage,
+  LandPage,
+  LostItemsPage,
+  LoginPage,
+  TicketPage,
+  FallbackPage,
+} from '../lazy';
+
+export const publicRoutes = [
   {
-    path: "/",
-    element: <GlobalLayout />,
-    children: [
-      {
-        index: true,
-        element: <Home />,
-      },
-    ],
+    path: routeePath.LOGIN,
+    Component: LoginPage,
+  },
+  {
+    path: routeePath.LOST_ITEMS,
+    Component: LostItemsPage,
+  },
+  {
+    path: routeePath.HOME,
+    Component: HomePage,
+  },
+  {
+    path: routeePath.BOOTH,
+    Component: BoothPage,
+  },
+  {
+    path: routeePath.BLIND_MATCH,
+    Component: BlindMatchPage,
+  },
+  {
+    path: routeePath.LAND,
+    Component: LandPage,
+  },
+  {
+    path: routeePath.TICKET,
+    Component: TicketPage,
+  },
+  {
+    path: routeePath.FALLBACK,
+    Component: FallbackPage,
   },
 ];

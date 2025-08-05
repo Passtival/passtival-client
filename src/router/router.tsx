@@ -6,7 +6,7 @@ import { publicRoutes } from './routes/global-routes';
 
 export const router = createBrowserRouter([
   {
-    path: routeePath.HOME, // or routeePath.LAYOUT if 레이아웃 전용 path가 있다면
+    path: routeePath.HOME,
     element: <GlobalLayout />,
     children: [...publicRoutes],
   },
