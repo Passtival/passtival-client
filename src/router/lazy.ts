@@ -7,4 +7,4 @@ export const LandPage = lazy(() => import("@pages/land/land"));
 export const LoginPage = lazy(() => import("@pages/login/login"));
 export const LostItemsPage = lazy(() => import("@pages/lost-items/lost-items"));
 export const TicketPage = lazy(() => import("@pages/ticket/ticket"));
-export const FallbackPage = lazy(() => import("@shared/components/fallback"))
+export const LoginFallbackPage = lazy(() => import("@pages/login-fallback/login-fallback"))
