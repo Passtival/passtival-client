@@ -1,7 +1,7 @@
 export const routePath = {
     BLIND_MATCH: '/blind-match',
     BOOTH: '/booth',
-    FALLBACK: '*',
+    LOGIN_FALLBACK: '/login-fallback',
     HOME: '/home',
     LAND: '/land',
     LOGIN: '/login',

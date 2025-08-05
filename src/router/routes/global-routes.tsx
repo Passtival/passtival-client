@@ -9,7 +9,7 @@ import {
   LostItemsPage,
   LoginPage,
   TicketPage,
-  FallbackPage,
+  LoginFallbackPage,
 } from '../lazy';
 
 export const publicRoutes = [
@@ -42,7 +42,7 @@ export const publicRoutes = [
     Component: TicketPage,
   },
   {
-    path: routePath.FALLBACK,
-    Component: FallbackPage,
+    path: routePath.LOGIN_FALLBACK,
+    Component: LoginFallbackPage,
   },
 ];
