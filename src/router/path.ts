@@ -1,4 +1,4 @@
-export const routeePath = {
+export const routePath = {
     BLIND_MATCH: '/blind-match',
     BOOTH: '/booth',
     FALLBACK: '*',
@@ -9,4 +9,4 @@ export const routeePath = {
     TICKET: '/ticket',
 } as const
 
-export type Routes = (typeof routeePath)[keyof typeof routeePath];
+export type Routes = (typeof routePath)[keyof typeof routePath];

@@ -1,6 +1,6 @@
 // global-routes.tsx
 
-import { routeePath } from '../path';
+import { routePath } from '../path';
 import {
   BlindMatchPage,
   BoothPage,
@@ -14,35 +14,35 @@ import {
 
 export const publicRoutes = [
   {
-    path: routeePath.LOGIN,
+    path: routePath.LOGIN,
     Component: LoginPage,
   },
   {
-    path: routeePath.LOST_ITEMS,
+    path: routePath.LOST_ITEMS,
     Component: LostItemsPage,
   },
   {
-    path: routeePath.HOME,
+    path: routePath.HOME,
     Component: HomePage,
   },
   {
-    path: routeePath.BOOTH,
+    path: routePath.BOOTH,
     Component: BoothPage,
   },
   {
-    path: routeePath.BLIND_MATCH,
+    path: routePath.BLIND_MATCH,
     Component: BlindMatchPage,
   },
   {
-    path: routeePath.LAND,
+    path: routePath.LAND,
     Component: LandPage,
   },
   {
-    path: routeePath.TICKET,
+    path: routePath.TICKET,
     Component: TicketPage,
   },
   {
-    path: routeePath.FALLBACK,
+    path: routePath.FALLBACK,
     Component: FallbackPage,
   },
 ];
