@@ -1,5 +1,3 @@
-// global-routes.tsx
-
 import { routePath } from '../path';
 import {
   BlindMatchPage,

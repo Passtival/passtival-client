@@ -1,8 +1,5 @@
-
 const Booth = () => {
-  return (
-    <div>Booth</div>
-  )
-}
+  return <div>Booth</div>;
+};
 
-export default Booth
+export default Booth;

@@ -1,9 +1,5 @@
-
-
 const LostItems = () => {
-  return (
-    <div>LostItems</div>
-  )
-}
+  return <div>LostItems</div>;
+};
 
-export default LostItems
+export default LostItems;

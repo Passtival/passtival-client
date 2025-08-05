@@ -1,8 +1,5 @@
-
 const Land = () => {
-  return (
-    <div>Land</div>
-  )
-}
+  return <div>Land</div>;
+};
 
-export default Land
+export default Land;
