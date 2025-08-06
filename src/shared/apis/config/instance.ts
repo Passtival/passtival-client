@@ -13,10 +13,10 @@ export const api = axios.create({
   withCredentials: true,
 });
 
-// TODO: interceptor 추후 수정 필요
+// @TODO interceptor 추후 수정 필요
 api.interceptors.response.use(
   (response) => {
-    // TODO: 명세서 보고 바꾸기
+    // @TODO 명세서 보고 변경하기
     // response.data: { status, message, data }
     return response.data.data;
   },

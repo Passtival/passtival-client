@@ -1,4 +1,4 @@
-import { api } from './instance';
+import { api } from './config/instance';
 
 export function get<T>(...args: Parameters<typeof api.get>) {
   return api.get<T>(...args);
