@@ -1,5 +1,8 @@
+import { RouterProvider } from 'react-router-dom';
+import { router } from './router/router';
+
 function App() {
-  return <>파이팅 해봐용용용</>;
+  return <RouterProvider router={router} />;
 }
 
 export default App;
