@@ -1,4 +1,3 @@
-import { routePath } from '../path';
 import {
   BlindMatchPage,
   BoothPage,
@@ -9,6 +8,7 @@ import {
   TicketPage,
   LoginFallbackPage,
 } from '../lazy';
+import { routePath } from '../path';
 
 export const publicRoutes = [
   {
