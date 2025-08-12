@@ -1,6 +1,6 @@
 import { globalStyle, style } from '@vanilla-extract/css';
 
-import { themeVars } from './them.css';
+import { themeVars } from './theme.css';
 
 globalStyle(':root', {
   vars: {
@@ -21,7 +21,7 @@ globalStyle('html, body', {
   fontSize: '62.5%',
   scrollbarWidth: 'none',
   scrollBehavior: 'smooth',
-  fontFamily: `'SUIT Variable', sans-serif`,
+  fontFamily: `'Pretendard Variable', sans-serif`,
 });
 
 globalStyle('::-webkit-scrollbar', {
