@@ -19,7 +19,9 @@ function ensureIconSuffix(name) {
 
 async function main() {
   await fs.mkdir(ICONS_DIR, { recursive: true });
-  const files = (await fs.readdir(ICONS_DIR)).filter((f) => f.endsWith('.tsx'));
+  const files = (await fs.readdir(ICONS_DIR)).filter(
+    (f) => f.endsWith('.tsx') && !f.startsWith('index'),
+  );
 
   const lines = [
     '// (auto-generated) Do not edit manually.',
