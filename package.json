@@ -8,7 +8,8 @@
     "build": "tsc -b && vite build",
     "lint": "eslint .",
     "preview": "vite preview",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "svgr": "npx @svgr/cli src/assets/svg --out-dir src/shared/icons --ext tsx --typescript --no-dimensions --icon --replace-attr-values \"#000=currentColor\" && node scripts/gen-icons.mjs"
   },
   "dependencies": {
     "@tanstack/react-query": "^5.84.1",
