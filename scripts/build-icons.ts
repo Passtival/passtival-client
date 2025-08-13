@@ -20,7 +20,7 @@ function ensureIconSuffix(name: string): string {
 
 async function main() {
   try {
-    const svgrCommand = `npx @svgr/cli src/assets/svg --out-dir ${ICONS_DIR} --ext tsx --typescript --no-dimensions --icon --replace-attr-values "#000=currentColor" --no-index --jsx-runtime automatic`;
+    const svgrCommand = `npx @svgr/cli src/assets/svg --out-dir ${ICONS_DIR} --ext tsx --typescript --no-dimensions --icon --no-index --jsx-runtime automatic --replace-attr-values "black=currentColor, #000=currentColor, #000000=currentColor"`;
     execSync(svgrCommand, { stdio: 'inherit' });
 
     const generatedFiles = (await fs.readdir(ICONS_DIR)).filter(
