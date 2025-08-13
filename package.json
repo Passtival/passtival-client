@@ -9,7 +9,7 @@
     "lint": "eslint .",
     "preview": "vite preview",
     "prepare": "husky install",
-    "svgr": "npx @svgr/cli src/assets/svg --out-dir src/shared/icons --ext tsx --typescript --no-dimensions --icon --replace-attr-values \"#000=currentColor\" --no-index --jsx-runtime automatic && node -e \"const fs=require('fs'),dir='src/shared/icons';for(const f of fs.readdirSync(dir)){if(!f.endsWith('.tsx')) continue;const p=dir+'/'+f;let s=fs.readFileSync(p,'utf8');s=s.replace(/^import \\* as React from 'react';\\r?\\n/m,'');s=s.replace(/^(import[^\\n]*\\n)(?!\\n)/,'$1\\n');fs.writeFileSync(p,s);}\" && node scripts/gen-icons.mjs"
+    "build:icons": "tsx scripts/build-icons.ts"
   },
   "dependencies": {
     "@tanstack/react-query": "^5.84.1",
@@ -39,6 +39,7 @@
     "jiti": "^2.5.1",
     "lint-staged": "^16.1.2",
     "prettier": "^3.6.2",
+    "tsx": "^4.20.4",
     "typescript": "~5.8.3",
     "typescript-eslint": "^8.35.1",
     "vite": "^7.0.4",
