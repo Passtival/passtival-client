@@ -27,17 +27,8 @@ async function main() {
       (f) => f.endsWith('.tsx') && !f.startsWith('index'),
     );
 
-    const processedFiles: string[] = [];
-
     for (const file of generatedFiles) {
-      const oldFilePath = path.join(ICONS_DIR, file);
-      const newFileName = file.toLowerCase();
-      const newFilePath = path.join(ICONS_DIR, newFileName);
-
-      await fs.rename(oldFilePath, newFilePath);
-      processedFiles.push(newFileName);
-
-      let content = await fs.readFile(newFilePath, 'utf8');
+      let content = await fs.readFile(path.join(ICONS_DIR, file), 'utf8');
 
       content = content.replace(/^import \* as React from 'react';\r?\n/m, '');
 
@@ -50,7 +41,7 @@ async function main() {
         }
       }
 
-      await fs.writeFile(newFilePath, content);
+      await fs.writeFile(path.join(ICONS_DIR, file), content);
     }
 
     const lines = [
@@ -58,7 +49,7 @@ async function main() {
       '// Run `pnpm svgr` to regenerate.\n',
     ];
 
-    for (const file of processedFiles) {
+    for (const file of generatedFiles) {
       const comp = ensureIconSuffix(toPascalCase(file));
       const mod = file.replace(/\.tsx$/, '');
       lines.push(`export { default as ${comp} } from './${mod}';`);
