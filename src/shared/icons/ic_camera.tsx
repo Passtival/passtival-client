@@ -1,6 +1,6 @@
 import type { SVGProps } from 'react';
 
-const SvgCamera = (props: SVGProps<SVGSVGElement>) => (
+const IcSvgCamera = (props: SVGProps<SVGSVGElement>) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     fill="none"
@@ -8,14 +8,14 @@ const SvgCamera = (props: SVGProps<SVGSVGElement>) => (
     {...props}
   >
     <path
-      stroke="#111"
+      stroke="currentColor"
       strokeLinecap="round"
       strokeLinejoin="round"
       strokeWidth={1.5}
       d="M15 13a3 3 0 1 1-6 0 3 3 0 0 1 6 0"
     />
     <path
-      stroke="#111"
+      stroke="currentColor"
       strokeLinecap="round"
       strokeLinejoin="round"
       strokeWidth={1.5}
@@ -23,4 +23,4 @@ const SvgCamera = (props: SVGProps<SVGSVGElement>) => (
     />
   </svg>
 );
-export default SvgCamera;
+export default IcSvgCamera;

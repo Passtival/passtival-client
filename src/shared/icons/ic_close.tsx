@@ -1,6 +1,6 @@
 import type { SVGProps } from 'react';
 
-const SvgClose = (props: SVGProps<SVGSVGElement>) => (
+const IcSvgClose = (props: SVGProps<SVGSVGElement>) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     fill="none"
@@ -8,7 +8,7 @@ const SvgClose = (props: SVGProps<SVGSVGElement>) => (
     {...props}
   >
     <path
-      stroke="#111"
+      stroke="currentColor"
       strokeLinecap="round"
       strokeLinejoin="round"
       strokeWidth={1.5}
@@ -16,4 +16,4 @@ const SvgClose = (props: SVGProps<SVGSVGElement>) => (
     />
   </svg>
 );
-export default SvgClose;
+export default IcSvgClose;
