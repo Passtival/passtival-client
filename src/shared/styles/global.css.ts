@@ -36,5 +36,5 @@ export const rootStyle = style({
   minHeight: '100dvh',
   minWidth: 'var(--min-width)',
   maxWidth: 'var(--max-width)',
-  backgroundColor: themeVars.color.white,
+  backgroundColor: themeVars.color.bg_white,
 });
