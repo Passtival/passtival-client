@@ -4,6 +4,7 @@ export const color = {
 
   main_blue: '#1876FA',
   sub_blue: '#EFF5FF',
+  sub_blue_40: 'rgba(239, 245, 255, 0.40)',
   error_pink: '#FF0080',
   success_green: '#1AD27C',
 
