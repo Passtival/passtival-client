@@ -4,6 +4,7 @@ import { themeVars } from '@shared/styles/theme.css';
 
 export const chipVariants = recipe({
   base: {
+    display: 'inline-flex',
     alignItems: 'center',
     justifyContent: 'center',
     ...themeVars.fontStyles.button2_sb_14,
@@ -17,7 +18,7 @@ export const chipVariants = recipe({
     selected: {
       false: {
         backgroundColor: themeVars.color.bg_white,
-        color: themeVars.color.black,
+        color: themeVars.color.gray_900,
         border: `1px solid ${themeVars.color.gray_400}`,
       },
       true: {
