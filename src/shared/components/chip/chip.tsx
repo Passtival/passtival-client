@@ -5,7 +5,7 @@ import { chipVariants } from './chip.css';
 interface ChipProps {
   label: ReactNode;
   selected: boolean;
-  onChange: (next: boolean) => void;
+  onChange: (isSelected: boolean) => void;
 }
 
 const Chip = ({ label, selected, onChange }: ChipProps) => {
