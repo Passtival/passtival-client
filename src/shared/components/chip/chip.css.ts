@@ -4,7 +4,6 @@ import { themeVars } from '@shared/styles/theme.css';
 
 export const chipVariants = recipe({
   base: {
-    display: 'inline-flex',
     alignItems: 'center',
     justifyContent: 'center',
     ...themeVars.fontStyles.button2_sb_14,
@@ -12,7 +11,6 @@ export const chipVariants = recipe({
     padding: '0.8rem 1.2rem',
     borderRadius: '8px',
     height: '3.4rem',
-    gap: '0.4rem',
   },
 
   variants: {

@@ -1,7 +1,9 @@
+import type { ReactNode } from 'react';
+
 import { chipVariants } from './chip.css';
 
 interface ChipProps {
-  label: React.ReactNode;
+  label: ReactNode;
   selected: boolean;
   onChange: (next: boolean) => void;
 }
