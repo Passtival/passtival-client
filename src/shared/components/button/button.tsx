@@ -13,15 +13,15 @@ interface ButtonProps {
 const Button = ({
   children,
   disabled = false,
-  color,
-  size,
+  color = 'blue',
+  size = 'lg',
   onClick,
 }: ButtonProps) => {
   return (
     <button
       type="button"
       disabled={disabled}
-      className={buttonVariants({ disabled, color, size })}
+      className={buttonVariants({ color, size })}
       onClick={onClick}
     >
       {children}
