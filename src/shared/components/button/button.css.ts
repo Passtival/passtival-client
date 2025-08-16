@@ -3,47 +3,43 @@ import { recipe } from '@vanilla-extract/recipes';
 import { themeVars } from '@shared/styles/theme.css';
 
 export const buttonVariants = recipe({
-  base: {
-    display: 'inline-flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-
   variants: {
+    disabled: {
+      true: {
+        cursor: 'not-allowed',
+      },
+    },
+
     color: {
       blue: {
         backgroundColor: themeVars.color.main_blue,
         color: themeVars.color.bg_white,
-      },
-      yellow: {
-        backgroundColor: themeVars.color.kakao_yellow,
-        color: themeVars.color.gray_900,
-        gap: '0.6rem',
       },
       gray: {
         backgroundColor: themeVars.color.gray_400,
         color: themeVars.color.gray_900,
       },
     },
+
     size: {
-      small: {
+      sm: {
         height: '3.5rem',
         width: '9.6rem',
         borderRadius: '8px',
         ...themeVars.fontStyles.button2_sb_12,
       },
-      middle: {
-        height: '5.2rem',
-        width: '32.7rem',
-        borderRadius: '12px',
-        ...themeVars.fontStyles.button2_sb_16,
-      },
-      big: {
+
+      lg: {
         height: '5.4rem',
         width: '32.7rem',
         borderRadius: '12px',
         ...themeVars.fontStyles.button2_sb_16,
       },
     },
+  },
+
+  defaultVariants: {
+    color: 'blue',
+    size: 'lg',
   },
 });

@@ -3,20 +3,28 @@ import type { ReactNode } from 'react';
 import { buttonVariants } from './button.css';
 
 interface ButtonProps {
-  label: ReactNode;
-  color: 'blue' | 'yellow' | 'gray';
-  size: 'small' | 'middle' | 'big';
-  onClick: () => void;
+  children: ReactNode;
+  disabled?: boolean;
+  color?: 'blue' | 'gray';
+  size?: 'sm' | 'lg';
+  onClick?: () => void;
 }
 
-const Button = ({ label, color, size, onClick }: ButtonProps) => {
+const Button = ({
+  children,
+  disabled = false,
+  color,
+  size,
+  onClick,
+}: ButtonProps) => {
   return (
     <button
       type="button"
-      className={buttonVariants({ color, size })}
+      disabled={disabled}
+      className={buttonVariants({ disabled, color, size })}
       onClick={onClick}
     >
-      {label}
+      {children}
     </button>
   );
 };
