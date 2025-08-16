@@ -19,6 +19,7 @@ export const buttonVariants = recipe({
       yellow: {
         backgroundColor: themeVars.color.kakao_yellow,
         color: themeVars.color.gray_900,
+        gap: '0.6rem',
       },
       gray: {
         backgroundColor: themeVars.color.gray_400,
