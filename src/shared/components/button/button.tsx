@@ -5,7 +5,7 @@ import { buttonVariants } from './button.css';
 interface ButtonProps {
   children: ReactNode;
   disabled?: boolean;
-  color?: 'blue' | 'gray';
+  color?: 'blue';
   size?: 'sm' | 'lg';
   onClick?: () => void;
 }

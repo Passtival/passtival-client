@@ -4,10 +4,8 @@ import { themeVars } from '@shared/styles/theme.css';
 
 export const buttonVariants = recipe({
   base: {
+    cursor: 'pointer',
     selectors: {
-      '&:not(:disabled):active': {
-        cursor: 'pointer',
-      },
       '&:disabled': {
         cursor: 'not-allowed',
       },
@@ -19,10 +17,12 @@ export const buttonVariants = recipe({
       blue: {
         backgroundColor: themeVars.color.main_blue,
         color: themeVars.color.bg_white,
-      },
-      gray: {
-        backgroundColor: themeVars.color.gray_400,
-        color: themeVars.color.gray_900,
+        selectors: {
+          '&:disabled': {
+            backgroundColor: themeVars.color.gray_400,
+            color: themeVars.color.gray_900,
+          },
+        },
       },
     },
 
