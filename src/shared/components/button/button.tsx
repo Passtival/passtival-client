@@ -4,16 +4,16 @@ import { buttonVariants } from './button.css';
 
 interface ButtonProps {
   label: ReactNode;
-  kind: 'blue' | 'yellow' | 'gray';
+  color: 'blue' | 'yellow' | 'gray';
   size: 'small' | 'middle' | 'big';
   onClick: () => void;
 }
 
-const Button = ({ label, kind, size, onClick }: ButtonProps) => {
+const Button = ({ label, color, size, onClick }: ButtonProps) => {
   return (
     <button
       type="button"
-      className={buttonVariants({ kind, size })}
+      className={buttonVariants({ color, size })}
       onClick={onClick}
     >
       {label}

@@ -11,7 +11,7 @@ export const buttonVariants = recipe({
   },
 
   variants: {
-    kind: {
+    color: {
       blue: {
         backgroundColor: themeVars.color.main_blue,
         color: themeVars.color.bg_white,
