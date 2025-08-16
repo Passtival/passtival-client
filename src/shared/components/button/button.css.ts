@@ -3,21 +3,26 @@ import { recipe } from '@vanilla-extract/recipes';
 import { themeVars } from '@shared/styles/theme.css';
 
 export const buttonVariants = recipe({
+  base: {
+    selectors: {
+      '&:not(:disabled):active': {
+        cursor: 'pointer',
+      },
+      '&:disabled': {
+        cursor: 'not-allowed',
+      },
+    },
+  },
+
   variants: {
     color: {
       blue: {
         backgroundColor: themeVars.color.main_blue,
         color: themeVars.color.bg_white,
-        selectors: {
-          '&:active': { cursor: 'pointer' },
-        },
       },
       gray: {
         backgroundColor: themeVars.color.gray_400,
         color: themeVars.color.gray_900,
-        selectors: {
-          '&:disabled': { cursor: 'not-allowed' },
-        },
       },
     },
 
