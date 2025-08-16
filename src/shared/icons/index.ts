@@ -6,6 +6,7 @@ export { default as IcSvgCalendar } from './ic_calendar';
 export { default as IcSvgCamera } from './ic_camera';
 export { default as IcSvgCaution } from './ic_caution';
 export { default as IcSvgEntry } from './ic_entry';
+export { default as IcSvgKakaoTalk } from './ic_kakaotalk';
 export { default as IcSvgLocation } from './ic_location';
 export { default as IcSvgLostfind } from './ic_lostfind';
 export { default as IcSvgMain } from './ic_main';
