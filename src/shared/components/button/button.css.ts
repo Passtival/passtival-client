@@ -7,7 +7,6 @@ export const buttonVariants = recipe({
     display: 'inline-flex',
     alignItems: 'center',
     justifyContent: 'center',
-    borderRadius: '8px',
   },
 
   variants: {
@@ -30,16 +29,19 @@ export const buttonVariants = recipe({
       small: {
         height: '3.5rem',
         width: '9.6rem',
+        borderRadius: '8px',
         ...themeVars.fontStyles.button2_sb_12,
       },
       middle: {
         height: '5.2rem',
         width: '32.7rem',
+        borderRadius: '12px',
         ...themeVars.fontStyles.button2_sb_16,
       },
       big: {
         height: '5.4rem',
         width: '32.7rem',
+        borderRadius: '12px',
         ...themeVars.fontStyles.button2_sb_16,
       },
     },
