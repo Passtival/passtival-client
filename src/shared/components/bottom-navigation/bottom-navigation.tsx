@@ -9,82 +9,37 @@ import {
   IcSvgEntry,
 } from '@shared/icons';
 
-import {
-  navBar,
-  navList,
-  navItem,
-  navIcon,
-  navLinkRecipe,
-} from './bottom-navigation.css';
+import { navBar, navList, navLinkRecipe } from './bottom-navigation.css';
 
-const BottomNavigation: React.FC = () => {
+const navItems = [
+  { path: '/', label: '홈', icon: IcSvgMain },
+  { path: '/booth', label: '부스정보', icon: IcSvgBooth },
+  { path: '/land', label: '번호팅', icon: IcSvgMatch },
+  { path: '/lost-items', label: '분실물', icon: IcSvgLostfind },
+  { path: '/ticket', label: '응모권', icon: IcSvgEntry },
+];
+
+const BottomNav: React.FC = () => {
   return (
     <nav className={navBar}>
       <ul className={navList}>
-        <li className={navItem}>
-          <NavLink
-            to="/"
-            className={({ isActive }) => navLinkRecipe({ isActive })}
-          >
-            <IcSvgMain
-              className={navIcon}
-              width={24}
-              height={24}
-            />
-            <span>홈</span>
-          </NavLink>
-
-          <NavLink
-            to="/booth"
-            className={({ isActive }) => navLinkRecipe({ isActive })}
-          >
-            <IcSvgBooth
-              className={navIcon}
-              width={24}
-              height={24}
-            />
-            <span>부스정보</span>
-          </NavLink>
-
-          <NavLink
-            to="/land"
-            className={({ isActive }) => navLinkRecipe({ isActive })}
-          >
-            <IcSvgMatch
-              className={navIcon}
-              width={24}
-              height={24}
-            />
-            <span>번호팅</span>
-          </NavLink>
-
-          <NavLink
-            to="/lost-items"
-            className={({ isActive }) => navLinkRecipe({ isActive })}
-          >
-            <IcSvgLostfind
-              className={navIcon}
-              width={24}
-              height={24}
-            />
-            <span>분실물</span>
-          </NavLink>
-
-          <NavLink
-            to="/ticket"
-            className={({ isActive }) => navLinkRecipe({ isActive })}
-          >
-            <IcSvgEntry
-              className={navIcon}
-              width={24}
-              height={24}
-            />
-            <span>응모권</span>
-          </NavLink>
-        </li>
+        {navItems.map((item) => (
+          <li key={item.path}>
+            <NavLink
+              to={item.path}
+              className={({ isActive }) => navLinkRecipe({ isActive })}
+            >
+              <item.icon
+                width={24}
+                height={24}
+              />
+              <span>{item.label}</span>
+            </NavLink>
+          </li>
+        ))}
       </ul>
     </nav>
   );
 };
 
-export default BottomNavigation;
+export default BottomNav;

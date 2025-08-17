@@ -12,7 +12,6 @@ import {
 import { routePath } from '../path';
 
 export const publicRoutes = [
-  // GlobalLayout (하단 네비게이션 바 포함)이 필요한 라우트들입니다.
   {
     element: <GlobalLayout />,
     children: [
@@ -27,6 +26,10 @@ export const publicRoutes = [
       {
         path: routePath.HOME,
         Component: HomePage,
+      },
+      {
+        path: routePath.BOOTH,
+        Component: BoothPage,
       },
       {
         path: routePath.BLIND_MATCH,
@@ -46,9 +49,5 @@ export const publicRoutes = [
       },
     ],
   },
-  // GlobalLayout (하단 네비게이션 바)이 필요 없는 라우트들입니다.
-  {
-    path: routePath.BOOTH,
-    Component: BoothPage,
-  },
+  //BottomNav를 사용하지 않는 페이지는 이곳에 넣어주세요.
 ];
