@@ -19,7 +19,7 @@ const navItems = [
   { path: '/ticket', label: '응모권', icon: IcSvgEntry },
 ];
 
-const BottomNav: React.FC = () => {
+const BottomNavigation: React.FC = () => {
   return (
     <nav className={navBar}>
       <ul className={navList}>
@@ -42,4 +42,4 @@ const BottomNav: React.FC = () => {
   );
 };
 
-export default BottomNav;
+export default BottomNavigation;
