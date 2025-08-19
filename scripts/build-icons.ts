@@ -27,6 +27,9 @@ function toSnakeCaseFileName(name: string): string {
 
 async function main() {
   try {
+    await fs.rm(ICONS_DIR, { recursive: true, force: true });
+    await fs.mkdir(ICONS_DIR, { recursive: true });
+
     const svgrCommand = `npx @svgr/cli src/assets/svg --out-dir ${ICONS_DIR} --ext tsx --typescript --no-dimensions --icon --no-index --jsx-runtime automatic`;
     execSync(svgrCommand, { stdio: 'inherit' });
 
@@ -52,6 +55,16 @@ async function main() {
       content = content.replace(
         /(stroke)=['"]([^'"]+)['"]/g,
         (match, p1) => `${p1}="currentColor"`,
+      );
+
+      content = content.replace(
+        /(<path[^>]*?)fill=['"]([^'"]+?)['"]/g,
+        (match, p1, p2) => {
+          if (p2 === 'none' || p2 === 'transparent' || p2.startsWith('url(')) {
+            return match;
+          }
+          return `${p1}fill="currentColor"`;
+        },
       );
 
       content = content.replace(/^import \* as React from 'react';\r?\n/m, '');
