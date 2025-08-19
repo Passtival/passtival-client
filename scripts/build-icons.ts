@@ -59,7 +59,12 @@ async function main() {
 
       content = content.replace(
         /(<path[^>]*?)fill=['"]([^'"]+?)['"]/g,
-        (match, p1) => `${p1}fill="currentColor"`,
+        (match, p1, p2) => {
+          if (p2 === 'none' || p2 === 'transparent' || p2.startsWith('url(')) {
+            return match;
+          }
+          return `${p1}fill="currentColor"`;
+        },
       );
 
       content = content.replace(/^import \* as React from 'react';\r?\n/m, '');
