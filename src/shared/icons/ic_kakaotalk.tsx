@@ -9,7 +9,7 @@ const IcSvgKakaoTalk = (props: SVGProps<SVGSVGElement>) => (
     {...props}
   >
     <path
-      fill="url(#kakao-talk_svg__a)"
+      fill="currentColor"
       d="M.5.5h32v27H.5z"
     />
     <defs>

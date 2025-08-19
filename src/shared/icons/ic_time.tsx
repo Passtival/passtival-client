@@ -17,7 +17,7 @@ const IcSvgTime = (props: SVGProps<SVGSVGElement>) => (
     <defs>
       <clipPath id="time_svg__a">
         <path
-          fill="#fff"
+          fill="currentColor"
           d="M0 0h9v9H0z"
         />
       </clipPath>
