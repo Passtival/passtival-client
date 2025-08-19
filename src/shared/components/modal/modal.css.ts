@@ -71,7 +71,7 @@ export const body = style([
 export const summary = style({
   display: 'flex',
   flexDirection: 'column',
-  gap: '1rem',
+  gap: '1.2rem',
 });
 
 export const infoSection = style([alignText]);
