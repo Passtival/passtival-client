@@ -1,11 +1,21 @@
 import { createBrowserRouter } from 'react-router-dom';
 
 import GlobalLayout from './global-layout';
-import { publicRoutes } from './routes/global-routes';
+import MainLayout from './main-layout';
+import {
+  publicRoutesWithMain,
+  publicRoutesOthers,
+} from './routes/global-routes';
 
 export const router = createBrowserRouter([
   {
-    element: <GlobalLayout />,
-    children: [...publicRoutes],
+    Component: GlobalLayout,
+    children: [
+      {
+        Component: MainLayout,
+        children: publicRoutesWithMain,
+      },
+      ...publicRoutesOthers,
+    ],
   },
 ]);

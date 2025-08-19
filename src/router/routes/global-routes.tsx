@@ -10,37 +10,16 @@ import {
 } from '../lazy';
 import { routePath } from '../path';
 
-export const publicRoutes = [
-  {
-    path: routePath.LOGIN,
-    Component: LoginPage,
-  },
-  {
-    path: routePath.LOST_ITEMS,
-    Component: LostItemsPage,
-  },
-  {
-    path: routePath.HOME,
-    Component: HomePage,
-  },
-  {
-    path: routePath.BOOTH,
-    Component: BoothPage,
-  },
-  {
-    path: routePath.BLIND_MATCH,
-    Component: BlindMatchPage,
-  },
-  {
-    path: routePath.LAND,
-    Component: LandPage,
-  },
-  {
-    path: routePath.TICKET,
-    Component: TicketPage,
-  },
-  {
-    path: routePath.LOGIN_FALLBACK,
-    Component: LoginFallbackPage,
-  },
+export const publicRoutesWithMain = [
+  { path: routePath.HOME, Component: HomePage },
+  { path: routePath.BOOTH, Component: BoothPage },
+  { path: routePath.TICKET, Component: TicketPage },
+  { path: routePath.LOST_ITEMS, Component: LostItemsPage },
+  { path: routePath.BLIND_MATCH, Component: BlindMatchPage },
+];
+
+export const publicRoutesOthers = [
+  { path: routePath.LOGIN, Component: LoginPage },
+  { path: routePath.LAND, Component: LandPage },
+  { path: routePath.LOGIN_FALLBACK, Component: LoginFallbackPage },
 ];
