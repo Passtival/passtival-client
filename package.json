@@ -9,7 +9,8 @@
     "lint": "eslint .",
     "preview": "vite preview",
     "prepare": "husky install",
-    "build:icons": "tsx scripts/build-icons.ts"
+    "build:icons": "tsx scripts/build-icons.ts",
+    "generate:types": "openapi-typescript http://43.202.147.115:8080/v3/api-docs -o ./src/shared/apis/types/schema.d.ts"
   },
   "dependencies": {
     "@tanstack/react-query": "^5.84.1",
@@ -47,6 +48,7 @@
     "husky": "^9.1.7",
     "jiti": "^2.5.1",
     "lint-staged": "^16.1.2",
+    "openapi-typescript": "^7.9.1",
     "prettier": "^3.6.2",
     "tsx": "^4.20.4",
     "typescript": "~5.8.3",
