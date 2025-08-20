@@ -1,6 +1,6 @@
 import type { SVGProps } from 'react';
 
-const IcSvgBack = (props: SVGProps<SVGSVGElement>) => (
+const IcSvgArrow = (props: SVGProps<SVGSVGElement>) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     fill="none"
@@ -16,4 +16,4 @@ const IcSvgBack = (props: SVGProps<SVGSVGElement>) => (
     />
   </svg>
 );
-export default IcSvgBack;
+export default IcSvgArrow;

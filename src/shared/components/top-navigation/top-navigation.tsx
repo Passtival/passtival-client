@@ -1,7 +1,7 @@
 import type { ReactNode } from 'react';
 import { useNavigate } from 'react-router';
 
-import { IcSvgBack } from '@shared/icons';
+import { IcSvgArrow } from '@shared/icons';
 
 import * as styles from './top-navigation.css';
 
@@ -27,7 +27,7 @@ const TopNavigation = ({
         onClick={handleLeftClick}
         className={styles.leftButton}
       >
-        <IcSvgBack
+        <IcSvgArrow
           width="2.4rem"
           height="2.4rem"
         />
