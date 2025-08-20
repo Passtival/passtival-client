@@ -20,6 +20,7 @@ const Carousel = ({ children, ...settings }: CarouselProps) => {
     speed: 500,
     slidesToShow: 1,
     slidesToScroll: 1,
+    infinite: false,
     afterChange: (index: number) => setCurrentSlide(index),
   };
 
