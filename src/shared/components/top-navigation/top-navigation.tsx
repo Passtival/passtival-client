@@ -1,25 +1,40 @@
 import type { ReactNode } from 'react';
 
-import { IcSvgBack, IcSvgTrashcan } from '@shared/icons';
+import { IcSvgBack } from '@shared/icons';
 
 import * as styles from './top-navigation.css';
 
 interface TopNavigationProps {
   title: ReactNode;
   rightIcon?: ReactNode;
+  onLeftClick: () => void;
+  onRightClick?: () => void;
 }
 
 const TopNavigation = ({
   title,
-  rightIcon = <IcSvgTrashcan className={styles.rightIcon} />,
+  rightIcon,
+  onLeftClick,
+  onRightClick,
 }: TopNavigationProps) => {
   return (
     <nav className={styles.topnavigationVariants}>
-      <button className={styles.leftButton}>
-        <IcSvgBack className={styles.leftIcon} />
+      <button
+        onClick={onLeftClick}
+        className={styles.leftButton}
+      >
+        <IcSvgBack
+          width="2.4rem"
+          height="2.4rem"
+        />
       </button>
       <h1 className={styles.title}>{title}</h1>
-      <button className={styles.rightButton}>{rightIcon}</button>
+      <button
+        onClick={onRightClick}
+        className={styles.rightButton}
+      >
+        {rightIcon}
+      </button>
     </nav>
   );
 };

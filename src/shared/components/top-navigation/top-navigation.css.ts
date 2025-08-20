@@ -22,11 +22,6 @@ export const leftButton = style({
   justifyContent: 'center',
 });
 
-export const leftIcon = style({
-  width: '2.4rem',
-  height: '2.4rem',
-});
-
 export const rightButton = style({
   display: 'flex',
   alignItems: 'center',
@@ -34,11 +29,6 @@ export const rightButton = style({
   width: '2.4rem',
   height: '5.6rem',
   marginRight: '1.8rem',
-});
-
-export const rightIcon = style({
-  width: '1.6rem',
-  height: '1.8rem',
 });
 
 export const title = style({
