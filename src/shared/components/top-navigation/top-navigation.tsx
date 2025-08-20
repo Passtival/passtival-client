@@ -1,4 +1,5 @@
 import type { ReactNode } from 'react';
+import { useNavigate } from 'react-router';
 
 import { IcSvgBack } from '@shared/icons';
 
@@ -7,20 +8,23 @@ import * as styles from './top-navigation.css';
 interface TopNavigationProps {
   title: ReactNode;
   rightIcon?: ReactNode;
-  onLeftClick: () => void;
   onRightClick?: () => void;
 }
 
 const TopNavigation = ({
   title,
   rightIcon,
-  onLeftClick,
   onRightClick,
 }: TopNavigationProps) => {
+  const navigation = useNavigate();
+  const handleLeftClick = () => {
+    navigation(-1);
+  };
+
   return (
     <nav className={styles.topnavigationVariants}>
       <button
-        onClick={onLeftClick}
+        onClick={handleLeftClick}
         className={styles.leftButton}
       >
         <IcSvgBack
