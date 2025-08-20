@@ -8,9 +8,13 @@ export const container = style({
   right: '1.4rem',
 
   padding: '0 1rem',
+
   backgroundColor: themeVars.color.gray_500_40,
-  gap: '0.3rem',
-  color: themeVars.color.bg_white,
   borderRadius: '2.3rem',
+
+  color: themeVars.color.bg_white,
   fontSize: '1.3rem',
+
+  gap: '0.3rem',
+  zIndex: 10,
 });
