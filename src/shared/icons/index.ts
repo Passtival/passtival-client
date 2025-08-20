@@ -1,6 +1,7 @@
 // (auto-generated) Do not edit manually.
 // Run `pnpm svgr` to regenerate.
 
+export { default as IcSvgArrow } from './ic_arrow';
 export { default as IcSvgBooth } from './ic_booth';
 export { default as IcSvgCalendar } from './ic_calendar';
 export { default as IcSvgCamera } from './ic_camera';
