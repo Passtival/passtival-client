@@ -29,9 +29,6 @@ importers:
       react-router-dom:
         specifier: ^7.7.1
         version: 7.7.1(react-dom@19.1.1(react@19.1.1))(react@19.1.1)
-      react-slick:
-        specifier: ^0.31.0
-        version: 0.31.0(react-dom@19.1.1(react@19.1.1))(react@19.1.1)
       slick-carousel:
         specifier: ^1.8.1
         version: 1.8.1(jquery@3.7.1)
@@ -114,6 +111,9 @@ importers:
       prettier:
         specifier: ^3.6.2
         version: 3.6.2
+      react-slick:
+        specifier: ^0.31.0
+        version: 0.31.0(react-dom@19.1.1(react@19.1.1))(react@19.1.1)
       tsx:
         specifier: ^4.20.4
         version: 4.20.4

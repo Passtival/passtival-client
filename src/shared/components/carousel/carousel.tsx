@@ -1,3 +1,4 @@
+import type { ReactNode } from 'react';
 import React, { useState } from 'react';
 import Slider from 'react-slick';
 
@@ -7,20 +8,19 @@ import * as styles from './carousel.css';
 import SlideIndicator from '../carousel/slideindicator/slideIndicator';
 
 interface CarouselProps {
-  children: React.ReactNode;
-  speed?: number;
-  slidesToShow?: number;
-  slidesToScroll?: number;
+  children: ReactNode;
+  infinite?: boolean;
+  autoplay?: boolean;
+  autoplaySpeed?: number;
 }
 
 const Carousel = ({ children, ...settings }: CarouselProps) => {
   const [currentSlide, setCurrentSlide] = useState(0);
 
   const defaultSettings = {
-    speed: 500,
-    slidesToShow: 1,
-    slidesToScroll: 1,
     infinite: false,
+    autoplay: false,
+    autoplaySpeed: 5000,
     afterChange: (index: number) => setCurrentSlide(index),
   };
 

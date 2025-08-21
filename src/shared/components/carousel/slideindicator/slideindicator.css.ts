@@ -18,5 +18,4 @@ export const container = style({
   color: themeVars.color.bg_white,
   fontSize: '1.3rem',
   letterSpacing: '0.3rem',
-  zIndex: 10,
 });
