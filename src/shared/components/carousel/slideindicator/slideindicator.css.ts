@@ -16,8 +16,8 @@ export const container = style({
   backgroundColor: themeVars.color.gray_500_40,
   borderRadius: '2.3rem',
 
+  ...themeVars.fontStyles.button_r_12,
   color: themeVars.color.bg_white,
-  fontSize: '1.3rem',
 });
 
 const numberStyle = style({
