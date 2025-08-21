@@ -11,11 +11,22 @@ export const container = style({
   right: '1.4rem',
   height: '2.4rem',
   width: '4.6rem',
+  gap: '0.3rem',
 
   backgroundColor: themeVars.color.gray_500_40,
   borderRadius: '2.3rem',
 
   color: themeVars.color.bg_white,
   fontSize: '1.3rem',
-  letterSpacing: '0.3rem',
 });
+
+const numberStyle = style({
+  display: 'inline-block',
+  width: '1rem',
+
+  textAlign: 'center',
+});
+
+export const first = numberStyle;
+
+export const third = numberStyle;
