@@ -9,7 +9,7 @@ const tabData = [
 
 function App() {
   return (
-    <div>
+    <div style={{ padding: '20px' }}>
       <Tabs>
         <TabList>
           {tabData.map((tab, index) => (
