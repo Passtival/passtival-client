@@ -8,11 +8,14 @@ import { buttonVariants } from './tab.css';
 interface TabProps {
   children: ReactNode;
   index: number;
-  onChange?: (isselected: boolean) => void;
 }
 interface TabsProps {
   children: ReactNode;
 }
+
+const Tabs = ({ children }: TabsProps) => {
+  return <TabsProvider>{children}</TabsProvider>;
+};
 
 const TabList = ({ children }: { children: ReactNode }) => {
   return (
@@ -39,10 +42,6 @@ const Tab = ({ children, index }: TabProps) => {
       {children}
     </button>
   );
-};
-
-const Tabs = ({ children }: TabsProps) => {
-  return <TabsProvider>{children}</TabsProvider>;
 };
 
 export { Tabs, TabList, Tab };
