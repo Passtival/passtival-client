@@ -1,7 +1,7 @@
 import type { ReactNode } from 'react';
 
 import { useTabsContext } from './hooks/use-tabs-context';
-import { TabsProvider } from './tab-provider';
+import { TabsProviderProps } from './tab-provider';
 import * as styles from './tab.css';
 import { buttonVariants } from './tab.css';
 
@@ -13,8 +13,8 @@ interface TabsProps {
   children: ReactNode;
 }
 
-const Tabs = ({ children }: TabsProps) => {
-  return <TabsProvider>{children}</TabsProvider>;
+const TabContainer = ({ children }: TabsProps) => {
+  return <TabsProviderProps>{children}</TabsProviderProps>;
 };
 
 const TabList = ({ children }: { children: ReactNode }) => {
@@ -28,7 +28,7 @@ const TabList = ({ children }: { children: ReactNode }) => {
   );
 };
 
-const Tab = ({ children, index }: TabProps) => {
+const TabItem = ({ children, index }: TabProps) => {
   const { selectedTab, setSelectedTab } = useTabsContext();
   const isActive = selectedTab === index;
 
@@ -44,4 +44,10 @@ const Tab = ({ children, index }: TabProps) => {
   );
 };
 
-export { Tabs, TabList, Tab };
+const Tab = {
+  TabContainer,
+  TabList,
+  TabItem,
+};
+
+export default Tab;

@@ -2,7 +2,7 @@ import type { ReactNode } from 'react';
 
 import { useTabsContext } from './hooks/use-tabs-context';
 
-export const TabPanels = ({ children }: { children: ReactNode }) => {
+export const TabPanelsProps = ({ children }: { children: ReactNode }) => {
   return <div>{children}</div>;
 };
 

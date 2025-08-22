@@ -3,7 +3,7 @@ import type { ReactNode } from 'react';
 
 import { TabsContext } from './tab-context';
 
-export const TabsProvider = ({ children }: { children: ReactNode }) => {
+export const TabsProviderProps = ({ children }: { children: ReactNode }) => {
   const [selectedTab, setSelectedTab] = useState(0);
 
   const value = {
