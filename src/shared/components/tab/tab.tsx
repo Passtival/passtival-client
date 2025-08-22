@@ -5,10 +5,6 @@ import { useTabsContext, TabsContext } from './hooks/use-tabs-context';
 import * as styles from './tab.css';
 import { buttonVariants } from './tab.css';
 
-interface TabsProviderProps {
-  children: ReactNode;
-}
-
 interface TabContainerProps {
   children: ReactNode;
 }
@@ -28,7 +24,7 @@ interface PanelProps {
   tab: number;
 }
 
-const TabsProvider = ({ children }: TabsProviderProps) => {
+const Container = ({ children }: TabContainerProps) => {
   const [selectedTab, setSelectedTab] = useState(1);
 
   const value = {
@@ -37,10 +33,6 @@ const TabsProvider = ({ children }: TabsProviderProps) => {
   };
 
   return <TabsContext.Provider value={value}>{children}</TabsContext.Provider>;
-};
-
-const Container = ({ children }: TabContainerProps) => {
-  return <TabsProvider>{children}</TabsProvider>;
 };
 
 const List = ({ children }: TabListProps) => {
