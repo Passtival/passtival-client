@@ -7,6 +7,7 @@ import { buttonVariants } from './tab.css';
 
 interface TabContainerProps {
   children: ReactNode;
+  defaultValue?: number;
 }
 
 interface TabListProps {
@@ -24,8 +25,8 @@ interface PanelProps {
   tab: number;
 }
 
-const Container = ({ children }: TabContainerProps) => {
-  const [selectedTab, setSelectedTab] = useState(1);
+const Container = ({ children, defaultValue = 0 }: TabContainerProps) => {
+  const [selectedTab, setSelectedTab] = useState(defaultValue);
 
   const value = {
     selectedTab,

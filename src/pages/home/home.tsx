@@ -8,7 +8,7 @@ const tabData = [
 
 const Home = () => {
   return (
-    <Tab.Container>
+    <Tab.Container defaultValue={1}>
       <Tab.List>
         {tabData.map((tab) => (
           <Tab.Item
