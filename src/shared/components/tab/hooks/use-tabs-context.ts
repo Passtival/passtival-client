@@ -1,11 +1,11 @@
 import { createContext, useContext } from 'react';
 
-type TabsContextType = {
+type ContainerContextType = {
   selectedTab: number;
   setSelectedTab: (tab: number) => void;
 };
 
-export const TabsContext = createContext<TabsContextType | null>(null);
+export const TabsContext = createContext<ContainerContextType | null>(null);
 
 export const useTabsContext = () => {
   const tabContext = useContext(TabsContext);
