@@ -1,11 +1,16 @@
-import { useContext } from 'react';
+import { createContext, useContext } from 'react';
 
-import { TabsContext } from '../tab-context';
+type TabsContextType = {
+  selectedTab: number;
+  setSelectedTab: (tab: number) => void;
+};
+
+export const TabsContext = createContext<TabsContextType | null>(null);
 
 export const useTabsContext = () => {
   const tabContext = useContext(TabsContext);
   if (!tabContext) {
-    throw new Error('tabContext를 사용해주세요.');
+    throw new Error('Tab.Container 안에 tabContext를 사용하세요.');
   }
   return tabContext;
 };

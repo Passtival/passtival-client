@@ -1,23 +1,38 @@
+import { useState } from 'react';
 import type { ReactNode } from 'react';
 
-import { useTabsContext } from './hooks/use-tabs-context';
-import { TabsProviderProps } from './tab-provider';
+import { useTabsContext, TabsContext } from './hooks/use-tabs-context';
 import * as styles from './tab.css';
 import { buttonVariants } from './tab.css';
 
-interface TabProps {
-  children: ReactNode;
-  index: number;
-}
 interface TabsProps {
   children: ReactNode;
 }
+interface TabItemProps {
+  children: ReactNode;
+  index: number;
+}
+interface TabPaneslProps {
+  children: ReactNode;
+  tab: number;
+}
 
-const TabContainer = ({ children }: TabsProps) => {
-  return <TabsProviderProps>{children}</TabsProviderProps>;
+const TabsProvider = ({ children }: { children: ReactNode }) => {
+  const [selectedTab, setSelectedTab] = useState(1);
+
+  const value = {
+    selectedTab,
+    setSelectedTab,
+  };
+
+  return <TabsContext.Provider value={value}>{children}</TabsContext.Provider>;
 };
 
-const TabList = ({ children }: { children: ReactNode }) => {
+const Container = ({ children }: { children: ReactNode }) => {
+  return <TabsProvider>{children}</TabsProvider>;
+};
+
+const List = ({ children }: TabsProps) => {
   return (
     <div
       role="tablist"
@@ -28,7 +43,7 @@ const TabList = ({ children }: { children: ReactNode }) => {
   );
 };
 
-const TabItem = ({ children, index }: TabProps) => {
+const Item = ({ children, index }: TabItemProps) => {
   const { selectedTab, setSelectedTab } = useTabsContext();
   const isActive = selectedTab === index;
 
@@ -44,10 +59,27 @@ const TabItem = ({ children, index }: TabProps) => {
   );
 };
 
+const Panels = ({ children }: TabsProps) => {
+  return <div>{children}</div>;
+};
+
+const Panel = ({ children, tab }: TabPaneslProps) => {
+  const { selectedTab } = useTabsContext();
+  const isActive = selectedTab === tab;
+
+  if (!isActive) {
+    return null;
+  }
+
+  return <div role="tabpanel">{children}</div>;
+};
+
 const Tab = {
-  TabContainer,
-  TabList,
-  TabItem,
+  Container,
+  List,
+  Item,
+  Panels,
+  Panel,
 };
 
 export default Tab;
