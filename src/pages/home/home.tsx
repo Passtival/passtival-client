@@ -16,7 +16,14 @@ const Home = () => {
         <img src={noWakeupImage} />
         <img src={cuteImage} />
       </Carousel>
-      <Carousel>
+      <Carousel type="details">
+        <img src={noWakeupImage} />
+        <img src={yupdduckImage} />
+      </Carousel>
+      <Carousel
+        type="details"
+        infinite={true}
+      >
         <img src={noWakeupImage} />
         <img src={yupdduckImage} />
       </Carousel>

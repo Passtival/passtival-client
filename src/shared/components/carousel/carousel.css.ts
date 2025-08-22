@@ -15,16 +15,12 @@ export const carouselType = styleVariants({
 
     overflow: 'hidden',
   },
-  Apply: { position: 'relative', width: '37.5rem' },
+  Apply: { width: '37.5rem' },
 });
 
 export const image = style({
   width: '15rem',
   height: '12rem',
   borderRadius: '50%',
-  overflow: 'hidden', // 이미지가 래퍼 밖으로 벗어나지 않도록 합니다.
-});
-
-export const slideContainer = style({
-  padding: '0 1.5rem', // 각 슬라이드 좌우에 패딩을 줘서 총 3rem 간격 생성
+  overflow: 'hidden',
 });
