@@ -8,7 +8,7 @@ const IcSvgTime = (props: SVGProps<SVGSVGElement>) => (
     {...props}
   >
     <g
-      fill="gray"
+      fill="currentColor"
       clipPath="url(#time_svg__a)"
     >
       <path d="M8.1 4.5a3.6 3.6 0 1 0-3.6 3.6l.177-.004A3.6 3.6 0 0 0 8.1 4.5m.9 0a4.5 4.5 0 0 1-4.279 4.495L4.5 9A4.5 4.5 0 1 1 9 4.5" />
