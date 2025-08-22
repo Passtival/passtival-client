@@ -5,19 +5,30 @@ import { useTabsContext, TabsContext } from './hooks/use-tabs-context';
 import * as styles from './tab.css';
 import { buttonVariants } from './tab.css';
 
-interface TabsProps {
+interface TabsProviderProps {
+  children: ReactNode;
+}
+
+interface TabContainerProps {
+  children: ReactNode;
+}
+
+interface TabListProps {
   children: ReactNode;
 }
 interface TabItemProps {
   children: ReactNode;
   index: number;
 }
-interface TabPaneslProps {
+interface PanelsProps {
+  children: ReactNode;
+}
+interface PanelProps {
   children: ReactNode;
   tab: number;
 }
 
-const TabsProvider = ({ children }: { children: ReactNode }) => {
+const TabsProvider = ({ children }: TabsProviderProps) => {
   const [selectedTab, setSelectedTab] = useState(1);
 
   const value = {
@@ -28,11 +39,11 @@ const TabsProvider = ({ children }: { children: ReactNode }) => {
   return <TabsContext.Provider value={value}>{children}</TabsContext.Provider>;
 };
 
-const Container = ({ children }: { children: ReactNode }) => {
+const Container = ({ children }: TabContainerProps) => {
   return <TabsProvider>{children}</TabsProvider>;
 };
 
-const List = ({ children }: TabsProps) => {
+const List = ({ children }: TabListProps) => {
   return (
     <div
       role="tablist"
@@ -59,11 +70,11 @@ const Item = ({ children, index }: TabItemProps) => {
   );
 };
 
-const Panels = ({ children }: TabsProps) => {
+const Panels = ({ children }: PanelsProps) => {
   return <div>{children}</div>;
 };
 
-const Panel = ({ children, tab }: TabPaneslProps) => {
+const Panel = ({ children, tab }: PanelProps) => {
   const { selectedTab } = useTabsContext();
   const isActive = selectedTab === tab;
 
