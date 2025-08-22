@@ -58,7 +58,7 @@ async function main() {
       );
 
       content = content.replace(
-        /(<path[^>]*?)fill=['"]([^'"]+?)['"]/g,
+        /(<path[^>]*?|<g[^>]*?)fill=['"]([^'"]+?)['"]/g,
         (match, p1, p2) => {
           if (p2 === 'none' || p2 === 'transparent' || p2.startsWith('url(')) {
             return match;
