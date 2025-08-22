@@ -15,12 +15,14 @@ export const carouselType = styleVariants({
 
     overflow: 'hidden',
   },
-  Apply: { width: '37.5rem' },
+  Apply: { width: 'auto' },
 });
 
-export const image = style({
+export const img = style({
   width: '15rem',
-  height: '12rem',
+  height: '14rem',
+
   borderRadius: '50%',
+
   overflow: 'hidden',
 });

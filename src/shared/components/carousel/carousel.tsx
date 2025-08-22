@@ -9,47 +9,44 @@ import SlideIndicator from '../carousel/slideindicator/slideIndicator';
 
 interface CarouselProps {
   children: ReactNode;
+  autoplay?: boolean;
   infinite?: boolean;
   type?: 'details' | 'Apply';
 }
 
-const Carousel = ({ children, type, infinite, ...settings }: CarouselProps) => {
+const Carousel = ({ children, type, infinite, autoplay }: CarouselProps) => {
   const [currentSlide, setCurrentSlide] = useState(0);
 
   const totalSlides = React.Children.count(children);
 
-  const mergedSettings =
-    type === 'details'
-      ? {
-          infinite: false,
-          afterChange: (index: number) => setCurrentSlide(index),
-        }
-      : {
-          slidesToShow: 3,
-          slidesToScroll: 1,
-          infinite: true,
-          autoplay: true,
-          autoplaySpeed: 0,
-          speed: 8000,
-          cssEase: 'linear',
-          pauseOnHover: false,
-          pauseOnFocus: false,
-          arrows: false,
-          dots: false,
-          ...settings,
-        };
+  const isDetailsType = type === 'details';
 
-  const typeStyle =
-    type === 'details'
-      ? styles.carouselType.details
-      : styles.carouselType.Apply;
+  const mergedSettings = isDetailsType
+    ? {
+        autoplay: autoplay,
+        infinite: infinite,
+        afterChange: (index: number) => setCurrentSlide(index),
+      }
+    : {
+        slidesToShow: 3,
+        infinite: true,
+        autoplay: true,
+        autoplaySpeed: 0,
+        speed: 8000,
+        cssEase: 'linear',
+        pauseOnHover: false,
+        pauseOnFocus: false,
+      };
 
-  const styledChildren = React.Children.map(children, (child) => {
-    if (type === 'Apply' && React.isValidElement(child)) {
-      return <div className={styles.image}>{React.cloneElement(child)}</div>;
-    }
-    return child;
-  });
+  const typeStyle = isDetailsType
+    ? styles.carouselType.details
+    : styles.carouselType.Apply;
+
+  const styledChildren = isDetailsType
+    ? children
+    : React.Children.map(children, (child) => (
+        <div className={styles.img}>{child}</div>
+      ));
 
   return (
     <div className={`${typeStyle}`}>
