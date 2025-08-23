@@ -6,7 +6,7 @@ interface DetailHeaderProps {
 }
 const DetailHeader = ({ subTitle, title }: DetailHeaderProps) => {
   return (
-    <div className={styles.cotainer}>
+    <div className={styles.container}>
       <p className={styles.subTitle}>{subTitle}</p>
       <p className={styles.title}>{title}</p>
     </div>
