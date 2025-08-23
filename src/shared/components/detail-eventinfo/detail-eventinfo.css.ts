@@ -6,7 +6,9 @@ export const container = style({
   flexDirection: 'column',
   width: '100%',
   height: '100%',
+
   padding: '1.5rem 2.4rem 1.6rem 2.4rem',
+  borderBottom: `1px solid ${themeVars.color.gray_400}`,
 });
 
 export const line = style({
