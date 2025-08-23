@@ -70,7 +70,7 @@ const DropDown = ({
             return (
               <li
                 key={opt.value}
-                className={`${style.dropdownOption} ${isSelected ? style.dropdownOptionSelected : ''}`}
+                className={style.optionItem({ selected: isSelected })}
                 onClick={() => handleOptionClick(opt.value)}
               >
                 {opt.displayName}
