@@ -12,21 +12,16 @@ interface CardProps {
 }
 
 const Card = ({ title, major, description, img, type, onClick }: CardProps) => {
-  const containerStyle = styles.container({ type });
-  const titleStyle = styles.title({ type });
-  const majorStyle = styles.major;
-  const descriptionStyle = styles.description({ type });
-
   return (
     <div
-      className={containerStyle}
+      className={styles.container({ type })}
       onClick={onClick}
     >
       <div className={styles.blur} />
       <div className={styles.content}>
-        <p className={titleStyle}>{title}</p>
-        {major && <p className={majorStyle}>{major}</p>}
-        <p className={descriptionStyle}>{description}</p>
+        <p className={styles.title({ type })}>{title}</p>
+        {major && <p className={styles.major}>{major}</p>}
+        <p className={styles.description({ type })}>{description}</p>
       </div>
       <img
         className={styles.img}
