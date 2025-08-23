@@ -22,6 +22,7 @@ const Card = ({ title, major, description, img, type, onClick }: CardProps) => {
       className={containerStyle}
       onClick={onClick}
     >
+      <div className={styles.blur} />
       <div className={styles.content}>
         <p className={titleStyle}>{title}</p>
         {major && <p className={majorStyle}>{major}</p>}

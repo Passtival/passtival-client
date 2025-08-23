@@ -8,10 +8,10 @@ export const container = recipe({
     display: 'flex',
     justifyContent: 'space-between',
 
-    backgroundColor: themeVars.color.sub_blue_40,
     boxShadow: '2px 2px 5px rgba(24, 118, 250, 0.20)',
 
     borderRadius: '10px',
+    position: 'relative',
   },
 
   variants: {
@@ -28,7 +28,17 @@ export const container = recipe({
   },
 });
 
+export const blur = style({
+  position: 'absolute',
+  width: '100%',
+  height: '100%',
+  filter: 'blur(8px)',
+  zIndex: themeVars.zIndex.tooltip,
+  background: themeVars.color.sub_blue_40,
+});
+
 export const content = style({
+  zIndex: themeVars.zIndex.dropdown,
   display: 'flex',
   flexDirection: 'column',
   width: '16rem',
@@ -98,6 +108,7 @@ export const description = recipe({
 });
 
 export const img = style({
+  zIndex: themeVars.zIndex.dropdown,
   width: '11.9rem',
   height: '10.5rem',
   margin: '1.2rem 1.6rem 0 0',
