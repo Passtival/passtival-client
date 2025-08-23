@@ -12,9 +12,9 @@ export const DROP_DOWN_OPTIONS = {
     displayName: `${minute}분`,
     value: minute,
   })),
-} as const;
+};
 
 export const DROP_DOWN_PLACEHOLDER = {
   DATE: '날짜 선택',
   TIME: '시간 선택',
-} as const;
+};
