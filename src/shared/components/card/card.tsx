@@ -1,74 +1,32 @@
-import type { ReactNode, MouseEvent } from 'react';
-
 import * as styles from './card.css';
-import { useCard, CardContext } from './hooks/use-card';
 
 interface CardProps {
-  children: ReactNode;
-  size?: 'sm' | 'lg';
-  onClick: (event: MouseEvent<HTMLDivElement>) => void;
+  title: string;
+  major?: string;
+  description: string;
+  img: string;
+  type: 'details' | 'apply';
 }
 
-interface ChildProps {
-  children: ReactNode;
-}
+const Card = ({ title, major, description, img, type }: CardProps) => {
+  const containerStyle = styles.container({ type });
+  const titleStyle = styles.title({ type });
+  const majorStyle = styles.major;
+  const descriptionStyle = styles.description({ type });
 
-interface ImageProps {
-  src: string;
-}
-
-const Container = ({ children, onClick, size = 'sm' }: CardProps) => {
   return (
-    <CardContext.Provider value={{ size }}>
-      <div
-        className={styles.card({ size })}
-        onClick={onClick}
-      >
-        {children}
+    <div className={containerStyle}>
+      <div className={styles.content}>
+        <p className={titleStyle}>{title}</p>
+        {major && <p className={majorStyle}>{major}</p>}
+        <p className={descriptionStyle}>{description}</p>
       </div>
-    </CardContext.Provider>
+      <img
+        className={styles.img}
+        src={img}
+      />
+    </div>
   );
 };
 
-const Content = ({ children }: ChildProps) => {
-  return <div className={styles.contentContainer}>{children}</div>;
-};
-
-const Title = ({ children }: ChildProps) => {
-  const { size } = useCard();
-  const titleClassName = size === 'lg' ? styles.titlelg : styles.titlesm;
-
-  return <p className={titleClassName}>{children}</p>;
-};
-
-const Major = ({ children }: ChildProps) => {
-  return <p className={styles.major}>{children}</p>;
-};
-
-const MajortTxt = ({ children }: ChildProps) => {
-  return <p className={styles.majortxt}>{children}</p>;
-};
-
-const LostTxt = ({ children }: ChildProps) => {
-  return <p className={styles.losttxt}>{children}</p>;
-};
-
-const Img = ({ src }: ImageProps) => {
-  return (
-    <img
-      className={styles.img}
-      src={src}
-    />
-  );
-};
-
-const Card = {
-  Container,
-  Content,
-  Title,
-  Major,
-  MajortTxt,
-  LostTxt,
-  Img,
-};
 export default Card;

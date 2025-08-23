@@ -3,7 +3,7 @@ import { recipe } from '@vanilla-extract/recipes';
 
 import { themeVars } from '@shared/styles';
 
-export const card = recipe({
+export const container = recipe({
   base: {
     display: 'flex',
     justifyContent: 'space-between',
@@ -15,12 +15,12 @@ export const card = recipe({
   },
 
   variants: {
-    size: {
-      sm: {
+    type: {
+      details: {
         width: '32.1rem',
         height: '13.3rem',
       },
-      lg: {
+      apply: {
         width: '34.5rem',
         height: '13.3rem',
       },
@@ -28,53 +28,73 @@ export const card = recipe({
   },
 });
 
-export const contentContainer = style({
+export const content = style({
   display: 'flex',
   flexDirection: 'column',
   width: '16rem',
 
   overflow: 'hidden',
-
   textOverflow: 'ellipsis',
 });
 
-export const titlesm = style({
-  width: '16rem',
-  height: '2.7rem',
-  ...themeVars.fontStyles.title_b_18,
-  margin: '1.4rem 1.1rem 0 1.5rem',
+export const title = recipe({
+  base: {
+    display: '-webkit-box',
 
-  whiteSpace: 'nowrap',
-});
-
-export const titlelg = style({
-  ...themeVars.fontStyles.title_b_18,
-  margin: '1.4rem 1.1rem 0 1.5rem',
-
-  whiteSpace: 'nowrap',
+    ...themeVars.fontStyles.title_b_18,
+    overflow: 'hidden',
+    WebkitLineClamp: 1,
+    WebkitBoxOrient: 'vertical',
+    textOverflow: 'ellipsis',
+  },
+  variants: {
+    type: {
+      details: {
+        margin: '1.4rem 1.1rem 0 1.5rem',
+      },
+      apply: {
+        margin: '2.3rem 1.1rem 0 1.5rem',
+      },
+    },
+  },
 });
 
 export const major = style({
+  display: '-webkit-box',
+
   ...themeVars.fontStyles.title_b_14,
   color: themeVars.color.main_blue,
   margin: '0 1.1rem 0.5rem 1.5rem',
 
-  whiteSpace: 'nowrap',
-});
-
-export const majortxt = style({
-  ...themeVars.fontStyles.caption2_m_12,
-  color: themeVars.color.gray_600,
-  height: '5.3rem',
-  margin: '0 1.1rem 3.4rem 1.5rem',
-});
-
-export const losttxt = style({
-  ...themeVars.fontStyles.body1_r_15,
-  color: themeVars.color.gray_600,
-  height: '6.4rem',
-  margin: '0 1.1rem 4.1rem 1.6rem',
   overflow: 'hidden',
+  WebkitLineClamp: 1,
+  WebkitBoxOrient: 'vertical',
+});
+
+export const description = recipe({
+  base: {
+    display: '-webkit-box',
+
+    color: themeVars.color.gray_600,
+    overflow: 'hidden',
+    WebkitLineClamp: 2,
+    WebkitBoxOrient: 'vertical',
+  },
+  variants: {
+    type: {
+      details: {
+        ...themeVars.fontStyles.caption2_m_12,
+
+        margin: '0 1.1rem 3.4rem 1.5rem',
+      },
+      apply: {
+        ...themeVars.fontStyles.body1_r_15,
+        color: themeVars.color.gray_600,
+
+        margin: '0 1.1rem 4.1rem 1.6rem',
+      },
+    },
+  },
 });
 
 export const img = style({
