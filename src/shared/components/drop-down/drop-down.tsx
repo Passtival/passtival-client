@@ -15,7 +15,7 @@ type Option = {
 interface DropDownProps {
   selected: string | null;
   onSelect: (value: string) => void;
-  options: Option[] | readonly Option[];
+  options: Option[];
   placeholder?: string;
   icon?: ReactNode;
 }
@@ -54,10 +54,8 @@ const DropDown = ({
         onClick={() => setIsOpen((prev) => !prev)}
       >
         <div className={style.contentWrapper}>
-          <div className={style.leftWrapper}>
-            {icon && <div className={style.iconWrapper}>{icon}</div>}
-            <span className={style.dropdownPlaceholder}>{selectedLabel}</span>
-          </div>
+          <div className={style.iconWrapper}>{icon}</div>
+          <span className={style.dropdownPlaceholder}>{selectedLabel}</span>
           <IcSvgArrow
             className={style.rightIcon}
             style={{ transform: isOpen ? 'rotate(90deg)' : 'rotate(270deg)' }}
