@@ -10,8 +10,8 @@ const SlideIndicator = ({ currentSlide, totalSlides }: SlideIndicatorProps) => {
 
   return (
     <div className={styles.container}>
-      <span className={styles.first}>{displayCurrent}</span>/
-      <span className={styles.third}>{totalSlides}</span>
+      <span className={styles.number}>{displayCurrent}</span>/
+      <span className={styles.number}>{totalSlides}</span>
     </div>
   );
 };

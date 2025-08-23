@@ -20,13 +20,9 @@ export const container = style({
   color: themeVars.color.bg_white,
 });
 
-const numberStyle = style({
+export const number = style({
   display: 'inline-block',
   width: '1rem',
 
   textAlign: 'center',
 });
-
-export const first = numberStyle;
-
-export const third = numberStyle;
