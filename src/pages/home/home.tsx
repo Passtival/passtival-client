@@ -16,7 +16,7 @@ const cardsData: CardData[] = [
     major: '학과이름테스트입니다학과이름테스트입니다',
     description:
       '학교에갑니다학교에갑니다학교에갑니다학교에갑니다학교에갑니다학교에갑니다학교에갑니다',
-    img: 'path/to/image1.jpg',
+    img: '',
     type: 'details',
   },
   {
@@ -24,7 +24,7 @@ const cardsData: CardData[] = [
     title: '테스트테스트테스트테테테',
     major: '',
     description: '설명을 적으세요',
-    img: 'path/to/image2.jpg',
+    img: '',
     type: 'apply',
   },
 ];
@@ -40,6 +40,7 @@ const Home = () => {
           description={card.description}
           img={card.img}
           type={card.type}
+          onClick={() => {}}
         />
       ))}
     </div>
