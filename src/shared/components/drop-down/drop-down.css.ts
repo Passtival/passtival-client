@@ -53,7 +53,7 @@ export const iconWrapper = style({
 export const dropdownPlaceholder = style({
   flex: 1,
   minWidth: 0,
-  textAlign: 'left',
+  textAlign: 'center',
   color: themeVars.color.gray_600,
   whiteSpace: 'nowrap',
   overflow: 'hidden',
@@ -104,17 +104,12 @@ export const optionItem = recipe({
         backgroundColor: themeVars.color.gray_200,
         color: themeVars.color.gray_600,
         selectors: {
-          '&:hover': { backgroundColor: themeVars.color.gray_200 }, // 선택 시 hover색 고정
+          '&:hover': { backgroundColor: themeVars.color.gray_200 },
         },
       },
-    },
-    size: {
-      md: { width: '10.5rem', height: '3.5rem' },
-      lg: { width: '14rem', height: '4rem' },
     },
   },
   defaultVariants: {
     selected: false,
-    size: 'md',
   },
 });
