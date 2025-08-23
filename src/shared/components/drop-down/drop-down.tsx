@@ -3,19 +3,7 @@ import type { ReactNode } from 'react';
 
 import { IcSvgArrow } from '@shared/icons';
 
-import {
-  dropdownWrapper,
-  dropdownContainer,
-  dropdownContainerOpen,
-  contentWrapper,
-  leftWrapper,
-  iconWrapper,
-  dropdownPlaceholder,
-  rightIcon,
-  dropdownList,
-  dropdownOption,
-  dropdownOptionSelected,
-} from './drop-down.css';
+import * as style from './drop-down.css';
 import useClickOutside from './hooks/use-click-outside';
 import { useScrollIntoViewOnOpen } from './hooks/use-move-scroll';
 
@@ -56,33 +44,35 @@ const DropDown = ({
 
   return (
     <div
-      className={dropdownWrapper}
+      className={style.dropdownWrapper}
       ref={ref}
     >
       <div
-        className={isOpen ? dropdownContainerOpen : dropdownContainer}
+        className={
+          isOpen ? style.dropdownContainerOpen : style.dropdownContainer
+        }
         onClick={() => setIsOpen((prev) => !prev)}
       >
-        <div className={contentWrapper}>
-          <div className={leftWrapper}>
-            {icon && <div className={iconWrapper}>{icon}</div>}
-            <span className={dropdownPlaceholder}>{selectedLabel}</span>
+        <div className={style.contentWrapper}>
+          <div className={style.leftWrapper}>
+            {icon && <div className={style.iconWrapper}>{icon}</div>}
+            <span className={style.dropdownPlaceholder}>{selectedLabel}</span>
           </div>
           <IcSvgArrow
-            className={rightIcon}
+            className={style.rightIcon}
             style={{ transform: isOpen ? 'rotate(90deg)' : 'rotate(270deg)' }}
           />
         </div>
       </div>
 
       {isOpen && (
-        <ul className={dropdownList}>
+        <ul className={style.dropdownList}>
           {options.map((opt) => {
             const isSelected = opt.value === selected;
             return (
               <li
                 key={opt.value}
-                className={`${dropdownOption} ${isSelected ? dropdownOptionSelected : ''}`}
+                className={`${style.dropdownOption} ${isSelected ? style.dropdownOptionSelected : ''}`}
                 onClick={() => handleOptionClick(opt.value)}
               >
                 {opt.displayName}
