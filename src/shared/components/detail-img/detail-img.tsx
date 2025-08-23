@@ -1,10 +1,10 @@
 import * as styles from './detail-img.css';
 
-interface DeatilImgProps {
+interface DetailImgProps {
   img: string;
   alt?: string;
 }
-const DetailImg = ({ img, alt }: DeatilImgProps) => {
+const DetailImg = ({ img, alt }: DetailImgProps) => {
   return (
     <div className={styles.container}>
       <img
