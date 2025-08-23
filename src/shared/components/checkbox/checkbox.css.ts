@@ -9,13 +9,13 @@ export const checkboxWrapper = style({
   cursor: 'pointer',
 });
 
-export const checkboxBox = style({
+export const checkbox = style({
   display: 'flex',
   width: '2rem',
   height: '2rem',
   border: `1px solid ${themeVars.color.main_blue}`,
   borderRadius: '4px',
-  backgroundColor: 'transparent',
+  backgroundColor: themeVars.color.bg_white,
   position: 'relative',
   alignItems: 'center',
   justifyContent: 'center',
