@@ -1,4 +1,5 @@
 import { style } from '@vanilla-extract/css';
+import { recipe } from '@vanilla-extract/recipes';
 
 import { themeVars } from '@shared/styles/theme.css';
 
@@ -20,32 +21,14 @@ export const dropdownContainer = style({
   alignItems: 'center',
   justifyContent: 'space-between',
   cursor: 'pointer',
-  ...themeVars.fontStyles.button2_sb_12,
   backgroundColor: themeVars.color.gray_200,
+  ...themeVars.fontStyles.button2_sb_12,
 });
 
 export const dropdownContainerOpen = style([
   dropdownContainer,
-  {
-    borderColor: themeVars.color.gray_600,
-  },
+  { borderColor: themeVars.color.gray_600 },
 ]);
-
-// export const contentWrapper = style({
-//   width: '100%',
-//   display: 'flex',
-//   gap: '0.7rem',
-//   alignItems: 'center',
-//   justifyContent: 'space-between',
-// });
-
-// export const leftWrapper = style({
-//   display: 'flex',
-//   width: '100%',
-//   gap: '0.7rem',
-//   alignItems: 'center',
-//   color: themeVars.color.gray_900,
-// });
 
 export const contentWrapper = style({
   display: 'flex',
@@ -54,11 +37,6 @@ export const contentWrapper = style({
   alignItems: 'center',
   gap: '0.7rem',
   ...themeVars.fontStyles.button2_sb_12,
-});
-
-export const dropdownOptionSelected = style({
-  backgroundColor: themeVars.color.gray_200,
-  color: themeVars.color.gray_600,
 });
 
 export const iconWrapper = style({
@@ -73,7 +51,9 @@ export const iconWrapper = style({
 });
 
 export const dropdownPlaceholder = style({
-  textAlign: 'center',
+  flex: 1,
+  minWidth: 0,
+  textAlign: 'left',
   color: themeVars.color.gray_600,
   whiteSpace: 'nowrap',
   overflow: 'hidden',
@@ -83,6 +63,7 @@ export const dropdownPlaceholder = style({
 export const rightIcon = style({
   width: '1.2rem',
   height: '1.2rem',
+  flexShrink: 0,
   transition: 'transform 0.2s ease',
 });
 
@@ -98,24 +79,42 @@ export const dropdownList = style({
   zIndex: themeVars.zIndex.dropdown,
   maxHeight: '21rem',
   overflowY: 'auto',
-  ...themeVars.fontStyles.button2_sb_12,
   color: themeVars.color.gray_600,
+  ...themeVars.fontStyles.button2_sb_12,
 });
 
-export const dropdownOption = style({
-  display: 'flex',
-  width: '10.5rem',
-  height: '3.5rem',
-  padding: '0rem 1rem',
-  alignItems: 'center',
-  borderBottom: `0.5px solid ${themeVars.color.gray_600}`,
-  cursor: 'pointer',
-  selectors: {
-    '&:hover': {
-      backgroundColor: themeVars.color.gray_400,
+export const optionItem = recipe({
+  base: {
+    display: 'flex',
+    width: '10.5rem',
+    height: '3.5rem',
+    padding: '0 1rem',
+    alignItems: 'center',
+    borderBottom: `0.5px solid ${themeVars.color.gray_600}`,
+    cursor: 'pointer',
+    selectors: {
+      '&:last-of-type': { borderBottom: 'none' },
+      '&:hover': { backgroundColor: themeVars.color.gray_400 },
     },
-    '&:last-of-type': {
-      borderBottom: 'none',
+  },
+  variants: {
+    selected: {
+      false: {},
+      true: {
+        backgroundColor: themeVars.color.gray_200,
+        color: themeVars.color.gray_600,
+        selectors: {
+          '&:hover': { backgroundColor: themeVars.color.gray_200 }, // 선택 시 hover색 고정
+        },
+      },
     },
+    size: {
+      md: { width: '10.5rem', height: '3.5rem' },
+      lg: { width: '14rem', height: '4rem' },
+    },
+  },
+  defaultVariants: {
+    selected: false,
+    size: 'md',
   },
 });
