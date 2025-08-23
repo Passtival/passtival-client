@@ -19,9 +19,7 @@ const Checkbox = ({ label, checked: isChecked, onChange }: CheckboxProps) => {
       className={style.checkboxWrapper}
       onClick={toggleCheck}
     >
-      <span
-        className={`${style.checkboxBox} ${isChecked ? style.checked : ''}`}
-      >
+      <span className={`${style.checkbox} ${isChecked ? style.checked : ''}`}>
         {isChecked && <IcSvgCheck className={style.checkIcon} />}
       </span>
       <span className={style.labelText}>{label}</span>
