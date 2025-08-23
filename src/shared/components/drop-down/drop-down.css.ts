@@ -15,10 +15,8 @@ export const dropdownContainer = style({
   width: '10.5rem',
   height: '4rem',
   padding: '1rem 0.6rem',
-  borderWidth: '1px',
-  borderStyle: 'solid',
-  borderColor: themeVars.color.gray_600,
-  borderRadius: '0.8rem',
+  border: `1px solid ${themeVars.color.gray_600}`,
+  borderRadius: '8px',
   alignItems: 'center',
   justifyContent: 'space-between',
   cursor: 'pointer',
@@ -33,20 +31,29 @@ export const dropdownContainerOpen = style([
   },
 ]);
 
-export const contentWrapper = style({
-  width: '100%',
-  display: 'flex',
-  gap: '0.7rem',
-  alignItems: 'center',
-  justifyContent: 'space-between',
-});
+// export const contentWrapper = style({
+//   width: '100%',
+//   display: 'flex',
+//   gap: '0.7rem',
+//   alignItems: 'center',
+//   justifyContent: 'space-between',
+// });
 
-export const leftWrapper = style({
+// export const leftWrapper = style({
+//   display: 'flex',
+//   width: '100%',
+//   gap: '0.7rem',
+//   alignItems: 'center',
+//   color: themeVars.color.gray_900,
+// });
+
+export const contentWrapper = style({
   display: 'flex',
   width: '100%',
-  gap: '0.7rem',
+  height: '2rem',
   alignItems: 'center',
-  color: themeVars.color.gray_900,
+  gap: '0.7rem',
+  ...themeVars.fontStyles.button2_sb_12,
 });
 
 export const dropdownOptionSelected = style({
@@ -66,7 +73,6 @@ export const iconWrapper = style({
 });
 
 export const dropdownPlaceholder = style({
-  width: '100%',
   textAlign: 'center',
   color: themeVars.color.gray_600,
   whiteSpace: 'nowrap',
@@ -75,8 +81,8 @@ export const dropdownPlaceholder = style({
 });
 
 export const rightIcon = style({
-  width: '1.5rem',
-  height: '1.5rem',
+  width: '1.2rem',
+  height: '1.2rem',
   transition: 'transform 0.2s ease',
 });
 
@@ -89,7 +95,7 @@ export const dropdownList = style({
   boxShadow: `0 0rem 0.2rem ${themeVars.color.gray_600}`,
   border: 'none',
   borderRadius: '0.8rem',
-  zIndex: 10,
+  zIndex: themeVars.zIndex.dropdown,
   maxHeight: '21rem',
   overflowY: 'auto',
   ...themeVars.fontStyles.button2_sb_12,
