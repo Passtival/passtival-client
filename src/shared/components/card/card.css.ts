@@ -33,12 +33,12 @@ export const blur = style({
   width: '100%',
   height: '100%',
   filter: 'blur(8px)',
-  zIndex: themeVars.zIndex.tooltip,
+  zIndex: themeVars.zIndex.header,
   background: themeVars.color.sub_blue_40,
 });
 
 export const content = style({
-  zIndex: themeVars.zIndex.dropdown,
+  zIndex: themeVars.zIndex.modal,
   display: 'flex',
   flexDirection: 'column',
   width: '16rem',
@@ -108,7 +108,7 @@ export const description = recipe({
 });
 
 export const img = style({
-  zIndex: themeVars.zIndex.dropdown,
+  zIndex: themeVars.zIndex.modal,
   width: '11.9rem',
   height: '10.5rem',
   margin: '1.2rem 1.6rem 0 0',
