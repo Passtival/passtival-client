@@ -28,7 +28,7 @@ const DetailInfo = ({
         <p className={styles.label}>{time2}</p>
         <p className={styles.value}>{location2}</p>
       </div>
-      {message && <p className={styles.message}>{message}</p>}
+      <p className={styles.message}>{message}</p>
     </div>
   );
 };
