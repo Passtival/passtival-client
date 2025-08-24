@@ -12,6 +12,7 @@ export const buttonVariants = recipe({
     borderBottom: `1px solid ${themeVars.color.gray_400}`,
 
     ...themeVars.fontStyles.button2_sb_14,
+    color: themeVars.color.gray_900,
     transition: 'all 0.3s ease',
   },
   variants: {

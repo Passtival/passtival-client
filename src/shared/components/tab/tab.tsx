@@ -7,7 +7,7 @@ import { buttonVariants } from './tab.css';
 
 interface TabContainerProps {
   children: ReactNode;
-  defaultValue?: number;
+  initialValue?: string;
 }
 
 interface TabListProps {
@@ -15,18 +15,18 @@ interface TabListProps {
 }
 interface TabItemProps {
   children: ReactNode;
-  index: number;
+  value: string;
 }
 interface PanelsProps {
   children: ReactNode;
 }
 interface PanelProps {
   children: ReactNode;
-  tab: number;
+  value: string;
 }
 
-const Container = ({ children, defaultValue = 0 }: TabContainerProps) => {
-  const [selectedTab, setSelectedTab] = useState(defaultValue);
+const Container = ({ children, initialValue = '' }: TabContainerProps) => {
+  const [selectedTab, setSelectedTab] = useState(initialValue);
 
   const value = {
     selectedTab,
@@ -47,15 +47,15 @@ const List = ({ children }: TabListProps) => {
   );
 };
 
-const Item = ({ children, index }: TabItemProps) => {
+const Item = ({ children, value }: TabItemProps) => {
   const { selectedTab, setSelectedTab } = useTabsContext();
-  const isActive = selectedTab === index;
+  const isActive = selectedTab === value;
 
   return (
     <button
       role="tab"
       aria-selected={isActive}
-      onClick={() => setSelectedTab(index)}
+      onClick={() => setSelectedTab(value)}
       className={buttonVariants({ selected: isActive })}
     >
       {children}
@@ -67,9 +67,9 @@ const Panels = ({ children }: PanelsProps) => {
   return <div>{children}</div>;
 };
 
-const Panel = ({ children, tab }: PanelProps) => {
+const Panel = ({ children, value }: PanelProps) => {
   const { selectedTab } = useTabsContext();
-  const isActive = selectedTab === tab;
+  const isActive = selectedTab === value;
 
   if (!isActive) {
     return null;

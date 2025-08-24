@@ -8,24 +8,25 @@ const tabData = [
 
 const Home = () => {
   return (
-    <Tab.Container defaultValue={1}>
+    <Tab.Container initialValue={tabData[0].content}>
       <Tab.List>
         {tabData.map((tab) => (
           <Tab.Item
-            key={tab.id}
-            index={tab.id}
+            key={tab.content}
+            value={tab.content}
           >
             {tab.content}
           </Tab.Item>
         ))}
       </Tab.List>
+
       <Tab.Panels>
         {tabData.map((tab) => (
           <Tab.Panel
-            key={tab.id}
-            tab={tab.id}
+            key={tab.content}
+            value={tab.content}
           >
-            <div>{tab.content}</div>
+            {tab.content}입니다
           </Tab.Panel>
         ))}
       </Tab.Panels>
