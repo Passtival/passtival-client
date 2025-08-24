@@ -9,6 +9,7 @@ export const container = style({
 });
 export const subTitle = style({
   ...themeVars.fontStyles.title_b_14,
+  color: themeVars.color.gray_900,
 });
 export const title = style({
   ...themeVars.fontStyles.head_eb_20,
