@@ -115,4 +115,5 @@ export const img = style({
 
   borderRadius: '5px',
   border: `1.5px solid ${themeVars.color.gray_500_40}`,
+  objectFit: 'cover',
 });

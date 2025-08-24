@@ -6,6 +6,7 @@ interface CardProps {
   description: string;
   img: string;
   type: 'sm' | 'lg';
+  alt?: string;
   onClick?: () => void;
 }
 
