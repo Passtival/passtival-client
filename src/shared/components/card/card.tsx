@@ -1,17 +1,22 @@
-import type { MouseEvent } from 'react';
-
 import * as styles from './card.css';
 
 interface CardProps {
   title: string;
-  major?: string;
+  assignee?: string;
   description: string;
   img: string;
-  type: 'details' | 'apply';
-  onClick?: (event: MouseEvent<HTMLDivElement>) => void;
+  type: 'sm' | 'lg';
+  onClick?: () => void;
 }
 
-const Card = ({ title, major, description, img, type, onClick }: CardProps) => {
+const Card = ({
+  title,
+  assignee,
+  description,
+  img,
+  type,
+  onClick,
+}: CardProps) => {
   return (
     <div
       className={styles.container({ type })}
@@ -20,7 +25,7 @@ const Card = ({ title, major, description, img, type, onClick }: CardProps) => {
       <div className={styles.blur} />
       <div className={styles.content}>
         <p className={styles.title({ type })}>{title}</p>
-        {major && <p className={styles.major}>{major}</p>}
+        {assignee && <p className={styles.assignee}>{assignee}</p>}
         <p className={styles.description({ type })}>{description}</p>
       </div>
       <img

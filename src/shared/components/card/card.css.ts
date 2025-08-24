@@ -16,11 +16,11 @@ export const container = recipe({
 
   variants: {
     type: {
-      details: {
+      sm: {
         width: '32.1rem',
         height: '13.3rem',
       },
-      apply: {
+      lg: {
         width: '34.5rem',
         height: '13.3rem',
       },
@@ -59,17 +59,17 @@ export const title = recipe({
   },
   variants: {
     type: {
-      details: {
+      sm: {
         margin: '1.4rem 1.1rem 0 1.5rem',
       },
-      apply: {
+      lg: {
         margin: '2.3rem 1.1rem 0 1.5rem',
       },
     },
   },
 });
 
-export const major = style({
+export const assignee = style({
   display: '-webkit-box',
 
   ...themeVars.fontStyles.title_b_14,
@@ -92,12 +92,12 @@ export const description = recipe({
   },
   variants: {
     type: {
-      details: {
+      sm: {
         ...themeVars.fontStyles.caption2_m_12,
 
         margin: '0 1.1rem 3.4rem 1.5rem',
       },
-      apply: {
+      lg: {
         ...themeVars.fontStyles.body1_r_15,
         color: themeVars.color.gray_600,
 
