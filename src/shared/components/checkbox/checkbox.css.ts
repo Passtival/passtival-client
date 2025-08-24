@@ -4,7 +4,9 @@ import { themeVars } from '@shared/styles/theme.css';
 
 export const checkboxWrapper = style({
   display: 'flex',
-  gap: '0.8rem',
+  width: '100%',
+  gap: '10.5rem',
+  justifyContent: 'space-around',
   alignItems: 'center',
   cursor: 'pointer',
 });
@@ -24,6 +26,13 @@ export const checkbox = style({
 
 export const checked = style({
   backgroundColor: themeVars.color.main_blue,
+});
+
+export const checkboxLeft = style({
+  display: 'flex',
+  gap: '0.8rem',
+  alignItems: 'center',
+  cursor: 'pointer',
 });
 
 export const checkIcon = style({
