@@ -52,6 +52,7 @@ export const title = recipe({
     display: '-webkit-box',
 
     ...themeVars.fontStyles.title_b_18,
+    color: themeVars.color.gray_900,
     overflow: 'hidden',
     WebkitLineClamp: 1,
     WebkitBoxOrient: 'vertical',
@@ -99,7 +100,6 @@ export const description = recipe({
       },
       lg: {
         ...themeVars.fontStyles.body1_r_15,
-        color: themeVars.color.gray_600,
 
         margin: '0 1.1rem 4.1rem 1.6rem',
       },
