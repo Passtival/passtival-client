@@ -17,6 +17,12 @@ export const line = style({
   columnGap: '0.5rem',
 });
 
+export const title = style({
+  ...themeVars.fontStyles.title_b_18,
+  color: themeVars.color.main_blue,
+  padding: '0 0 0.8rem 0',
+});
+
 export const label = style({
   ...themeVars.fontStyles.caption2_m_15,
   color: themeVars.color.gray_900,
