@@ -1,7 +1,6 @@
 import * as styles from './detail-description.css';
 
 interface DescriptionProps {
-  id: number;
   title: string;
   description: string;
 }
