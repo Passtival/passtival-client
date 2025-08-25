@@ -1,5 +1,4 @@
 import { style } from '@vanilla-extract/css';
-import { recipe } from '@vanilla-extract/recipes';
 
 import { themeVars } from '@shared/styles/theme.css';
 
@@ -8,7 +7,7 @@ export const dropdownWrapper = style({
   width: 'fit-content',
   gap: '0.6rem',
   position: 'relative',
-  ...themeVars.fontStyles.button2_sb_12, // 폰트는 여기 하나에만
+  ...themeVars.fontStyles.button2_sb_12,
 });
 
 export const dropdownContainer = style({
@@ -81,7 +80,7 @@ export const optionItem = style({
   alignItems: 'center',
   borderBottom: `0.5px solid ${themeVars.color.gray_600}`,
   cursor: 'pointer',
-  color: themeVars.color.gray_600, // ✅ 항상 gray
+  color: themeVars.color.gray_600,
   selectors: {
     '&:last-of-type': { borderBottom: 'none' },
     '&:hover': { backgroundColor: themeVars.color.gray_400 },
