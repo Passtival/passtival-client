@@ -109,11 +109,7 @@ export const description = recipe({
 
 export const img = style({
   zIndex: themeVars.zIndex.modal,
-  width: '11.9rem',
-  height: '10.5rem',
   margin: '1.2rem 1.6rem 0 0',
 
-  borderRadius: '5px',
-  border: `1.5px solid ${themeVars.color.gray_500_40}`,
   objectFit: 'cover',
 });

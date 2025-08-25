@@ -10,7 +10,7 @@ interface CardProps {
   alt?: string;
   onClick?: () => void;
   imgSrc: string;
-  imgAlt: string;
+  imgAlt?: string;
 }
 
 const Card = ({
