@@ -12,6 +12,6 @@ export const title = style({
 
 export const loginContainer = style({
   display: 'grid',
-  padding: '6.9rem 2.5rem 0 2.5rem',
+  padding: '6.9rem 2.4rem 0 2.4rem',
   gap: '0.5rem',
 });
