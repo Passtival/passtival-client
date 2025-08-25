@@ -1,11 +1,10 @@
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import type { ReactNode } from 'react';
 
 import { IcSvgArrow } from '@shared/icons';
 
 import * as style from './drop-down.css';
 import useClickOutside from './hooks/use-click-outside';
-import { useScrollIntoViewOnOpen } from './hooks/use-move-scroll';
 
 type Option = {
   displayName: string;
@@ -30,7 +29,7 @@ const DropDown = ({
   icon,
 }: DropDownProps) => {
   const [isOpen, setIsOpen] = useState(false);
-  const ref = useScrollIntoViewOnOpen(isOpen, 48);
+  const ref = useRef<HTMLDivElement | null>(null);
 
   useClickOutside(ref, () => setIsOpen(false), isOpen);
 
@@ -48,9 +47,7 @@ const DropDown = ({
       ref={ref}
     >
       <div
-        className={
-          isOpen ? style.dropdownContainerOpen : style.dropdownContainer
-        }
+        className={style.dropdownContainer}
         onClick={() => setIsOpen((prev) => !prev)}
       >
         <div className={style.contentWrapper}>
@@ -65,18 +62,15 @@ const DropDown = ({
 
       {isOpen && (
         <ul className={style.dropdownList}>
-          {options.map((opt) => {
-            const isSelected = opt.value === selected;
-            return (
-              <li
-                key={opt.value}
-                className={style.optionItem({ selected: isSelected })}
-                onClick={() => handleOptionClick(opt.value)}
-              >
-                {opt.displayName}
-              </li>
-            );
-          })}
+          {options.map((opt) => (
+            <li
+              key={opt.value}
+              className={style.optionItem}
+              onClick={() => handleOptionClick(opt.value)}
+            >
+              {opt.displayName}
+            </li>
+          ))}
         </ul>
       )}
     </div>
