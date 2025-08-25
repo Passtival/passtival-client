@@ -1,5 +1,4 @@
 import { style } from '@vanilla-extract/css';
-import { recipe } from '@vanilla-extract/recipes';
 
 import { themeVars } from '@shared/styles/theme.css';
 
@@ -11,4 +10,8 @@ export const title = style({
   color: themeVars.color.gray_900,
 });
 
-export const container = style({});
+export const loginContainer = style({
+  display: 'grid',
+  padding: '6.9rem 2.5rem 0 2.5rem',
+  gap: '0.5rem',
+});
