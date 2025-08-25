@@ -10,21 +10,17 @@ interface CheckboxProps {
   label: string;
   checked: boolean;
   onChange: (checked: boolean) => void;
-  to: string;
+  navigateTo: string;
 }
 
 const Checkbox = ({
   label,
   checked: isChecked,
   onChange,
-  to,
+  navigateTo,
 }: CheckboxProps) => {
   const toggleCheck = () => {
     onChange(!isChecked);
-  };
-
-  const handleArrowClick = (e: React.MouseEvent) => {
-    e.stopPropagation();
   };
 
   return (
@@ -37,28 +33,21 @@ const Checkbox = ({
           {isChecked && (
             <IcSvgCheck
               className={style.checkIcon}
-              style={{
-                width: '1.4rem',
-                height: '1.4rem',
-                color: themeVars.color.bg_white,
-              }}
+              width="1.4rem"
+              height="1.4rem"
+              color="themeVars.color.bg_white"
             />
           )}
         </span>
         <span className={style.labelText}>{label}</span>
       </div>
 
-      <NavLink
-        to={to}
-        onClick={handleArrowClick}
-      >
+      <NavLink to={navigateTo}>
         <IcSvgArrow
-          style={{
-            cursor: 'pointer',
-            width: '1.3rem',
-            height: '2.5rem',
-            transform: 'rotate(180deg)',
-          }}
+          cursor="pointer"
+          width="1.3rem"
+          height="2.5rem"
+          transform="rotate(180deg)"
         />
       </NavLink>
     </label>
