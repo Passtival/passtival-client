@@ -35,7 +35,7 @@ const Checkbox = ({
               className={style.checkIcon}
               width="1.4rem"
               height="1.4rem"
-              color="themeVars.color.bg_white"
+              color={themeVars.color.bg_white}
             />
           )}
         </span>
