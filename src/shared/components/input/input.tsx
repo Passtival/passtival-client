@@ -13,24 +13,15 @@ interface InputProps {
 const Input = ({ value, errorState, onChange, placeholder }: InputProps) => {
   const inputRef = useRef<HTMLInputElement>(null);
 
-  const handleContainer = () => {
-    inputRef.current?.focus();
-  };
-
   return (
-    <div
-      className={styles.inputContainer}
-      onClick={handleContainer}
-    >
-      <input
-        ref={inputRef}
-        enterKeyHint="done"
-        value={value}
-        className={styles.inputVariants({ hasError: !!errorState })}
-        onChange={onChange}
-        placeholder={placeholder}
-      />
-    </div>
+    <input
+      ref={inputRef}
+      enterKeyHint="done"
+      value={value}
+      className={styles.inputVariants({ hasError: !!errorState })}
+      onChange={onChange}
+      placeholder={placeholder}
+    />
   );
 };
 
