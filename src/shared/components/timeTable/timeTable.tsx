@@ -21,11 +21,11 @@ const TimeTable = () => {
       </div>
       <div className={styles.bottom}>
         <Card
-          title={'어쩌구'}
-          assignee={'컴공'}
-          description={'#저쩌구'}
-          img={'img'}
-          type={'sm'}
+          title="어쩌구"
+          assignee="컴공"
+          description="#저쩌구"
+          img="img"
+          type="sm"
         />
       </div>
     </div>
