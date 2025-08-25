@@ -9,13 +9,26 @@ export function ProtectedRoute() {
   const location = useLocation();
 
   if (!isAuthenticated) {
+    const currentPath = location.pathname;
+
+    if (currentPath === routePath.BLIND_MATCH) {
+      return (
+        <Navigate
+          to={routePath.LOGIN}
+          replace
+          state={{ from: location }}
+        />
+      );
+    }
+
     return (
       <Navigate
-        to={routePath.LOGIN}
+        to={routePath.HOME}
         replace
         state={{ from: location }}
       />
     );
   }
+
   return <Outlet />;
 }
