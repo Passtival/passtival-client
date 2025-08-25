@@ -1,20 +1,20 @@
-import * as styles from './image.css';
+import * as styles from './Thumbnail.css';
 
-interface ImageProps {
-  img: string;
+interface ThumbnailProps {
+  src: string;
   alt?: string;
   type: 'square_sm' | 'square_lg' | 'circle';
 }
-const Image = ({ img, alt, type }: ImageProps) => {
+const Thumbnail = ({ src, alt, type }: ThumbnailProps) => {
   return (
     <div className={styles.container}>
       <img
         className={styles.img({ type })}
-        src={img}
+        src={src}
         alt={alt}
       />
     </div>
   );
 };
 
-export default Image;
+export default Thumbnail;
