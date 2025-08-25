@@ -14,14 +14,23 @@ export const img = recipe({
     border: `1.5px solid ${themeVars.color.gray_500_40}`,
     objectFit: 'cover',
   },
+
   variants: {
     type: {
-      square: {
+      square_lg: {
         width: '32.7rem',
         height: '21.4rem',
 
         borderRadius: '8px',
       },
+
+      square_sm: {
+        width: '11.9rem',
+        height: '10.5rem',
+
+        borderRadius: '5px',
+      },
+
       circle: {
         width: '15rem',
         height: '15rem',
