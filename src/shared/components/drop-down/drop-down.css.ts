@@ -8,7 +8,7 @@ export const dropdownWrapper = style({
   width: 'fit-content',
   gap: '0.6rem',
   position: 'relative',
-  ...themeVars.fontStyles.button2_sb_12,
+  ...themeVars.fontStyles.button2_sb_12, // 폰트는 여기 하나에만
 });
 
 export const dropdownContainer = style({
@@ -22,13 +22,7 @@ export const dropdownContainer = style({
   justifyContent: 'space-between',
   cursor: 'pointer',
   backgroundColor: themeVars.color.gray_200,
-  ...themeVars.fontStyles.button2_sb_12,
 });
-
-export const dropdownContainerOpen = style([
-  dropdownContainer,
-  { borderColor: themeVars.color.gray_600 },
-]);
 
 export const contentWrapper = style({
   display: 'flex',
@@ -36,7 +30,6 @@ export const contentWrapper = style({
   height: '2rem',
   alignItems: 'center',
   gap: '0.7rem',
-  ...themeVars.fontStyles.button2_sb_12,
 });
 
 export const iconWrapper = style({
@@ -73,43 +66,24 @@ export const dropdownList = style({
   left: 0,
   right: 0,
   backgroundColor: themeVars.color.gray_200,
-  boxShadow: `0 0rem 0.2rem ${themeVars.color.gray_600}`,
-  border: 'none',
+  boxShadow: `0 0 0.2rem ${themeVars.color.gray_600}`,
   borderRadius: '0.8rem',
   zIndex: themeVars.zIndex.dropdown,
   maxHeight: '21rem',
   overflowY: 'auto',
-  color: themeVars.color.gray_600,
-  ...themeVars.fontStyles.button2_sb_12,
 });
 
-export const optionItem = recipe({
-  base: {
-    display: 'flex',
-    width: '10.5rem',
-    height: '3.5rem',
-    padding: '0 1rem',
-    alignItems: 'center',
-    borderBottom: `0.5px solid ${themeVars.color.gray_600}`,
-    cursor: 'pointer',
-    selectors: {
-      '&:last-of-type': { borderBottom: 'none' },
-      '&:hover': { backgroundColor: themeVars.color.gray_400 },
-    },
-  },
-  variants: {
-    selected: {
-      false: {},
-      true: {
-        backgroundColor: themeVars.color.gray_200,
-        color: themeVars.color.gray_600,
-        selectors: {
-          '&:hover': { backgroundColor: themeVars.color.gray_200 },
-        },
-      },
-    },
-  },
-  defaultVariants: {
-    selected: false,
+export const optionItem = style({
+  display: 'flex',
+  width: '100%',
+  height: '3.5rem',
+  padding: '0 1rem',
+  alignItems: 'center',
+  borderBottom: `0.5px solid ${themeVars.color.gray_600}`,
+  cursor: 'pointer',
+  color: themeVars.color.gray_600, // ✅ 항상 gray
+  selectors: {
+    '&:last-of-type': { borderBottom: 'none' },
+    '&:hover': { backgroundColor: themeVars.color.gray_400 },
   },
 });
