@@ -29,25 +29,22 @@ const Checkbox = ({
         className={style.checkboxLeft}
         onClick={toggleCheck}
       >
-        <span className={`${style.checkbox} ${isChecked ? style.checked : ''}`}>
-          {isChecked && (
-            <IcSvgCheck
-              className={style.checkIcon}
-              width="1.4rem"
-              height="1.4rem"
-              color={themeVars.color.bg_white}
-            />
-          )}
+        <span className={style.checkbox({ checked: isChecked })}>
+          <IcSvgCheck
+            width="1.4rem"
+            height="1.4rem"
+            color={themeVars.color.bg_white}
+          />
         </span>
         <span className={style.labelText}>{label}</span>
       </div>
 
       <NavLink to={navigateTo}>
         <IcSvgArrow
+          className={style.arrowIcon}
           cursor="pointer"
           width="1.3rem"
           height="2.5rem"
-          transform="rotate(180deg)"
         />
       </NavLink>
     </label>
