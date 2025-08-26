@@ -16,7 +16,7 @@ interface DropDownProps {
   onSelect: (value: string) => void;
   options: Option[];
   placeholder?: string;
-  icon?: ReactNode;
+  icon: ReactNode;
 }
 
 const DEFAULT_PLACEHOLDER = '';
