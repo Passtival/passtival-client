@@ -6,19 +6,19 @@ import { themeVars } from '@shared/styles';
 
 import * as style from './agreement-option.css';
 
-interface CheckboxProps {
+interface AgreementOptionProps {
   label: string;
   checked: boolean;
   onChange: (checked: boolean) => void;
   navigateTo: string;
 }
 
-const Checkbox = ({
+const AgreementOption = ({
   label,
   checked: isChecked,
   onChange,
   navigateTo,
-}: CheckboxProps) => {
+}: AgreementOptionProps) => {
   const toggleCheck = () => {
     onChange(!isChecked);
   };
@@ -51,4 +51,4 @@ const Checkbox = ({
   );
 };
 
-export default Checkbox;
+export default AgreementOption;
