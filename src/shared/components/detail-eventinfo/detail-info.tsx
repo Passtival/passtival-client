@@ -19,7 +19,7 @@ const DetailInfo = ({
 }: EventInfoProps) => {
   return (
     <div className={styles.container}>
-      <p className={styles.title}>{title}</p>
+      {title && <p className={styles.title}>{title}</p>}
       <div className={styles.line}>
         <p className={styles.label}>{time}</p>
         <p className={styles.value}>{timevalue}</p>
@@ -28,7 +28,7 @@ const DetailInfo = ({
         <p className={styles.label}>{location}</p>
         <p className={styles.value}>{locationvalue}</p>
       </div>
-      <p className={styles.message}>{message}</p>
+      {message && <p className={styles.message}>{message}</p>}
     </div>
   );
 };
