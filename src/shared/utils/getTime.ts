@@ -1,4 +1,4 @@
-export const formatTime = (isoString: string) => {
+export const GetTime = (isoString: string) => {
   const date = new Date(isoString);
   return date.toLocaleTimeString('ko-KR', {
     hour: '2-digit',
