@@ -14,7 +14,6 @@ import { routePath } from '../path';
 
 export const publicRoutesWithMain = [
   { path: routePath.HOME, Component: HomePage },
-  { path: routePath.HOME_DETAIL, Component: HomeDetailPage },
   { path: routePath.BOOTH, Component: BoothPage },
   { path: routePath.TICKET, Component: TicketPage },
   { path: routePath.LOST_ITEMS, Component: LostItemsPage },
@@ -25,6 +24,7 @@ export const publicRoutesOthers = [
   { path: routePath.LOGIN_FALLBACK, Component: LoginFallbackPage },
   { path: routePath.LAND, Component: LandPage },
   { path: routePath.ADMIN_LOGIN, Component: AdminLoginPage },
+  { path: routePath.HOME_DETAIL, Component: HomeDetailPage },
 ];
 
 export const protectedRoutes = [
