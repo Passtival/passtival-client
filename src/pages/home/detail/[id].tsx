@@ -3,8 +3,6 @@ import DetailInfo from '@shared/components/detail-eventinfo/detail-info';
 import DetailHeader from '@shared/components/detail-header/detail-header';
 import Thumbnail from '@shared/components/Thumbnail/Thumbnail';
 
-import test from '../../../../public/test.png';
-
 const homeDetailData = {
   subTitle: '동아리',
   title: '우주정복',
@@ -24,7 +22,7 @@ const HomeDetail = () => {
         title={homeDetailData.title}
       />
       <Thumbnail
-        src={test}
+        src=""
         alt={homeDetailData.alt}
         type="square_lg"
       />
