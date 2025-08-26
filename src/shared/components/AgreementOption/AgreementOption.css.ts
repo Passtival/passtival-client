@@ -3,7 +3,7 @@ import { recipe } from '@vanilla-extract/recipes';
 
 import { themeVars } from '@shared/styles/theme.css';
 
-export const checkboxWrapper = style({
+export const agreementOption = style({
   display: 'flex',
   width: '100%',
   gap: '10.5rem',
