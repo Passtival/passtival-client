@@ -2,6 +2,7 @@ import {
   BlindMatchPage,
   BoothPage,
   HomePage,
+  HomeDetailPage,
   LandPage,
   LostItemsPage,
   LoginPage,
@@ -13,6 +14,7 @@ import { routePath } from '../path';
 
 export const publicRoutesWithMain = [
   { path: routePath.HOME, Component: HomePage },
+  { path: routePath.HOME_DETAIL, Component: HomeDetailPage },
   { path: routePath.BOOTH, Component: BoothPage },
   { path: routePath.TICKET, Component: TicketPage },
   { path: routePath.LOST_ITEMS, Component: LostItemsPage },
