@@ -16,9 +16,7 @@ export const api = axios.create({
 // @TODO interceptor 추후 수정 필요
 api.interceptors.response.use(
   (response) => {
-    // @TODO 명세서 보고 변경하기
-    // response.data: { status, message, data }
-    return response.data.data;
+    return response.data.result;
   },
   (error: AxiosError) => {
     const statusCode = error.response?.status;
@@ -28,9 +26,9 @@ api.interceptors.response.use(
     }
 
     if (error.response) {
-      const { status, message } = error.response.data as responseTypes;
+      const { code, message } = error.response.data as responseTypes;
       const displayMessage =
-        RESPONSE_MESSAGE[status] || message || '알 수 없는 오류입니다.';
+        RESPONSE_MESSAGE[code] || message || '알 수 없는 오류입니다.';
       console.log(displayMessage);
     } else {
       console.log('서버에 연결할 수 없습니다.');

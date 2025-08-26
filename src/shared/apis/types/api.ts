@@ -1,10 +1,10 @@
 export interface ApiResponse<T> {
-  status: number;
+  code: number;
   message: string;
-  data: T;
+  result: T;
 }
 
 export interface responseTypes {
-  status: number;
+  code: number;
   message: string;
 }
