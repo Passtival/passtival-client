@@ -12,3 +12,6 @@ export const TicketPage = lazy(() => import('@pages/ticket/ticket'));
 export const LoginFallbackPage = lazy(
   () => import('@pages/login-fallback/login-fallback'),
 );
+export const AdminLoginPage = lazy(
+  () => import('@pages/admin-login/admin-login'),
+);
