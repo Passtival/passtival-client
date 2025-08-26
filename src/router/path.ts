@@ -7,6 +7,7 @@ export const routePath = {
   LOGIN: '/login',
   LOST_ITEMS: '/lost-items',
   TICKET: '/ticket',
+  ADMIN_LOGIN: '/admin-login',
 } as const;
 
 export type Routes = (typeof routePath)[keyof typeof routePath];

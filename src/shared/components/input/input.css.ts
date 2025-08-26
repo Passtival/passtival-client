@@ -1,4 +1,3 @@
-import { style } from '@vanilla-extract/css';
 import { recipe } from '@vanilla-extract/recipes';
 
 import { themeVars } from '@shared/styles/theme.css';
@@ -55,8 +54,4 @@ export const inputVariants = recipe({
   defaultVariants: {
     hasError: false,
   },
-});
-export const inputContainer = style({
-  display: 'flex',
-  justifyContent: 'center',
 });
