@@ -23,14 +23,10 @@ const Ticket = () => {
   const handleApplyClick = () => {
     if (name && studentNumber && key) {
       setModalType('confirm');
-    } else {
-      alert('모든 정보를 입력해주세요.');
     }
   };
 
   const handleConfirm = () => {
-    console.log('응모가 완료되었습니다!');
-
     setModalType('success');
   };
 
