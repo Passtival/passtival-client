@@ -15,13 +15,25 @@ const ticketData = {
 const Ticket = () => {
   const [name, setName] = useState('');
   const [studentNumber, setStudentNumber] = useState('');
-  const [key, SetKey] = useState('');
-  const [modalType, setModalType] = useState<'confirm' | 'success' | null>(
-    null,
-  );
+  const [key, setKey] = useState('');
+  const [modalType, setModalType] = useState<
+    'confirm' | 'success' | 'info' | 'error' | null
+  >(null);
+  const isErrorState = modalType === 'error' || modalType === 'info';
 
   const handleApplyClick = () => {
     if (name && studentNumber && key) {
+      // 응모 로직 처리 (예: API 호출)
+      // const response = await applyTicket({ name, studentNumber, key });
+
+      // 응답 결과에 따라 모달 타입 설정
+      // if (response.status === 'success') {
+      //   setModalType('confirm');
+      // } else if (response.status === 'duplicate') {
+      //   setModalType('info');
+      // } else if (response.status === 'invalid_key') {
+      //   setModalType('error'); // 인증키 오류 시 'error' 모달 띄우기
+      // }
       setModalType('confirm');
     }
   };
@@ -32,6 +44,10 @@ const Ticket = () => {
 
   const handleCloseModal = () => {
     setModalType(null);
+
+    setName('');
+    setStudentNumber('');
+    setKey('');
   };
 
   return (
@@ -55,16 +71,19 @@ const Ticket = () => {
             value={name}
             onChange={(e) => setName(e.target.value)}
             placeholder="이름"
+            errorState={isErrorState}
           />
           <Input
             value={studentNumber}
             onChange={(e) => setStudentNumber(e.target.value)}
             placeholder="학번"
+            errorState={isErrorState}
           />{' '}
           <Input
             value={key}
-            onChange={(e) => SetKey(e.target.value)}
+            onChange={(e) => setKey(e.target.value)}
             placeholder="인증키"
+            errorState={isErrorState}
           />
         </div>
         <Button onClick={handleApplyClick}>응모하기</Button>{' '}
