@@ -9,7 +9,7 @@ const InfoData = {
   time: '15:00 ~ 16:00',
   location: '20번',
   description:
-    ' 맛있는 피자 치킨 돈까스 피자나라치킨공주에서 공급받아 판매중입니다.',
+    ' 맛있는 피자 치킨 돈까스 피자나라치킨공주에서 공급받아 판매중입니다',
 };
 const BoothInfo = () => {
   return (
