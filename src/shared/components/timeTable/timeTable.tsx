@@ -1,12 +1,16 @@
 import { OPENING_HOURS } from '@shared/constants/festivalSchedule';
 import { IcSvgClock } from '@shared/icons';
 import { themeVars } from '@shared/styles';
-import { GetTime } from '@shared/utils/getTime';
+import { getOpeningHours } from '@shared/utils/getOpeningHours';
 
 import * as styles from './timeTable.css';
-import Card from '../card/card';
+import Card, { type CardProps } from '../card/card';
 
-const TimeTable = () => {
+interface TimeTableProps {
+  card: CardProps;
+}
+
+const TimeTable = ({ card }: TimeTableProps) => {
   return (
     <div className={styles.container}>
       <div className={styles.top}>
@@ -16,11 +20,12 @@ const TimeTable = () => {
           color={themeVars.color.main_blue}
         />
         <p className={styles.text}>
-          {OPENING_HOURS}: {GetTime('')} ~ {GetTime('')}
+          {OPENING_HOURS}: {getOpeningHours('')} ~ {getOpeningHours('')}
         </p>
       </div>
       <div className={styles.bottom}>
         <Card
+          {...card}
           title="어쩌구"
           assignee="컴공"
           description="#저쩌구"
