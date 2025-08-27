@@ -6,6 +6,11 @@ import Thumbnail from '@shared/components/Thumbnail/Thumbnail';
 
 import * as styles from './ticket.css';
 
+const ticketData = {
+  src: '',
+  productName: '에어팟 프로',
+};
+
 const Ticket = () => {
   const [name, setName] = useState('');
   const [studentNumber, setStudentNumber] = useState('');
@@ -22,11 +27,11 @@ const Ticket = () => {
       <div className={styles.container}>
         <p className={styles.product}>당첨 상품</p>
         <Thumbnail
-          src=""
+          src={ticketData.src}
           alt=""
           type="circle"
         />
-        <p className={styles.productName}>에어팟 프로</p>
+        <p className={styles.productName}> {ticketData.productName}</p>
         <div className={styles.input}>
           <Input
             value={name}
