@@ -31,7 +31,7 @@ const TimeTable = ({ card }: TimeTableProps) => {
           description="#저쩌구"
           imgSrc="https://placehold.co/600x400"
           imgAlt="이미지"
-          type={'sm'}
+          type="sm"
         />
       </div>
     </div>
