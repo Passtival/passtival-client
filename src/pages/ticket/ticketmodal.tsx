@@ -4,7 +4,6 @@ interface TicketModalProps {
   modalType: 'confirm' | 'success' | 'info' | 'error' | null;
   name: string;
   studentNumber: string;
-  key: string;
   onClose: () => void;
   onConfirm: () => void;
 }

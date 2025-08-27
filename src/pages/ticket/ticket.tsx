@@ -95,7 +95,6 @@ const Ticket = () => {
         modalType={modalType}
         name={name}
         studentNumber={studentNumber}
-        key={key}
         onClose={handleCloseModal}
         onConfirm={handleConfirm}
       />
