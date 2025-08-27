@@ -1,15 +1,21 @@
+import { useParams } from 'react-router';
+
 import Carousel from '@shared/components/carousel/carousel';
 import DetailInfo from '@shared/components/detail-eventinfo/detail-info';
 
 const mockImages = ['안녕하세요', '두번째', '내가 잃어버린 초코파이'];
 
 const InfoMock = {
-  title: '100만원',
-  timevalue: '9/23 15:00',
-  locationvalue: '3번째 소나무 5번째 뿌리',
+  '1': {
+    title: '100만원',
+    timevalue: '9/23 15:00',
+    locationvalue: '3번째 소나무 5번째 뿌리',
+  },
 };
 
 const LostItemsInfo = () => {
+  const { id } = useParams();
+  const mockData = InfoMock[id as keyof typeof InfoMock];
   return (
     <>
       <Carousel type="details">
@@ -22,11 +28,11 @@ const LostItemsInfo = () => {
         ))}
       </Carousel>
       <DetailInfo
-        title={InfoMock.title}
+        title={mockData.title}
         time="습득시간"
-        timevalue={InfoMock.timevalue}
+        timevalue={mockData.timevalue}
         location="습득위치"
-        locationvalue={InfoMock.locationvalue}
+        locationvalue={mockData.locationvalue}
       />
     </>
   );

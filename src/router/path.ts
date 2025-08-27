@@ -7,6 +7,7 @@ export const routePath = {
   LAND: '/land',
   LOGIN: '/login',
   LOST_ITEMS: '/lost-items',
+  LOST_ITEM_INFO: '/lost-items/:id',
   TICKET: '/ticket',
   ADMIN_LOGIN: '/admin-login',
 } as const;
