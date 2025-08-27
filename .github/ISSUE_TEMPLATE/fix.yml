@@ -1,0 +1,27 @@
+name: "🪛 fix"
+description: "수정 사항"
+title: "[Fix] "
+labels: "🪛 fix"
+
+body:
+  - type: textarea
+    attributes:
+      label: Fix Describe
+      description: 버그 또는 수정 부분에 대해서 설명해 주세요.
+      placeholder: 버그 또는 수정 부분에 대해서 설명해 주세요.
+    validations:
+      required: true
+
+  - type: textarea
+    attributes:
+      label: Tasks
+      description: 해당 문제를 해결하기 위한 작업이나 처리해야 하는 항목을 작성해 주세요.
+      placeholder: 해당 문제를 해결하기 위한 작업이나 처리해야 하는 항목을 작성해 주세요.
+    validations:
+      required: true
+
+  - type: textarea
+    attributes:
+      label: Other Comments
+      description: 이외에 더 필요한 추가적인 부분에 대해 메모해 주세요.
+      placeholder: 이외에 더 필요한 추가적인 부분에 대해 메모해 주세요.
