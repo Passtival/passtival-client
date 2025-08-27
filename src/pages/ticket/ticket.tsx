@@ -5,6 +5,7 @@ import Input from '@shared/components/input/input';
 import Thumbnail from '@shared/components/Thumbnail/Thumbnail';
 
 import * as styles from './ticket.css';
+import TicketModal from './ticketmodal';
 
 const ticketData = {
   src: '',
@@ -15,6 +16,27 @@ const Ticket = () => {
   const [name, setName] = useState('');
   const [studentNumber, setStudentNumber] = useState('');
   const [key, SetKey] = useState('');
+  const [modalType, setModalType] = useState<'confirm' | 'success' | null>(
+    null,
+  );
+
+  const handleApplyClick = () => {
+    if (name && studentNumber && key) {
+      setModalType('confirm');
+    } else {
+      alert('모든 정보를 입력해주세요.');
+    }
+  };
+
+  const handleConfirm = () => {
+    console.log('응모가 완료되었습니다!');
+
+    setModalType('success');
+  };
+
+  const handleCloseModal = () => {
+    setModalType(null);
+  };
 
   return (
     <>
@@ -49,11 +71,19 @@ const Ticket = () => {
             placeholder="인증키"
           />
         </div>
-        <Button children="로그인" />
+        <Button onClick={handleApplyClick}>응모하기</Button>{' '}
         <p className={styles.message}>
           일차별 행사 모두 참여시 전체 응모권 제공!
         </p>
       </div>
+      <TicketModal
+        modalType={modalType}
+        name={name}
+        studentNumber={studentNumber}
+        key={key}
+        onClose={handleCloseModal}
+        onConfirm={handleConfirm}
+      />
     </>
   );
 };
