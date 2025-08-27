@@ -13,7 +13,7 @@ const InfoData = {
 };
 const BoothInfo = () => {
   return (
-    <div>
+    <>
       <DetailHeader
         subTitle={InfoData.subTitle}
         title={InfoData.title}
@@ -33,7 +33,7 @@ const BoothInfo = () => {
         title="부스 소개"
         description={InfoData.description}
       />
-    </div>
+    </>
   );
 };
 
