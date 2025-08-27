@@ -18,3 +18,4 @@ export const LoginFallbackPage = lazy(
 export const AdminLoginPage = lazy(
   () => import('@pages/admin-login/admin-login'),
 );
+export const MedicalPage = lazy(() => import('@pages/medical/medical'));

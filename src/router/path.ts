@@ -9,6 +9,7 @@ export const routePath = {
   LOST_ITEMS: '/lost-items',
   TICKET: '/ticket',
   ADMIN_LOGIN: '/admin-login',
+  MEDICAL: '/booth/medical',
 } as const;
 
 export type Routes = (typeof routePath)[keyof typeof routePath];
