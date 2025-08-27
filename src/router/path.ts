@@ -3,7 +3,7 @@ export const routePath = {
   BOOTH: '/booth',
   LOGIN_FALLBACK: '/login-fallback',
   HOME: '/',
-  HOME_DETAIL: '/detail/:id',
+  SHOW_DETAIL: '/show-detail/:id',
   LAND: '/land',
   LOGIN: '/login',
   LOST_ITEMS: '/lost-items',

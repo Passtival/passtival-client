@@ -2,7 +2,7 @@ import {
   BlindMatchPage,
   BoothPage,
   HomePage,
-  HomeDetailPage,
+  ShowDetailPage,
   LandPage,
   LostItemsPage,
   LoginPage,
@@ -24,7 +24,7 @@ export const publicRoutesOthers = [
   { path: routePath.LOGIN_FALLBACK, Component: LoginFallbackPage },
   { path: routePath.LAND, Component: LandPage },
   { path: routePath.ADMIN_LOGIN, Component: AdminLoginPage },
-  { path: routePath.HOME_DETAIL, Component: HomeDetailPage },
+  { path: routePath.SHOW_DETAIL, Component: ShowDetailPage },
 ];
 
 export const protectedRoutes = [

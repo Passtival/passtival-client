@@ -5,8 +5,8 @@ export const BlindMatchPage = lazy(
 );
 export const BoothPage = lazy(() => import('@pages/booth/booth'));
 export const HomePage = lazy(() => import('@pages/home/home'));
-export const HomeDetailPage = lazy(
-  () => import('@pages/home-detail/home-detail'),
+export const ShowDetailPage = lazy(
+  () => import('@pages/show-detail/show-detail'),
 );
 export const LandPage = lazy(() => import('@pages/land/land'));
 export const LoginPage = lazy(() => import('@pages/login/login'));

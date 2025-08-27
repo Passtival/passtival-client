@@ -28,12 +28,12 @@ const homeDetailData = {
   },
 };
 
-const HomeDetail = () => {
+const ShowDetail = () => {
   const { id } = useParams();
   const mockData = homeDetailData[id as keyof typeof homeDetailData];
 
   return (
-    <div>
+    <>
       <DetailHeader
         subTitle={mockData.subTitle}
         title={mockData.title}
@@ -57,8 +57,8 @@ const HomeDetail = () => {
         title="공연 소개"
         description={mockData.description2}
       />
-    </div>
+    </>
   );
 };
 
-export default HomeDetail;
+export default ShowDetail;
