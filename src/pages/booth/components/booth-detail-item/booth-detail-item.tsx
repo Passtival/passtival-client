@@ -23,7 +23,7 @@ const BoothDetailItem = ({
       className={style.boothDetailItem}
     >
       <div className={style.boothText}>
-        <div className={style.boothItemName}>{name}</div>
+        <div className={style.boothName}>{name}</div>
 
         {price && <div className={style.boothPrice}>{price} 원</div>}
 
