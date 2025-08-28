@@ -3,6 +3,7 @@ import { useParams } from 'react-router';
 
 import Carousel from '@shared/components/carousel/carousel';
 import DetailInfo from '@shared/components/detail-eventinfo/detail-info';
+import Modal from '@shared/components/modal/modal';
 import TopNavigation from '@shared/components/top-navigation/top-navigation';
 import { IcSvgTrashcan } from '@shared/icons';
 
@@ -22,6 +23,7 @@ const LostItemsInfo = () => {
   const { id } = useParams();
   const mockData = InfoMock[id as keyof typeof InfoMock];
   const [isAdmin, setIsAdmin] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   useEffect(() => {
     const userRole: 'user' | 'admin' = 'admin';
@@ -29,7 +31,15 @@ const LostItemsInfo = () => {
   }, []);
 
   const handleTrashcanClick = () => {
-    console.log(`분실물 삭제`);
+    setIsModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+  };
+
+  const handleDeletePost = () => {
+    closeModal();
   };
 
   return (
@@ -57,6 +67,20 @@ const LostItemsInfo = () => {
           locationvalue={mockData.locationvalue}
         />
       </div>
+      {isModalOpen && (
+        <Modal.Container open={isModalOpen}>
+          <Modal.Content>
+            <Modal.Body>
+              <Modal.Title>게시글 삭제</Modal.Title>
+              <Modal.Description>게시글을 삭제하시겠습니까?</Modal.Description>
+            </Modal.Body>
+            <Modal.Footer>
+              <Modal.Close onClick={closeModal}>취소</Modal.Close>
+              <Modal.Action onClick={handleDeletePost}>삭제하기</Modal.Action>
+            </Modal.Footer>
+          </Modal.Content>
+        </Modal.Container>
+      )}
     </>
   );
 };
