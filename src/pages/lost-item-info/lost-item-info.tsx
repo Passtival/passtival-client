@@ -21,7 +21,7 @@ const InfoMock = {
 const LostItemsInfo = () => {
   const { id } = useParams();
   const mockData = InfoMock[id as keyof typeof InfoMock];
-  const [isAdmin, setIsAdmin] = useState();
+  const [isAdmin, setIsAdmin] = useState(false);
 
   useEffect(() => {
     const userRole: 'user' | 'admin' = 'admin';
