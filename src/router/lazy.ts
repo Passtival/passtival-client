@@ -4,6 +4,9 @@ export const BlindMatchPage = lazy(
   () => import('@pages/blind-match/blind-match'),
 );
 export const BoothPage = lazy(() => import('@pages/booth/booth'));
+export const BoothInfoPage = lazy(
+  () => import('@pages/booth-detail/booth-info'),
+);
 export const HomePage = lazy(() => import('@pages/home/home'));
 export const ShowDetailPage = lazy(
   () => import('@pages/show-detail/show-detail'),

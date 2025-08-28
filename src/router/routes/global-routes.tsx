@@ -9,6 +9,7 @@ import {
   TicketPage,
   LoginFallbackPage,
   AdminLoginPage,
+  BoothInfoPage,
 } from '../lazy';
 import { routePath } from '../path';
 
@@ -25,6 +26,7 @@ export const publicRoutesOthers = [
   { path: routePath.LAND, Component: LandPage },
   { path: routePath.ADMIN_LOGIN, Component: AdminLoginPage },
   { path: routePath.SHOW_DETAIL, Component: ShowDetailPage },
+  { path: routePath.BOOTH_INFO, Component: BoothInfoPage },
 ];
 
 export const protectedRoutes = [
