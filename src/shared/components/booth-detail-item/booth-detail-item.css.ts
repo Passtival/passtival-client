@@ -18,6 +18,7 @@ export const boothText = style({
 });
 
 export const boothItemName = style({
+  paddingTop: '0.6rem',
   ...themeVars.fontStyles.title_b_20,
 });
 
