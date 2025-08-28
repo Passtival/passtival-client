@@ -4,13 +4,30 @@ import { themeVars } from '@shared/styles';
 import { getOpeningHours } from '@shared/utils/getOpeningHours';
 
 import * as styles from './timeTable.css';
-import Card, { type CardProps } from '../card/card';
+import Card from '../card/card';
 
 interface TimeTableProps {
-  card: CardProps;
+  startIso: string;
+  endIso: string;
+  title: string;
+  assignee?: string;
+  description: string;
+  alt?: string;
+  onClick?: () => void;
+  imgSrc: string;
+  imgAlt?: string;
 }
 
-const TimeTable = ({ card }: TimeTableProps) => {
+const TimeTable = ({
+  startIso,
+  endIso,
+  title,
+  assignee,
+  description,
+  onClick,
+  imgSrc,
+  imgAlt,
+}: TimeTableProps) => {
   return (
     <div className={styles.container}>
       <div className={styles.top}>
@@ -20,18 +37,19 @@ const TimeTable = ({ card }: TimeTableProps) => {
           color={themeVars.color.main_blue}
         />
         <p className={styles.text}>
-          {OPENING_HOURS}: {getOpeningHours('')} ~ {getOpeningHours('')}
+          {OPENING_HOURS}: {getOpeningHours(startIso)} ~{' '}
+          {getOpeningHours(endIso)}
         </p>
       </div>
       <div className={styles.bottom}>
         <Card
-          {...card}
-          title="어쩌구"
-          assignee="컴공"
-          description="#저쩌구"
-          imgSrc="https://placehold.co/600x400"
-          imgAlt="이미지"
+          title={title}
+          assignee={assignee}
+          description={description}
+          imgSrc={imgSrc}
+          imgAlt={imgAlt}
           type="sm"
+          onClick={onClick}
         />
       </div>
     </div>

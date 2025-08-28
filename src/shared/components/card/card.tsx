@@ -2,7 +2,7 @@ import Thumbnail from '@shared/components/Thumbnail/Thumbnail';
 
 import * as styles from './card.css';
 
-export interface CardProps {
+interface CardProps {
   title: string;
   assignee?: string;
   description: string;
