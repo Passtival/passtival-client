@@ -5,6 +5,7 @@ interface BoothDetailItemProps {
   itemName: string;
   itemInfo: string;
   itemImg: string;
+  itemAlt: string;
   price?: number | string;
 }
 
@@ -12,6 +13,7 @@ const BoothDetailItem = ({
   itemName,
   itemInfo,
   itemImg,
+  itemAlt,
   price,
 }: BoothDetailItemProps) => {
   const hasPrice = price !== undefined && price !== null && price !== '';
@@ -28,10 +30,13 @@ const BoothDetailItem = ({
 
         <p className={style.boothInfo}>{itemInfo}</p>
       </div>
-      <Thumbnail
-        src={itemImg}
-        type="square_lg"
-      />
+      <div>
+        <Thumbnail
+          src={itemImg}
+          type="square_sm"
+          alt={itemAlt}
+        />
+      </div>
     </article>
   );
 };
