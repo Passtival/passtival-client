@@ -44,6 +44,7 @@ const LostItems = () => {
           <Button
             children="분실물 등록"
             size="sm"
+            onClick={() => {}}
           />
         )}
       </div>
