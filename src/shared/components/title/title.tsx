@@ -1,24 +1,15 @@
-import * as styles from './title.css';
+import { themeVars } from '@shared/styles';
 
 interface TitleProps {
   mainTitle: string;
-  mainTitleStyle: 'tb18' | 'tb20' | 'tb22';
   subTitle?: string;
-  subTitleStyle?: 'cm12';
 }
 
-const Title = ({
-  mainTitle,
-  mainTitleStyle,
-  subTitle,
-  subTitleStyle,
-}: TitleProps) => {
+const Title = ({ mainTitle, subTitle }: TitleProps) => {
   return (
     <div>
-      <p className={styles.titleStyle({ type: mainTitleStyle })}>{mainTitle}</p>
-      {subTitle && (
-        <p className={styles.titleStyle({ type: subTitleStyle })}>{subTitle}</p>
-      )}
+      <p style={themeVars.fontStyles.title_b_22}>{mainTitle}</p>
+      {subTitle && <p style={themeVars.fontStyles.caption2_m_12}>{subTitle}</p>}
     </div>
   );
 };

@@ -51,9 +51,7 @@ const Home = () => {
       <div className={styles.noticeText}>
         <Title
           mainTitle={HOME_TEXT.NOTICE}
-          mainTitleStyle="tb22"
           subTitle={HOME_TEXT.FESTIVAL_PERIOD}
-          subTitleStyle="cm12"
         />
       </div>
       <Carousel type="details">
@@ -68,9 +66,7 @@ const Home = () => {
       <div className={styles.festivalScheduleText}>
         <Title
           mainTitle={HOME_TEXT.TODAY_FESTIVAL_SCHEDULE}
-          mainTitleStyle="tb18"
           subTitle={HOME_TEXT.TODAY_FESTIVAL_SCHEDULE_DETAIL}
-          subTitleStyle="cm12"
         />
       </div>
       <div className={styles.chipContainer}>
