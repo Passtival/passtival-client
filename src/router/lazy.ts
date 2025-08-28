@@ -14,6 +14,9 @@ export const ShowDetailPage = lazy(
 export const LandPage = lazy(() => import('@pages/land/land'));
 export const LoginPage = lazy(() => import('@pages/login/login'));
 export const LostItemsPage = lazy(() => import('@pages/lost-items/lost-items'));
+export const LostItemIngoPage = lazy(
+  () => import('@pages/lost-item-info/lost-item-info'),
+);
 export const TicketPage = lazy(() => import('@pages/ticket/ticket'));
 export const LoginFallbackPage = lazy(
   () => import('@pages/login-fallback/login-fallback'),

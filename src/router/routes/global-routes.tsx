@@ -9,6 +9,7 @@ import {
   TicketPage,
   LoginFallbackPage,
   AdminLoginPage,
+  LostItemIngoPage,
   BoothDetailPage,
 } from '../lazy';
 import { routePath } from '../path';
@@ -26,6 +27,7 @@ export const publicRoutesOthers = [
   { path: routePath.LAND, Component: LandPage },
   { path: routePath.ADMIN_LOGIN, Component: AdminLoginPage },
   { path: routePath.SHOW_DETAIL, Component: ShowDetailPage },
+  { path: routePath.LOST_ITEM_INFO, Component: LostItemIngoPage },
   { path: routePath.BOOTH_DETAIL, Component: BoothDetailPage },
 ];
 
