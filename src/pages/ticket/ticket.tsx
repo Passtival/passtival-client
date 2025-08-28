@@ -66,7 +66,7 @@ const Ticket = () => {
           alt=""
           type="circle"
         />
-        <p className={styles.productName}> {ticketData.productName}</p>
+        <p className={styles.productName}>{ticketData.productName}</p>
         <div className={styles.input}>
           <Input
             value={name}
