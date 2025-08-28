@@ -75,7 +75,7 @@ const Ticket = () => {
           onStudentNumberChange={handleChangeNumber}
           onKeyChange={handleChangeKey}
         />
-        <Button onClick={handleApplyClick}>응모하기</Button>{' '}
+        <Button onClick={handleApplyClick}>응모하기</Button>
         <p className={styles.message}>
           일차별 행사 모두 참여시 전체 응모권 제공!
         </p>
