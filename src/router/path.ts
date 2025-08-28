@@ -1,7 +1,7 @@
 export const routePath = {
   BLIND_MATCH: '/blind-match',
   BOOTH: '/booth',
-  BOOTH_INFO: '/booth-info/:id',
+  BOOTH_DETAIL: '/booth-detail/:id',
   LOGIN_FALLBACK: '/login-fallback',
   HOME: '/',
   SHOW_DETAIL: '/show-detail/:id',
