@@ -20,9 +20,9 @@ export const boothText = style({
   minWidth: 0,
 });
 
-export const boothItemName = style({
+export const boothName = style({
   width: '100%',
-  paddingTop: '0.6rem',
+  marginTop: '0.6rem',
   ...themeVars.fontStyles.title_b_20,
   overflow: 'hidden',
   textOverflow: 'ellipsis',
