@@ -1,6 +1,6 @@
 import * as style from './booth-detail-item.css';
 
-export type BoothCategory = 'menu' | 'active';
+export type BoothCategory = 'menu' | 'activities';
 
 type BaseProps = {
   itemName: string;
@@ -13,12 +13,12 @@ type MenuProps = BaseProps & {
   price: number | string;
 };
 
-type ActiveProps = BaseProps & {
-  category: 'active';
+type ActivitiesProps = BaseProps & {
+  category: 'activities';
   price?: never;
 };
 
-export type BoothDetailItemProps = MenuProps | ActiveProps;
+export type BoothDetailItemProps = MenuProps | ActivitiesProps;
 
 const formatPrice = (p: number | string) =>
   typeof p === 'number' ? p.toLocaleString('ko-KR') : p;
