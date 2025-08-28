@@ -1,4 +1,8 @@
+import { useState, useEffect } from 'react';
+
+import Button from '@shared/components/button/button';
 import Card from '@shared/components/card/card';
+import { themeVars } from '@shared/styles';
 
 import * as styles from './lost-items.css';
 
@@ -20,10 +24,29 @@ const lostMock = [
 ];
 
 const LostItems = () => {
+  const [isAdmin, setIsAdmin] = useState(false);
+
+  useEffect(() => {
+    const userRole: 'user' | 'admin' = 'admin';
+    setIsAdmin(userRole === 'admin');
+  }, []);
+
   return (
     <>
-      <p className={styles.header}>분실물</p>
-      <p className={styles.subheader}>운영본부 부스(1번)에서 보관 중입니다.</p>
+      <div className={styles.headerContainer}>
+        <div className={styles.textContainer}>
+          <p style={themeVars.fontStyles.title_b_20}>분실물</p>
+          <p style={themeVars.fontStyles.caption2_m_12}>
+            운영본부 부스(1번)에서 보관 중입니다.
+          </p>
+        </div>
+        {isAdmin && (
+          <Button
+            children="분실물 등록"
+            size="sm"
+          />
+        )}
+      </div>
       <div className={styles.cardlist}>
         {lostMock.map((item) => (
           <Card

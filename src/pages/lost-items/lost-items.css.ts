@@ -2,16 +2,17 @@ import { style } from '@vanilla-extract/css';
 
 import { themeVars } from '@shared/styles';
 
-export const header = style({
-  ...themeVars.fontStyles.title_b_20,
-  color: themeVars.color.gray_900,
-  padding: '1.8rem 0 0 2.4rem',
+export const headerContainer = style({
+  display: 'flex',
+  justifyContent: 'space-between',
+  alignItems: 'center',
+  padding: '1.8rem 2.4rem 1.4rem 2.4rem',
 });
-export const subheader = style({
-  ...themeVars.fontStyles.caption2_m_12,
+
+export const textContainer = style({
   color: themeVars.color.gray_900,
-  padding: '0 0 1.4rem 2.4rem',
 });
+
 export const cardlist = style({
   display: 'flex',
   flexDirection: 'column',
