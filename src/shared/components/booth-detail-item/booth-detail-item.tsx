@@ -1,10 +1,10 @@
 import * as style from './booth-detail-item.css';
 
-export type BoothCategory = 'menu' | 'experience';
+export type BoothCategory = 'menu' | 'active';
 
 type BaseProps = {
   itemName: string;
-  itemInfo?: string;
+  itemInfo: string;
   img: string;
 };
 
@@ -13,12 +13,12 @@ type MenuProps = BaseProps & {
   price: number | string;
 };
 
-type ExperienceProps = BaseProps & {
-  category: 'experience';
+type ActiveProps = BaseProps & {
+  category: 'active';
   price?: never;
 };
 
-export type BoothDetailItemProps = MenuProps | ExperienceProps;
+export type BoothDetailItemProps = MenuProps | ActiveProps;
 
 const formatPrice = (p: number | string) =>
   typeof p === 'number' ? p.toLocaleString('ko-KR') : p;
@@ -39,7 +39,7 @@ export default function BoothDetailItem(props: BoothDetailItemProps) {
           <div className={style.boothPrice}>{formatPrice(props.price)} 원</div>
         )}
 
-        {itemInfo && <p className={style.boothInfo}>{itemInfo}</p>}
+        <p className={style.boothInfo}>{itemInfo}</p>
       </div>
       <img
         className={style.boothImg}
