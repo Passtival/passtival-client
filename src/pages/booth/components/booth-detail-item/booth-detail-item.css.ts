@@ -6,31 +6,42 @@ export const boothDetailItem = style({
   display: 'flex',
   width: '37.5rem',
   height: '13.8rem',
-  padding: '1.9rem 3rem',
+  padding: '1.9rem 3rem 1.3rem 3rem',
   gap: '3.8rem',
   wordBreak: 'keep-all',
 });
 
 export const boothText = style({
   display: 'flex',
+  width: '17.7rem',
+  flex: '1 1 auto',
   flexDirection: 'column',
-  alignItems: 'left',
+  alignItems: 'flex-start',
+  minWidth: 0,
 });
 
 export const boothItemName = style({
+  width: '100%',
   paddingTop: '0.6rem',
   ...themeVars.fontStyles.title_b_20,
+  overflow: 'hidden',
+  textOverflow: 'ellipsis',
+  whiteSpace: 'nowrap',
 });
 
 export const boothPrice = style({
+  width: '100%',
   ...themeVars.fontStyles.title_b_16,
   color: themeVars.color.main_blue,
 });
 
 export const boothInfo = style({
-  display: 'flex',
   maxWidth: '17.7rem',
-  gap: '0.6rem 0',
+  height: '4.6rem',
+  display: '-webkit-box',
+  WebkitBoxOrient: 'vertical',
+  WebkitLineClamp: 2,
+  overflow: 'hidden',
   ...themeVars.fontStyles.body1_r_15,
   color: themeVars.color.gray_600,
 });
