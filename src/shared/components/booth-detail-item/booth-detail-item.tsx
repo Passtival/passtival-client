@@ -5,7 +5,7 @@ export type BoothCategory = 'menu' | 'active';
 type BaseProps = {
   itemName: string;
   itemInfo: string;
-  img: string;
+  itemImg: string;
 };
 
 type MenuProps = BaseProps & {
@@ -24,7 +24,7 @@ const formatPrice = (p: number | string) =>
   typeof p === 'number' ? p.toLocaleString('ko-KR') : p;
 
 export default function BoothDetailItem(props: BoothDetailItemProps) {
-  const { itemName, itemInfo, img } = props;
+  const { itemName, itemInfo, itemImg } = props;
   const isMenu = props.category === 'menu';
 
   return (
@@ -43,7 +43,7 @@ export default function BoothDetailItem(props: BoothDetailItemProps) {
       </div>
       <img
         className={style.boothImg}
-        src={img}
+        src={itemImg}
         width={100}
         height={100}
       />
