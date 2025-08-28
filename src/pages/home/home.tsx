@@ -3,8 +3,8 @@ import { useState } from 'react';
 import Carousel from '@shared/components/carousel/carousel';
 import Chip from '@shared/components/chip/chip';
 import TimeTable from '@shared/components/timeTable/timeTable';
+import Title from '@shared/components/title/title';
 import { HOME_TEXT } from '@shared/constants/festivalSchedule';
-import { themeVars } from '@shared/styles';
 
 import * as styles from './home.css';
 
@@ -49,10 +49,12 @@ const Home = () => {
     <div className={styles.container}>
       <div></div>
       <div className={styles.noticeText}>
-        <p style={themeVars.fontStyles.title_b_22}>{HOME_TEXT.NOTICE}</p>
-        <p style={themeVars.fontStyles.button2_sb_12}>
-          {HOME_TEXT.FESTIVAL_PERIOD}
-        </p>
+        <Title
+          mainTitle={HOME_TEXT.NOTICE}
+          mainTitleStyle="tb22"
+          subTitle={HOME_TEXT.FESTIVAL_PERIOD}
+          subTitleStyle="cm12"
+        />
       </div>
       <Carousel type="details">
         {mokImages.map((imageUrl, index) => (
@@ -64,12 +66,12 @@ const Home = () => {
         ))}
       </Carousel>
       <div className={styles.festivalScheduleText}>
-        <p style={themeVars.fontStyles.title_b_18}>
-          {HOME_TEXT.TODAY_FESTIVAL_SCHEDULE}
-        </p>
-        <p style={themeVars.fontStyles.button2_sb_12}>
-          {HOME_TEXT.TODAY_FESTIVAL_SCHEDULE_DETAIL}
-        </p>
+        <Title
+          mainTitle={HOME_TEXT.TODAY_FESTIVAL_SCHEDULE}
+          mainTitleStyle="tb18"
+          subTitle={HOME_TEXT.TODAY_FESTIVAL_SCHEDULE_DETAIL}
+          subTitleStyle="cm12"
+        />
       </div>
       <div className={styles.chipContainer}>
         {HOME_TEXT.FESTIVAL_DAY.map((dayLabel, idx) => {
