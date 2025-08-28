@@ -16,8 +16,6 @@ const BoothDetailItem = ({
   alt,
   price,
 }: BoothDetailItemProps) => {
-  const hasPrice = price !== undefined && price !== null && price !== '';
-
   return (
     <article
       aria-label="부스 상세 아이템"
@@ -26,7 +24,7 @@ const BoothDetailItem = ({
       <div className={style.boothText}>
         <div className={style.boothItemName}>{name}</div>
 
-        {hasPrice && <div className={style.boothPrice}>{price} 원</div>}
+        <div className={style.boothPrice}>{price} 원</div>
 
         <p className={style.boothInfo}>{info}</p>
       </div>
