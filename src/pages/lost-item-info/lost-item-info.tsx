@@ -1,7 +1,10 @@
+import { useEffect, useState } from 'react';
 import { useParams } from 'react-router';
 
 import Carousel from '@shared/components/carousel/carousel';
 import DetailInfo from '@shared/components/detail-eventinfo/detail-info';
+import TopNavigation from '@shared/components/top-navigation/top-navigation';
+import { IcSvgTrashcan } from '@shared/icons';
 
 import * as styles from './lost-item-info.css';
 
@@ -18,25 +21,43 @@ const InfoMock = {
 const LostItemsInfo = () => {
   const { id } = useParams();
   const mockData = InfoMock[id as keyof typeof InfoMock];
+  const [isAdmin, setIsAdmin] = useState();
+
+  useEffect(() => {
+    const userRole: 'user' | 'admin' = 'admin';
+    setIsAdmin(userRole === 'admin');
+  }, []);
+
+  const handleTrashcanClick = () => {
+    console.log(`분실물 삭제`);
+  };
+
   return (
-    <div className={styles.container}>
-      <Carousel type="details">
-        {mockImages.map((imageUrl, index) => (
-          <img
-            key={index}
-            src={imageUrl}
-            alt={`분실물 이미지 ${index + 1}`}
-          />
-        ))}
-      </Carousel>
-      <DetailInfo
-        title={mockData.title}
-        time="습득시간"
-        timevalue={mockData.timevalue}
-        location="습득위치"
-        locationvalue={mockData.locationvalue}
+    <>
+      <TopNavigation
+        title="분실물 상세 정보"
+        rightIcon={isAdmin ? <IcSvgTrashcan className={styles.icon} /> : null}
+        onRightClick={isAdmin ? handleTrashcanClick : undefined}
       />
-    </div>
+      <div className={styles.container}>
+        <Carousel type="details">
+          {mockImages.map((imageUrl, index) => (
+            <img
+              key={index}
+              src={imageUrl}
+              alt={`분실물 이미지 ${index + 1}`}
+            />
+          ))}
+        </Carousel>
+        <DetailInfo
+          title={mockData.title}
+          time="습득시간"
+          timevalue={mockData.timevalue}
+          location="습득위치"
+          locationvalue={mockData.locationvalue}
+        />
+      </div>
+    </>
   );
 };
 export default LostItemsInfo;
