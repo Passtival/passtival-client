@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 import Button from '@shared/components/button/button';
 import Card from '@shared/components/card/card';
@@ -25,6 +26,7 @@ const lostMock = [
 
 const LostItems = () => {
   const [isAdmin, setIsAdmin] = useState(false);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const userRole: 'user' | 'admin' = 'admin';
@@ -57,7 +59,7 @@ const LostItems = () => {
             imgAlt={item.alt}
             title={item.title}
             description={item.description}
-            onClick={() => {}}
+            onClick={() => navigate(`/lost-items/${item.id}`)}
           />
         ))}
       </div>
