@@ -25,18 +25,15 @@ export const product = style({
   color: themeVars.color.gray_900,
   padding: '0.8rem 0 0.7rem 0',
 });
+
 export const productName = style({
   ...themeVars.fontStyles.title_b_16,
   color: themeVars.color.main_blue,
   padding: '1rem 0 2.3rem 0',
 });
-export const input = style({
-  display: 'grid',
-  justifyItems: 'center',
-  padding: '0.4rem 0 1.6rem 0',
-  gap: '0.5rem',
-});
+
 export const button = style({ padding: '1.2rem 0 0.2rem 0' });
+
 export const message = style({
   ...themeVars.fontStyles.caption2_m_12,
   color: themeVars.color.gray_900,

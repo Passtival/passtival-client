@@ -1,9 +1,9 @@
 import { useState } from 'react';
 
 import Button from '@shared/components/button/button';
-import Input from '@shared/components/input/input';
 import Thumbnail from '@shared/components/Thumbnail/Thumbnail';
 
+import InputSection from './components/input-section';
 import * as styles from './ticket.css';
 import TicketModal from './ticketmodal';
 
@@ -45,7 +45,6 @@ const Ticket = () => {
 
   const handleCloseModal = () => {
     setModalType(null);
-
     setName('');
     setStudentNumber('');
     setKey('');
@@ -67,26 +66,15 @@ const Ticket = () => {
           type="circle"
         />
         <p className={styles.productName}>{ticketData.productName}</p>
-        <div className={styles.input}>
-          <Input
-            value={name}
-            onChange={handleChangeName}
-            placeholder="이름"
-            errorState={isErrorState}
-          />
-          <Input
-            value={studentNumber}
-            onChange={handleChangeNumber}
-            placeholder="학번"
-            errorState={isErrorState}
-          />{' '}
-          <Input
-            value={key}
-            onChange={handleChangeKey}
-            placeholder="인증키"
-            errorState={isErrorState}
-          />
-        </div>
+        <InputSection
+          name={name}
+          studentNumber={studentNumber}
+          accessKey={key}
+          isErrorState={isErrorState}
+          onNameChange={handleChangeName}
+          onStudentNumberChange={handleChangeNumber}
+          onKeyChange={handleChangeKey}
+        />
         <Button onClick={handleApplyClick}>응모하기</Button>{' '}
         <p className={styles.message}>
           일차별 행사 모두 참여시 전체 응모권 제공!
