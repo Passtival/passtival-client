@@ -1,31 +1,20 @@
 import * as style from './booth-detail-item.css';
+import Thumbnail from '../Thumbnail/Thumbnail';
 
-export type BoothCategory = 'menu' | 'activities';
-
-type BaseProps = {
+interface BoothDetailItemProps {
   itemName: string;
   itemInfo: string;
   itemImg: string;
-};
+  price?: number | string;
+}
 
-type MenuProps = BaseProps & {
-  category: 'menu';
-  price: number | string;
-};
-
-type ActivitiesProps = BaseProps & {
-  category: 'activities';
-  price?: never;
-};
-
-export type BoothDetailItemProps = MenuProps | ActivitiesProps;
-
-const formatPrice = (p: number | string) =>
-  typeof p === 'number' ? p.toLocaleString('ko-KR') : p;
-
-export default function BoothDetailItem(props: BoothDetailItemProps) {
-  const { itemName, itemInfo, itemImg } = props;
-  const isMenu = props.category === 'menu';
+const BoothDetailItem = ({
+  itemName,
+  itemInfo,
+  itemImg,
+  price,
+}: BoothDetailItemProps) => {
+  const hasPrice = price !== undefined && price !== null && price !== '';
 
   return (
     <article
@@ -35,18 +24,16 @@ export default function BoothDetailItem(props: BoothDetailItemProps) {
       <div className={style.boothText}>
         <div className={style.boothItemName}>{itemName}</div>
 
-        {isMenu && (
-          <div className={style.boothPrice}>{formatPrice(props.price)} 원</div>
-        )}
+        {hasPrice && <div className={style.boothPrice}>{price} 원</div>}
 
         <p className={style.boothInfo}>{itemInfo}</p>
       </div>
-      <img
-        className={style.boothImg}
+      <Thumbnail
         src={itemImg}
-        width={100}
-        height={100}
+        type="square_lg"
       />
     </article>
   );
-}
+};
+
+export default BoothDetailItem;
