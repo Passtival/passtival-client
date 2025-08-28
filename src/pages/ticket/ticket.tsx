@@ -4,8 +4,8 @@ import Button from '@shared/components/button/button';
 import Thumbnail from '@shared/components/Thumbnail/Thumbnail';
 
 import InputSection from './components/input-section';
+import TicketModal from './components/ticketmodal';
 import * as styles from './ticket.css';
-import TicketModal from './ticketmodal';
 
 const ticketData = {
   src: '',

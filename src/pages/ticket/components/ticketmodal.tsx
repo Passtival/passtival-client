@@ -1,9 +1,9 @@
 import Modal from '@shared/components/modal/modal';
 
-import ConfirmModal from './components/confirm-modal';
-import ErrorModal from './components/error-modal';
-import InfoModal from './components/info-modal';
-import SuccessModal from './components/success-modal';
+import ConfirmModal from './confirm-modal';
+import ErrorModal from './error-modal';
+import InfoModal from './info-modal';
+import SuccessModal from './success-modal';
 
 interface TicketModalProps {
   modalType: 'confirm' | 'success' | 'info' | 'error' | null;
