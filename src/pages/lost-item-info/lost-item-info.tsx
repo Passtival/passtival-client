@@ -46,7 +46,14 @@ const LostItemsInfo = () => {
     <>
       <TopNavigation
         title="분실물 상세 정보"
-        rightIcon={isAdmin ? <IcSvgTrashcan className={styles.icon} /> : null}
+        rightIcon={
+          isAdmin ? (
+            <IcSvgTrashcan
+              width="1.6rem"
+              height="1.8rem"
+            />
+          ) : null
+        }
         onRightClick={isAdmin ? handleTrashcanClick : undefined}
       />
       <div className={styles.container}>
