@@ -24,9 +24,16 @@ export const img = recipe({
         borderRadius: '8px',
       },
 
-      square_sm: {
+      square_md: {
         width: '11.9rem',
         height: '10.5rem',
+
+        borderRadius: '5px',
+      },
+
+      square_sm: {
+        width: '10rem',
+        height: '10rem',
 
         borderRadius: '5px',
       },
