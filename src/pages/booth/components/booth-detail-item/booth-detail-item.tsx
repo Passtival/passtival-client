@@ -1,5 +1,5 @@
 import * as style from './booth-detail-item.css';
-import Thumbnail from '../Thumbnail/Thumbnail';
+import Thumbnail from '../../../../shared/components/Thumbnail/Thumbnail';
 
 interface BoothDetailItemProps {
   name: string;
