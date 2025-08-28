@@ -27,12 +27,9 @@ export const boothPrice = style({
 });
 
 export const boothInfo = style({
-  display: 'inline-grid',
+  display: 'flex',
+  maxWidth: '17.7rem',
   gap: '0.6rem 0',
   ...themeVars.fontStyles.body1_r_15,
   color: themeVars.color.gray_600,
-});
-
-export const boothImg = style({
-  display: 'flex',
 });
