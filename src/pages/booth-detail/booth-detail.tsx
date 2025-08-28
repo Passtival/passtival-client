@@ -8,7 +8,7 @@ import BoothInfo from './booth-info';
 const BoothDetailPage = () => {
   const { id } = useParams<{ id: string }>();
   if (!id) {
-    return <></>;
+    throw new Error('부스 ID가 없습니다.');
   }
 
   return (
