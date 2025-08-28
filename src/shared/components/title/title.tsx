@@ -14,7 +14,7 @@ const Title = ({
   subTitleStyle,
 }: TitleProps) => {
   return (
-    <div className={styles.container}>
+    <div>
       <p className={styles.titleStyle({ type: mainTitleStyle })}>{mainTitle}</p>
       {subTitle && (
         <p className={styles.titleStyle({ type: subTitleStyle })}>{subTitle}</p>
