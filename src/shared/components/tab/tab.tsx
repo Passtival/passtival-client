@@ -3,7 +3,6 @@ import type { ReactNode } from 'react';
 
 import { useTabsContext, TabsContext } from './hooks/use-tabs-context';
 import * as styles from './tab.css';
-import { buttonVariants } from './tab.css';
 
 interface TabContainerProps {
   children: ReactNode;
@@ -40,7 +39,7 @@ const List = ({ children }: TabListProps) => {
   return (
     <div
       role="tablist"
-      className={styles.tablist}
+      className={styles.container}
     >
       {children}
     </div>
@@ -56,7 +55,7 @@ const Item = ({ children, value }: TabItemProps) => {
       role="tab"
       aria-selected={isActive}
       onClick={() => setSelectedTab(value)}
-      className={buttonVariants({ selected: isActive })}
+      className={styles.buttonVariants({ selected: isActive })}
     >
       {children}
     </button>
