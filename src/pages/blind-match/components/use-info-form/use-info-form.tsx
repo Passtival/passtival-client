@@ -1,6 +1,9 @@
 import { useState } from 'react';
 
+import Chip from '@shared/components/chip/chip';
 import Input from '@shared/components/input/input';
+
+import * as styles from './use-info-form.css';
 
 const USE_INFO_FORM = {
   NAME: '이름',
@@ -24,7 +27,7 @@ const UseInfoForm = () => {
   };
 
   return (
-    <>
+    <div className={styles.container}>
       <Input
         value={name}
         onChange={handleNameChange}
@@ -40,7 +43,21 @@ const UseInfoForm = () => {
         onChange={handlePhoneChange}
         placeholder={USE_INFO_FORM.PHONE}
       />
-    </>
+      <div className={styles.chip}>
+        <Chip
+          label="여성"
+          selected={false}
+          onChange={() => {}}
+          size="lg"
+        />
+        <Chip
+          label="남성"
+          selected={false}
+          onChange={() => {}}
+          size="lg"
+        />
+      </div>
+    </div>
   );
 };
 
