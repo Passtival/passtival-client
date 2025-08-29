@@ -4,6 +4,7 @@ import Tab from '@shared/components/tab/tab';
 import TopNavigation from '@shared/components/top-navigation/top-navigation';
 
 import BoothInfo from './booth-info';
+import ActivitiesInfo from './components/activity-info';
 
 const BoothDetailPage = () => {
   const { id } = useParams<{ id: string }>();
@@ -30,8 +31,8 @@ const BoothDetailPage = () => {
             {/* <MenuInfo id={id}/> */}
           </Tab.Panel>
           <Tab.Panel value="activities">
-            {/* <ActivitiesInfo id={id} /> */}
-            <BoothInfo id={id} />
+            <ActivitiesInfo id={id} />
+            {/* <BoothInfo id={id} /> */}
           </Tab.Panel>
         </Tab.Panels>
       </Tab.Container>
