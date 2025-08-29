@@ -4,9 +4,6 @@ import { themeVars } from '@shared/styles';
 
 export const boothDetailItem = style({
   display: 'flex',
-  width: '37.5rem',
-  height: '13.8rem',
-  padding: '1.9rem 3rem 1.3rem 3rem',
   gap: '3.8rem',
   wordBreak: 'keep-all',
 });
