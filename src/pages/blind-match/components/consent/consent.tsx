@@ -8,7 +8,7 @@ const Consent = () => {
   const [agreed, setAgreed] = useState(false);
 
   const handleAgreementChange = (CheckState: boolean) => {
-    setAgreed(!CheckState);
+    setAgreed(CheckState);
   };
 
   return (

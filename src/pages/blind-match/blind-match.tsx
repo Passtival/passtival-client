@@ -1,4 +1,6 @@
+import Button from '@shared/components/button/button';
 import Title from '@shared/components/title/title';
+import { IcSvgCaution } from '@shared/icons';
 
 import Consent from './components/consent/consent';
 import UseInfoForm from './components/use-info-form/use-info-form';
@@ -15,7 +17,22 @@ const BlindMatch = () => {
       <p>{BLIND_MATCH_TEXT.TIME}</p>
 
       <UseInfoForm />
-      <Consent />
+      <div>
+        <IcSvgCaution
+          width={12}
+          height={12}
+        />
+        {BLIND_MATCH_TEXT.ATTENTION}
+      </div>
+      <Button onClick={() => {}}>번호팅 신청하기</Button>
+      <div>
+        <Consent />
+        <IcSvgCaution
+          width={12}
+          height={12}
+        />
+        {BLIND_MATCH_TEXT.NOTICE}
+      </div>
     </>
   );
 };
