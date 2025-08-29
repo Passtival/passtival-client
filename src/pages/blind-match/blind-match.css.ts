@@ -38,7 +38,8 @@ export const attention = style({
   ...themeVars.fontStyles.button_r_12,
   color: themeVars.color.gray_900,
 });
-export const button = style({ height: '5rem' });
+
+export const agreementoption = style({ display: 'flex', height: '5rem' });
 
 export const notice = style({
   display: 'flex',
