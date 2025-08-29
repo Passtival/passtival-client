@@ -5,7 +5,7 @@ import { themeVars } from '@shared/styles';
 
 export const container = style({
   display: 'grid',
-  gridTemplateColumns: 'repeat(3, 1fr)',
+  gridTemplateColumns: 'repeat(auto-fit, minmax(0, 1fr))',
   width: '100%',
 });
 
