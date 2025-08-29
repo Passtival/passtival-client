@@ -10,7 +10,7 @@ const LostItems = () => {
       const url = URL.createObjectURL(file);
       setImage(url);
     } else {
-      if (image) URL.revokeObjectURL(image); // 메모리 해제
+      if (image) URL.revokeObjectURL(image);
       setImage(undefined);
     }
   };
