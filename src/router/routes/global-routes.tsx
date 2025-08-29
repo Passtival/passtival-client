@@ -19,10 +19,10 @@ export const publicRoutesWithMain = [
   { path: routePath.BOOTH, Component: BoothPage },
   { path: routePath.TICKET, Component: TicketPage },
   { path: routePath.LOST_ITEMS, Component: LostItemsPage },
+  { path: routePath.LOGIN, Component: LoginPage },
 ];
 
 export const publicRoutesOthers = [
-  { path: routePath.LOGIN, Component: LoginPage },
   { path: routePath.LOGIN_FALLBACK, Component: LoginFallbackPage },
   { path: routePath.LAND, Component: LandPage },
   { path: routePath.ADMIN_LOGIN, Component: AdminLoginPage },
