@@ -9,9 +9,8 @@ export const chipVariants = recipe({
     justifyContent: 'center',
     ...themeVars.fontStyles.button2_sb_14,
     cursor: 'pointer',
-    padding: '0.8rem 1.2rem',
+
     borderRadius: '8px',
-    height: '3.4rem',
   },
 
   variants: {
@@ -25,6 +24,16 @@ export const chipVariants = recipe({
         backgroundColor: themeVars.color.sub_blue,
         color: themeVars.color.main_blue,
         border: `1px solid ${themeVars.color.main_blue}`,
+      },
+    },
+    size: {
+      sm: {
+        padding: '0.8rem 1.2rem',
+        height: '3.4rem',
+      },
+      lg: {
+        padding: '0.8rem 6.9rem',
+        height: '3.4rem',
       },
     },
   },
