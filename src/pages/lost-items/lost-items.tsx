@@ -17,8 +17,8 @@ const LostItems = () => {
   return (
     <div>
       <AddImage
-        value={image}
-        onChange={handleChange}
+        src={image}
+        onFileChange={handleChange}
       />
     </div>
   );

@@ -40,6 +40,8 @@ export const uploadContainer = style({
   width: '6rem',
   height: '6rem',
   overflow: 'hidden',
+  border: `1.5px solid ${themeVars.color.gray_500_40}`,
+  borderRadius: '5px',
 });
 
 export const image = style({

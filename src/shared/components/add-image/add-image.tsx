@@ -4,21 +4,21 @@ import { themeVars } from '@shared/styles';
 import * as styles from './add-image.css';
 
 interface AddImageProps {
-  value?: string;
-  onChange: (file?: File) => void;
+  src?: string;
+  onFileChange: (file?: File) => void;
   disabled?: boolean;
 }
-const AddImage = ({ value, onChange, disabled }: AddImageProps) => {
-  const current = value ? 1 : 0;
+const AddImage = ({ src, onFileChange, disabled }: AddImageProps) => {
+  const current = src ? 1 : 0;
   const max = 1;
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (!e.target.files) return;
-    onChange(e.target.files[0]);
+    onFileChange(e.target.files[0]);
     e.target.value = '';
   };
   const handleRemove = () => {
-    onChange(undefined);
+    onFileChange(undefined);
   };
   return (
     <div className={styles.container}>
@@ -40,10 +40,10 @@ const AddImage = ({ value, onChange, disabled }: AddImageProps) => {
           <p className={styles.max}>{max}</p>
         </div>
       </label>
-      {value && (
+      {src && (
         <div className={styles.uploadContainer}>
           <img
-            src={value}
+            src={src}
             alt="uploaded"
           />
           <button
