@@ -2,13 +2,14 @@ import Button from '@shared/components/button/button';
 import Title from '@shared/components/title/title';
 import { IcSvgCaution } from '@shared/icons';
 
+import * as styles from './blind-match.css.ts';
 import Consent from './components/consent/consent';
 import UseInfoForm from './components/use-info-form/use-info-form';
 import { BLIND_MATCH_TEXT } from './constants/blind-match-text';
 
 const BlindMatch = () => {
   return (
-    <>
+    <div className={styles.title}>
       <Title
         mainTitle={BLIND_MATCH_TEXT.TITLE}
         subTitle={BLIND_MATCH_TEXT.SUBTITLE}
@@ -33,7 +34,7 @@ const BlindMatch = () => {
         />
         {BLIND_MATCH_TEXT.NOTICE}
       </div>
-    </>
+    </div>
   );
 };
 
