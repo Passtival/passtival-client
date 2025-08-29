@@ -1,96 +1,35 @@
 import { useState } from 'react';
+import type { ChangeEvent } from 'react';
 
-import Carousel from '@shared/components/carousel/carousel';
-import Chip from '@shared/components/chip/chip';
-import TimeTable from '@shared/components/timeTable/timeTable';
-import Title from '@shared/components/title/title';
-import { HOME_TEXT } from '@shared/constants/festivalSchedule';
+import Input from '@shared/components/input/input'; // 파일 경로에 맞게 수정해주세요.
 
-import * as styles from './home.css';
+const HomePage = () => {
+  const [email, setEmail] = useState('');
+  const [hasError, setHasError] = useState(false);
 
-const mokImages = ['아~~~', '나의 맥북님은...', '언제 오시나...'];
+  const handleEmailChange = (e: ChangeEvent<HTMLInputElement>) => {
+    const value = e.target.value;
+    setEmail(value);
+    // 간단한 이메일 유효성 검사 (예: '@'가 포함되어 있는지)
+    setHasError(!value.includes('@'));
+  };
 
-const schedules = [
-  {
-    day: 1,
-    startIso: '2025-08-28T13:00:00',
-    endIso: '2025-08-28T14:00:00',
-    title: '공연 1',
-    assignee: '컴공',
-    description: '#즐겨보자',
-    imgSrc: '/images/sample1.png',
-    imgAlt: '공연 1 이미지',
-  },
-  {
-    day: 2,
-    startIso: '2025-08-28T15:00:00',
-    endIso: '2025-08-28T16:00:00',
-    title: '공연 2',
-    assignee: '디자인',
-    description: '#흥겨운 무대',
-    imgSrc: '/images/sample2.png',
-    imgAlt: '공연 2 이미지',
-  },
-  {
-    day: 3,
-    startIso: '2025-08-28T18:00:00',
-    endIso: '2025-08-28T19:30:00',
-    title: '공연 3',
-    assignee: '경영',
-    description: '#마지막날을_불태우자',
-    imgSrc: '/images/sample3.png',
-    imgAlt: '공연 3 이미지',
-  },
-];
-
-const Home = () => {
-  const [selectedDay, setSelectedDay] = useState(1);
   return (
-    <div className={styles.container}>
-      <div></div>
-      <div className={styles.noticeText}>
-        <Title
-          mainTitle={HOME_TEXT.NOTICE}
-          subTitle={HOME_TEXT.FESTIVAL_PERIOD}
-        />
-      </div>
-      <Carousel type="details">
-        {mokImages.map((imageUrl, index) => (
-          <img
-            key={index}
-            src={imageUrl}
-            alt={`분실물 이미지 ${index + 1}`}
-          />
-        ))}
-      </Carousel>
-      <div className={styles.festivalScheduleText}>
-        <Title
-          mainTitle={HOME_TEXT.TODAY_FESTIVAL_SCHEDULE}
-          subTitle={HOME_TEXT.TODAY_FESTIVAL_SCHEDULE_DETAIL}
-        />
-      </div>
-      <div className={styles.chipContainer}>
-        {HOME_TEXT.FESTIVAL_DAY.map((dayLabel, idx) => {
-          const dayNumber = idx + 1;
-          return (
-            <Chip
-              key={dayNumber}
-              label={dayLabel}
-              selected={selectedDay === dayNumber}
-              onChange={() => setSelectedDay(dayNumber)}
-            />
-          );
-        })}
-      </div>
-      {schedules
-        .filter((schedule) => schedule.day === selectedDay)
-        .map((schedule, idx) => (
-          <TimeTable
-            key={idx}
-            {...schedule}
-          />
-        ))}
+    <div style={{ padding: '20px', backgroundColor: 'red' }}>
+      <h2>이메일 주소를 입력해주세요.</h2>
+      <Input
+        value={email}
+        errorState={hasError}
+        onChange={handleEmailChange}
+        placeholder="example@email.com"
+      />
+      {hasError && (
+        <p style={{ color: 'red', marginTop: '8px' }}>
+          올바른 이메일 형식을 입력해주세요.
+        </p>
+      )}
     </div>
   );
 };
-export default Home;
+
+export default HomePage;

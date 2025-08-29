@@ -8,7 +8,7 @@ export const inputVariants = recipe({
     height: '4.6rem',
     padding: '1.3rem 1.2rem',
     border: `1px solid ${themeVars.color.gray_400}`,
-    backgroundColor: themeVars.color.bg_white,
+    backgroundColor: themeVars.color.bg_white_70,
     borderRadius: '8px',
     outline: 'none',
     ...themeVars.fontStyles.button2_sb_14,
