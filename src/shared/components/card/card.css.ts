@@ -17,11 +17,11 @@ export const container = recipe({
   variants: {
     type: {
       sm: {
-        width: '32.1rem',
+        width: '100%',
         height: '13.3rem',
       },
       lg: {
-        width: '34.5rem',
+        width: '100%',
         height: '13.3rem',
       },
     },
