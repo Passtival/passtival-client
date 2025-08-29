@@ -30,9 +30,11 @@ export const time = style({
 export const attention = style({
   display: 'flex',
   gap: '0.3rem',
-  height: '3.4rem',
   justifyContent: 'center',
   alignItems: 'center',
+
+  height: '3.4rem',
+
   ...themeVars.fontStyles.button_r_12,
   color: themeVars.color.gray_900,
 });
@@ -43,7 +45,8 @@ export const notice = style({
   gap: '0.3rem',
   justifyContent: 'center',
   alignItems: 'center',
-  ...themeVars.fontStyles.button_r_12,
   paddingTop: '0.6rem',
+
+  ...themeVars.fontStyles.button_r_12,
   color: themeVars.color.gray_900,
 });
