@@ -36,8 +36,8 @@ const AddImage = ({ src, onFileChange, disabled }: AddImageProps) => {
           onChange={handleFileChange}
         />
         <div className={styles.countText}>
-          <p className={styles.current}>{current}</p>/
-          <p className={styles.max}>{max}</p>
+          <p className={styles.current}>{current}</p>
+          <p className={styles.max}>/ {max}</p>
         </div>
       </label>
       {src && (

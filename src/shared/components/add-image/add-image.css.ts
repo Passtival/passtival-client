@@ -5,7 +5,7 @@ import { themeVars } from '@shared/styles';
 export const container = style({
   display: 'flex',
   gap: '1rem',
-  height: '9.6rem',
+  height: '9.4rem',
   padding: '2.4rem 2.4rem 1rem 2.4rem',
 });
 
