@@ -1,6 +1,8 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 
+import { routePath } from '@router/path';
+
 import Button from '@shared/components/button/button';
 import Card from '@shared/components/card/card';
 import { themeVars } from '@shared/styles';
@@ -35,7 +37,7 @@ const LostItems = () => {
   }, []);
 
   const handleCardClick = (id: number) => {
-    navigate(`/lost-items/${id}`);
+    navigate(`${routePath.LOST_ITEMS}/${id}`);
   };
 
   return (
