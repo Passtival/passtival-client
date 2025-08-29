@@ -12,16 +12,15 @@ export const container = recipe({
 
     borderRadius: '10px',
     position: 'relative',
+    width: '100%',
   },
 
   variants: {
     type: {
       sm: {
-        width: '100%',
         height: '13.3rem',
       },
       lg: {
-        width: '100%',
         height: '13.3rem',
       },
     },
