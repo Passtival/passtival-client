@@ -28,6 +28,7 @@ const AddImage = ({ value, onChange, disabled }: AddImageProps) => {
           height="1.33rem"
         />
         <input
+          className={styles.image}
           type="file"
           accept="image/*"
           hidden

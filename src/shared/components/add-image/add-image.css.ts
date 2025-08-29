@@ -39,6 +39,13 @@ export const uploadContainer = style({
   position: 'relative',
   width: '6rem',
   height: '6rem',
+  overflow: 'hidden',
+});
+
+export const image = style({
+  width: '100%',
+  height: '100%',
+  objectFit: 'cover',
 });
 
 export const removeButton = style({
