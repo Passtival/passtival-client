@@ -3,9 +3,14 @@ import { recipe } from '@vanilla-extract/recipes';
 
 import { themeVars } from '@shared/styles';
 
+export const container = style({
+  display: 'grid',
+  gridTemplateColumns: 'repeat(auto-fit, minmax(0, 1fr))',
+  width: '100%',
+});
+
 export const buttonVariants = recipe({
   base: {
-    width: '12.5rem ',
     height: '5rem',
 
     backgroundColor: themeVars.color.gray_200,
@@ -26,5 +31,3 @@ export const buttonVariants = recipe({
     },
   },
 });
-
-export const tablist = style({});
