@@ -1,7 +1,6 @@
 import BoothDetailItem from '@pages/booth/components/booth-detail-item/booth-detail-item';
 
 import * as style from './booth-detail.css';
-//import img from './boothDetailItem.svg';
 
 interface BoothDetailItemProps {
   name: string;
