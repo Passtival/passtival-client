@@ -9,7 +9,6 @@ export const container = style({
   justifyContent: 'center',
   flex: 1,
   textAlign: 'center',
-  position: 'relative',
 });
 
 export const body = style({
