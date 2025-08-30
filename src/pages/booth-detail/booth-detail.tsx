@@ -32,7 +32,6 @@ const BoothDetailPage = () => {
           </Tab.Panel>
           <Tab.Panel value="activities">
             <ActivitiesInfo id={id} />
-            {/* <BoothInfo id={id} /> */}
           </Tab.Panel>
         </Tab.Panels>
       </Tab.Container>
