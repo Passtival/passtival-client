@@ -1,5 +1,3 @@
-import { useState } from 'react';
-
 import Chip from '@shared/components/chip/chip';
 import Input from '@shared/components/input/input';
 
@@ -12,69 +10,54 @@ const USE_INFO_FORM = {
 };
 
 interface UseInfoFormProps {
-  onInstaIdChange: (value: string) => void;
-  onPhoneNumberChange: (value: string) => void;
+  name: string;
+  instaId: string;
+  phoneNumber: string;
+  gender: string;
+  onNameChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  onInstaIdChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  onPhoneNumberChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   onGenderChange: (value: string) => void;
-  onNameChange: (value: string) => void;
 }
 
 const UseInfoForm = ({
+  name,
+  instaId,
+  phoneNumber,
+  gender,
+  onNameChange,
   onInstaIdChange,
   onPhoneNumberChange,
   onGenderChange,
-  onNameChange,
 }: UseInfoFormProps) => {
-  const [name, setName] = useState('');
-  const [instaid, setInstaid] = useState('');
-  const [phone, setPhone] = useState('');
-  const [selectedGender, setSelectedGender] = useState('');
-
-  const handleNameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setName(e.target.value);
-    onNameChange(e.target.value);
-  };
-  const handleInstaidChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setInstaid(e.target.value);
-    onInstaIdChange(e.target.value);
-  };
-  const handlePhoneChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setPhone(e.target.value);
-    onPhoneNumberChange(e.target.value);
-  };
-
-  const handleGenderChange = (gender: string) => {
-    setSelectedGender(gender);
-    onGenderChange(gender);
-  };
-
   return (
     <div className={styles.container}>
       <Input
         value={name}
-        onChange={handleNameChange}
+        onChange={onNameChange}
         placeholder={USE_INFO_FORM.NAME}
       />
       <Input
-        value={instaid}
-        onChange={handleInstaidChange}
+        value={instaId}
+        onChange={onInstaIdChange}
         placeholder={USE_INFO_FORM.INSTAR_ID}
       />
       <Input
-        value={phone}
-        onChange={handlePhoneChange}
+        value={phoneNumber}
+        onChange={onPhoneNumberChange}
         placeholder={USE_INFO_FORM.PHONE}
       />
       <div className={styles.chip}>
         <Chip
           label="여성"
-          selected={selectedGender === '여성'}
-          onChange={() => handleGenderChange('여성')}
+          selected={gender === '여성'}
+          onChange={() => onGenderChange('여성')}
           size="lg"
         />
         <Chip
           label="남성"
-          selected={selectedGender === '남성'}
-          onChange={() => handleGenderChange('남성')}
+          selected={gender === '남성'}
+          onChange={() => onGenderChange('남성')}
           size="lg"
         />
       </div>
