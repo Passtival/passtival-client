@@ -20,17 +20,24 @@ const EntryPage = ({ currentDay }: EntryPageProps) => {
   const [phoneNumber, setPhoneNumber] = useState('');
   const [gender, setGender] = useState('');
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [hasError, setHasError] = useState(false);
 
   const handleConsentChange = (isAgreed: boolean) => {
     setAgreed(isAgreed);
+    setHasError(false);
   };
 
   const handleApplyClick = () => {
     const phoneRegex = /^010-\d{4}-\d{4}$/;
     if (instaId && phoneNumber && gender && agreed) {
       if (phoneRegex.test(phoneNumber)) {
+        setHasError(false);
         setIsModalOpen(true);
+      } else {
+        setHasError(true);
       }
+    } else {
+      setHasError(true);
     }
   };
 
@@ -63,12 +70,25 @@ const EntryPage = ({ currentDay }: EntryPageProps) => {
           instaId={instaId}
           phoneNumber={phoneNumber}
           gender={gender}
-          onInstaIdChange={(value) => setInstaId(value)}
-          onPhoneNumberChange={(value) => setPhoneNumber(value)}
-          onGenderChange={(value) => setGender(value)}
+          onInstaIdChange={(value) => {
+            setInstaId(value);
+            setHasError(false);
+          }}
+          onPhoneNumberChange={(value) => {
+            setPhoneNumber(value);
+            setHasError(false);
+          }}
+          onGenderChange={(value) => {
+            setGender(value);
+            setHasError(false);
+          }}
         />
 
-        <div className={styles.attention}>
+        <div
+          className={
+            hasError ? `${styles.attention} ${styles.error}` : styles.attention
+          }
+        >
           <IcSvgCaution
             width={12}
             height={12}
