@@ -1,4 +1,5 @@
 import { style } from '@vanilla-extract/css';
+import { recipe } from '@vanilla-extract/recipes';
 
 import { themeVars } from '@shared/styles';
 
@@ -39,6 +40,8 @@ export const attention = style({
   ...themeVars.fontStyles.button_r_12,
   color: themeVars.color.gray_900,
 });
+
+export const error = style({ color: themeVars.color.error_red });
 
 export const agreementoption = style({
   display: 'flex',
