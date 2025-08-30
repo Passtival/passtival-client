@@ -4,28 +4,23 @@ import Input from '@shared/components/input/input';
 import * as styles from './use-info-form.css';
 
 const USE_INFO_FORM = {
-  NAME: '이름',
   INSTAR_ID: '인스타그램 ID를 입력하세요',
   PHONE: '전화번호를 입력하세요',
 };
 
 interface UseInfoFormProps {
-  name: string;
   instaId: string;
   phoneNumber: string;
   gender: string;
-  onNameChange: (value: string) => void;
   onInstaIdChange: (value: string) => void;
   onPhoneNumberChange: (value: string) => void;
   onGenderChange: (value: string) => void;
 }
 
 const UseInfoForm = ({
-  name,
   instaId,
   phoneNumber,
   gender,
-  onNameChange,
   onInstaIdChange,
   onPhoneNumberChange,
   onGenderChange,
@@ -48,10 +43,6 @@ const UseInfoForm = ({
     return formattedNumber;
   };
 
-  const handleNameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    onNameChange(e.target.value);
-  };
-
   const handleInstaIdChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     onInstaIdChange(e.target.value);
   };
@@ -62,11 +53,6 @@ const UseInfoForm = ({
   };
   return (
     <div className={styles.container}>
-      <Input
-        value={name}
-        onChange={handleNameChange}
-        placeholder={USE_INFO_FORM.NAME}
-      />
       <Input
         value={instaId}
         onChange={handleInstaIdChange}
