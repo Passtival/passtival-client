@@ -1,6 +1,7 @@
 import Modal from '@shared/components/modal/modal';
 
 interface ConfirmModalProps {
+  isModalOpen: boolean;
   instaId: string;
   phoneNumber: string;
   onClose: () => void;
@@ -8,13 +9,17 @@ interface ConfirmModalProps {
 }
 
 const ConfirmModal = ({
+  isModalOpen,
   instaId,
   phoneNumber,
   onClose,
   onConfirm,
 }: ConfirmModalProps) => {
+  if (!isModalOpen) {
+    return null;
+  }
   return (
-    <>
+    <Modal.Container open={isModalOpen}>
       <Modal.Content>
         <Modal.Body>
           <Modal.Title>응모하시겠습니까?</Modal.Title>
@@ -39,7 +44,7 @@ const ConfirmModal = ({
           <Modal.Action onClick={onConfirm}>신청하기</Modal.Action>
         </Modal.Footer>
       </Modal.Content>
-    </>
+    </Modal.Container>
   );
 };
 
