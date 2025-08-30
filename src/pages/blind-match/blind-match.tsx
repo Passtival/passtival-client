@@ -6,15 +6,34 @@ import Title from '@shared/components/title/title';
 import { IcSvgCaution } from '@shared/icons';
 
 import * as styles from './blind-match.css.ts';
+import ConfirmModal from './components/modal/confirm-modal.tsx';
 import UseInfoForm from './components/use-info-form/use-info-form';
 import { BLIND_MATCH_TEXT } from './constants/blind-match-text';
 
 const BlindMatch = () => {
   const [agreed, setAgreed] = useState(false);
+  const [instaId, setInstaId] = useState('');
+  const [phoneNumber, setPhoneNumber] = useState('');
+  const [name, setName] = useState('');
+  const [gender, setGender] = useState('');
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const handleConsentChange = (isAgreed: boolean) => {
     setAgreed(isAgreed);
   };
 
+  const handleApplyClick = () => {
+    if (name && instaId && phoneNumber && gender && agreed) {
+      setIsModalOpen(true);
+    }
+  };
+
+  const handleConfirm = () => {
+    setIsModalOpen(false);
+  };
+
+  const handleCloseModal = () => {
+    setIsModalOpen(false);
+  };
   return (
     <>
       <div className={styles.title}>
@@ -30,7 +49,12 @@ const BlindMatch = () => {
           <p className={styles.time}>{BLIND_MATCH_TEXT.TIME}</p>
         </div>
 
-        <UseInfoForm />
+        <UseInfoForm
+          onInstaIdChange={setInstaId}
+          onPhoneNumberChange={setPhoneNumber}
+          onGenderChange={setGender}
+          onNameChange={setName}
+        />
 
         <div className={styles.attention}>
           <IcSvgCaution
@@ -49,7 +73,7 @@ const BlindMatch = () => {
           />
         </div>
 
-        <Button onClick={() => {}}>번호팅 신청하기</Button>
+        <Button onClick={handleApplyClick}>번호팅 신청하기</Button>
 
         <div className={styles.notice}>
           <IcSvgCaution
@@ -59,6 +83,14 @@ const BlindMatch = () => {
           {BLIND_MATCH_TEXT.NOTICE}
         </div>
       </div>
+      {isModalOpen && (
+        <ConfirmModal
+          instaId={instaId}
+          phoneNumber={phoneNumber}
+          onClose={handleCloseModal}
+          onConfirm={handleConfirm}
+        />
+      )}
     </>
   );
 };
