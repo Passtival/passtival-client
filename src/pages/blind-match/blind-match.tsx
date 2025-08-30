@@ -23,8 +23,11 @@ const BlindMatch = () => {
   };
 
   const handleApplyClick = () => {
+    const phoneRegex = /^\d{2,3}-\d{4}-\d{4}$/;
     if (name && instaId && phoneNumber && gender && agreed) {
-      setIsModalOpen(true);
+      if (phoneRegex.test(phoneNumber)) {
+        setIsModalOpen(true);
+      }
     }
   };
 
@@ -54,10 +57,10 @@ const BlindMatch = () => {
           name={name}
           instaId={instaId}
           phoneNumber={phoneNumber}
-          gender={gender} // gender 상태 전달
+          gender={gender}
           onNameChange={(e) => setName(e.target.value)}
           onInstaIdChange={(e) => setInstaId(e.target.value)}
-          onPhoneNumberChange={(e) => setPhoneNumber(e.target.value)}
+          onPhoneNumberChange={(value) => setPhoneNumber(value)}
           onGenderChange={(value) => setGender(value)}
         />
 
