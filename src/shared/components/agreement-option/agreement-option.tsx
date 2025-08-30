@@ -3,7 +3,6 @@ import { NavLink } from 'react-router-dom';
 import { IcSvgArrowRight } from '@shared/icons';
 import IcSvgCheck from '@shared/icons/ic_check';
 import { themeVars } from '@shared/styles';
-import { width } from '@shared/styles/token/width.css';
 
 import * as style from './agreement-option.css';
 
