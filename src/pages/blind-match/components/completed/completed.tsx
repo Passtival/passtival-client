@@ -13,7 +13,7 @@ const Completed = () => {
     const checkMatchingStatus = () => {
       const now = new Date();
       const endTime = new Date();
-      endTime.setHours(13, 51, 0, 0);
+      endTime.setHours(17, 30, 0, 0);
 
       if (now > endTime) {
         setIsMatchingEnd(true);
