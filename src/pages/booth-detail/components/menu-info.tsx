@@ -64,7 +64,13 @@ const MenuInfo = ({ id }: MenuInfoProps) => {
           className={style.boothDetailItemContainer}
           key={`${item.name}-${idx}`}
         >
-          <BoothDetailItem {...item} />
+          <BoothDetailItem
+            name={item.name}
+            info={item.info}
+            imgSrc={item.imgSrc}
+            alt={item.alt}
+            price={item.price}
+          />
         </div>
       ))}
     </>
