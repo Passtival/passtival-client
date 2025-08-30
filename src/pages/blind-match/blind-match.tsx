@@ -88,14 +88,13 @@ const BlindMatch = () => {
           {BLIND_MATCH_TEXT.NOTICE}
         </div>
       </div>
-      {isModalOpen && (
-        <ConfirmModal
-          instaId={instaId}
-          phoneNumber={phoneNumber}
-          onClose={handleCloseModal}
-          onConfirm={handleConfirm}
-        />
-      )}
+      <ConfirmModal
+        isModalOpen={isModalOpen}
+        instaId={instaId}
+        phoneNumber={phoneNumber}
+        onClose={handleCloseModal}
+        onConfirm={handleConfirm}
+      />
     </>
   );
 };
