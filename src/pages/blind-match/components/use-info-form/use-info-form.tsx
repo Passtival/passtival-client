@@ -11,7 +11,19 @@ const USE_INFO_FORM = {
   PHONE: '전화번호를 입력하세요',
 };
 
-const UseInfoForm = () => {
+interface UseInfoFormProps {
+  onInstaIdChange: (value: string) => void;
+  onPhoneNumberChange: (value: string) => void;
+  onGenderChange: (value: string) => void;
+  onNameChange: (value: string) => void;
+}
+
+const UseInfoForm = ({
+  onInstaIdChange,
+  onPhoneNumberChange,
+  onGenderChange,
+  onNameChange,
+}: UseInfoFormProps) => {
   const [name, setName] = useState('');
   const [instaid, setInstaid] = useState('');
   const [phone, setPhone] = useState('');
@@ -19,16 +31,20 @@ const UseInfoForm = () => {
 
   const handleNameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setName(e.target.value);
+    onNameChange(e.target.value);
   };
   const handleInstaidChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setInstaid(e.target.value);
+    onInstaIdChange(e.target.value);
   };
   const handlePhoneChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setPhone(e.target.value);
+    onPhoneNumberChange(e.target.value);
   };
 
   const handleGenderChange = (gender: string) => {
     setSelectedGender(gender);
+    onGenderChange(gender);
   };
 
   return (
