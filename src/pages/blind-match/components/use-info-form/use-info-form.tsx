@@ -14,8 +14,8 @@ interface UseInfoFormProps {
   instaId: string;
   phoneNumber: string;
   gender: string;
-  onNameChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
-  onInstaIdChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  onNameChange: (value: string) => void;
+  onInstaIdChange: (value: string) => void;
   onPhoneNumberChange: (value: string) => void;
   onGenderChange: (value: string) => void;
 }
@@ -48,6 +48,14 @@ const UseInfoForm = ({
     return formattedNumber;
   };
 
+  const handleNameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    onNameChange(e.target.value);
+  };
+
+  const handleInstaIdChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    onInstaIdChange(e.target.value);
+  };
+
   const handlePhoneChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const formattedValue = formatPhoneNumber(e.target.value);
     onPhoneNumberChange(formattedValue);
@@ -56,12 +64,12 @@ const UseInfoForm = ({
     <div className={styles.container}>
       <Input
         value={name}
-        onChange={onNameChange}
+        onChange={handleNameChange}
         placeholder={USE_INFO_FORM.NAME}
       />
       <Input
         value={instaId}
-        onChange={onInstaIdChange}
+        onChange={handleInstaIdChange}
         placeholder={USE_INFO_FORM.INSTAR_ID}
       />
       <Input
