@@ -17,6 +17,7 @@ const BlindMatch = () => {
   const [name, setName] = useState('');
   const [gender, setGender] = useState('');
   const [isModalOpen, setIsModalOpen] = useState(false);
+
   const handleConsentChange = (isAgreed: boolean) => {
     setAgreed(isAgreed);
   };
@@ -50,10 +51,14 @@ const BlindMatch = () => {
         </div>
 
         <UseInfoForm
-          onInstaIdChange={setInstaId}
-          onPhoneNumberChange={setPhoneNumber}
-          onGenderChange={setGender}
-          onNameChange={setName}
+          name={name}
+          instaId={instaId}
+          phoneNumber={phoneNumber}
+          gender={gender} // gender 상태 전달
+          onNameChange={(e) => setName(e.target.value)}
+          onInstaIdChange={(e) => setInstaId(e.target.value)}
+          onPhoneNumberChange={(e) => setPhoneNumber(e.target.value)}
+          onGenderChange={(value) => setGender(value)}
         />
 
         <div className={styles.attention}>
