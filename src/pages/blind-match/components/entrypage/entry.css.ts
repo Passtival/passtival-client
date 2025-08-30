@@ -5,6 +5,7 @@ import { themeVars } from '@shared/styles';
 export const title = style({
   padding: '1.3rem 2.4rem 1rem 2.4rem',
 });
+
 export const container = style({
   display: 'grid',
   justifyContent: 'center',
@@ -16,9 +17,8 @@ export const textcontainer = style({
   flexDirection: 'column',
   justifyContent: 'center',
   alignItems: 'center',
-  height: '8.3rem',
+  height: '11.3rem',
 });
-
 export const message = style({
   ...themeVars.fontStyles.title_b_16,
   color: themeVars.color.main_blue,
@@ -27,6 +27,7 @@ export const time = style({
   ...themeVars.fontStyles.button_r_14,
   color: themeVars.color.gray_900,
 });
+
 export const attention = style({
   display: 'flex',
   gap: '0.3rem',
@@ -39,7 +40,11 @@ export const attention = style({
   color: themeVars.color.gray_900,
 });
 
-export const agreementoption = style({ display: 'flex', height: '5rem' });
+export const agreementoption = style({
+  display: 'flex',
+  height: '5rem',
+  marginTop: '3.4rem',
+});
 
 export const notice = style({
   display: 'flex',
