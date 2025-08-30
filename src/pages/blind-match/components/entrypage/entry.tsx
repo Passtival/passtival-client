@@ -26,7 +26,7 @@ const EntryPage = ({ currentDay }: EntryPageProps) => {
   };
 
   const handleApplyClick = () => {
-    const phoneRegex = /^\d{2,3}-\d{4}-\d{4}$/;
+    const phoneRegex = /^010-\d{4}-\d{4}$/;
     if (instaId && phoneNumber && gender && agreed) {
       if (phoneRegex.test(phoneNumber)) {
         setIsModalOpen(true);
