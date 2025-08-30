@@ -4,9 +4,9 @@ import BottomNavigation from '@shared/components/bottom-navigation/bottom-naviga
 
 export default function MainLayout() {
   return (
-    <div>
+    <>
       <Outlet />
       <BottomNavigation />
-    </div>
+    </>
   );
 }

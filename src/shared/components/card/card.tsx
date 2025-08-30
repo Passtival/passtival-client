@@ -37,7 +37,7 @@ const Card = ({
         <Thumbnail
           src={imgSrc}
           alt={imgAlt}
-          type="square_sm"
+          type="square_md"
         />
       </div>
     </div>
