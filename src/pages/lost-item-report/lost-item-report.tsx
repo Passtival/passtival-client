@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 import AddImage from '@shared/components/add-image/add-image';
 import Button from '@shared/components/button/button';
@@ -24,6 +25,7 @@ const LOST_ITEM_REPORT_TEXT = {
 };
 
 const LostItemReport = () => {
+  const navigate = useNavigate();
   const [image, setImage] = useState<string>();
   const [title, setTitle] = useState('');
   const [foundLocation, setFoundLocation] = useState('');
@@ -70,7 +72,7 @@ const LostItemReport = () => {
     <div>
       <TopNavigation
         title={LOST_ITEM_REPORT_TEXT.LOST_ITEM_CREATE}
-        onRightClick={() => {}}
+        onRightClick={() => navigate(-1)}
       />
       <AddImage
         src={image}
