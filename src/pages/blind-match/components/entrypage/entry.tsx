@@ -18,7 +18,6 @@ const EntryPage = ({ currentDay }: EntryPageProps) => {
   const [agreed, setAgreed] = useState(false);
   const [instaId, setInstaId] = useState('');
   const [phoneNumber, setPhoneNumber] = useState('');
-  const [name, setName] = useState('');
   const [gender, setGender] = useState('');
   const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -28,7 +27,7 @@ const EntryPage = ({ currentDay }: EntryPageProps) => {
 
   const handleApplyClick = () => {
     const phoneRegex = /^\d{2,3}-\d{4}-\d{4}$/;
-    if (name && instaId && phoneNumber && gender && agreed) {
+    if (instaId && phoneNumber && gender && agreed) {
       if (phoneRegex.test(phoneNumber)) {
         setIsModalOpen(true);
       }
@@ -61,11 +60,9 @@ const EntryPage = ({ currentDay }: EntryPageProps) => {
         </div>
 
         <UseInfoForm
-          name={name}
           instaId={instaId}
           phoneNumber={phoneNumber}
           gender={gender}
-          onNameChange={(value) => setName(value)}
           onInstaIdChange={(value) => setInstaId(value)}
           onPhoneNumberChange={(value) => setPhoneNumber(value)}
           onGenderChange={(value) => setGender(value)}
