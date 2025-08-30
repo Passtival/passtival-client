@@ -62,7 +62,6 @@ const MenuInfo = ({ id }: MenuInfoProps) => {
 
   return (
     <>
-      <p className={style.text}> 판매 메뉴</p>
       {items.map((item) => (
         <div
           className={style.boothDetailItemContainer}
