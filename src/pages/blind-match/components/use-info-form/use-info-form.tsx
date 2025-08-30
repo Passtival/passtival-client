@@ -16,7 +16,7 @@ interface UseInfoFormProps {
   gender: string;
   onNameChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   onInstaIdChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
-  onPhoneNumberChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  onPhoneNumberChange: (value: string) => void;
   onGenderChange: (value: string) => void;
 }
 
@@ -30,6 +30,28 @@ const UseInfoForm = ({
   onPhoneNumberChange,
   onGenderChange,
 }: UseInfoFormProps) => {
+  const formatPhoneNumber = (value: string) => {
+    const digitsOnly = value.replace(/\D/g, '');
+
+    let formattedNumber = '';
+    if (digitsOnly.length > 3) {
+      formattedNumber += digitsOnly.slice(0, 3) + '-';
+      if (digitsOnly.length > 7) {
+        formattedNumber += digitsOnly.slice(3, 7) + '-';
+        formattedNumber += digitsOnly.slice(7, 11);
+      } else {
+        formattedNumber += digitsOnly.slice(3);
+      }
+    } else {
+      formattedNumber = digitsOnly;
+    }
+    return formattedNumber;
+  };
+
+  const handlePhoneChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const formattedValue = formatPhoneNumber(e.target.value);
+    onPhoneNumberChange(formattedValue);
+  };
   return (
     <div className={styles.container}>
       <Input
@@ -44,7 +66,7 @@ const UseInfoForm = ({
       />
       <Input
         value={phoneNumber}
-        onChange={onPhoneNumberChange}
+        onChange={handlePhoneChange}
         placeholder={USE_INFO_FORM.PHONE}
       />
       <div className={styles.chip}>
