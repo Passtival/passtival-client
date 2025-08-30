@@ -65,8 +65,8 @@ const EntryPage = ({ currentDay }: EntryPageProps) => {
           instaId={instaId}
           phoneNumber={phoneNumber}
           gender={gender}
-          onNameChange={(e) => setName(e.target.value)}
-          onInstaIdChange={(e) => setInstaId(e.target.value)}
+          onNameChange={(value) => setName(value)}
+          onInstaIdChange={(value) => setInstaId(value)}
           onPhoneNumberChange={(value) => setPhoneNumber(value)}
           onGenderChange={(value) => setGender(value)}
         />
