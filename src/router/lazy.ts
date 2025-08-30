@@ -17,6 +17,9 @@ export const LostItemsPage = lazy(() => import('@pages/lost-items/lost-items'));
 export const LostItemIngoPage = lazy(
   () => import('@pages/lost-item-info/lost-item-info'),
 );
+export const LostItemReportPage = lazy(
+  () => import('@pages/lost-item-report/lost-item-report'),
+);
 export const TicketPage = lazy(() => import('@pages/ticket/ticket'));
 export const LoginFallbackPage = lazy(
   () => import('@pages/login-fallback/login-fallback'),
