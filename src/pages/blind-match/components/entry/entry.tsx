@@ -11,11 +11,12 @@ import ConfirmModal from '../modal/confirm-modal.tsx';
 import EntryTitle from '../title/title.tsx';
 import UseInfoForm from '../use-info-form/use-info-form';
 
-interface EntryPageProps {
+interface EntryFormProps {
   currentDay: string;
+  onApplicationComplete: () => void;
 }
 
-const EntryPage = ({ currentDay }: EntryPageProps) => {
+const EntryForm = ({ currentDay, onApplicationComplete }: EntryFormProps) => {
   const [agreed, setAgreed] = useState(false);
   const [instaId, setInstaId] = useState('');
   const [phoneNumber, setPhoneNumber] = useState('');
@@ -44,6 +45,7 @@ const EntryPage = ({ currentDay }: EntryPageProps) => {
 
   const handleConfirm = () => {
     setIsModalOpen(false);
+    onApplicationComplete();
   };
 
   const handleCloseModal = () => {
@@ -53,9 +55,7 @@ const EntryPage = ({ currentDay }: EntryPageProps) => {
   return (
     <>
       <EntryTitle />
-
       <Message currentDay={currentDay} />
-
       <div className={styles.container}>
         <UseInfoForm
           instaId={instaId}
@@ -74,7 +74,6 @@ const EntryPage = ({ currentDay }: EntryPageProps) => {
             setHasError(false);
           }}
         />
-
         <div
           className={
             hasError ? `${styles.attention} ${styles.error}` : styles.attention
@@ -86,14 +85,11 @@ const EntryPage = ({ currentDay }: EntryPageProps) => {
           />
           {BLIND_MATCH_TEXT.ATTENTION}
         </div>
-
         <Agreement
           checked={agreed}
           onChange={handleConsentChange}
         />
-
         <Button onClick={handleApplyClick}>번호팅 신청하기</Button>
-
         <div className={styles.notice}>
           <IcSvgCaution
             width={12}
@@ -113,4 +109,4 @@ const EntryPage = ({ currentDay }: EntryPageProps) => {
   );
 };
 
-export default EntryPage;
+export default EntryForm;
