@@ -1,7 +1,7 @@
-import Closed from './components/apply-after/closed';
+import Complete from './components/apply-after/complete';
 
 const BlindMatch = () => {
-  return <Closed />;
+  return <Complete />;
 };
 
 export default BlindMatch;

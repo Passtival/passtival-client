@@ -20,12 +20,7 @@ const Closed = () => {
           <p className={styles.time}>[신청 가능 시간: 00:00 ~ 17:30]</p>
         </div>
 
-        <Button
-          disabled={true}
-          onClick={() => {}}
-        >
-          매칭 결과 대기중
-        </Button>
+        <Button disabled={true}>매칭 결과 대기중</Button>
 
         <div className={styles.notice}>
           <IcSvgCaution style={{ width: 12, height: 12 }} />
