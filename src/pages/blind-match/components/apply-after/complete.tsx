@@ -16,7 +16,7 @@ const Complete = () => {
 
       <div className={styles.container}>
         <div className={styles.messageContainer}>
-          <p className={styles.message}>1일차 매칭 신청이 마감되었습니다.</p>
+          <p className={styles.message}>1일차 매칭 신청이 완료되었습니다.</p>
           <p className={styles.time}>[신청 가능 시간: 00:00 ~ 17:30]</p>
           <p className={styles.caution}>
             ※ 성비 불균형으로 인해 매칭이 이루어지지 않을 수 잇습니다.
