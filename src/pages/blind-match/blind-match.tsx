@@ -1,7 +1,7 @@
-import Body from '@pages/blind-match/components/body';
+import Closed from './components/apply-after/closed';
 
 const BlindMatch = () => {
-  return <Body />;
+  return <Closed />;
 };
 
 export default BlindMatch;

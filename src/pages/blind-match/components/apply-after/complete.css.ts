@@ -2,21 +2,17 @@ import { style } from '@vanilla-extract/css';
 
 import { themeVars } from '@shared/styles';
 
-export const title = style({
+export const header = style({
   height: '7.3rem',
   padding: '1.3rem 2.4rem 0 2.4rem',
 });
+
 export const container = style({
   display: 'grid',
   placeItems: 'center',
 });
-export const completedContainer = style({
-  display: 'flex',
-  flexDirection: 'column',
-  alignItems: 'center',
-  padding: '14.5rem 0 15rem 0',
-});
-export const endContainer = style({
+
+export const messageContainer = style({
   display: 'flex',
   flexDirection: 'column',
   alignItems: 'center',
