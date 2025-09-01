@@ -8,20 +8,6 @@ export const container = style({
   alignItems: 'center',
 });
 
-export const attention = style({
-  display: 'flex',
-  gap: '0.3rem',
-  justifyContent: 'center',
-  alignItems: 'center',
-
-  height: '3.4rem',
-
-  ...themeVars.fontStyles.button_r_12,
-  color: themeVars.color.gray_900,
-});
-
-export const error = style({ color: themeVars.color.error_red });
-
 export const notice = style({
   display: 'flex',
   gap: '0.3rem',
