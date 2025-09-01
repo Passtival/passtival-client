@@ -11,30 +11,45 @@ import ConfirmModal from '../modal/confirm-modal.tsx';
 import EntryTitle from '../title/title.tsx';
 import UseInfoForm from '../use-info-form/use-info-form';
 
+interface MatchingForm {
+  instaId: string;
+  phoneNumber: string;
+  gender: string;
+}
+
 interface EntryFormProps {
   currentDay: string;
   onApplicationComplete: () => void;
 }
 
 const EntryForm = ({ currentDay, onApplicationComplete }: EntryFormProps) => {
+  const [form, setForm] = useState<MatchingForm>({
+    instaId: '',
+    phoneNumber: '',
+    gender: '',
+  });
   const [agreed, setAgreed] = useState(false);
-  const [instaId, setInstaId] = useState('');
-  const [phoneNumber, setPhoneNumber] = useState('');
-  const [gender, setGender] = useState('');
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isFormValid, setIsFormValid] = useState(false);
 
   useEffect(() => {
     const phoneRegex = /^010-\d{4}-\d{4}$/;
     const isValid = Boolean(
-      instaId &&
-        phoneNumber &&
-        gender &&
+      form.instaId &&
+        form.phoneNumber &&
+        form.gender &&
         agreed &&
-        phoneRegex.test(phoneNumber),
+        phoneRegex.test(form.phoneNumber),
     );
     setIsFormValid(isValid);
-  }, [instaId, phoneNumber, gender, agreed]);
+  }, [form, agreed]);
+
+  const handleFormChange = (name: keyof MatchingForm, value: string) => {
+    setForm((prevForm) => ({
+      ...prevForm,
+      [name]: value,
+    }));
+  };
 
   const handleConsentChange = (isAgreed: boolean) => {
     setAgreed(isAgreed);
@@ -62,12 +77,14 @@ const EntryForm = ({ currentDay, onApplicationComplete }: EntryFormProps) => {
       <Message currentDay={currentDay} />
       <div className={styles.container}>
         <UseInfoForm
-          instaId={instaId}
-          phoneNumber={phoneNumber}
-          gender={gender}
-          onInstaIdChange={setInstaId}
-          onPhoneNumberChange={setPhoneNumber}
-          onGenderChange={setGender}
+          instaId={form.instaId}
+          phoneNumber={form.phoneNumber}
+          gender={form.gender}
+          onInstaIdChange={(value) => handleFormChange('instaId', value)}
+          onPhoneNumberChange={(value) =>
+            handleFormChange('phoneNumber', value)
+          }
+          onGenderChange={(value) => handleFormChange('gender', value)}
         />
 
         <Agreement
@@ -89,8 +106,8 @@ const EntryForm = ({ currentDay, onApplicationComplete }: EntryFormProps) => {
         </div>
         <ConfirmModal
           isModalOpen={isModalOpen}
-          instaId={instaId}
-          phoneNumber={phoneNumber}
+          instaId={form.instaId}
+          phoneNumber={form.phoneNumber}
           onClose={handleCloseModal}
           onConfirm={handleConfirm}
         />
