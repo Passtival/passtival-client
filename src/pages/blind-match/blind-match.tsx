@@ -2,7 +2,7 @@ import { useParams } from 'react-router-dom';
 
 import Tab from '@shared/components/tab/tab';
 
-import EntryPage from './components/apply/apply';
+import ApplyPage from './components/apply/apply';
 
 const BlindMatch = () => {
   const { day } = useParams<{ day: string }>();
@@ -19,13 +19,13 @@ const BlindMatch = () => {
         </Tab.List>
         <Tab.Panels>
           <Tab.Panel value="day-1">
-            <EntryPage currentDay="1일차 매칭" />
+            <ApplyPage currentDay="1일차 매칭" />
           </Tab.Panel>
           <Tab.Panel value="day-2">
-            <EntryPage currentDay="2일차 매칭" />
+            <ApplyPage currentDay="2일차 매칭" />
           </Tab.Panel>
           <Tab.Panel value="day-3">
-            <EntryPage currentDay="3일차 매칭" />
+            <ApplyPage currentDay="3일차 매칭" />
           </Tab.Panel>
         </Tab.Panels>
       </Tab.Container>
