@@ -2,7 +2,7 @@ import { useParams } from 'react-router-dom';
 
 import Tab from '@shared/components/tab/tab';
 
-import EntryPage from './components/entrypage/entry';
+import EntryPage from './components/apply/apply';
 
 const BlindMatch = () => {
   const { day } = useParams<{ day: string }>();
