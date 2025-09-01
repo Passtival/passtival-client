@@ -8,7 +8,7 @@ interface EntryPageProps {
   currentDay: string;
 }
 
-const EntryPage = ({ currentDay }: EntryPageProps) => {
+const ApplyPage = ({ currentDay }: EntryPageProps) => {
   const [viewState, setViewState] = useState<'entry' | 'complete' | 'closed'>(
     'entry',
   );
@@ -17,8 +17,16 @@ const EntryPage = ({ currentDay }: EntryPageProps) => {
     const checkDeadline = () => {
       const now = new Date();
       const deadline = new Date();
-      deadline.setFullYear(2025, 8, 22);
-      deadline.setHours(17, 30, 0, 0);
+      if (currentDay === '1일차 매칭') {
+        deadline.setFullYear(2025, 8, 1);
+        deadline.setHours(17, 30, 0, 0);
+      } else if (currentDay === '2일차 매칭') {
+        deadline.setFullYear(2025, 8, 2);
+        deadline.setHours(17, 30, 0, 0);
+      } else if (currentDay === '3일차 매칭') {
+        deadline.setFullYear(2025, 8, 3);
+        deadline.setHours(17, 30, 0, 0);
+      }
 
       if (now > deadline) {
         setViewState('closed');
@@ -48,4 +56,4 @@ const EntryPage = ({ currentDay }: EntryPageProps) => {
   }
 };
 
-export default EntryPage;
+export default ApplyPage;
