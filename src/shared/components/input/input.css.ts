@@ -4,7 +4,7 @@ import { themeVars } from '@shared/styles/theme.css';
 
 export const inputVariants = recipe({
   base: {
-    width: '32.7rem',
+    width: '100%',
     height: '4.6rem',
     padding: '1.3rem 1.2rem',
     border: `1px solid ${themeVars.color.gray_400}`,
