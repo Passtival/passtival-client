@@ -78,6 +78,21 @@ const LostItemReport = () => {
         src={image}
         onFileChange={handleChange}
       />
+      <div className={styles.foundDateTimeContainer}>
+        <p className={styles.text}>{LOST_ITEM_REPORT_TEXT.FOUND_DATE_TIME}</p>
+        <div className={styles.dropdownContainer}>
+          {DROPDOWNS.map((dropdown) => (
+            <DropDown
+              key={dropdown.key}
+              selected={dropdown.selected}
+              onSelect={dropdown.onSelect}
+              options={dropdown.options}
+              placeholder={dropdown.placeholder}
+              icon={dropdown.icon}
+            />
+          ))}
+        </div>
+      </div>
       <div className={styles.textInputContainer}>
         <p className={styles.text}>{LOST_ITEM_REPORT_TEXT.TITLE}</p>
         <Input
@@ -93,21 +108,6 @@ const LostItemReport = () => {
           onChange={(e) => setFoundLocation(e.target.value)}
           placeholder={LOST_ITEM_REPORT_TEXT.FOUND_LOCATION_PLACEHOLDER}
         />
-      </div>
-      <div className={styles.foundDateTimeContainer}>
-        <p className={styles.text}>{LOST_ITEM_REPORT_TEXT.FOUND_DATE_TIME}</p>
-        <div className={styles.dropdownContainer}>
-          {DROPDOWNS.map((dropdown) => (
-            <DropDown
-              key={dropdown.key}
-              selected={dropdown.selected}
-              onSelect={dropdown.onSelect}
-              options={dropdown.options}
-              placeholder={dropdown.placeholder}
-              icon={dropdown.icon}
-            />
-          ))}
-        </div>
       </div>
       <div className={styles.button}>
         <Button>{LOST_ITEM_REPORT_TEXT.CREATE}</Button>
