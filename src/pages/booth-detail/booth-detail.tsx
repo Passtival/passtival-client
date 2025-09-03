@@ -1,10 +1,11 @@
 import { useParams } from 'react-router-dom';
 
+import ActivitiesInfo from '@pages/booth-detail/components/activity-info';
+import BoothInfo from '@pages/booth-detail/components/booth-info';
+import MenuInfo from '@pages/booth-detail/components/menu-info';
+
 import Tab from '@shared/components/tab/tab';
 import TopNavigation from '@shared/components/top-navigation/top-navigation';
-
-import BoothInfo from './components/booth-info';
-import MenuInfo from './components/menu-info';
 
 const BoothDetailPage = () => {
   const { id } = useParams<{ id: string }>();
@@ -30,7 +31,7 @@ const BoothDetailPage = () => {
             <MenuInfo id={id} />
           </Tab.Panel>
           <Tab.Panel value="activities">
-            <BoothInfo id={id} />
+            <ActivitiesInfo id={id} />
           </Tab.Panel>
         </Tab.Panels>
       </Tab.Container>
