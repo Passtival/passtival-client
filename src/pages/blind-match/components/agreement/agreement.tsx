@@ -14,7 +14,7 @@ const Agreement = ({ checked, onChange }: AgreementProps) => {
     <div className={styles.agreementoption}>
       <AgreementOption
         label={BLIND_MATCH_TEXT.CONSENT}
-        navigateTo=""
+        navigateTo="/info-share-consent"
         checked={checked}
         onChange={onChange}
       />
