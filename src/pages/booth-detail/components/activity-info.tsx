@@ -39,7 +39,7 @@ const MOCK_ACTIVITY_ITEM = {
   ],
 };
 
-const ActivitiesInfo = ({ id }: ActivityInfoProps) => {
+const ActivitiesInfo = ({ id: _id }: ActivityInfoProps) => {
   // const boothId = Number(id);
   // const items = MOCK_ACTIVITY_ITEM.result.filter((item) => item.id === boothId);
 
