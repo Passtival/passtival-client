@@ -4,6 +4,7 @@ import { themeVars } from '@shared/styles';
 
 export const boothDetailItem = style({
   display: 'flex',
+  width: '100%',
   gap: '3.8rem',
   wordBreak: 'keep-all',
 });
