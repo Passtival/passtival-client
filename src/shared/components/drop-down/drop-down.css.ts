@@ -4,7 +4,7 @@ import { themeVars } from '@shared/styles/theme.css';
 
 export const dropdownWrapper = style({
   display: 'flex',
-  width: 'fit-content',
+  width: '100%',
   gap: '0.6rem',
   position: 'relative',
   ...themeVars.fontStyles.button2_sb_12,
@@ -12,7 +12,7 @@ export const dropdownWrapper = style({
 
 export const dropdownContainer = style({
   display: 'flex',
-  width: '10.5rem',
+  width: '100%',
   height: '4rem',
   padding: '1rem 0.6rem',
   border: `1px solid ${themeVars.color.gray_600}`,
