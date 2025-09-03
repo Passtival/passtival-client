@@ -9,7 +9,7 @@ const RESULT_TEXT = {
   TITLE: '매칭 결과가 나왔습니다!',
 };
 
-const Result = () => {
+const Success = () => {
   return (
     <>
       <div className={styles.header}>
@@ -33,4 +33,4 @@ const Result = () => {
   );
 };
 
-export default Result;
+export default Success;
