@@ -16,13 +16,11 @@ export const title = style({
 
 export const message = style({
   display: 'flex',
-  alignItems: 'center',
   justifyContent: 'center',
+  textAlign: 'center',
   width: '100%',
-
+  whiteSpace: 'pre-line',
   paddingTop: '5.5rem 0 3.3rem 0',
   ...themeVars.fontStyles.caption2_m_15,
   color: themeVars.color.gray_900,
 });
-
-export const thankyou = style({ padding: '3.3rem 0 0 0' });
