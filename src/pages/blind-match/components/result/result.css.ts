@@ -21,7 +21,7 @@ export const message = style({
   width: '100%',
 
   paddingTop: '5.5rem 0 3.3rem 0',
-  ...themeVars.fontStyles.body1_r_15,
+  ...themeVars.fontStyles.caption2_m_15,
   color: themeVars.color.gray_900,
 });
 
