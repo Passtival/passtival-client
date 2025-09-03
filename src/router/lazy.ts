@@ -18,8 +18,8 @@ export const LostItemIngoPage = lazy(
   () => import('@pages/lost-item-info/lost-item-info'),
 );
 export const TicketPage = lazy(() => import('@pages/ticket/ticket'));
-export const LoginFallbackPage = lazy(
-  () => import('@pages/login-fallback/login-fallback'),
+export const LoginCallbackPage = lazy(
+  () => import('@pages/login-callback/login-callback'),
 );
 export const AdminLoginPage = lazy(
   () => import('@pages/admin-login/admin-login'),
