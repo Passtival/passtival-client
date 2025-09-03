@@ -1,4 +1,4 @@
-import BoothDetailItem from '@pages/booth/components/booth-detail-item/booth-detail-item';
+import BoothDetailItem from '@pages/booth-detail/components/booth-detail-item/booth-detail-item';
 
 import * as style from './booth-detail.css';
 
@@ -40,13 +40,6 @@ const MOCK_ACTIVITY_ITEM = {
 };
 
 const ActivitiesInfo = ({ id: _id }: ActivityInfoProps) => {
-  // const boothId = Number(id);
-  // const items = MOCK_ACTIVITY_ITEM.result.filter((item) => item.id === boothId);
-
-  // if (items.length === 0) {
-  //   return <div>해당 부스의 체험 활동 정보가 없습니다.</div>;
-  // }
-
   return (
     <>
       {MOCK_ACTIVITY_ITEM.result.map(({ id, name, info, imgSrc, alt }) => (
