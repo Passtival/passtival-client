@@ -6,11 +6,8 @@ import { routePath } from '@router/path';
 const DEFAULT_CONFIG = {
   auth: {
     isEnabled: false, // 인증 기능 활성화 여부
-    loginSuccessUrl: routePath.LOGIN_FALLBACK,
+    loginSuccessUrl: routePath.HOME,
     loginFailureUrl: routePath.LOGIN,
-    kakaoLoginUrl: import.meta.env.VITE_KAKAO_LOGIN_URL || '',
-    kakaoLocalRedirectUrl: import.meta.env.VITE_KAKAO_LOCAL_REDIRECT_URI || '',
-    kakaoProdRedirectUrl: import.meta.env.VITE_KAKAO_PROD_REDIRECT_URI || '',
   },
   api: {
     baseUrl: import.meta.env.VITE_API_BASE_URL,
