@@ -44,28 +44,24 @@ const MOCK_MENU_ITEM = {
   ],
 } as const;
 
-const MenuInfo = ({ id }: MenuInfoProps) => {
-  const boothId = Number(id);
-
-  const items = MOCK_MENU_ITEM.result.filter((item) => item.id === boothId);
-
-  if (items.length === 0) {
-    return <div>해당 부스의 메뉴 정보가 없습니다.</div>;
-  }
+const MenuInfo = ({ id: _id }: MenuInfoProps) => {
+  // if (items.length === 0) {
+  //   return <div>해당 부스의 메뉴 정보가 없습니다.</div>;
+  // }
 
   return (
     <>
-      {items.map((item) => (
+      {MOCK_MENU_ITEM.result.map(({ id, name, info, imgSrc, alt, price }) => (
         <div
           className={style.boothDetailItemContainer}
-          key={item.id}
+          key={id}
         >
           <BoothDetailItem
-            name={item.name}
-            info={item.info}
-            imgSrc={item.imgSrc}
-            alt={item.alt}
-            price={item.price}
+            name={name}
+            info={info}
+            imgSrc={imgSrc}
+            alt={alt}
+            price={price}
           />
         </div>
       ))}
