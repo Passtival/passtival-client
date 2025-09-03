@@ -2,16 +2,11 @@ import BoothDetailItem from '@pages/booth-detail/components/booth-detail-item/bo
 
 import * as style from './booth-detail.css';
 
-interface BoothDetailItemProps {
-  id: number;
-  name: string;
-  info: string;
-  imgSrc: string;
-  alt: string;
-  price?: number | string;
+interface MenuInfoProps {
+  id: string;
 }
 
-const MOCK_MENU_ITEM: { result: BoothDetailItemProps[] } = {
+const MOCK_MENU_ITEM = {
   result: [
     {
       id: 1,
@@ -29,6 +24,7 @@ const MOCK_MENU_ITEM: { result: BoothDetailItemProps[] } = {
       alt: '애플 파이 이미지',
       price: 4000,
     },
+
     {
       id: 2,
       name: 'CPU 초밥',
@@ -46,14 +42,11 @@ const MOCK_MENU_ITEM: { result: BoothDetailItemProps[] } = {
       price: 4500,
     },
   ],
-};
-
-interface MenuInfoProps {
-  id: string;
-}
+} as const;
 
 const MenuInfo = ({ id }: MenuInfoProps) => {
   const boothId = Number(id);
+
   const items = MOCK_MENU_ITEM.result.filter((item) => item.id === boothId);
 
   if (items.length === 0) {
