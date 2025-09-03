@@ -2,73 +2,63 @@ import BoothDetailItem from '@pages/booth/components/booth-detail-item/booth-det
 
 import * as style from './booth-detail.css';
 
-interface BoothDetailItemProps {
-  id: number;
-  name: string;
-  info: string;
-  imgSrc: string;
-  alt: string;
-  price?: number | string;
+interface ActivityInfoProps {
+  id: string;
 }
 
-const MOCK_ACTIVITY_ITEM: { result: BoothDetailItemProps[] } = {
+const MOCK_ACTIVITY_ITEM = {
   result: [
     {
       id: 1,
       name: '10분 컷 도예 물레',
       info: '돌돌돌돌 돌리고 빚고, 나만의 미니 컵을 만들어 볼까요?',
-      imgSrc: '',
+      imgSrc: 'https://placehold.co/600x400',
       alt: '도예 물레 체험',
     },
     {
       id: 1,
       name: '실크 스크린 체험',
       info: '컴공인들이 머리 맞대고 만든 실크 스크린 기계를 체험해 보세요!',
-      imgSrc: '',
+      imgSrc: 'https://placehold.co/600x400',
       alt: '실크 스크린 기계',
     },
     {
       id: 2,
       name: '미로 찾기',
       info: '엉키고 꼬여버린 깃 미로의 끝을 찾아 보세요!',
-      imgSrc: '',
+      imgSrc: 'https://placehold.co/600x400',
       alt: '미로 찾기',
     },
     {
       id: 2,
       name: '틀린 그림 찾기',
       info: '피그마에서 간격이 다른 부분을 찾아 보세요!',
-      imgSrc: '',
+      imgSrc: 'https://placehold.co/600x400',
       alt: '틀린 그림 찾기',
     },
   ],
 };
 
-interface ActivityInfoProps {
-  id: string;
-}
-
 const ActivitiesInfo = ({ id }: ActivityInfoProps) => {
-  const boothId = Number(id);
-  const items = MOCK_ACTIVITY_ITEM.result.filter((item) => item.id === boothId);
+  // const boothId = Number(id);
+  // const items = MOCK_ACTIVITY_ITEM.result.filter((item) => item.id === boothId);
 
-  if (items.length === 0) {
-    return <div>해당 부스의 체험 활동 정보가 없습니다.</div>;
-  }
+  // if (items.length === 0) {
+  //   return <div>해당 부스의 체험 활동 정보가 없습니다.</div>;
+  // }
 
   return (
     <>
-      {items.map((item) => (
+      {MOCK_ACTIVITY_ITEM.result.map(({ id, name, info, imgSrc, alt }) => (
         <div
           className={style.boothDetailItemContainer}
-          key={item.id}
+          key={id}
         >
           <BoothDetailItem
-            name={item.name}
-            info={item.info}
-            imgSrc={item.imgSrc}
-            alt={item.alt}
-            price={item.price}
+            name={name}
+            info={info}
+            imgSrc={imgSrc}
+            alt={alt}
           />
         </div>
       ))}
