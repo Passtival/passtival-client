@@ -45,10 +45,6 @@ const MOCK_MENU_ITEM = {
 } as const;
 
 const MenuInfo = ({ id: _id }: MenuInfoProps) => {
-  // if (items.length === 0) {
-  //   return <div>해당 부스의 메뉴 정보가 없습니다.</div>;
-  // }
-
   return (
     <>
       {MOCK_MENU_ITEM.result.map(({ id, name, info, imgSrc, alt, price }) => (
