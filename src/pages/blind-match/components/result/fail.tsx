@@ -1,9 +1,8 @@
 import Title from '@shared/components/title/title';
 
 import * as styles from './result.css';
-import UserInfo from '../user-info/user-info';
 
-const Result = () => {
+const Fail = () => {
   return (
     <>
       <div className={styles.header}>
@@ -13,18 +12,12 @@ const Result = () => {
         />
       </div>
       <p className={styles.title}>1일차 매칭 결과가 나왔습니다!</p>
-      <UserInfo
-        title="나의 정보"
-        instaId="안녕하신지요"
-        phoneNumber="010-1588-1588"
-      />
-      <UserInfo
-        title="매칭 상대의 정보"
-        instaId=""
-        phoneNumber=""
-      />
+      <p className={styles.message}>
+        신청 인원 간 성비 불균형으로 인해 매칭이 성사되지 않았습니다.
+        <span className={styles.thankyou}>참여해주셔서 감사합니다.</span>
+      </p>
     </>
   );
 };
 
-export default Result;
+export default Fail;

@@ -5,6 +5,7 @@ import { themeVars } from '@shared/styles';
 export const header = style({
   padding: '1.3rem 2.4rem',
 });
+
 export const title = style({
   display: 'flex',
   justifyContent: 'center',
@@ -12,9 +13,16 @@ export const title = style({
   ...themeVars.fontStyles.title_b_18,
   color: themeVars.color.main_blue,
 });
-export const container = style({});
-export const myInfo = style({});
-export const instaId = style({});
-export const phoneNumber = style({});
-export const opponentInfo = style({});
-export const message = style({});
+
+export const message = style({
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'center',
+  width: '100%',
+
+  paddingTop: '5.5rem 0 3.3rem 0',
+  ...themeVars.fontStyles.body1_r_15,
+  color: themeVars.color.gray_900,
+});
+
+export const thankyou = style({ padding: '3.3rem 0 0 0' });
