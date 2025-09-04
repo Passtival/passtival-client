@@ -9,7 +9,11 @@ import { HOME_TEXT } from '@shared/constants/festivalSchedule';
 
 import * as styles from './home.css';
 
-const mokImages = ['아~~~', '나의 맥북님은...', '언제 오시나...'];
+const mokImages = [
+  'https://placehold.co/600x400',
+  'https://placehold.co/600x400',
+  'https://placehold.co/600x400',
+];
 
 const MOCK_TITME_TABLE = [
   {
@@ -20,7 +24,7 @@ const MOCK_TITME_TABLE = [
     title: '공연 1',
     assignee: '컴공',
     description: '#즐겨보자',
-    imgSrc: '/images/sample1.png',
+    imgSrc: 'https://placehold.co/600x400',
     imgAlt: '공연 1 이미지',
   },
   {
@@ -31,7 +35,7 @@ const MOCK_TITME_TABLE = [
     title: '공연 1',
     assignee: '컴공',
     description: '#즐겨보자2',
-    imgSrc: '/images/sample1.png',
+    imgSrc: 'https://placehold.co/600x400',
     imgAlt: '공연 1 이미지',
   },
   {
@@ -42,7 +46,7 @@ const MOCK_TITME_TABLE = [
     title: '공연 1',
     assignee: '컴공',
     description: '#즐겨보자3333',
-    imgSrc: '/images/sample1.png',
+    imgSrc: 'https://placehold.co/600x400',
     imgAlt: '공연 1 이미지',
   },
   {
@@ -53,7 +57,7 @@ const MOCK_TITME_TABLE = [
     title: '공연 1',
     assignee: '컴공',
     description: '#즐겨보자1',
-    imgSrc: '/images/sample1.png',
+    imgSrc: 'https://placehold.co/600x400',
     imgAlt: '공연 1 이미지',
   },
   {
@@ -64,7 +68,7 @@ const MOCK_TITME_TABLE = [
     title: '공연 2',
     assignee: '디자인',
     description: '#흥겨운 무대',
-    imgSrc: '/images/sample2.png',
+    imgSrc: 'https://placehold.co/600x400',
     imgAlt: '공연 2 이미지',
   },
   {
@@ -75,7 +79,7 @@ const MOCK_TITME_TABLE = [
     title: '공연 3',
     assignee: '경영',
     description: '#마지막날을_불태우자',
-    imgSrc: '/images/sample3.png',
+    imgSrc: 'https://placehold.co/600x400',
     imgAlt: '공연 3 이미지',
   },
 ];
