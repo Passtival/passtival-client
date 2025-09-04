@@ -12,16 +12,18 @@ export const container = recipe({
 
     borderRadius: '10px',
     position: 'relative',
+    width: '100%',
+    height: '13.3rem',
+
+    marginLeft: '0.8rem',
   },
 
   variants: {
     type: {
       sm: {
-        width: '32.1rem',
         height: '13.3rem',
       },
       lg: {
-        width: '34.5rem',
         height: '13.3rem',
       },
     },

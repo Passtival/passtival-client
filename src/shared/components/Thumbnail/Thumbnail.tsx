@@ -3,7 +3,7 @@ import * as styles from './Thumbnail.css';
 interface ThumbnailProps {
   src: string;
   alt?: string;
-  type: 'square_sm' | 'square_lg' | 'circle';
+  type: 'square_sm' | 'square_md' | 'square_lg';
 }
 const Thumbnail = ({ src, alt, type }: ThumbnailProps) => {
   return (

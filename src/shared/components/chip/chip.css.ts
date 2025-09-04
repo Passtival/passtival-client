@@ -5,13 +5,11 @@ import { themeVars } from '@shared/styles/theme.css';
 export const chipVariants = recipe({
   base: {
     display: 'inline-flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    ...themeVars.fontStyles.button2_sb_14,
-    cursor: 'pointer',
-    padding: '0.8rem 1.2rem',
-    borderRadius: '8px',
     height: '3.4rem',
+    alignItems: 'center',
+    ...themeVars.fontStyles.button_r_14,
+    cursor: 'pointer',
+    borderRadius: '8px',
   },
 
   variants: {
@@ -25,6 +23,16 @@ export const chipVariants = recipe({
         backgroundColor: themeVars.color.sub_blue,
         color: themeVars.color.main_blue,
         border: `1px solid ${themeVars.color.main_blue}`,
+      },
+    },
+    size: {
+      sm: {
+        padding: '0.8rem 1.2rem',
+      },
+      lg: {
+        width: '16.1rem',
+        justifyContent: 'center',
+        backgroundColor: themeVars.color.bg_white_70,
       },
     },
   },

@@ -2,6 +2,8 @@ import { createBrowserRouter } from 'react-router-dom';
 
 import { ProtectedRoute } from '@router/routes/protected-route';
 
+import ErrorPage from '@pages/error/error';
+
 import GlobalLayout from './global-layout';
 import MainLayout from './main-layout';
 import {
@@ -13,16 +15,19 @@ import {
 export const router = createBrowserRouter([
   {
     Component: GlobalLayout,
+    ErrorBoundary: ErrorPage,
     children: [
       {
         Component: MainLayout,
-        children: publicRoutesWithMain,
+        children: [
+          ...publicRoutesWithMain,
+          {
+            Component: ProtectedRoute,
+            children: protectedRoutes,
+          },
+        ],
       },
       ...publicRoutesOthers,
-      {
-        Component: ProtectedRoute,
-        children: protectedRoutes,
-      },
     ],
   },
 ]);

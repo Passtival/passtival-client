@@ -15,6 +15,7 @@ export const container = recipe({
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
+    padding: '0rem 5.3rem',
   },
 
   variants: {
@@ -52,7 +53,7 @@ export const alignText = style({
 
 export const content = style({
   display: 'flex',
-  width: '27rem',
+  width: '100%',
   flexDirection: 'column',
   justifyContent: 'center',
   alignItems: 'center',
