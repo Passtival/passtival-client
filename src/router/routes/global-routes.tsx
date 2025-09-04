@@ -19,7 +19,6 @@ import { routePath } from '../path';
 export const publicRoutesWithMain = [
   { path: routePath.HOME, Component: HomePage },
   { path: routePath.BOOTH, Component: BoothPage },
-  { path: routePath.TICKET, Component: TicketPage },
   { path: routePath.LOST_ITEMS, Component: LostItemsPage },
   { path: routePath.LOGIN, Component: LoginPage },
 ];
@@ -37,4 +36,5 @@ export const publicRoutesOthers = [
 
 export const protectedRoutes = [
   { path: routePath.BLIND_MATCH, Component: BlindMatchPage },
+  { path: routePath.TICKET, Component: TicketPage },
 ];
