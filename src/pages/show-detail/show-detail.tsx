@@ -9,6 +9,13 @@ import Thumbnail from '@shared/components/Thumbnail/Thumbnail';
 import { PERFORMANCE_DETAIL_QUERY_OPTIONS } from './apis/queries';
 import * as styles from './show-detail.css';
 
+const Time = (isoString: string) => {
+  const date = new Date(isoString);
+  const hours = String(date.getHours()).padStart(2, '0');
+  const minutes = String(date.getMinutes()).padStart(2, '0');
+  return `${hours}:${minutes}`;
+};
+
 const ShowDetail = () => {
   const { performanceId } = useParams<{ performanceId: string }>();
 
@@ -18,6 +25,11 @@ const ShowDetail = () => {
     ),
     enabled: !!performanceId,
   });
+
+  const timeRange =
+    data?.startTime && data?.endTime
+      ? `${Time(data.startTime)} ~ ${Time(data.endTime)}`
+      : '';
 
   return (
     <>
@@ -34,7 +46,7 @@ const ShowDetail = () => {
       </div>
       <DetailInfo
         time="운영시간"
-        timevalue={data?.startTime}
+        timevalue={timeRange}
         location="공연위치"
         locationvalue={data?.area}
       />
