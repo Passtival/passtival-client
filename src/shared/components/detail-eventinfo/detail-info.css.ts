@@ -25,7 +25,7 @@ export const title = style({
 
 export const label = style({
   ...themeVars.fontStyles.caption2_m_15,
-  color: themeVars.color.gray_900,
+  color: themeVars.color.bg_white,
 });
 export const value = style({
   ...themeVars.fontStyles.body1_r_15,

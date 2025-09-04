@@ -39,7 +39,7 @@ export const iconWrapper = style({
   alignItems: 'center',
   justifyContent: 'center',
   flexShrink: 0,
-  color: themeVars.color.gray_900,
+  color: themeVars.color.bg_white,
 });
 
 export const dropdownPlaceholder = style({

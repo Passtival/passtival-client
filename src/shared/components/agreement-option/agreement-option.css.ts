@@ -47,5 +47,5 @@ export const checkboxLeft = style({
 
 export const labelText = style({
   ...themeVars.fontStyles.title_b_16,
-  color: themeVars.color.gray_900,
+  color: themeVars.color.bg_white,
 });

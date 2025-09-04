@@ -15,5 +15,5 @@ export const message = style({
 });
 export const time = style({
   ...themeVars.fontStyles.button_r_14,
-  color: themeVars.color.gray_900,
+  color: themeVars.color.bg_white,
 });

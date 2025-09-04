@@ -9,7 +9,7 @@ export const container = style({
 export const infoTitle = style({
   paddingBottom: '0.7rem',
   ...themeVars.fontStyles.title_b_16,
-  color: themeVars.color.gray_900,
+  color: themeVars.color.bg_white,
 });
 
 export const infoText = style({
@@ -18,5 +18,5 @@ export const infoText = style({
 });
 export const info = style({
   ...themeVars.fontStyles.body1_r_15,
-  color: themeVars.color.gray_900,
+  color: themeVars.color.bg_white,
 });

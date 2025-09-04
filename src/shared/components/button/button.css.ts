@@ -20,7 +20,7 @@ export const buttonVariants = recipe({
         selectors: {
           '&:disabled': {
             backgroundColor: themeVars.color.gray_400,
-            color: themeVars.color.gray_900,
+            color: themeVars.color.bg_white,
           },
         },
       },

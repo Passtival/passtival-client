@@ -10,15 +10,15 @@ export const container = style({
 
 export const title = style({
   ...themeVars.fontStyles.head_eb_22,
-  color: themeVars.color.gray_900,
+  color: themeVars.color.bg_white,
 });
 
 export const subtitle = style({
   ...themeVars.fontStyles.caption1_sb_18,
-  color: themeVars.color.gray_900,
+  color: themeVars.color.bg_white,
 });
 
 export const itemTitle = style({
   ...themeVars.fontStyles.body1_r_15,
-  color: themeVars.color.gray_900,
+  color: themeVars.color.bg_white,
 });

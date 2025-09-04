@@ -16,12 +16,12 @@ export const inputVariants = recipe({
     selectors: {
       '&::placeholder': { color: themeVars.color.gray_400 },
       '&:focus': {
-        color: themeVars.color.gray_900,
+        color: themeVars.color.bg_white,
         backgroundColor: themeVars.color.bg_white,
         border: `1px solid ${themeVars.color.gray_400}`,
       },
       '&:not(:placeholder-shown)': {
-        color: themeVars.color.gray_900,
+        color: themeVars.color.bg_white,
         backgroundColor: themeVars.color.bg_white,
         border: `1px solid ${themeVars.color.gray_400}`,
       },
@@ -43,7 +43,7 @@ export const inputVariants = recipe({
             borderColor: themeVars.color.error_red,
           },
           '&:not(:placeholder-shown)': {
-            color: themeVars.color.gray_900,
+            color: themeVars.color.bg_white,
           },
           '&:focus::placeholder': {
             color: 'transparent',

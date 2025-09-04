@@ -15,14 +15,14 @@ export const chipVariants = recipe({
   variants: {
     selected: {
       false: {
-        backgroundColor: themeVars.color.bg_white,
-        color: themeVars.color.gray_900,
-        border: `1px solid ${themeVars.color.gray_400}`,
+        backgroundColor: themeVars.color.gray_500_40,
+        color: themeVars.color.bg_white,
+        border: `1px solid ${themeVars.color.bg_white}`,
       },
       true: {
-        backgroundColor: themeVars.color.sub_blue,
-        color: themeVars.color.main_yellow,
-        border: `1px solid ${themeVars.color.main_yellow}`,
+        backgroundColor: themeVars.color.main_yellow,
+        color: themeVars.color.bg_white,
+        border: `1px solid ${themeVars.color.bg_white}`,
       },
     },
     size: {
