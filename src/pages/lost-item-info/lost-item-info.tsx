@@ -9,11 +9,20 @@ import { IcSvgTrashcan } from '@shared/icons';
 
 import * as styles from './lost-item-info.css';
 
-const mockImages = ['안녕하세요', '두번째', '내가 잃어버린 초코파이'];
+const mockImages = [
+  'https://placehold.co/600x400',
+  'https://placehold.co/600x400',
+  'https://placehold.co/600x400',
+];
 
 const InfoMock = {
   '1': {
     title: '100만원',
+    timevalue: '9/23 15:00',
+    locationvalue: '3번째 소나무 5번째 뿌리',
+  },
+  '2': {
+    title: '전공책',
     timevalue: '9/23 15:00',
     locationvalue: '3번째 소나무 5번째 뿌리',
   },
@@ -56,6 +65,7 @@ const LostItemsInfo = () => {
         }
         onRightClick={isAdmin ? handleTrashcanClick : undefined}
       />
+
       <div className={styles.container}>
         <Carousel type="details">
           {mockImages.map((imageUrl, index) => (
@@ -66,6 +76,7 @@ const LostItemsInfo = () => {
             />
           ))}
         </Carousel>
+
         <DetailInfo
           title={mockData.title}
           time="습득시간"
@@ -74,6 +85,7 @@ const LostItemsInfo = () => {
           locationvalue={mockData.locationvalue}
         />
       </div>
+
       {isModalOpen && (
         <Modal.Container open={isModalOpen}>
           <Modal.Content>
