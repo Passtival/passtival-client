@@ -12,12 +12,10 @@ import * as styles from './show-detail.css';
 const ShowDetail = () => {
   const { performanceId } = useParams<{ performanceId: string }>();
 
-  const queryOptions = PERFORMANCE_DETAIL_QUERY_OPTIONS.PERFORMANCE_DETAIL(
-    performanceId as string,
-  );
-
   const { data } = useQuery({
-    ...queryOptions,
+    ...PERFORMANCE_DETAIL_QUERY_OPTIONS.PERFORMANCE_DETAIL(
+      performanceId as string,
+    ),
     enabled: !!performanceId,
   });
 
@@ -29,7 +27,7 @@ const ShowDetail = () => {
       />
       <div className={styles.thumbnailWrapper}>
         <Thumbnail
-          src=""
+          src={data?.imagePath}
           alt={data?.imagePath}
           type="square_lg"
         />
@@ -46,7 +44,7 @@ const ShowDetail = () => {
       />
       <DetailDescription
         title="공연 소개"
-        description={''}
+        songsData={data?.songs}
       />
     </>
   );
