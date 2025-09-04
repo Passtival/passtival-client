@@ -80,7 +80,7 @@ const LostItemReport = () => {
     },
   ];
   return (
-    <div>
+    <>
       <TopNavigation
         title={LOST_ITEM_REPORT_TEXT.LOST_ITEM_CREATE}
         onRightClick={() => navigate(-1)}
@@ -128,7 +128,7 @@ const LostItemReport = () => {
           {LOST_ITEM_REPORT_TEXT.CREATE}
         </Button>
       </div>
-    </div>
+    </>
   );
 };
 export default LostItemReport;
