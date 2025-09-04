@@ -96,15 +96,17 @@ const Home = () => {
           subTitle={HOME_TEXT.FESTIVAL_PERIOD}
         />
       </div>
-      <Carousel type="details">
-        {mokImages.map((imageUrl, index) => (
-          <img
-            key={index}
-            src={imageUrl}
-            alt={`분실물 이미지 ${index + 1}`}
-          />
-        ))}
-      </Carousel>
+      <div className={styles.carouselWrapper}>
+        <Carousel type="details">
+          {mokImages.map((imageUrl, index) => (
+            <img
+              key={index}
+              src={imageUrl}
+              alt={`분실물 이미지 ${index + 1}`}
+            />
+          ))}
+        </Carousel>
+      </div>
       <div className={styles.festivalScheduleText}>
         <Title
           mainTitle={HOME_TEXT.TODAY_FESTIVAL_SCHEDULE}

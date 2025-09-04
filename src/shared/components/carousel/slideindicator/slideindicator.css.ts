@@ -10,7 +10,7 @@ export const container = style({
   bottom: '1.4rem',
   right: '1.4rem',
   height: '2.4rem',
-  width: '4.6rem',
+  width: '46px',
   gap: '0.3rem',
 
   backgroundColor: themeVars.color.gray_500_40,
