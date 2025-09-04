@@ -25,14 +25,14 @@ export const useApplication = (currentDay: string) => {
       const resultsTime = new Date();
 
       if (currentDay === '1일차 매칭') {
-        deadline.setFullYear(2025, 8, 3);
-        resultsTime.setFullYear(2025, 8, 3);
+        deadline.setFullYear(2025, 8, 23);
+        resultsTime.setFullYear(2025, 8, 23);
       } else if (currentDay === '2일차 매칭') {
-        deadline.setFullYear(2025, 8, 3);
-        resultsTime.setFullYear(2025, 8, 3);
+        deadline.setFullYear(2025, 8, 24);
+        resultsTime.setFullYear(2025, 8, 24);
       } else if (currentDay === '3일차 매칭') {
-        deadline.setFullYear(2025, 8, 1);
-        resultsTime.setFullYear(2025, 8, 1);
+        deadline.setFullYear(2025, 8, 25);
+        resultsTime.setFullYear(2025, 8, 25);
       }
 
       deadline.setHours(17, 30, 0, 0);
