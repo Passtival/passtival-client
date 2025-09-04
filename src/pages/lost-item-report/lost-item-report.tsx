@@ -24,19 +24,36 @@ const LOST_ITEM_REPORT_TEXT = {
   CREATE: '등록하기',
 };
 
+export interface LostItemForm {
+  image?: string;
+  title: string;
+  foundLocation: string;
+  date: string | null;
+  hour: string | null;
+  minute: string | null;
+}
+
 const LostItemReport = () => {
   const navigate = useNavigate();
-  const [image, setImage] = useState<string>();
-  const [title, setTitle] = useState('');
-  const [foundLocation, setFoundLocation] = useState('');
-  const [date, setDate] = useState<string | null>(null);
-  const [hour, setHour] = useState<string | null>(null);
-  const [minute, setMinute] = useState<string | null>(null);
+  const [reportForm, setReportForm] = useState<LostItemForm>({
+    image: undefined,
+    title: '',
+    foundLocation: '',
+    date: null,
+    hour: null,
+    minute: null,
+  });
 
   const isFormReady = useMemo(
     () =>
-      Boolean(title.trim() && foundLocation.trim() && date && hour && minute),
-    [title, foundLocation, date, hour, minute],
+      Boolean(
+        reportForm.title.trim() &&
+          reportForm.foundLocation.trim() &&
+          reportForm.date &&
+          reportForm.hour &&
+          reportForm.minute,
+      ),
+    [reportForm],
   );
 
   const handleSubmit = () => {
@@ -47,33 +64,39 @@ const LostItemReport = () => {
   const handleChange = (file?: File) => {
     if (file) {
       const url = URL.createObjectURL(file);
-      setImage(url);
+      setReportForm((prevForm) => ({ ...prevForm, image: url }));
     } else {
-      if (image) URL.revokeObjectURL(image);
-      setImage(undefined);
+      if (reportForm.image) {
+        URL.revokeObjectURL(reportForm.image);
+      }
+      setReportForm((prevForm) => ({ ...prevForm, image: undefined }));
     }
   };
+
   const DROPDOWNS = [
     {
       key: 'date',
-      selected: date,
-      onSelect: setDate,
+      selected: reportForm.date,
+      onSelect: (value: string | null) =>
+        setReportForm((prev) => ({ ...prev, date: value })),
       options: DROP_DOWN_OPTIONS.DATE,
       placeholder: DROP_DOWN_PLACEHOLDER.DATE,
       icon: <IcSvgCalendar />,
     },
     {
       key: 'hour',
-      selected: hour,
-      onSelect: setHour,
+      selected: reportForm.hour,
+      onSelect: (value: string | null) =>
+        setReportForm((prev) => ({ ...prev, hour: value })),
       options: DROP_DOWN_OPTIONS.TIME_HOUR,
       placeholder: DROP_DOWN_PLACEHOLDER.TIME,
       icon: <IcSvgClock />,
     },
     {
       key: 'minute',
-      selected: minute,
-      onSelect: setMinute,
+      selected: reportForm.minute,
+      onSelect: (value: string | null) =>
+        setReportForm((prev) => ({ ...prev, minute: value })),
       options: DROP_DOWN_OPTIONS.TIME_MINUTE,
       placeholder: DROP_DOWN_PLACEHOLDER.TIME,
       icon: <IcSvgClock />,
@@ -86,7 +109,7 @@ const LostItemReport = () => {
         onRightClick={() => navigate(-1)}
       />
       <AddImage
-        src={image}
+        src={reportForm.image}
         onFileChange={handleChange}
       />
       <div className={styles.foundDateTimeContainer}>
@@ -107,16 +130,23 @@ const LostItemReport = () => {
       <div className={styles.textInputContainer}>
         <p className={styles.text}>{LOST_ITEM_REPORT_TEXT.TITLE}</p>
         <Input
-          value={title}
-          onChange={(e) => setTitle(e.target.value)}
+          value={reportForm.title}
+          onChange={(e) =>
+            setReportForm((prev) => ({ ...prev, title: e.target.value }))
+          }
           placeholder={LOST_ITEM_REPORT_TEXT.TITLE_PLACEHOLDER}
         />
       </div>
       <div className={styles.textInputContainer}>
         <p className={styles.text}>{LOST_ITEM_REPORT_TEXT.FOUND_LOCATION}</p>
         <Input
-          value={foundLocation}
-          onChange={(e) => setFoundLocation(e.target.value)}
+          value={reportForm.foundLocation}
+          onChange={(e) =>
+            setReportForm((prev) => ({
+              ...prev,
+              foundLocation: e.target.value,
+            }))
+          }
           placeholder={LOST_ITEM_REPORT_TEXT.FOUND_LOCATION_PLACEHOLDER}
         />
       </div>
