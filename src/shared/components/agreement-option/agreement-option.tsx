@@ -1,6 +1,6 @@
 import { NavLink } from 'react-router-dom';
 
-import IcSvgArrow from '@shared/icons/ic_arrow';
+import { IcSvgArrowRight } from '@shared/icons';
 import IcSvgCheck from '@shared/icons/ic_check';
 import { themeVars } from '@shared/styles';
 
@@ -40,10 +40,9 @@ const AgreementOption = ({
       </div>
 
       <NavLink to={navigateTo}>
-        <IcSvgArrow
-          className={style.arrowIcon}
+        <IcSvgArrowRight
           cursor="pointer"
-          width="1.3rem"
+          width="1.25rem"
           height="2.5rem"
         />
       </NavLink>

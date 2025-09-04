@@ -24,10 +24,6 @@ globalStyle('html, body', {
   fontFamily: `'Pretendard Variable', sans-serif`,
 });
 
-globalStyle('::-webkit-scrollbar', {
-  display: 'none',
-});
-
 export const rootStyle = style({
   display: 'flex',
   flexDirection: 'column',
