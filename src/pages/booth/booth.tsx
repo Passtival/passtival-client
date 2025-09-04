@@ -88,15 +88,17 @@ const Booth = () => {
       <div className={styles.noticeText}>
         <Title mainTitle={VENUE_GUIDE} />
       </div>
-      <Carousel type="details">
-        {mokImages.map((imageUrl, index) => (
-          <img
-            key={index}
-            src={imageUrl}
-            alt={`분실물 이미지 ${index + 1}`}
-          />
-        ))}
-      </Carousel>
+      <div className={styles.carouselWrapper}>
+        <Carousel type="details">
+          {mokImages.map((imageUrl, index) => (
+            <img
+              key={index}
+              src={imageUrl}
+              alt={`분실물 이미지 ${index + 1}`}
+            />
+          ))}
+        </Carousel>
+      </div>
       <div className={styles.boothinfoText}>
         <Title
           mainTitle={BOOTH_INFO}

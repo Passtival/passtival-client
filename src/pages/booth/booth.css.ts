@@ -19,3 +19,7 @@ export const boothinfoText = style({
   height: '8rem',
   padding: '2rem 2.4rem 1.8rem 2.4rem',
 });
+
+export const carouselWrapper = style({
+  padding: '0 2.4rem',
+});
