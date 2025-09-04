@@ -7,7 +7,7 @@ export const chipVariants = recipe({
     display: 'inline-flex',
     height: '3.4rem',
     alignItems: 'center',
-    ...themeVars.fontStyles.button2_sb_14,
+    ...themeVars.fontStyles.button_r_14,
     cursor: 'pointer',
     borderRadius: '8px',
   },

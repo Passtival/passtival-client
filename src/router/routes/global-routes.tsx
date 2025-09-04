@@ -12,6 +12,7 @@ import {
   LostItemIngoPage,
   BoothDetailPage,
   LostItemReportPage,
+  InfoShareConsentPage,
 } from '../lazy';
 import { routePath } from '../path';
 
@@ -31,6 +32,7 @@ export const publicRoutesOthers = [
   { path: routePath.LOST_ITEM_INFO, Component: LostItemIngoPage },
   { path: routePath.BOOTH_DETAIL, Component: BoothDetailPage },
   { path: routePath.LOST_ITEM_REPORT, Component: LostItemReportPage },
+  { path: routePath.INFO_SHARE_CONSENT, Component: InfoShareConsentPage },
 ];
 
 export const protectedRoutes = [

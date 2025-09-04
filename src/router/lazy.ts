@@ -27,3 +27,7 @@ export const LoginFallbackPage = lazy(
 export const AdminLoginPage = lazy(
   () => import('@pages/admin-login/admin-login'),
 );
+
+export const InfoShareConsentPage = lazy(
+  () => import('@pages/info-share/info-share'),
+);
