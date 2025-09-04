@@ -45,10 +45,6 @@ export const checkboxLeft = style({
   cursor: 'pointer',
 });
 
-export const arrowIcon = style({
-  transform: 'rotate(180deg)',
-});
-
 export const labelText = style({
   ...themeVars.fontStyles.title_b_16,
   color: themeVars.color.gray_900,
