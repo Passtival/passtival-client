@@ -19,13 +19,15 @@ export const router = createBrowserRouter([
     children: [
       {
         Component: MainLayout,
-        children: publicRoutesWithMain,
+        children: [
+          ...publicRoutesWithMain,
+          {
+            Component: ProtectedRoute,
+            children: protectedRoutes,
+          },
+        ],
       },
       ...publicRoutesOthers,
-      {
-        Component: ProtectedRoute,
-        children: protectedRoutes,
-      },
     ],
   },
 ]);
