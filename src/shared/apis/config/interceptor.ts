@@ -53,7 +53,7 @@ const redirectToLogin = (): void => {
  * @returns 응답 객체의 data 필드
  */
 export const handleResponse = (response: AxiosResponse) => {
-  return response.data;
+  return response;
 };
 
 /**
