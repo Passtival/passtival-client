@@ -4,7 +4,11 @@ import { IcSvgCaution } from '@shared/icons';
 
 import * as styles from './complete.css';
 
-const Closed = () => {
+interface CompleteProps {
+  currentDay: string;
+}
+
+const Closed = ({ currentDay }: CompleteProps) => {
   return (
     <>
       <div className={styles.header}>
@@ -16,7 +20,9 @@ const Closed = () => {
 
       <div className={styles.container}>
         <div className={styles.messageContainer}>
-          <p className={styles.message}>1일차 매칭 신청이 마감되었습니다.</p>
+          <p className={styles.message}>
+            {currentDay} 매칭 신청이 마감되었습니다.
+          </p>
           <p className={styles.time}>[신청 가능 시간: 00:00 ~ 17:30]</p>
         </div>
 
