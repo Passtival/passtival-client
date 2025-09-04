@@ -1,8 +1,6 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-import { routePath } from '@router/path';
-
 import Carousel from '@shared/components/carousel/carousel';
 import Chip from '@shared/components/chip/chip';
 import TimeTable from '@shared/components/timeTable/timeTable';
