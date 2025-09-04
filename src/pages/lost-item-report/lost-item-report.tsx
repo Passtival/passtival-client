@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useMemo, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import AddImage from '@shared/components/add-image/add-image';
@@ -32,6 +32,17 @@ const LostItemReport = () => {
   const [date, setDate] = useState<string | null>(null);
   const [hour, setHour] = useState<string | null>(null);
   const [minute, setMinute] = useState<string | null>(null);
+
+  const isFormReady = useMemo(
+    () =>
+      Boolean(title.trim() && foundLocation.trim() && date && hour && minute),
+    [title, foundLocation, date, hour, minute],
+  );
+
+  const handleSubmit = () => {
+    if (!isFormReady) return;
+    navigate(-1);
+  };
 
   const handleChange = (file?: File) => {
     if (file) {
@@ -110,7 +121,12 @@ const LostItemReport = () => {
         />
       </div>
       <div className={styles.button}>
-        <Button>{LOST_ITEM_REPORT_TEXT.CREATE}</Button>
+        <Button
+          disabled={!isFormReady}
+          onClick={handleSubmit}
+        >
+          {LOST_ITEM_REPORT_TEXT.CREATE}
+        </Button>
       </div>
     </div>
   );
