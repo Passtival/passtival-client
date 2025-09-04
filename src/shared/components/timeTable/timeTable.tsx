@@ -13,7 +13,7 @@ interface TimeTableProps {
   assignee?: string;
   description: string;
   alt?: string;
-  onClick?: () => void;
+  onClick: () => void;
   imgSrc: string;
   imgAlt?: string;
 }

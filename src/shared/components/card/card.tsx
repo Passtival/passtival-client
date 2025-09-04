@@ -8,7 +8,7 @@ interface CardProps {
   description: string;
   type: 'sm' | 'lg';
   alt?: string;
-  onClick?: () => void;
+  onClick: () => void;
   imgSrc: string;
   imgAlt?: string;
 }
