@@ -15,14 +15,14 @@ const lostMock = [
     id: 1,
     title: '100만원',
     description: '길가에서 주운 100만원',
-    src: '',
+    src: 'https://placehold.co/600x400',
     alt: '',
   },
   {
     id: 2,
     title: '전공책',
     description: '아리관 6층 3번째 계단',
-    src: '',
+    src: 'https://placehold.co/600x400',
     alt: '',
   },
 ];
