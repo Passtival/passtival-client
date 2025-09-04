@@ -5,7 +5,7 @@ export const color = {
   bg_white_10: 'rgba(255, 255, 255, 0.10)',
   bg_white_70: 'rgba(255, 255, 255, 0.70)',
 
-  main_blue: '#1876FA',
+  main_yellow: '#FBB019',
   sub_blue: '#EFF5FF',
   sub_blue_40: 'rgba(239, 245, 255, 0.40)',
 
