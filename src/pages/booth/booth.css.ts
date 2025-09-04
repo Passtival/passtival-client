@@ -1,19 +1,15 @@
 import { style } from '@vanilla-extract/css';
 
-export const container = style({
-  display: 'flex',
-  flexDirection: 'column',
-});
-
 export const chipContainer = style({
   display: 'flex',
   gap: '0.9rem',
   height: '6rem',
   justifyContent: 'center',
+  padding: '0 1rem 0 2.4rem',
 });
 
 export const noticeText = style({
-  width: '37.4rem',
+  width: '100%',
   height: '5.5rem',
   padding: '1.3rem 2.4rem 1rem 2.4rem',
 });

@@ -52,8 +52,7 @@ const Booth = () => {
   const [selectedType, setSelectedType] = useState(BOOTH_TYPES[0]);
 
   return (
-    <div className={styles.container}>
-      <div></div>
+    <>
       <div className={styles.noticeText}>
         <Title mainTitle={VENUE_GUIDE} />
       </div>
@@ -79,9 +78,11 @@ const Booth = () => {
             label={type}
             selected={selectedType === type}
             onChange={() => setSelectedType(type)}
+            size="lg"
           />
         ))}
       </div>
+
       {schedules
         .filter((schedule) =>
           selectedType === '전체' ? true : schedule.boothType === selectedType,
@@ -92,7 +93,7 @@ const Booth = () => {
             {...schedule}
           />
         ))}
-    </div>
+    </>
   );
 };
 export default Booth;
