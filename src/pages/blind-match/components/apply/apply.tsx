@@ -1,7 +1,7 @@
 import { useApplication } from '@pages/blind-match/hooks/use-application.ts';
 
 import Closed from '../apply-after/closed.tsx';
-import Complete from '../complete/complete.tsx';
+import Complete from '../apply-after/complete.tsx';
 import EntryForm from '../entry/entry.tsx';
 
 interface EntryPageProps {
