@@ -21,5 +21,5 @@ export const noticeText = style({
 export const festivalScheduleText = style({
   width: '100%',
   height: '8rem',
-  padding: '2rem 23.2rem 1.8rem 2.4rem',
+  padding: '2rem 2.4rem 1.8rem 2.4rem',
 });
