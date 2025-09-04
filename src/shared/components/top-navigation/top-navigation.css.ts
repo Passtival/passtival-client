@@ -9,8 +9,7 @@ export const topnavigationVariants = style({
   width: '100%',
   height: '5.6rem',
   color: themeVars.color.bg_white,
-  backgroundColor: themeVars.color.bg_white,
-  borderBottom: `1px solid ${themeVars.color.gray_400}`,
+  backgroundColor: themeVars.color.gray_900,
 });
 
 export const leftButton = style({

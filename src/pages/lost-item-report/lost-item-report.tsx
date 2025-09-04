@@ -11,6 +11,7 @@ import DropDown from '@shared/components/drop-down/drop-down';
 import Input from '@shared/components/input/input';
 import TopNavigation from '@shared/components/top-navigation/top-navigation';
 import { IcSvgCalendar, IcSvgClock } from '@shared/icons';
+import { themeVars } from '@shared/styles';
 
 import * as styles from './lost-item-report.css';
 
@@ -81,7 +82,7 @@ const LostItemReport = () => {
         setReportForm((prev) => ({ ...prev, date: value })),
       options: DROP_DOWN_OPTIONS.DATE,
       placeholder: DROP_DOWN_PLACEHOLDER.DATE,
-      icon: <IcSvgCalendar />,
+      icon: <IcSvgCalendar color={themeVars.color.bg_white} />,
     },
     {
       key: 'hour',
@@ -90,7 +91,7 @@ const LostItemReport = () => {
         setReportForm((prev) => ({ ...prev, hour: value })),
       options: DROP_DOWN_OPTIONS.TIME_HOUR,
       placeholder: DROP_DOWN_PLACEHOLDER.TIME,
-      icon: <IcSvgClock />,
+      icon: <IcSvgClock color={themeVars.color.bg_white} />,
     },
     {
       key: 'minute',
@@ -99,7 +100,7 @@ const LostItemReport = () => {
         setReportForm((prev) => ({ ...prev, minute: value })),
       options: DROP_DOWN_OPTIONS.TIME_MINUTE,
       placeholder: DROP_DOWN_PLACEHOLDER.TIME,
-      icon: <IcSvgClock />,
+      icon: <IcSvgClock color={themeVars.color.bg_white} />,
     },
   ];
   return (

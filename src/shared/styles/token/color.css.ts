@@ -12,6 +12,7 @@ export const color = {
   gray_200: '#F8F8F8',
   gray_400: '#C8C8C8',
   gray_500_40: 'rgba(99, 99, 99, 0.40)',
+  gray_500: 'rgb(99,99,99)',
   gray_600: '#808080',
   gray_900: '#242424',
 

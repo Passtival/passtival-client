@@ -32,7 +32,6 @@ export const chipVariants = recipe({
       lg: {
         width: '16.1rem',
         justifyContent: 'center',
-        backgroundColor: themeVars.color.bg_white_70,
       },
     },
   },

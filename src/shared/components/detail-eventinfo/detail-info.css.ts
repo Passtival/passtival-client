@@ -29,7 +29,7 @@ export const label = style({
 });
 export const value = style({
   ...themeVars.fontStyles.body1_r_15,
-  color: themeVars.color.gray_600,
+  color: themeVars.color.gray_400,
 });
 
 export const message = style({
