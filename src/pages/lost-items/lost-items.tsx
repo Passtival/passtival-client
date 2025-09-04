@@ -27,6 +27,10 @@ const LostItems = () => {
     navigate(`${routePath.LOST_ITEMS}/${id}`);
   };
 
+  const handleReportClick = () => {
+    navigate(`/lost-item-report`);
+  };
+
   return (
     <>
       <div className={styles.headerContainer}>
@@ -41,7 +45,7 @@ const LostItems = () => {
         {isAdmin && (
           <Button
             size="sm"
-            onClick={() => {}}
+            onClick={handleReportClick}
           >
             {LOST_ITEMS.LOST_ITEM_REGISTER_BUTTON_LABEL}
           </Button>

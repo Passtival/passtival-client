@@ -9,6 +9,7 @@ export const routePath = {
   LOGIN: '/login',
   LOST_ITEMS: '/lost-items',
   LOST_ITEM_INFO: '/lost-items/:id',
+  LOST_ITEM_REPORT: '/lost-item-report',
   TICKET: '/ticket',
   ADMIN_LOGIN: '/admin-login',
   INFO_SHARE_CONSENT: '/info-share-consent',

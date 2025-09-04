@@ -3,6 +3,7 @@
 
 export { default as IcSvgArrow } from './ic_arrow';
 export { default as IcSvgArrowDown } from './ic_arrowdown';
+export { default as IcSvgArrowRight } from './ic_arrowright';
 export { default as IcSvgBooth } from './ic_booth';
 export { default as IcSvgCalendar } from './ic_calendar';
 export { default as IcSvgCamera } from './ic_camera';

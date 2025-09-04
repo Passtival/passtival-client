@@ -6,7 +6,7 @@ export const carouselType = styleVariants({
   details: {
     position: 'relative',
 
-    width: '32.7rem',
+    width: '100%',
     height: '21.4rem',
     margin: '0 auto',
     border: `1.5px solid ${themeVars.color.gray_500_40}`,

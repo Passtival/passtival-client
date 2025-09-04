@@ -13,7 +13,7 @@ interface TimeTableProps {
   assignee?: string;
   description: string;
   alt?: string;
-  onClick?: () => void;
+  onClick: () => void;
   imgSrc: string;
   imgAlt?: string;
 }
@@ -37,7 +37,7 @@ const TimeTable = ({
           color={themeVars.color.main_blue}
         />
         <p className={styles.text}>
-          {OPENING_HOURS}: {getOpeningHours(startIso)} ~{' '}
+          {OPENING_HOURS} {getOpeningHours(startIso)} ~{' '}
           {getOpeningHours(endIso)}
         </p>
       </div>
