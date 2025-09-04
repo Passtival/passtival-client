@@ -21,7 +21,7 @@ export const messageContainer = style({
 
 export const message = style({
   ...themeVars.fontStyles.title_b_16,
-  color: themeVars.color.main_blue,
+  color: themeVars.color.main_yellow,
 });
 export const time = style({
   ...themeVars.fontStyles.body1_r_15,

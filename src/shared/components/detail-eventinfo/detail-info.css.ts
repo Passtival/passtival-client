@@ -19,7 +19,7 @@ export const line = style({
 
 export const title = style({
   ...themeVars.fontStyles.title_b_18,
-  color: themeVars.color.main_blue,
+  color: themeVars.color.main_yellow,
   padding: '0 0 0.8rem 0',
 });
 
@@ -34,6 +34,6 @@ export const value = style({
 
 export const message = style({
   ...themeVars.fontStyles.caption2_m_12,
-  color: themeVars.color.main_blue,
+  color: themeVars.color.main_yellow,
   padding: '0.8rem 0 0 0',
 });

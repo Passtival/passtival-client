@@ -11,7 +11,7 @@ export const container = style({
   gap: '0.5rem',
 });
 export const title = style({
-  color: themeVars.color.main_blue,
+  color: themeVars.color.main_yellow,
   ...themeVars.fontStyles.title_b_18,
 });
 export const description = style({

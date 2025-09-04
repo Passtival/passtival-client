@@ -21,8 +21,8 @@ export const chipVariants = recipe({
       },
       true: {
         backgroundColor: themeVars.color.sub_blue,
-        color: themeVars.color.main_blue,
-        border: `1px solid ${themeVars.color.main_blue}`,
+        color: themeVars.color.main_yellow,
+        border: `1px solid ${themeVars.color.main_yellow}`,
       },
     },
     size: {

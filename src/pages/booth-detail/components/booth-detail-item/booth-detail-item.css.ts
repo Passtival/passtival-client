@@ -30,7 +30,7 @@ export const boothName = style({
 export const boothPrice = style({
   width: '100%',
   ...themeVars.fontStyles.title_b_16,
-  color: themeVars.color.main_blue,
+  color: themeVars.color.main_yellow,
 });
 
 export const boothInfo = style({

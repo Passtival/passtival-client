@@ -17,7 +17,7 @@ export const checkbox = recipe({
     display: 'flex',
     width: '2rem',
     height: '2rem',
-    border: `1px solid ${themeVars.color.main_blue}`,
+    border: `1px solid ${themeVars.color.main_yellow}`,
     borderRadius: '4px',
     backgroundColor: themeVars.color.bg_white,
     position: 'relative',
@@ -29,7 +29,7 @@ export const checkbox = recipe({
     checked: {
       false: {},
       true: {
-        backgroundColor: themeVars.color.main_blue,
+        backgroundColor: themeVars.color.main_yellow,
       },
     },
   },

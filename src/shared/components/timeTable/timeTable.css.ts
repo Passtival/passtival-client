@@ -27,11 +27,11 @@ export const bottom = style({
   alignItems: 'center',
   width: '100%',
   height: '14.5rem',
-  borderLeft: `1px solid ${themeVars.color.main_blue}`,
+  borderLeft: `1px solid ${themeVars.color.main_yellow}`,
 });
 
 export const text = style({
-  color: themeVars.color.main_blue,
+  color: themeVars.color.main_yellow,
   ...themeVars.fontStyles.caption2_m_12,
   height: '100%',
 });

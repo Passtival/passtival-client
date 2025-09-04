@@ -11,7 +11,7 @@ export const title = style({
   justifyContent: 'center',
   padding: '11rem 0 1.3rem 0',
   ...themeVars.fontStyles.title_b_18,
-  color: themeVars.color.main_blue,
+  color: themeVars.color.main_yellow,
 });
 
 export const message = style({

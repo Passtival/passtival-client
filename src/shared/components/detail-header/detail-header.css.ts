@@ -13,5 +13,5 @@ export const subTitle = style({
 });
 export const title = style({
   ...themeVars.fontStyles.head_eb_20,
-  color: themeVars.color.main_blue,
+  color: themeVars.color.main_yellow,
 });

@@ -76,7 +76,7 @@ export const assignee = style({
   display: '-webkit-box',
 
   ...themeVars.fontStyles.title_b_14,
-  color: themeVars.color.main_blue,
+  color: themeVars.color.main_yellow,
   margin: '0 1.1rem 0.5rem 1.5rem',
 
   overflow: 'hidden',

@@ -15,7 +15,7 @@ export const buttonVariants = recipe({
   variants: {
     color: {
       blue: {
-        backgroundColor: themeVars.color.main_blue,
+        backgroundColor: themeVars.color.main_yellow,
         color: themeVars.color.bg_white,
         selectors: {
           '&:disabled': {
