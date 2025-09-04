@@ -3,13 +3,13 @@ import Thumbnail from '@shared/components/Thumbnail/Thumbnail';
 import * as styles from './card.css';
 
 interface CardProps {
-  title: string;
+  title?: string;
   assignee?: string;
-  description: string;
+  description?: string;
   type: 'sm' | 'lg';
   alt?: string;
-  onClick: () => void;
-  imgSrc: string;
+  onClick?: () => void;
+  imgSrc?: string;
   imgAlt?: string;
 }
 
