@@ -396,7 +396,7 @@ export interface paths {
     patch?: never;
     trace?: never;
   };
-  '/api/festival/performance/{performanceTitle}': {
+  '/api/festival/performances/{performanceId}': {
     parameters: {
       query?: never;
       header?: never;
