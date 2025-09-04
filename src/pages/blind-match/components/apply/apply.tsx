@@ -11,7 +11,7 @@ interface EntryPageProps {
 }
 
 const ApplyPage = ({ currentDay }: EntryPageProps) => {
-  const { viewState, handleApplicationComplete, hasApplied } =
+  const { viewState, handleApplicationComplete, hasApplied, isSuccess } =
     useApplication(currentDay);
 
   switch (viewState) {
@@ -28,9 +28,13 @@ const ApplyPage = ({ currentDay }: EntryPageProps) => {
       );
     case 'results':
       if (hasApplied) {
-        return <Success currentDay={currentDay} />;
+        if (isSuccess) {
+          return <Success currentDay={currentDay} />;
+        } else {
+          return <Fail currentDay={currentDay} />;
+        }
       } else {
-        return <Fail currentDay={currentDay} />;
+        return <Closed currentDay={currentDay} />;
       }
     default:
       return null;

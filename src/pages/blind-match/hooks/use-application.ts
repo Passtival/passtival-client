@@ -5,12 +5,18 @@ type ViewState = 'entry' | 'complete' | 'closed' | 'results';
 export const useApplication = (currentDay: string) => {
   const [viewState, setViewState] = useState<ViewState>('entry');
   const [hasApplied, setHasApplied] = useState(false);
+  const [isSuccess, setIsSuccess] = useState(false);
 
   useEffect(() => {
     if (currentDay === '1일차 매칭') {
       setHasApplied(true);
+      setIsSuccess(false);
+    } else if (currentDay === '2일차 매칭') {
+      setHasApplied(true);
+      setIsSuccess(true);
     } else {
       setHasApplied(false);
+      setIsSuccess(false);
     }
 
     const checkStatus = () => {
@@ -22,8 +28,8 @@ export const useApplication = (currentDay: string) => {
         deadline.setFullYear(2025, 8, 3);
         resultsTime.setFullYear(2025, 8, 3);
       } else if (currentDay === '2일차 매칭') {
-        deadline.setFullYear(2025, 8, 4);
-        resultsTime.setFullYear(2025, 8, 4);
+        deadline.setFullYear(2025, 8, 3);
+        resultsTime.setFullYear(2025, 8, 3);
       } else if (currentDay === '3일차 매칭') {
         deadline.setFullYear(2025, 8, 1);
         resultsTime.setFullYear(2025, 8, 1);
@@ -47,7 +53,8 @@ export const useApplication = (currentDay: string) => {
   const handleApplicationComplete = () => {
     setViewState('complete');
     setHasApplied(true);
+    setIsSuccess(false);
   };
 
-  return { viewState, handleApplicationComplete, hasApplied };
+  return { viewState, handleApplicationComplete, hasApplied, isSuccess };
 };
