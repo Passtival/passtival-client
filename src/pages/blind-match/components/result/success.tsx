@@ -9,7 +9,11 @@ const RESULT_TEXT = {
   TITLE: '매칭 결과가 나왔습니다!',
 };
 
-const Success = () => {
+interface SuccessProps {
+  currentDay: string;
+}
+
+const Success = ({ currentDay }: SuccessProps) => {
   return (
     <>
       <div className={styles.header}>
@@ -18,7 +22,9 @@ const Success = () => {
           subTitle={RESULT_TEXT.SUBTITLE}
         />
       </div>
-      <p className={styles.title}>1일차 {RESULT_TEXT.TITLE}</p>
+      <p className={styles.title}>
+        {currentDay} {RESULT_TEXT.TITLE}
+      </p>
       <UserInfo
         title="나의 정보"
         instaId="안녕하신지요"

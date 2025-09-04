@@ -3,13 +3,16 @@ import { useApplication } from '@pages/blind-match/hooks/use-application.ts';
 import Closed from '../closed/closed.tsx';
 import Complete from '../complete/complete.tsx';
 import EntryForm from '../entry/entry.tsx';
+import Fail from '../result/fail.tsx';
+import Success from '../result/success.tsx';
 
 interface EntryPageProps {
   currentDay: string;
 }
 
 const ApplyPage = ({ currentDay }: EntryPageProps) => {
-  const { viewState, handleApplicationComplete } = useApplication(currentDay);
+  const { viewState, handleApplicationComplete, hasApplied } =
+    useApplication(currentDay);
 
   switch (viewState) {
     case 'complete':
@@ -23,6 +26,14 @@ const ApplyPage = ({ currentDay }: EntryPageProps) => {
           onApplicationComplete={handleApplicationComplete}
         />
       );
+    case 'results':
+      if (hasApplied) {
+        return <Success currentDay={currentDay} />;
+      } else {
+        return <Fail currentDay={currentDay} />;
+      }
+    default:
+      return null;
   }
 };
 
