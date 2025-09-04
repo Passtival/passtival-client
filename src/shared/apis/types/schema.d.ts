@@ -44,6 +44,35 @@ export interface paths {
     patch?: never;
     trace?: never;
   };
+  '/api/matching/me': {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    /**
+     * 내 프로필 조회
+     * @description 현재 로그인한 사용자의 프로필 정보를 조회합니다. **인증 토큰이 필요합니다.**
+     */
+    get: operations['getProfile'];
+    put?: never;
+    /**
+     * 내 프로필 생성
+     * @description 현재 로그인한 사용자의 프로필 정보를 생성합니다.
+     */
+    post: operations['createProfile'];
+    delete?: never;
+    options?: never;
+    head?: never;
+    /**
+     * 정보 저장 (추가 정보 입력)
+     * @description 소셜 로그인으로 가입된 사용자가 추가 정보(성별, 전화번호)를 입력 **인증 토큰이 필요합니다.**
+     *     성별 (필수): db에 성별이 없으면 실패전화번호 허용 형식: "010-1234-5678"인스타그램 Id 선택 사항
+     */
+    patch: operations['patchProfile'];
+    trace?: never;
+  };
   '/api/auth/refresh': {
     parameters: {
       query?: never;
@@ -130,31 +159,6 @@ export interface paths {
     options?: never;
     head?: never;
     patch?: never;
-    trace?: never;
-  };
-  '/api/matching/me': {
-    parameters: {
-      query?: never;
-      header?: never;
-      path?: never;
-      cookie?: never;
-    };
-    /**
-     * 내 프로필 조회
-     * @description 현재 로그인한 사용자의 프로필 정보를 조회합니다. **인증 토큰이 필요합니다.**
-     */
-    get: operations['getProfile'];
-    put?: never;
-    post?: never;
-    delete?: never;
-    options?: never;
-    head?: never;
-    /**
-     * 정보 저장 (추가 정보 입력)
-     * @description 소셜 로그인으로 가입된 사용자가 추가 정보(성별, 전화번호)를 입력 **인증 토큰이 필요합니다.**
-     *     성별 (필수): db에 성별이 없으면 실패전화번호 허용 형식: "010-1234-5678"인스타그램 Id 선택 사항
-     */
-    patch: operations['patchProfile'];
     trace?: never;
   };
   '/api/test/token/{memberId}': {
@@ -620,6 +624,7 @@ export interface paths {
       path?: never;
       cookie?: never;
     };
+    /** 관리자 인증키 조회 */
     get: operations['getAuthenticationKey'];
     put?: never;
     post?: never;
@@ -806,10 +811,10 @@ export interface components {
       parent?: unknown;
       id?: string;
       displayName?: string;
-      applicationName?: string;
       /** Format: int64 */
       startupDate?: number;
       autowireCapableBeanFactory?: components['schemas']['AutowireCapableBeanFactory'];
+      applicationName?: string;
       environment?: components['schemas']['Environment'];
       /** Format: int32 */
       beanDefinitionCount?: number;
@@ -916,8 +921,8 @@ export interface components {
       defaultProfiles?: string[];
     };
     FilterRegistration: {
-      servletNameMappings?: string[];
       urlPatternMappings?: string[];
+      servletNameMappings?: string[];
       name?: string;
       className?: string;
       initParameters?: {
@@ -997,20 +1002,18 @@ export interface components {
       | '511 NETWORK_AUTHENTICATION_REQUIRED';
     HttpStatusCode: {
       error?: boolean;
-      is4xxClientError?: boolean;
-      is5xxServerError?: boolean;
       is1xxInformational?: boolean;
       is2xxSuccessful?: boolean;
       is3xxRedirection?: boolean;
+      is4xxClientError?: boolean;
+      is5xxServerError?: boolean;
     };
     JspConfigDescriptor: {
-      taglibs?: components['schemas']['TaglibDescriptor'][];
       jspPropertyGroups?: components['schemas']['JspPropertyGroupDescriptor'][];
+      taglibs?: components['schemas']['TaglibDescriptor'][];
     };
     JspPropertyGroupDescriptor: {
       buffer?: string;
-      urlPatterns?: string[];
-      defaultContentType?: string;
       elIgnored?: string;
       errorOnELNotFound?: string;
       pageEncoding?: string;
@@ -1021,6 +1024,8 @@ export interface components {
       deferredSyntaxAllowedAsLiteral?: string;
       trimDirectiveWhitespaces?: string;
       errorOnUndeclaredNamespace?: string;
+      urlPatterns?: string[];
+      defaultContentType?: string;
     };
     RedirectView: {
       applicationContext?: components['schemas']['ApplicationContext'];
@@ -1078,20 +1083,14 @@ export interface components {
       /** Format: int32 */
       minorVersion?: number;
       attributeNames?: unknown;
-      contextPath?: string;
       initParameterNames?: unknown;
+      contextPath?: string;
       sessionTrackingModes?: ('COOKIE' | 'URL' | 'SSL')[];
       /** Format: int32 */
       sessionTimeout?: number;
       servletRegistrations?: {
         [key: string]: components['schemas']['ServletRegistration'];
       };
-      /** Format: int32 */
-      effectiveMajorVersion?: number;
-      /** Format: int32 */
-      effectiveMinorVersion?: number;
-      serverInfo?: string;
-      servletContextName?: string;
       filterRegistrations?: {
         [key: string]: components['schemas']['FilterRegistration'];
       };
@@ -1102,6 +1101,12 @@ export interface components {
       virtualServerName?: string;
       requestCharacterEncoding?: string;
       responseCharacterEncoding?: string;
+      /** Format: int32 */
+      effectiveMajorVersion?: number;
+      /** Format: int32 */
+      effectiveMinorVersion?: number;
+      serverInfo?: string;
+      servletContextName?: string;
     };
     ServletRegistration: {
       mappings?: string[];
@@ -1325,6 +1330,71 @@ export interface operations {
       };
     };
   };
+  getProfile: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description OK */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          '*/*': components['schemas']['BaseResponseMatchingApplicantResponse'];
+        };
+      };
+    };
+  };
+  createProfile: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description OK */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          '*/*': components['schemas']['BaseResponseVoid'];
+        };
+      };
+    };
+  };
+  patchProfile: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    /** @description 추가 입력 정보 */
+    requestBody: {
+      content: {
+        'application/json': components['schemas']['MatchingApplicantPatchRequest'];
+      };
+    };
+    responses: {
+      /** @description OK */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          '*/*': components['schemas']['BaseResponseVoid'];
+        };
+      };
+    };
+  };
   refreshToken: {
     parameters: {
       query?: never;
@@ -1437,51 +1507,6 @@ export interface operations {
     requestBody: {
       content: {
         'application/json': components['schemas']['FoundItemRequest'];
-      };
-    };
-    responses: {
-      /** @description OK */
-      200: {
-        headers: {
-          [name: string]: unknown;
-        };
-        content: {
-          '*/*': components['schemas']['BaseResponseVoid'];
-        };
-      };
-    };
-  };
-  getProfile: {
-    parameters: {
-      query?: never;
-      header?: never;
-      path?: never;
-      cookie?: never;
-    };
-    requestBody?: never;
-    responses: {
-      /** @description OK */
-      200: {
-        headers: {
-          [name: string]: unknown;
-        };
-        content: {
-          '*/*': components['schemas']['BaseResponseMatchingApplicantResponse'];
-        };
-      };
-    };
-  };
-  patchProfile: {
-    parameters: {
-      query?: never;
-      header?: never;
-      path?: never;
-      cookie?: never;
-    };
-    /** @description 추가 입력 정보 */
-    requestBody: {
-      content: {
-        'application/json': components['schemas']['MatchingApplicantPatchRequest'];
       };
     };
     responses: {
