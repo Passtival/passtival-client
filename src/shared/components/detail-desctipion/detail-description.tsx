@@ -1,8 +1,8 @@
 import * as styles from './detail-description.css';
 
 interface DescriptionProps {
-  title: string;
-  description: string;
+  title?: string;
+  description?: string;
 }
 
 const DetailDescription = ({ title, description }: DescriptionProps) => {

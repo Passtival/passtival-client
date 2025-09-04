@@ -2,10 +2,10 @@ import * as styles from './detail-info.css';
 
 interface EventInfoProps {
   title?: string;
-  time: string;
-  timevalue: string | number;
-  location: string;
-  locationvalue: string;
+  time?: string;
+  timevalue?: string | number;
+  location?: string;
+  locationvalue?: string;
   message?: string;
 }
 
