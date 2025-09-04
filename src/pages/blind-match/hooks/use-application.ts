@@ -14,10 +14,10 @@ export const useApplication = (currentDay: string) => {
         deadline.setFullYear(2025, 8, 1);
         deadline.setHours(17, 30, 0, 0);
       } else if (currentDay === '2일차 매칭') {
-        deadline.setFullYear(2025, 8, 2);
+        deadline.setFullYear(2025, 8, 4);
         deadline.setHours(17, 30, 0, 0);
       } else if (currentDay === '3일차 매칭') {
-        deadline.setFullYear(2025, 8, 3);
+        deadline.setFullYear(2025, 8, 5);
         deadline.setHours(17, 30, 0, 0);
       }
 
