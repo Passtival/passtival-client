@@ -30,7 +30,7 @@ const Ticket = () => {
 
   const [selectedLevel, setSelectedLevel] = useState(1);
   const isErrorState = modalType === 'error';
-  const [isLevel1Completed, setIsLevel1Completed] = useState(false);
+  const [completedLevel, setCompletedLevel] = useState(0);
   const [isFormValid, setIsFormValid] = useState(false);
 
   useEffect(() => {
@@ -58,9 +58,7 @@ const Ticket = () => {
 
   const handleConfirm = useCallback(() => {
     setModalType('success');
-    if (selectedLevel === 1) {
-      setIsLevel1Completed(true);
-    }
+    setCompletedLevel(selectedLevel);
   }, [selectedLevel]);
 
   const handleCloseModal = useCallback(() => {
@@ -71,11 +69,11 @@ const Ticket = () => {
         studentNum: '',
         key: '',
       });
-      if (isLevel1Completed) {
-        setSelectedLevel(2);
+      if (selectedLevel < 3) {
+        setSelectedLevel(selectedLevel + 1);
       }
     }
-  }, [modalType, isLevel1Completed]);
+  }, [modalType, selectedLevel]);
 
   return (
     <>
@@ -88,7 +86,7 @@ const Ticket = () => {
         <TicketChip
           selectedLevel={selectedLevel}
           setSelectedLevel={setSelectedLevel}
-          isLevel1Completed={isLevel1Completed}
+          completedLevel={completedLevel}
         />
         <InputSection
           name={form.name}
