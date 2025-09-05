@@ -17,7 +17,7 @@ const AdminLogin = () => {
   };
 
   return (
-    <div>
+    <>
       <p className={styles.title}>{TITLE.MAIN}</p>
 
       <div className={styles.loginContainer}>
@@ -43,7 +43,7 @@ const AdminLogin = () => {
           {NAVIGATE.TICKET}
         </Button>
       </div>
-    </div>
+    </>
   );
 };
 

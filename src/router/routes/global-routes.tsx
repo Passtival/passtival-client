@@ -13,6 +13,7 @@ import {
   BoothDetailPage,
   LostItemReportPage,
   InfoShareConsentPage,
+  TicketOnboardingPage,
   onBoardingPage,
   AdminMainPage,
   GenerateAuthKeyPage,
@@ -40,6 +41,7 @@ export const publicRoutesOthers = [
 export const protectedRoutes = [
   { path: routePath.BLIND_MATCH, Component: BlindMatchPage },
   { path: routePath.TICKET, Component: TicketPage },
+  { path: routePath.TICKET_ONBOARDING, Component: TicketOnboardingPage },
 ];
 
 export const protectedAdminRoutes = [

@@ -40,6 +40,10 @@ export const InfoShareConsentPage = lazy(
   () => import('@pages/info-share/info-share'),
 );
 
+export const TicketOnboardingPage = lazy(
+  () => import('@pages/ticket-onboarding/onboarding'),
+);
+
 export const onBoardingPage = lazy(
   () => import('@pages/onboarding/onboarding'),
 );

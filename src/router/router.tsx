@@ -14,6 +14,7 @@ import {
   onBoardingRoutes,
   protectedAdminRoutes,
 } from './routes/global-routes';
+import { TicketOnboardingPage } from '../router/lazy';
 
 export const router = createBrowserRouter([
   {
@@ -32,6 +33,10 @@ export const router = createBrowserRouter([
         ],
       },
       ...publicRoutesOthers,
+      {
+        path: '/ticket-onboarding',
+        Component: TicketOnboardingPage,
+      },
     ],
   },
   {
