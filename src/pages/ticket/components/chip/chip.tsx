@@ -2,7 +2,7 @@ import Chip from '@shared/components/chip/chip';
 
 import * as styles from './chip.css';
 
-const DAY = ['Lv. 1', 'Lv. 3', 'Lv. 3'];
+const DAY = ['Lv. 1', 'Lv. 2', 'Lv. 3'];
 
 interface TicketChipsProps {
   selectedLevel: number;

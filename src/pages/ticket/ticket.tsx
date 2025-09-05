@@ -1,4 +1,4 @@
-import { useState, useCallback } from 'react';
+import { useState, useCallback, useEffect } from 'react';
 
 import InputSection from '@pages/ticket/components/inpur-section/input-section';
 
@@ -30,6 +30,16 @@ const Ticket = () => {
 
   const [selectedLevel, setSelectedLevel] = useState(1);
   const isErrorState = modalType === 'error';
+  const [isLevel1Completed, setIsLevel1Completed] = useState(false);
+  const [isFormValid, setIsFormValid] = useState(false);
+
+  useEffect(() => {
+    const isValid =
+      form.name.trim() !== '' &&
+      form.studentNum.trim() !== '' &&
+      form.key.trim() !== '';
+    setIsFormValid(isValid);
+  }, [form]);
 
   const handleFormChange = (name: keyof TicketForm, value: string) => {
     setForm((prevForm) => ({
@@ -48,7 +58,10 @@ const Ticket = () => {
 
   const handleConfirm = useCallback(() => {
     setModalType('success');
-  }, []);
+    if (selectedLevel === 1) {
+      setIsLevel1Completed(true);
+    }
+  }, [selectedLevel]);
 
   const handleCloseModal = useCallback(() => {
     setModalType(null);
@@ -58,8 +71,11 @@ const Ticket = () => {
         studentNum: '',
         key: '',
       });
+      if (isLevel1Completed) {
+        setSelectedLevel(2);
+      }
     }
-  }, [modalType]);
+  }, [modalType, isLevel1Completed]);
 
   return (
     <>
@@ -84,7 +100,12 @@ const Ticket = () => {
           }
           onKeyChange={(value) => handleFormChange('key', value)}
         />
-        <Button onClick={handleApplyClick}>응모하기</Button>
+        <Button
+          onClick={handleApplyClick}
+          disabled={!isFormValid}
+        >
+          응모하기
+        </Button>
         <Caption />
         <TicketModal
           modalType={modalType}
