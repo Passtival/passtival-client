@@ -4,7 +4,7 @@ export const routePath = {
   BOOTH_DETAIL: '/booth-detail/:id',
   LOGIN_FALLBACK: '/login-fallback',
   HOME: '/',
-  SHOW_DETAIL: '/show-detail/:id',
+  SHOW_DETAIL: '/show-detail/:performanceId',
   LAND: '/land',
   LOGIN: '/login',
   LOST_ITEMS: '/lost-items',

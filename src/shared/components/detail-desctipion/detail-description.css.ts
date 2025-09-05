@@ -18,3 +18,11 @@ export const description = style({
   ...themeVars.fontStyles.body1_r_15,
   color: themeVars.color.gray_400,
 });
+
+export const songslist = style({
+  display: 'flex',
+  flexDirection: 'column',
+
+  color: themeVars.color.gray_600,
+  ...themeVars.fontStyles.body1_r_15,
+});

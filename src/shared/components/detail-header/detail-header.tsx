@@ -1,8 +1,8 @@
 import * as styles from './detail-header.css';
 
 interface DetailHeaderProps {
-  subTitle: string;
-  title: string;
+  subTitle?: string;
+  title?: string;
 }
 const DetailHeader = ({ subTitle, title }: DetailHeaderProps) => {
   return (
