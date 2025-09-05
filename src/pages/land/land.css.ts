@@ -4,6 +4,7 @@ import { themeVars } from '@shared/styles';
 
 export const container = style({
   display: 'flex',
+  height: '100%',
   alignItems: 'center',
   justifyContent: 'center',
   flexDirection: 'column',
