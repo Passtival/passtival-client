@@ -48,6 +48,13 @@ export const buttonVariants = recipe({
         ...themeVars.fontStyles.button2_sb_16,
       },
 
+      xl: {
+        height: '4.2rem',
+        width: '18.3rem',
+        borderRadius: '12px',
+        ...themeVars.fontStyles.button2_sb_16,
+      },
+
       icon: {
         width: '8.6rem',
         height: '3.7rem',
