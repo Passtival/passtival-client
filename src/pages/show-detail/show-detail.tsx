@@ -14,12 +14,13 @@ import * as styles from './show-detail.css';
 const ShowDetail = () => {
   const { performanceId } = useParams<{ performanceId: string }>();
 
-  const { data } = useQuery({
-    ...PERFORMANCE_DETAIL_QUERY_OPTIONS.PERFORMANCE_DETAIL(
-      performanceId as string,
-    ),
-    enabled: !!performanceId,
-  });
+  if (!performanceId) {
+    throw new Error('게시물이 없습니다.');
+  }
+
+  const { data } = useQuery(
+    PERFORMANCE_DETAIL_QUERY_OPTIONS.PERFORMANCE_DETAIL(performanceId),
+  );
 
   const timeRange =
     data?.startTime && data?.endTime
