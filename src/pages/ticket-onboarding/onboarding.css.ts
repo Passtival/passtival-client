@@ -5,5 +5,7 @@ import { themeVars } from '@shared/styles';
 
 export const container = style({
   display: 'flex',
-  padding: '0 2.4rem',
+  flexDirection: 'column',
+  alignItems: 'center',
+  padding: '0.4rem 2.4rem',
 });

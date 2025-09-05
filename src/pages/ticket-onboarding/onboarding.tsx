@@ -1,4 +1,3 @@
-import { useEffect } from 'react';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 
 import { routePath } from '@router/path';
@@ -25,13 +24,19 @@ const TicketOnBoarding = () => {
   };
 
   return (
-    <article className={styles.container}>
-      {current.lines.map((line, idx) => (
-        <p key={idx}>{line}</p>
-      ))}
+    <div className={styles.container}>
+      <img
+        src="/ticket.svg"
+        style={{ width: '24.3rem', height: '25.3rem' }}
+      />
+      <article>
+        {current.lines.map((line, idx) => (
+          <p key={idx}>{line}</p>
+        ))}
 
-      <Button onClick={handleNext}>{current.buttonLabel}</Button>
-    </article>
+        <Button onClick={handleNext}>{current.buttonLabel}</Button>
+      </article>
+    </div>
   );
 };
 export default TicketOnBoarding;

@@ -2,8 +2,6 @@ import { style } from '@vanilla-extract/css';
 
 import { themeVars } from '@shared/styles';
 
-export const img = style({ width: '24.3rem', height: '25.3rem' });
-
 export const container = style({ paddingBottom: '0.8rem' });
 
 export const title = style({
