@@ -32,6 +32,10 @@ export const AdminMainPage = lazy(
   () => import('@pages/admin/admin-main/admin-main'),
 );
 
+export const GenerateAuthKeyPage = lazy(
+  () => import('@pages/admin/generate-auth-key/generate-auth-key'),
+);
+
 export const InfoShareConsentPage = lazy(
   () => import('@pages/info-share/info-share'),
 );

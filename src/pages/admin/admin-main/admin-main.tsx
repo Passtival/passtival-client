@@ -28,7 +28,13 @@ const AdminLogin = () => {
         >
           {NAVIGATE.LOST_ITEM}
         </Button>
-        <Button onClick={() => {}}>{NAVIGATE.AUTH_KEY}</Button>
+        <Button
+          onClick={() => {
+            handleNavigate(routePath.GENERATE_AUTH_KEY);
+          }}
+        >
+          {NAVIGATE.AUTH_KEY}
+        </Button>
         <Button
           onClick={() => {
             handleNavigate(routePath.TICKET);
