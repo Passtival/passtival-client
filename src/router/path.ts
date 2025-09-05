@@ -13,6 +13,7 @@ export const routePath = {
   TICKET: '/ticket',
   ADMIN_LOGIN: '/admin-login',
   INFO_SHARE_CONSENT: '/info-share-consent',
+  TICKET_ONBOARDING: 'ticket-onboarding',
 } as const;
 
 export type Routes = (typeof routePath)[keyof typeof routePath];
