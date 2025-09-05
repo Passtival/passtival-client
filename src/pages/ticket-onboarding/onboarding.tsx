@@ -24,19 +24,19 @@ const TicketOnBoarding = () => {
   };
 
   return (
-    <div className={styles.container}>
+    <article className={styles.container}>
       <img
         src="/ticket.svg"
         style={{ width: '24.3rem', height: '25.3rem' }}
       />
-      <article>
+      <section className={styles.section}>
         {current.lines.map((line, idx) => (
           <p key={idx}>{line}</p>
         ))}
 
         <Button onClick={handleNext}>{current.buttonLabel}</Button>
-      </article>
-    </div>
+      </section>
+    </article>
   );
 };
 export default TicketOnBoarding;

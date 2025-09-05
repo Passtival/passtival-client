@@ -2,7 +2,9 @@ import { style } from '@vanilla-extract/css';
 
 import { themeVars } from '@shared/styles';
 
-export const container = style({ paddingBottom: '0.8rem' });
+export const container = style({
+  paddingBottom: '0.8rem',
+});
 
 export const title = style({
   ...themeVars.fontStyles.title_b_22,
