@@ -88,6 +88,7 @@ const Ticket = () => {
         <TicketChip
           selectedLevel={selectedLevel}
           setSelectedLevel={setSelectedLevel}
+          isLevel1Completed={isLevel1Completed}
         />
         <InputSection
           name={form.name}
