@@ -26,6 +26,7 @@ export const fontStyles = {
     lineHeight: typography.lineHeight.normal,
     letterSpacing: typography.letterSpacing.wide,
   },
+
   // Title (Bold)
   title_b_22: {
     fontSize: typography.fontSize[22],
@@ -57,6 +58,7 @@ export const fontStyles = {
     lineHeight: typography.lineHeight.tight,
     letterSpacing: typography.letterSpacing.wide,
   },
+
   // Body (Regular)
   body1_r_22: {
     fontSize: typography.fontSize[22],
@@ -82,6 +84,7 @@ export const fontStyles = {
     lineHeight: typography.lineHeight.normal,
     letterSpacing: typography.letterSpacing.wide,
   },
+
   //Caption 1(SemiBold)
   caption1_sb_22: {
     fontSize: typography.fontSize[22],
@@ -107,6 +110,7 @@ export const fontStyles = {
     lineHeight: typography.lineHeight.normal,
     letterSpacing: typography.letterSpacing.wide,
   },
+
   //Caption 2(Medium)
   caption2_m_22: {
     fontSize: typography.fontSize[22],
@@ -138,6 +142,7 @@ export const fontStyles = {
     lineHeight: typography.lineHeight.tight,
     letterSpacing: typography.letterSpacing.wide,
   },
+
   //Button 1(Regular)
   button_r_20: {
     fontSize: typography.fontSize[20],
@@ -169,6 +174,7 @@ export const fontStyles = {
     lineHeight: typography.lineHeight.tight,
     letterSpacing: typography.letterSpacing.wide,
   },
+
   //Button 2(SemiBold)
   button2_sb_20: {
     fontSize: typography.fontSize[20],
@@ -199,5 +205,13 @@ export const fontStyles = {
     fontWeight: typography.fontWeight.semibold,
     lineHeight: typography.lineHeight.tight,
     letterSpacing: typography.letterSpacing.wide,
+  },
+
+  //Body 3(Bold)
+  body_b_13: {
+    fontSize: typography.fontSize[13],
+    fontWeight: typography.fontWeight.bold,
+    lineHeight: typography.lineHeight.tighter,
+    letterSpacing: typography.letterSpacing.tighter,
   },
 };

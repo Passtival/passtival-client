@@ -116,7 +116,6 @@ const Booth = () => {
             label={type}
             selected={selectedType === type}
             onChange={() => setSelectedType(type)}
-            size="lg"
           />
         ))}
       </div>

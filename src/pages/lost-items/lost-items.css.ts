@@ -10,7 +10,7 @@ export const headerContainer = style({
 });
 
 export const textContainer = style({
-  color: themeVars.color.gray_900,
+  color: themeVars.color.bg_white,
 });
 
 export const cardlist = style({

@@ -1,4 +1,4 @@
-import { themeVars } from '@shared/styles';
+import * as styles from './title.css';
 
 interface TitleProps {
   mainTitle: string;
@@ -8,8 +8,8 @@ interface TitleProps {
 const Title = ({ mainTitle, subTitle }: TitleProps) => {
   return (
     <>
-      <p style={themeVars.fontStyles.title_b_22}>{mainTitle}</p>
-      {subTitle && <p style={themeVars.fontStyles.caption2_m_12}>{subTitle}</p>}
+      <p className={styles.mainTitle}>{mainTitle}</p>
+      {subTitle && <p className={styles.subTitle}>{subTitle}</p>}
     </>
   );
 };

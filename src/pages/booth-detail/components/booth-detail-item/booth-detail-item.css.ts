@@ -22,7 +22,8 @@ export const boothName = style({
   width: '100%',
   marginTop: '0.6rem',
   ...themeVars.fontStyles.title_b_20,
-  overflow: 'hidden',
+  color: themeVars.color.bg_white,
+
   textOverflow: 'ellipsis',
   whiteSpace: 'nowrap',
 });
@@ -30,7 +31,7 @@ export const boothName = style({
 export const boothPrice = style({
   width: '100%',
   ...themeVars.fontStyles.title_b_16,
-  color: themeVars.color.main_blue,
+  color: themeVars.color.main_yellow,
 });
 
 export const boothInfo = style({
@@ -41,5 +42,5 @@ export const boothInfo = style({
   WebkitLineClamp: 2,
   overflow: 'hidden',
   ...themeVars.fontStyles.body1_r_15,
-  color: themeVars.color.gray_600,
+  color: themeVars.color.gray_400,
 });

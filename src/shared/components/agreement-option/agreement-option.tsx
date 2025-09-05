@@ -44,6 +44,7 @@ const AgreementOption = ({
           cursor="pointer"
           width="1.25rem"
           height="2.5rem"
+          color={themeVars.color.bg_white}
         />
       </NavLink>
     </label>

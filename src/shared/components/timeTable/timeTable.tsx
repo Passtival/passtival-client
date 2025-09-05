@@ -34,7 +34,7 @@ const TimeTable = ({
         <IcSvgClock
           width="0.9rem"
           height="0.9rem"
-          color={themeVars.color.main_blue}
+          color={themeVars.color.main_yellow}
         />
         <p className={styles.text}>
           {OPENING_HOURS} {getOpeningHours(startIso)} ~{' '}
