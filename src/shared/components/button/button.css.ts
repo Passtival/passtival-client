@@ -4,7 +4,10 @@ import { themeVars } from '@shared/styles/theme.css';
 
 export const buttonVariants = recipe({
   base: {
+    display: 'flex',
+    alignItems: 'center',
     cursor: 'pointer',
+    justifyContent: 'center',
     selectors: {
       '&:disabled': {
         cursor: 'not-allowed',
@@ -14,7 +17,7 @@ export const buttonVariants = recipe({
 
   variants: {
     color: {
-      blue: {
+      yellow: {
         backgroundColor: themeVars.color.main_yellow,
         color: themeVars.color.bg_white,
         selectors: {
@@ -23,6 +26,10 @@ export const buttonVariants = recipe({
             color: themeVars.color.bg_white,
           },
         },
+      },
+      gray: {
+        backgroundColor: themeVars.color.gray_600,
+        color: themeVars.color.bg_white,
       },
     },
 
@@ -39,6 +46,18 @@ export const buttonVariants = recipe({
         width: '32.7rem',
         borderRadius: '12px',
         ...themeVars.fontStyles.button2_sb_16,
+      },
+
+      icon: {
+        width: '8.6rem',
+        height: '3.7rem',
+        borderRadius: '12px',
+        ...themeVars.fontStyles.button2_sb_12,
+        padding: '1rem 1.2rem 1rem 2.2rem',
+        gap: '1.1rem',
+        alignItems: 'center',
+        justifyContent: 'center',
+        fontFamily: `'Pretendard Variable', sans-serif`,
       },
     },
   },

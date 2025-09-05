@@ -59,6 +59,7 @@ export const onBoardingStyle = style([
   rootStyle,
   {
     background: `url('/onboarding-bg.svg') no-repeat center center`,
+    backgroundSize: 'cover',
     fontFamily: `'BookkMyungjo', sans-serif`,
   },
 ]);
