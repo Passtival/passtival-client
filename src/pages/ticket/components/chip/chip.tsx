@@ -21,9 +21,8 @@ const TicketChip = ({
       <div className={styles.container}>
         {DAY.map((levelLabel, idx) => {
           const dayNumber = idx + 1;
-          const isCompletedAllLevels = completedLevel === LAST_LEVEL;
           const isDisabled =
-            isCompletedAllLevels || dayNumber > completedLevel + 1;
+            completedLevel >= LAST_LEVEL || dayNumber > completedLevel + 1;
 
           return (
             <Chip

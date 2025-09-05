@@ -49,11 +49,6 @@ const Ticket = () => {
   };
 
   const handleApplyClick = useCallback(() => {
-    if (!isFormValid) {
-      setModalType('error');
-      return;
-    }
-
     if (selectedLevel === 3) {
       setModalType('premium');
     } else {

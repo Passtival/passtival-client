@@ -21,16 +21,16 @@ const TicketModal = ({
   onConfirm,
 }: TicketModalProps) => {
   const renderContent = () => {
+    const sharedProps = {
+      name,
+      studentNumber,
+      onClose,
+      onConfirm,
+    };
+
     switch (modalType) {
       case 'confirm':
-        return (
-          <ConfirmModal
-            name={name}
-            studentNumber={studentNumber}
-            onClose={onClose}
-            onConfirm={onConfirm}
-          />
-        );
+        return <ConfirmModal {...sharedProps} />;
       case 'success':
         return (
           <SuccessModal
@@ -42,15 +42,7 @@ const TicketModal = ({
       case 'error':
         return <ErrorModal onClose={onClose} />;
       case 'premium':
-        return (
-          <PremiumModal
-            name={name}
-            studentNumber={studentNumber}
-            onClose={onClose}
-            onConfirm={onConfirm}
-          />
-        );
-
+        return <PremiumModal {...sharedProps} />;
       default:
         return null;
     }
