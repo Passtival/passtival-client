@@ -9,7 +9,6 @@ export function AdminProtectedRoute() {
   const location = useLocation();
   const adminAccessToken = tokenService.getAdminAccessToken();
 
-  // 관리자 인증 비활성화 시, 가드 패스
   if (!appConfig.adminAuth.isEnabled) {
     return <Outlet />;
   }
