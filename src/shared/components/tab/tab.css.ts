@@ -3,28 +3,31 @@ import { recipe } from '@vanilla-extract/recipes';
 
 import { themeVars } from '@shared/styles';
 
+export const container = style({
+  display: 'grid',
+  gridTemplateColumns: 'repeat(auto-fit, minmax(0, 1fr))',
+  width: '100%',
+});
+
 export const buttonVariants = recipe({
   base: {
-    width: '12.5rem ',
     height: '5rem',
 
-    backgroundColor: themeVars.color.gray_200,
+    backgroundColor: themeVars.color.gray_500_40,
     borderBottom: `1px solid ${themeVars.color.gray_400}`,
 
     ...themeVars.fontStyles.button2_sb_14,
-    color: themeVars.color.gray_900,
+    color: themeVars.color.bg_white,
     transition: 'all 0.3s ease',
   },
   variants: {
     selected: {
       true: {
-        backgroundColor: themeVars.color.sub_blue,
-        borderBottom: `1px solid ${themeVars.color.main_blue}`,
+        backgroundColor: themeVars.color.main_yellow,
+        borderBottom: `1px solid ${themeVars.color.main_yellow}`,
 
-        color: themeVars.color.main_blue,
+        color: themeVars.color.bg_white,
       },
     },
   },
 });
-
-export const tablist = style({});

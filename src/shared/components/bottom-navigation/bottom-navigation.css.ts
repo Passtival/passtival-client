@@ -18,7 +18,7 @@ export const navLinkRecipe = recipe({
   variants: {
     isActive: {
       true: {
-        color: themeVars.color.main_blue,
+        color: themeVars.color.main_yellow,
       },
     },
   },
@@ -29,6 +29,7 @@ export const navBar = style({
   display: 'flex',
   left: '50%',
   transform: 'translateX(-50%)',
+  zIndex: themeVars.zIndex.modal,
 
   width: '34.3rem',
   height: '7.4rem',

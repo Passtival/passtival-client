@@ -5,26 +5,33 @@ import { themeVars } from '@shared/styles/theme.css';
 export const chipVariants = recipe({
   base: {
     display: 'inline-flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    ...themeVars.fontStyles.button2_sb_14,
-    cursor: 'pointer',
-    padding: '0.8rem 1.2rem',
-    borderRadius: '8px',
     height: '3.4rem',
+    alignItems: 'center',
+    ...themeVars.fontStyles.button_r_14,
+    cursor: 'pointer',
+    borderRadius: '8px',
   },
 
   variants: {
     selected: {
       false: {
-        backgroundColor: themeVars.color.bg_white,
-        color: themeVars.color.gray_900,
-        border: `1px solid ${themeVars.color.gray_400}`,
+        backgroundColor: themeVars.color.gray_500_40,
+        color: themeVars.color.bg_white,
+        border: `1px solid ${themeVars.color.bg_white}`,
       },
       true: {
-        backgroundColor: themeVars.color.sub_blue,
-        color: themeVars.color.main_blue,
-        border: `1px solid ${themeVars.color.main_blue}`,
+        backgroundColor: themeVars.color.main_yellow,
+        color: themeVars.color.bg_white,
+        border: `1px solid ${themeVars.color.bg_white}`,
+      },
+    },
+    size: {
+      sm: {
+        padding: '0.8rem 1.2rem',
+      },
+      lg: {
+        width: '16.1rem',
+        justifyContent: 'center',
       },
     },
   },

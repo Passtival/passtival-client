@@ -2,33 +2,33 @@ import * as styles from './detail-info.css';
 
 interface EventInfoProps {
   title?: string;
-  time1: string;
-  time2: string;
-  location1: string | number;
-  location2: string;
+  time: string;
+  timevalue: string | number;
+  location: string;
+  locationvalue: string;
   message?: string;
 }
 
 const DetailInfo = ({
   title,
-  time1,
-  time2,
-  location1,
-  location2,
+  time,
+  timevalue,
+  location,
+  locationvalue,
   message,
 }: EventInfoProps) => {
   return (
     <div className={styles.container}>
-      <p className={styles.title}>{title}</p>
+      {title && <p className={styles.title}>{title}</p>}
       <div className={styles.line}>
-        <p className={styles.label}>{time1}</p>
-        <p className={styles.value}>{location1}</p>
+        <p className={styles.label}>{time}</p>
+        <p className={styles.value}>{timevalue}</p>
       </div>
       <div className={styles.line}>
-        <p className={styles.label}>{time2}</p>
-        <p className={styles.value}>{location2}</p>
+        <p className={styles.label}>{location}</p>
+        <p className={styles.value}>{locationvalue}</p>
       </div>
-      <p className={styles.message}>{message}</p>
+      {message && <p className={styles.message}>{message}</p>}
     </div>
   );
 };

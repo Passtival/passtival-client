@@ -15,6 +15,7 @@ export const container = recipe({
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
+    padding: '0rem 5.3rem',
   },
 
   variants: {
@@ -41,7 +42,7 @@ export const buttonBase = style({
   padding: '1.2rem 0',
 
   flex: 1,
-  color: themeVars.color.main_blue,
+  color: themeVars.color.main_yellow,
 });
 
 export const alignText = style({
@@ -52,7 +53,7 @@ export const alignText = style({
 
 export const content = style({
   display: 'flex',
-  width: '27rem',
+  width: '100%',
   flexDirection: 'column',
   justifyContent: 'center',
   alignItems: 'center',

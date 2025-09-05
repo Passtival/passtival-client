@@ -24,10 +24,6 @@ globalStyle('html, body', {
   fontFamily: `'Pretendard Variable', sans-serif`,
 });
 
-globalStyle('::-webkit-scrollbar', {
-  display: 'none',
-});
-
 export const rootStyle = style({
   display: 'flex',
   flexDirection: 'column',
@@ -36,5 +32,13 @@ export const rootStyle = style({
   minHeight: '100dvh',
   minWidth: 'var(--min-width)',
   maxWidth: 'var(--max-width)',
-  backgroundColor: themeVars.color.bg_white,
+  backgroundColor: themeVars.color.gray_900,
+  boxShadow: `0px 0px 10px 0px ${themeVars.color.gray_400}`,
 });
+
+export const noBackgroundColor = style([
+  rootStyle,
+  {
+    backgroundColor: themeVars.color.bg_white,
+  },
+]);

@@ -3,13 +3,13 @@ import Thumbnail from '@shared/components/Thumbnail/Thumbnail';
 import * as styles from './card.css';
 
 interface CardProps {
-  title: string;
+  title?: string;
   assignee?: string;
-  description: string;
+  description?: string;
   type: 'sm' | 'lg';
   alt?: string;
   onClick?: () => void;
-  imgSrc: string;
+  imgSrc?: string;
   imgAlt?: string;
 }
 
@@ -27,7 +27,6 @@ const Card = ({
       className={styles.container({ type })}
       onClick={onClick}
     >
-      <div className={styles.blur} />
       <div className={styles.content}>
         <p className={styles.title({ type })}>{title}</p>
         {assignee && <p className={styles.assignee}>{assignee}</p>}
@@ -37,7 +36,7 @@ const Card = ({
         <Thumbnail
           src={imgSrc}
           alt={imgAlt}
-          type="square_sm"
+          type="square_md"
         />
       </div>
     </div>
