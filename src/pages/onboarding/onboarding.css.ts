@@ -6,8 +6,10 @@ import { themeVars } from '@shared/styles';
 export const container = style({
   display: 'flex',
   flexDirection: 'column',
+  minHeight: '100dvh',
   alignItems: 'center',
-  paddingTop: 'calc(100vh - 30rem)',
+  justifyContent: 'flex-end',
+  paddingBottom: 'clamp(10rem, 10vh, 10rem)',
 });
 
 export const contentWrapper = style({
@@ -35,11 +37,12 @@ export const buttonWrapper = recipe({
     step: {
       next: {
         right: '2.4rem',
-        bottom: '6.4rem',
+        bottom: '3.4rem',
       },
       goToHome: {
-        left: '5.5rem',
-        bottom: '4.7rem',
+        left: '50%',
+        transform: 'translateX(-50%)',
+        bottom: '4rem',
       },
     },
   },
