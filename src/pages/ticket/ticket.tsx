@@ -3,7 +3,8 @@ import { useState } from 'react';
 import InputSection from '@pages/ticket/components/inpur-section/input-section';
 
 import Button from '@shared/components/button/button';
-import Thumbnail from '@shared/components/Thumbnail/Thumbnail';
+import Carousel from '@shared/components/carousel/carousel';
+import Chip from '@shared/components/chip/chip';
 import Title from '@shared/components/title/title';
 
 import TicketModal from './components/ticketmodal';
@@ -60,11 +61,11 @@ const Ticket = () => {
           subTitle="상품 당첨의 기회를 잡아보세요!"
         />
 
-        <Thumbnail
-          src={ticketData.src}
-          alt=""
-          type="square_lg"
-        />
+        <Carousel type="Apply">
+          <img src="/carousel1.jpg" />
+          <img src="/carousel2.jpg" />
+          <img src="/carousel3.jpg" />
+        </Carousel>
         <InputSection
           name={name}
           studentNumber={studentNumber}
