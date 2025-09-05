@@ -7,9 +7,9 @@ import { routePath } from '@router/path';
 import { ADMIN_MUTATION_OPTIONS } from '@pages/admin/apis/queries';
 import { TITLE } from '@pages/admin/constants/TITLE';
 
-import { tokenService } from '@shared/auth/services/token-service';
 import Button from '@shared/components/button/button';
 import Input from '@shared/components/input/input';
+import { appConfig } from '@shared/configs/app-config';
 
 import * as styles from './admin-login.css';
 
@@ -19,17 +19,12 @@ const AdminLogin = () => {
 
   const { mutate, isPending } = useMutation({
     ...ADMIN_MUTATION_OPTIONS.ADMIN_LOGIN(),
-    onSuccess: (res) => {
-      const access = res?.result?.accessToken ?? '';
-      const refresh = res?.result?.refreshToken ?? '';
-      const ok = Boolean(res?.isSuccess) && Boolean(access) && Boolean(refresh);
-      if (!ok) {
+    onSuccess: (isLoginSuccess) => {
+      if (!isLoginSuccess) {
         alert('비밀번호가 올바르지 않습니다.');
         return;
       }
-      tokenService.saveAdminAccessToken(access);
-      tokenService.saveAdminRefreshToken(refresh);
-      navigate(routePath.ADMIN_MAIN);
+      navigate(appConfig.adminAuth.loginSuccessUrl || routePath.ADMIN_MAIN);
     },
     onError: () => {
       alert('로그인에 실패했습니다. 비밀번호를 확인해주세요.');

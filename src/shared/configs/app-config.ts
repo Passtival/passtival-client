@@ -12,6 +12,11 @@ const DEFAULT_CONFIG = {
     kakaoLocalRedirectUrl: import.meta.env.VITE_KAKAO_LOCAL_REDIRECT_URI || '',
     kakaoProdRedirectUrl: import.meta.env.VITE_KAKAO_PROD_REDIRECT_URI || '',
   },
+  adminAuth: {
+    isEnabled: true,
+    loginSuccessUrl: routePath.ADMIN_MAIN,
+    loginFailureUrl: routePath.ADMIN_LOGIN,
+  },
   api: {
     baseUrl: import.meta.env.VITE_API_BASE_URL,
   },
