@@ -31,3 +31,4 @@ export const AdminLoginPage = lazy(
 export const InfoShareConsentPage = lazy(
   () => import('@pages/info-share/info-share'),
 );
+export const LandingPage = lazy(() => import('@pages/land/land'));
