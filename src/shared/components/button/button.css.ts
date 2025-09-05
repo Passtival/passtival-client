@@ -43,7 +43,7 @@ export const buttonVariants = recipe({
 
       lg: {
         height: '5.4rem',
-        width: '32.7rem',
+        width: '100%',
         borderRadius: '12px',
         ...themeVars.fontStyles.button2_sb_16,
       },
