@@ -13,7 +13,7 @@ const DEFAULT_CONFIG = {
     kakaoProdRedirectUrl: import.meta.env.VITE_KAKAO_PROD_REDIRECT_URI || '',
   },
   adminAuth: {
-    isEnabled: true,
+    isEnabled: false,
     loginSuccessUrl: routePath.ADMIN_MAIN,
     loginFailureUrl: routePath.ADMIN_LOGIN,
   },
