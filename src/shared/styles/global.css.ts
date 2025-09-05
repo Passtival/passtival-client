@@ -1,4 +1,4 @@
-import { globalStyle, style } from '@vanilla-extract/css';
+import { globalFontFace, globalStyle, style } from '@vanilla-extract/css';
 
 import { themeVars } from './theme.css';
 
@@ -24,6 +24,18 @@ globalStyle('html, body', {
   fontFamily: `'Pretendard Variable', sans-serif`,
 });
 
+globalFontFace('BookkMyungjo', {
+  src: "url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2302@1.0/BookkMyungjo-Lt.woff2') format('woff2')",
+  fontWeight: '400',
+  fontDisplay: 'swap',
+});
+
+globalFontFace('BookkMyungjo', {
+  src: "url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2302@1.0/BookkMyungjo-Bd.woff2') format('woff2')",
+  fontWeight: '700',
+  fontDisplay: 'swap',
+});
+
 export const rootStyle = style({
   display: 'flex',
   flexDirection: 'column',
@@ -40,5 +52,14 @@ export const noBackgroundColor = style([
   rootStyle,
   {
     backgroundColor: themeVars.color.bg_white,
+  },
+]);
+
+export const onBoardingStyle = style([
+  rootStyle,
+  {
+    background: `url('/onboarding-bg.svg') no-repeat center center`,
+    backgroundSize: 'cover',
+    fontFamily: `'BookkMyungjo', sans-serif`,
   },
 ]);

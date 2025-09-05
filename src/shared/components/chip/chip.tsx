@@ -7,15 +7,23 @@ interface ChipProps {
   selected: boolean;
   onChange: (isSelected: boolean) => void;
   size?: 'sm' | 'lg';
+  disabled?: boolean;
 }
 
-const Chip = ({ label, selected, onChange, size = 'sm' }: ChipProps) => {
+const Chip = ({
+  label,
+  selected,
+  onChange,
+  size = 'sm',
+  disabled,
+}: ChipProps) => {
   return (
     <button
       type="button"
       aria-pressed={selected}
       className={chipVariants({ selected, size })}
       onClick={() => onChange(!selected)}
+      disabled={disabled}
     >
       {label}
     </button>

@@ -14,6 +14,17 @@ export default function GlobalLayout() {
   const { pathname } = useLocation();
 
   const isLogin = pathname === routePath.LOGIN;
+  const isHome = pathname === routePath.HOME;
+  const hasOnboardingToken = !!tokenService.getGoToOnboardingToken();
+
+  if (isHome && !hasOnboardingToken) {
+    return (
+      <Navigate
+        to={routePath.ONBOARDING}
+        replace
+      />
+    );
+  }
 
   const isTicket = pathname === routePath.TICKET;
   const hasTicketOnboardingToken = !!tokenService.getTicketOnboardingToken();

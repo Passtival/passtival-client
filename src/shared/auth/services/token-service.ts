@@ -4,6 +4,7 @@
 
 const TOKEN_KEY_ACCESS = 'accessToken';
 const TOKEN_KEY_REFRESH = 'refreshToken';
+const TOKEN_KEY_GO_TO_ONBOARDING = 'goToOnboarding';
 
 const TOKEN_KEY_TICKET_ONBOARDING = 'ticketOnboarding';
 /**
@@ -19,6 +20,13 @@ export const tokenService = {
       return;
     }
     localStorage.setItem(TOKEN_KEY_TICKET_ONBOARDING, token);
+  },
+
+  saveGoToOnboardingToken(token: string): void {
+    if (typeof window === 'undefined') {
+      return;
+    }
+    localStorage.setItem(TOKEN_KEY_GO_TO_ONBOARDING, token);
   },
 
   saveAccessToken(token: string): void {
@@ -38,6 +46,13 @@ export const tokenService = {
       return null;
     }
     return localStorage.getItem(TOKEN_KEY_TICKET_ONBOARDING);
+  },
+
+  getGoToOnboardingToken(): string | null {
+    if (typeof window === 'undefined') {
+      return null;
+    }
+    return localStorage.getItem(TOKEN_KEY_GO_TO_ONBOARDING);
   },
 
   getAccessToken(): string | null {
