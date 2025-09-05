@@ -1,7 +1,7 @@
 import { useQuery } from '@tanstack/react-query';
 import { useParams } from 'react-router-dom';
 
-import { Time } from '@pages/show-detail/utils/get-time';
+import { getTime } from '@pages/show-detail/utils/get-time';
 
 import DetailDescription from '@shared/components/detail-desctipion/detail-description';
 import DetailInfo from '@shared/components/detail-eventinfo/detail-info';
@@ -23,7 +23,7 @@ const ShowDetail = () => {
 
   const timeRange =
     data?.startTime && data?.endTime
-      ? `${Time(data.startTime)} ~ ${Time(data.endTime)}`
+      ? `${getTime(data.startTime)} ~ ${getTime(data.endTime)}`
       : '';
 
   return (
