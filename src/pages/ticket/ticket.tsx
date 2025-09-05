@@ -1,9 +1,10 @@
 import { useState } from 'react';
 
+import InputSection from '@pages/ticket/components/inpur-section/input-section';
+
 import Button from '@shared/components/button/button';
 import Thumbnail from '@shared/components/Thumbnail/Thumbnail';
 
-import InputSection from './components/inpur-section/input-section';
 import TicketModal from './components/ticketmodal';
 import * as styles from './ticket.css';
 
@@ -63,7 +64,7 @@ const Ticket = () => {
         <Thumbnail
           src={ticketData.src}
           alt=""
-          type="circle"
+          type="square_lg"
         />
         <p className={styles.productName}>{ticketData.productName}</p>
         <InputSection

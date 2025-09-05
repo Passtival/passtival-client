@@ -28,7 +28,7 @@ export const product = style({
 
 export const productName = style({
   ...themeVars.fontStyles.title_b_16,
-  color: themeVars.color.main_blue,
+  color: themeVars.color.main_yellow,
   padding: '1rem 0 2.3rem 0',
 });
 
