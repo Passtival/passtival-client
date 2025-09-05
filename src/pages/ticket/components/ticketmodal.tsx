@@ -2,10 +2,11 @@ import Modal from '@shared/components/modal/modal';
 
 import ConfirmModal from './modal-type/confirm-modal';
 import ErrorModal from './modal-type/error-modal';
+import PremiumModal from './modal-type/premium-modal';
 import SuccessModal from './modal-type/success-modal';
 
 interface TicketModalProps {
-  modalType: 'confirm' | 'success' | 'error' | null;
+  modalType: 'confirm' | 'success' | 'error' | 'premium' | null;
   name: string;
   studentNumber: string;
   onClose: () => void;
@@ -40,6 +41,16 @@ const TicketModal = ({
         );
       case 'error':
         return <ErrorModal onClose={onClose} />;
+      case 'premium':
+        return (
+          <PremiumModal
+            name={name}
+            studentNumber={studentNumber}
+            onClose={onClose}
+            onConfirm={onConfirm}
+          />
+        );
+
       default:
         return null;
     }

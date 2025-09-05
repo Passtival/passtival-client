@@ -25,7 +25,7 @@ const Ticket = () => {
   });
 
   const [modalType, setModalType] = useState<
-    'confirm' | 'success' | 'error' | null
+    'confirm' | 'success' | 'error' | 'premium' | null
   >(null);
 
   const [selectedLevel, setSelectedLevel] = useState(1);
@@ -49,12 +49,17 @@ const Ticket = () => {
   };
 
   const handleApplyClick = useCallback(() => {
-    if (!form.name || !form.studentNum || !form.key) {
+    if (!isFormValid) {
       setModalType('error');
       return;
     }
-    setModalType('confirm');
-  }, [form]);
+
+    if (selectedLevel === 3) {
+      setModalType('premium');
+    } else {
+      setModalType('confirm');
+    }
+  }, [isFormValid, selectedLevel]);
 
   const handleConfirm = useCallback(() => {
     setModalType('success');

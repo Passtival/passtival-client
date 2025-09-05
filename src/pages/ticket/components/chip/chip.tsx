@@ -3,6 +3,7 @@ import Chip from '@shared/components/chip/chip';
 import * as styles from './chip.css';
 
 const DAY = ['Lv. 1', 'Lv. 2', 'Lv. 3'];
+const LAST_LEVEL = DAY.length;
 
 interface TicketChipsProps {
   selectedLevel: number;
@@ -20,7 +21,10 @@ const TicketChip = ({
       <div className={styles.container}>
         {DAY.map((levelLabel, idx) => {
           const dayNumber = idx + 1;
-          const isDisabled = dayNumber > completedLevel + 1;
+          const isCompletedAllLevels = completedLevel === LAST_LEVEL;
+          const isDisabled =
+            isCompletedAllLevels || dayNumber > completedLevel + 1;
+
           return (
             <Chip
               key={dayNumber}
