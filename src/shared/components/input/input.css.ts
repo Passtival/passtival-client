@@ -29,6 +29,7 @@ export const inputVariants = recipe({
       false: {},
       true: {
         color: themeVars.color.error_red,
+        background: themeVars.color.bg_white,
         borderColor: themeVars.color.error_red,
         selectors: {
           '&::placeholder': {
