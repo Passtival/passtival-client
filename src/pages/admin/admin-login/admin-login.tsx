@@ -21,7 +21,7 @@ const AdminLogin = () => {
   return (
     <div>
       <div className={styles.contentWrapper}>
-        <p className={styles.title}>{TITLE.MAIN}</p>
+        <p className={styles.title}>{TITLE.LOGIN}</p>
         <p className={styles.subTitle}>{TITLE.SUB}</p>
       </div>
       <div className={styles.loginContainer}>

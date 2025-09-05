@@ -2,6 +2,13 @@ import { style } from '@vanilla-extract/css';
 
 import { themeVars } from '@shared/styles';
 
+export const title = style({
+  width: '100%',
+  padding: '1.3rem 2.4rem 2.4rem 2.4rem',
+  ...themeVars.fontStyles.title_b_22,
+  color: themeVars.color.bg_white,
+});
+
 export const container = style({
   display: 'flex',
   flexDirection: 'column',
@@ -10,6 +17,8 @@ export const container = style({
   gap: '1rem',
   alignItems: 'center',
   justifyContent: 'center',
+
+  paddingBottom: '1.3rem',
 });
 
 export const authKey = style({

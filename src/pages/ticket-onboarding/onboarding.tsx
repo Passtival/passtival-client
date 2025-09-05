@@ -27,7 +27,7 @@ const TicketOnBoarding = () => {
     <article className={styles.container}>
       <img
         src="/ticket.svg"
-        style={{ width: '24.3rem', height: '25.3rem' }}
+        className={styles.ticketImg}
       />
       <section className={styles.section}>
         {current.lines.map((line, idx) => (
