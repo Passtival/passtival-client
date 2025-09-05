@@ -1,5 +1,6 @@
 import { createBrowserRouter } from 'react-router-dom';
 
+import OnBoardingLayout from '@router/onboarding-layout';
 import { ProtectedRoute } from '@router/routes/protected-route';
 
 import ErrorPage from '@pages/error/error';
@@ -10,6 +11,7 @@ import {
   publicRoutesWithMain,
   publicRoutesOthers,
   protectedRoutes,
+  onBoardingRoutes,
 } from './routes/global-routes';
 
 export const router = createBrowserRouter([
@@ -29,5 +31,9 @@ export const router = createBrowserRouter([
       },
       ...publicRoutesOthers,
     ],
+  },
+  {
+    Component: OnBoardingLayout,
+    children: onBoardingRoutes,
   },
 ]);

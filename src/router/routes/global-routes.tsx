@@ -13,6 +13,7 @@ import {
   BoothDetailPage,
   LostItemReportPage,
   InfoShareConsentPage,
+  onBoardingPage,
 } from '../lazy';
 import { routePath } from '../path';
 
@@ -37,4 +38,8 @@ export const publicRoutesOthers = [
 export const protectedRoutes = [
   { path: routePath.BLIND_MATCH, Component: BlindMatchPage },
   { path: routePath.TICKET, Component: TicketPage },
+];
+
+export const onBoardingRoutes = [
+  { path: routePath.ONBOARDING, Component: onBoardingPage },
 ];
