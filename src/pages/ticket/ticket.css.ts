@@ -14,9 +14,3 @@ export const subheader = style({
 });
 
 export const button = style({ padding: '1.2rem 0 0.2rem 0' });
-
-export const message = style({
-  ...themeVars.fontStyles.caption2_m_12,
-  color: themeVars.color.gray_900,
-  padding: '0.2rem 0 ',
-});

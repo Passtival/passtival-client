@@ -7,13 +7,9 @@ import Carousel from '@shared/components/carousel/carousel';
 import Chip from '@shared/components/chip/chip';
 import Title from '@shared/components/title/title';
 
+import Caption from './components/caption/caption';
 import TicketModal from './components/ticketmodal';
 import * as styles from './ticket.css';
-
-const ticketData = {
-  src: '',
-  productName: '에어팟 프로',
-};
 
 const Ticket = () => {
   const [name, setName] = useState('');
@@ -76,9 +72,7 @@ const Ticket = () => {
           onKeyChange={handleChangeKey}
         />
         <Button onClick={handleApplyClick}>응모하기</Button>
-        <p className={styles.message}>
-          일차별 행사 모두 참여시 전체 응모권 제공!
-        </p>
+
         <TicketModal
           modalType={modalType}
           name={name}
@@ -86,6 +80,7 @@ const Ticket = () => {
           onClose={handleCloseModal}
           onConfirm={handleConfirm}
         />
+        <Caption />
       </div>
     </>
   );
