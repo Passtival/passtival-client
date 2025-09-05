@@ -1,53 +1,65 @@
-import { useState } from 'react';
+import { useState, useCallback } from 'react';
 
 import InputSection from '@pages/ticket/components/inpur-section/input-section';
 
 import Button from '@shared/components/button/button';
-import Carousel from '@shared/components/carousel/carousel';
-import Chip from '@shared/components/chip/chip';
 import Title from '@shared/components/title/title';
 
 import Caption from './components/caption/caption';
+import TicketCarousel from './components/carousel/carousel';
+import TicketChip from './components/chip/chip';
 import TicketModal from './components/ticketmodal';
 import * as styles from './ticket.css';
 
+interface TicketForm {
+  name: string;
+  studentNum: string;
+  key: string;
+}
+
 const Ticket = () => {
-  const [name, setName] = useState('');
-  const [studentNumber, setStudentNumber] = useState('');
-  const [key, setKey] = useState('');
+  const [form, setForm] = useState<TicketForm>({
+    name: '',
+    studentNum: '',
+    key: '',
+  });
+
   const [modalType, setModalType] = useState<
     'confirm' | 'success' | 'info' | 'error' | null
   >(null);
+
+  const [selectedLevel, setSelectedLevel] = useState(1);
   const isErrorState = modalType === 'error' || modalType === 'info';
 
-  const handleChangeName = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setName(e.target.value);
+  const handleFormChange = (name: keyof TicketForm, value: string) => {
+    setForm((prevForm) => ({
+      ...prevForm,
+      [name]: value,
+    }));
   };
 
-  const handleChangeNumber = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setStudentNumber(e.target.value);
-  };
-
-  const handleChangeKey = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setKey(e.target.value);
-  };
-
-  const handleApplyClick = () => {
-    if (name && studentNumber && key) {
-      setModalType('confirm');
+  const handleApplyClick = useCallback(() => {
+    if (!form.name || !form.studentNum || !form.key) {
+      setModalType('info');
+      return;
     }
-  };
+    setModalType('confirm');
+  }, [form]);
 
-  const handleConfirm = () => {
+  const handleConfirm = useCallback(() => {
     setModalType('success');
-  };
+  }, []);
 
-  const handleCloseModal = () => {
+  const handleCloseModal = useCallback(() => {
     setModalType(null);
-    setName('');
-    setStudentNumber('');
-    setKey('');
-  };
+    if (modalType === 'success') {
+      setForm({
+        name: '',
+        studentNum: '',
+        key: '',
+      });
+    }
+  }, [modalType]);
 
   return (
     <>
@@ -56,31 +68,31 @@ const Ticket = () => {
           mainTitle="상품 응모권"
           subTitle="상품 당첨의 기회를 잡아보세요!"
         />
-
-        <Carousel type="Apply">
-          <img src="/carousel1.jpg" />
-          <img src="/carousel2.jpg" />
-          <img src="/carousel3.jpg" />
-        </Carousel>
+        <TicketCarousel />
+        <TicketChip
+          selectedLevel={selectedLevel}
+          setSelectedLevel={setSelectedLevel}
+        />
         <InputSection
-          name={name}
-          studentNumber={studentNumber}
-          accessKey={key}
+          name={form.name}
+          studentNum={form.studentNum}
+          accessKey={form.key}
           isErrorState={isErrorState}
-          onNameChange={handleChangeName}
-          onStudentNumberChange={handleChangeNumber}
-          onKeyChange={handleChangeKey}
+          onNameChange={(value) => handleFormChange('name', value)}
+          onStudentNumberChange={(value) =>
+            handleFormChange('studentNum', value)
+          }
+          onKeyChange={(value) => handleFormChange('key', value)}
         />
         <Button onClick={handleApplyClick}>응모하기</Button>
-
+        <Caption />
         <TicketModal
           modalType={modalType}
-          name={name}
-          studentNumber={studentNumber}
+          name={form.name}
+          studentNumber={form.studentNum}
           onClose={handleCloseModal}
           onConfirm={handleConfirm}
         />
-        <Caption />
       </div>
     </>
   );
