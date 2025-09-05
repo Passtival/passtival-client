@@ -17,6 +17,9 @@ export const LostItemsPage = lazy(() => import('@pages/lost-items/lost-items'));
 export const LostItemIngoPage = lazy(
   () => import('@pages/lost-item-info/lost-item-info'),
 );
+export const LostItemReportPage = lazy(
+  () => import('@pages/lost-item-report/lost-item-report'),
+);
 export const TicketPage = lazy(() => import('@pages/ticket/ticket'));
 export const LoginCallbackPage = lazy(
   () => import('@pages/login-callback/login-callback'),
@@ -27,4 +30,8 @@ export const AdminLoginPage = lazy(
 
 export const InfoShareConsentPage = lazy(
   () => import('@pages/info-share/info-share'),
+);
+
+export const onBoardingPage = lazy(
+  () => import('@pages/onboarding/onboarding'),
 );

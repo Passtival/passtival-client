@@ -13,7 +13,7 @@ interface TimeTableProps {
   assignee?: string;
   description: string;
   alt?: string;
-  onClick?: () => void;
+  onClick: () => void;
   imgSrc: string;
   imgAlt?: string;
 }
@@ -34,10 +34,10 @@ const TimeTable = ({
         <IcSvgClock
           width="0.9rem"
           height="0.9rem"
-          color={themeVars.color.main_blue}
+          color={themeVars.color.main_yellow}
         />
         <p className={styles.text}>
-          {OPENING_HOURS}: {getOpeningHours(startIso)} ~{' '}
+          {OPENING_HOURS} {getOpeningHours(startIso)} ~{' '}
           {getOpeningHours(endIso)}
         </p>
       </div>

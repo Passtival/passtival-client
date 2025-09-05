@@ -4,26 +4,6 @@
  */
 
 export interface paths {
-  '/api/authentication': {
-    parameters: {
-      query?: never;
-      header?: never;
-      path?: never;
-      cookie?: never;
-    };
-    get?: never;
-    /**
-     * 인증키 변경
-     * @description 기존 인증키를 검증하고 새로운 인증키로 변경합니다.
-     */
-    put: operations['updateAuthenticationKey'];
-    post?: never;
-    delete?: never;
-    options?: never;
-    head?: never;
-    patch?: never;
-    trace?: never;
-  };
   '/api/test/matching/apply-all-test-members': {
     parameters: {
       query?: never;
@@ -38,26 +18,6 @@ export interface paths {
      * @description 생성된 모든 테스트 회원들이 매칭에 신청합니다.
      */
     post: operations['applyAllTestMembers'];
-    delete?: never;
-    options?: never;
-    head?: never;
-    patch?: never;
-    trace?: never;
-  };
-  '/api/raffle/applicants': {
-    parameters: {
-      query?: never;
-      header?: never;
-      path?: never;
-      cookie?: never;
-    };
-    get?: never;
-    put?: never;
-    /**
-     * 신청자 등록
-     * @description 신청자의 이름과 학번, 인증키를 입력받아 신청자를 등록합니다.
-     */
-    post: operations['saveApplicant'];
     delete?: never;
     options?: never;
     head?: never;
@@ -84,6 +44,35 @@ export interface paths {
     patch?: never;
     trace?: never;
   };
+  '/api/matching/me': {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    /**
+     * 내 프로필 조회
+     * @description 현재 로그인한 사용자의 프로필 정보를 조회합니다. **인증 토큰이 필요합니다.**
+     */
+    get: operations['getProfile'];
+    put?: never;
+    /**
+     * 내 프로필 생성
+     * @description 현재 로그인한 사용자의 프로필 정보를 생성합니다.
+     */
+    post: operations['createProfile'];
+    delete?: never;
+    options?: never;
+    head?: never;
+    /**
+     * 정보 저장 (추가 정보 입력)
+     * @description 소셜 로그인으로 가입된 사용자가 추가 정보(성별, 전화번호)를 입력 **인증 토큰이 필요합니다.**
+     *     성별 (필수): db에 성별이 없으면 실패전화번호 허용 형식: "010-1234-5678"인스타그램 Id 선택 사항
+     */
+    patch: operations['patchProfile'];
+    trace?: never;
+  };
   '/api/auth/refresh': {
     parameters: {
       query?: never;
@@ -93,6 +82,10 @@ export interface paths {
     };
     get?: never;
     put?: never;
+    /**
+     * 액세스 토큰 갱신
+     * @description 리프레시 토큰을 Authorization 헤더에 담아서 새로운 액세스 토큰을 발급받습니다.
+     */
     post: operations['refreshToken'];
     delete?: never;
     options?: never;
@@ -126,6 +119,24 @@ export interface paths {
     get?: never;
     put?: never;
     post: operations['insertBooths'];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  '/api/admin/raffle/{day}': {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    /** 관리자 일차별 당첨자 조회 */
+    get: operations['getRaffleWinnersByDay'];
+    put?: never;
+    /** 관리자 추첨 실행 */
+    post: operations['executeRaffle'];
     delete?: never;
     options?: never;
     head?: never;
@@ -172,29 +183,38 @@ export interface paths {
     patch?: never;
     trace?: never;
   };
-  '/api/matching/me': {
+  '/api/member/level-up': {
     parameters: {
       query?: never;
       header?: never;
       path?: never;
       cookie?: never;
     };
-    /**
-     * 내 프로필 조회
-     * @description 현재 로그인한 사용자의 프로필 정보를 조회합니다. **인증 토큰이 필요합니다.**
-     */
-    get: operations['getProfile'];
+    get?: never;
     put?: never;
     post?: never;
     delete?: never;
     options?: never;
     head?: never;
-    /**
-     * 정보 저장 (추가 정보 입력)
-     * @description 소셜 로그인으로 가입된 사용자가 추가 정보(성별, 전화번호)를 입력 **인증 토큰이 필요합니다.**
-     *     성별 (필수): db에 성별이 없으면 실패전화번호 허용 형식: "010-1234-5678"인스타그램 Id 선택 사항
-     */
-    patch: operations['patchProfile'];
+    patch: operations['levelUp'];
+    trace?: never;
+  };
+  '/api/admin/raffle/authentication-key': {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    /** 관리자 인증키 조회 */
+    get: operations['getAuthenticationKey'];
+    put?: never;
+    post?: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    /** 관리자 인증키 레벨 설정 */
+    patch: operations['setAuthenticationKeyLevel'];
     trace?: never;
   };
   '/api/test/token/{memberId}': {
@@ -409,6 +429,26 @@ export interface paths {
      * @description 상품 ID로 특정 상품의 정보를 조회합니다.
      */
     get: operations['getPrizeById'];
+    put?: never;
+    post?: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  '/api/raffle/member': {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    /**
+     * 회원 응모권 정보 조회
+     * @description 로그인한 회원의 응모권 정보를 조회합니다. (응모권 개수, 응모권 사용 내역 등)
+     */
+    get: operations['getMemberRaffleProfile'];
     put?: never;
     post?: never;
     delete?: never;
@@ -677,17 +717,6 @@ export interface paths {
 export type webhooks = Record<string, never>;
 export interface components {
   schemas: {
-    UpdateAuthenticationKeyRequest: {
-      newKey: string;
-      oldKey: string;
-    };
-    BaseResponseVoid: {
-      isSuccess?: boolean;
-      /** Format: int32 */
-      code?: number;
-      message?: string;
-      result?: unknown;
-    };
     BaseResponseString: {
       isSuccess?: boolean;
       /** Format: int32 */
@@ -695,13 +724,12 @@ export interface components {
       message?: string;
       result?: string;
     };
-    ApplicantRegistrationRequest: {
-      applicantName: string;
-      studentId: string;
-      authenticationKey: string;
-    };
-    RefreshTokenRequest: {
-      refreshToken?: string;
+    BaseResponseVoid: {
+      isSuccess?: boolean;
+      /** Format: int32 */
+      code?: number;
+      message?: string;
+      result?: unknown;
     };
     BaseResponseTokenResponse: {
       isSuccess?: boolean;
@@ -774,11 +802,22 @@ export interface components {
       foundDateTime: string;
       imagePath?: string;
     };
+    LevelUpRequest: {
+      name?: string;
+      studentId?: string;
+      authenticationKey?: string;
+      /** Format: int32 */
+      level?: number;
+    };
     MatchingApplicantPatchRequest: {
       /** @enum {string} */
       gender?: 'MALE' | 'FEMALE';
       phoneNumber?: string;
       instagramId?: string;
+    };
+    AuthenticationLevelRequest: {
+      /** Format: int32 */
+      level?: number;
     };
     BaseResponseUserInfoResponse: {
       isSuccess?: boolean;
@@ -834,6 +873,19 @@ export interface components {
       code?: number;
       message?: string;
       result?: components['schemas']['PrizeResponse'];
+    };
+    BaseResponseMemberRaffleProfileResponse: {
+      isSuccess?: boolean;
+      /** Format: int32 */
+      code?: number;
+      message?: string;
+      result?: components['schemas']['MemberRaffleProfileResponse'];
+    };
+    MemberRaffleProfileResponse: {
+      /** Format: int32 */
+      level?: number;
+      name?: string;
+      studentId?: string;
     };
     ApplicationContext: {
       parent?: unknown;
@@ -1042,18 +1094,18 @@ export interface components {
     };
     JspPropertyGroupDescriptor: {
       buffer?: string;
+      includeCodas?: string[];
+      deferredSyntaxAllowedAsLiteral?: string;
+      trimDirectiveWhitespaces?: string;
+      errorOnUndeclaredNamespace?: string;
       elIgnored?: string;
       errorOnELNotFound?: string;
       pageEncoding?: string;
       scriptingInvalid?: string;
       isXml?: string;
-      includePreludes?: string[];
-      includeCodas?: string[];
-      deferredSyntaxAllowedAsLiteral?: string;
-      trimDirectiveWhitespaces?: string;
-      errorOnUndeclaredNamespace?: string;
       urlPatterns?: string[];
       defaultContentType?: string;
+      includePreludes?: string[];
     };
     RedirectView: {
       applicationContext?: components['schemas']['ApplicationContext'];
@@ -1113,9 +1165,9 @@ export interface components {
       attributeNames?: unknown;
       contextPath?: string;
       initParameterNames?: unknown;
+      sessionTrackingModes?: ('COOKIE' | 'URL' | 'SSL')[];
       /** Format: int32 */
       sessionTimeout?: number;
-      sessionTrackingModes?: ('COOKIE' | 'URL' | 'SSL')[];
       servletRegistrations?: {
         [key: string]: components['schemas']['ServletRegistration'];
       };
@@ -1299,6 +1351,27 @@ export interface components {
         [key: string]: unknown;
       };
     };
+    BaseResponseWinnerResponse: {
+      isSuccess?: boolean;
+      /** Format: int32 */
+      code?: number;
+      message?: string;
+      result?: components['schemas']['WinnerResponse'];
+    };
+    WinnerResponse: {
+      name?: string;
+      studentId?: string;
+    };
+    AuthenticationKeyResponse: {
+      authenticationKey?: string;
+    };
+    BaseResponseAuthenticationKeyResponse: {
+      isSuccess?: boolean;
+      /** Format: int32 */
+      code?: number;
+      message?: string;
+      result?: components['schemas']['AuthenticationKeyResponse'];
+    };
   };
   responses: never;
   parameters: never;
@@ -1308,31 +1381,6 @@ export interface components {
 }
 export type $defs = Record<string, never>;
 export interface operations {
-  updateAuthenticationKey: {
-    parameters: {
-      query?: never;
-      header?: never;
-      path?: never;
-      cookie?: never;
-    };
-    /** @description 인증키 변경 요청 정보 */
-    requestBody: {
-      content: {
-        'application/json': components['schemas']['UpdateAuthenticationKeyRequest'];
-      };
-    };
-    responses: {
-      /** @description OK */
-      200: {
-        headers: {
-          [name: string]: unknown;
-        };
-        content: {
-          '*/*': components['schemas']['BaseResponseVoid'];
-        };
-      };
-    };
-  };
   applyAllTestMembers: {
     parameters: {
       query?: never;
@@ -1349,31 +1397,6 @@ export interface operations {
         };
         content: {
           '*/*': components['schemas']['BaseResponseString'];
-        };
-      };
-    };
-  };
-  saveApplicant: {
-    parameters: {
-      query?: never;
-      header?: never;
-      path?: never;
-      cookie?: never;
-    };
-    /** @description 신청자 등록 요청 정보 */
-    requestBody: {
-      content: {
-        'application/json': components['schemas']['ApplicantRegistrationRequest'];
-      };
-    };
-    responses: {
-      /** @description OK */
-      200: {
-        headers: {
-          [name: string]: unknown;
-        };
-        content: {
-          '*/*': components['schemas']['BaseResponseVoid'];
         };
       };
     };
@@ -1398,18 +1421,85 @@ export interface operations {
       };
     };
   };
-  refreshToken: {
+  getProfile: {
     parameters: {
       query?: never;
       header?: never;
       path?: never;
       cookie?: never;
     };
-    requestBody: {
-      content: {
-        'application/json': components['schemas']['RefreshTokenRequest'];
+    requestBody?: never;
+    responses: {
+      /** @description OK */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          '*/*': components['schemas']['BaseResponseMatchingApplicantResponse'];
+        };
       };
     };
+  };
+  createProfile: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description OK */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          '*/*': components['schemas']['BaseResponseVoid'];
+        };
+      };
+    };
+  };
+  patchProfile: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    /** @description 추가 입력 정보 */
+    requestBody: {
+      content: {
+        'application/json': components['schemas']['MatchingApplicantPatchRequest'];
+      };
+    };
+    responses: {
+      /** @description OK */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          '*/*': components['schemas']['BaseResponseVoid'];
+        };
+      };
+    };
+  };
+  refreshToken: {
+    parameters: {
+      query?: never;
+      header: {
+        /**
+         * @description Bearer {refreshToken} 형식의 리프레시 토큰
+         * @example Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...
+         */
+        Authorization: string;
+      };
+      path?: never;
+      cookie?: never;
+    };
+    requestBody?: never;
     responses: {
       /** @description OK */
       200: {
@@ -1474,6 +1564,50 @@ export interface operations {
       };
     };
   };
+  getRaffleWinnersByDay: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        day: number;
+      };
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description OK */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          '*/*': components['schemas']['BaseResponseWinnerResponse'];
+        };
+      };
+    };
+  };
+  executeRaffle: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        day: number;
+      };
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description OK */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          '*/*': components['schemas']['BaseResponseVoid'];
+        };
+      };
+    };
+  };
   login: {
     parameters: {
       query?: never;
@@ -1524,7 +1658,31 @@ export interface operations {
       };
     };
   };
-  getProfile: {
+  levelUp: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody: {
+      content: {
+        'application/json': components['schemas']['LevelUpRequest'];
+      };
+    };
+    responses: {
+      /** @description OK */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          '*/*': components['schemas']['BaseResponseVoid'];
+        };
+      };
+    };
+  };
+  getAuthenticationKey: {
     parameters: {
       query?: never;
       header?: never;
@@ -1539,22 +1697,21 @@ export interface operations {
           [name: string]: unknown;
         };
         content: {
-          '*/*': components['schemas']['BaseResponseMatchingApplicantResponse'];
+          '*/*': components['schemas']['BaseResponseAuthenticationKeyResponse'];
         };
       };
     };
   };
-  patchProfile: {
+  setAuthenticationKeyLevel: {
     parameters: {
       query?: never;
       header?: never;
       path?: never;
       cookie?: never;
     };
-    /** @description 추가 입력 정보 */
     requestBody: {
       content: {
-        'application/json': components['schemas']['MatchingApplicantPatchRequest'];
+        'application/json': components['schemas']['AuthenticationLevelRequest'];
       };
     };
     responses: {
@@ -1799,6 +1956,26 @@ export interface operations {
         };
         content: {
           '*/*': components['schemas']['BaseResponsePrizeResponse'];
+        };
+      };
+    };
+  };
+  getMemberRaffleProfile: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description OK */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          '*/*': components['schemas']['BaseResponseMemberRaffleProfileResponse'];
         };
       };
     };

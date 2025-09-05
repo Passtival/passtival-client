@@ -26,6 +26,7 @@ const AddImage = ({ src, onFileChange, disabled }: AddImageProps) => {
         <IcSvgCamera
           width="1.5rem"
           height="1.33rem"
+          color={themeVars.color.main_yellow}
         />
         <input
           className={styles.image}

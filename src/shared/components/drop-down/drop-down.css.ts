@@ -15,12 +15,12 @@ export const dropdownContainer = style({
   width: '100%',
   height: '4rem',
   padding: '1rem 0.6rem',
-  border: `1px solid ${themeVars.color.gray_600}`,
+  border: `1px solid ${themeVars.color.bg_white}`,
   borderRadius: '8px',
   alignItems: 'center',
   justifyContent: 'space-between',
   cursor: 'pointer',
-  backgroundColor: themeVars.color.gray_200,
+  backgroundColor: themeVars.color.gray_500_40,
 });
 
 export const contentWrapper = style({
@@ -39,24 +39,17 @@ export const iconWrapper = style({
   alignItems: 'center',
   justifyContent: 'center',
   flexShrink: 0,
-  color: themeVars.color.gray_900,
+  color: themeVars.color.bg_white,
 });
 
 export const dropdownPlaceholder = style({
   flex: 1,
   minWidth: 0,
   textAlign: 'center',
-  color: themeVars.color.gray_600,
+  color: themeVars.color.bg_white,
   whiteSpace: 'nowrap',
   overflow: 'hidden',
   textOverflow: 'ellipsis',
-});
-
-export const rightIcon = style({
-  width: '1.2rem',
-  height: '1.2rem',
-  flexShrink: 0,
-  transition: 'transform 0.2s ease',
 });
 
 export const dropdownList = style({
@@ -64,7 +57,7 @@ export const dropdownList = style({
   top: 'calc(100% + 1.1rem)',
   left: 0,
   right: 0,
-  backgroundColor: themeVars.color.gray_200,
+  backgroundColor: themeVars.color.gray_500,
   boxShadow: `0 0 0.2rem ${themeVars.color.gray_600}`,
   borderRadius: '0.8rem',
   zIndex: themeVars.zIndex.dropdown,
@@ -78,9 +71,9 @@ export const optionItem = style({
   height: '3.5rem',
   padding: '0 1rem',
   alignItems: 'center',
-  borderBottom: `0.5px solid ${themeVars.color.gray_600}`,
+  borderBottom: `0.5px solid ${themeVars.color.bg_white}`,
   cursor: 'pointer',
-  color: themeVars.color.gray_600,
+  color: themeVars.color.bg_white,
   selectors: {
     '&:last-of-type': { borderBottom: 'none' },
     '&:hover': { backgroundColor: themeVars.color.gray_400 },

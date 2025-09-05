@@ -18,7 +18,7 @@ export const navLinkRecipe = recipe({
   variants: {
     isActive: {
       true: {
-        color: themeVars.color.main_blue,
+        color: themeVars.color.main_yellow,
       },
     },
   },

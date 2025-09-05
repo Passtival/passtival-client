@@ -8,7 +8,7 @@ export const container = style({
   height: '100%',
 
   padding: '1.5rem 2.4rem',
-  borderBottom: `1px solid ${themeVars.color.gray_400}`,
+  borderBottom: `1px solid ${themeVars.color.gray_600}`,
 });
 
 export const line = style({
@@ -19,21 +19,21 @@ export const line = style({
 
 export const title = style({
   ...themeVars.fontStyles.title_b_18,
-  color: themeVars.color.main_blue,
+  color: themeVars.color.main_yellow,
   padding: '0 0 0.8rem 0',
 });
 
 export const label = style({
   ...themeVars.fontStyles.caption2_m_15,
-  color: themeVars.color.gray_900,
+  color: themeVars.color.bg_white,
 });
 export const value = style({
   ...themeVars.fontStyles.body1_r_15,
-  color: themeVars.color.gray_600,
+  color: themeVars.color.gray_400,
 });
 
 export const message = style({
   ...themeVars.fontStyles.caption2_m_12,
-  color: themeVars.color.main_blue,
+  color: themeVars.color.main_yellow,
   padding: '0.8rem 0 0 0',
 });

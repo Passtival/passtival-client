@@ -1,6 +1,7 @@
 export const typography = {
   fontSize: {
     12: '1.2rem',
+    13: '1.3rem',
     14: '1.4rem',
     15: '1.5rem',
     16: '1.6rem',
@@ -16,10 +17,12 @@ export const typography = {
     extrabold: '800',
   },
   lineHeight: {
+    tighter: '130%',
     tight: '145%',
     normal: '150%',
   },
   letterSpacing: {
+    tighter: '-0.065rem',
     tight: '-0.01em',
     none: '0',
     wide: '0.01em',

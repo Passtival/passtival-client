@@ -11,10 +11,18 @@ export const container = style({
   gap: '0.5rem',
 });
 export const title = style({
-  color: themeVars.color.main_blue,
   ...themeVars.fontStyles.title_b_18,
+  color: themeVars.color.main_yellow,
 });
 export const description = style({
+  ...themeVars.fontStyles.body1_r_15,
+  color: themeVars.color.gray_400,
+});
+
+export const songslist = style({
+  display: 'flex',
+  flexDirection: 'column',
+
   color: themeVars.color.gray_600,
   ...themeVars.fontStyles.body1_r_15,
 });

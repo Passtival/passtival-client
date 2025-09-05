@@ -28,7 +28,7 @@ export const countText = style({
 });
 
 export const current = style({
-  color: themeVars.color.main_blue,
+  color: themeVars.color.main_yellow,
 });
 
 export const max = style({

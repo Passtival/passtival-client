@@ -2,6 +2,7 @@ import { useRef, useState } from 'react';
 import type { ReactNode } from 'react';
 
 import { IcSvgArrow } from '@shared/icons';
+import { themeVars } from '@shared/styles';
 
 import * as style from './drop-down.css';
 import useClickOutside from './hooks/use-click-outside';
@@ -54,7 +55,9 @@ const DropDown = ({
           <div className={style.iconWrapper}>{icon}</div>
           <span className={style.dropdownPlaceholder}>{selectedLabel}</span>
           <IcSvgArrow
-            className={style.rightIcon}
+            width="1.2rem"
+            height="1.2rem"
+            color={themeVars.color.bg_white}
             style={{ transform: isOpen ? 'rotate(90deg)' : 'rotate(270deg)' }}
           />
         </div>

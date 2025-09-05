@@ -1,15 +1,35 @@
 import * as styles from './detail-description.css';
 
-interface DescriptionProps {
-  title: string;
-  description: string;
+interface Song {
+  singer?: string;
+  title?: string;
 }
 
-const DetailDescription = ({ title, description }: DescriptionProps) => {
+interface DescriptionProps {
+  title?: string;
+  description?: string;
+  songsData?: Song[];
+}
+
+const DetailDescription = ({
+  title,
+  description,
+  songsData,
+}: DescriptionProps) => {
   return (
     <div className={styles.container}>
       <p className={styles.title}>{title}</p>
-      <p className={styles.description}>{description}</p>
+      {description && <p className={styles.description}>{description}</p>}
+
+      {songsData && (
+        <div className={styles.songslist}>
+          {songsData.map((song, index) => (
+            <div key={index}>
+              {song.singer} - {song.title}
+            </div>
+          ))}
+        </div>
+      )}
     </div>
   );
 };
