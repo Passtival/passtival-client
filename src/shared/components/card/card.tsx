@@ -27,7 +27,6 @@ const Card = ({
       className={styles.container({ type })}
       onClick={onClick}
     >
-      {/* <div className={styles.blur} /> */}
       <div className={styles.content}>
         <p className={styles.title({ type })}>{title}</p>
         {assignee && <p className={styles.assignee}>{assignee}</p>}

@@ -15,12 +15,12 @@ export const buttonVariants = recipe({
   variants: {
     color: {
       blue: {
-        backgroundColor: themeVars.color.main_blue,
+        backgroundColor: themeVars.color.main_yellow,
         color: themeVars.color.bg_white,
         selectors: {
           '&:disabled': {
             backgroundColor: themeVars.color.gray_400,
-            color: themeVars.color.gray_900,
+            color: themeVars.color.bg_white,
           },
         },
       },

@@ -12,8 +12,8 @@ export const textInputContainer = style({
 });
 
 export const text = style({
-  ...themeVars.fontStyles.title_b_18,
-  color: themeVars.color.gray_900,
+  ...themeVars.fontStyles.title_b_16,
+  color: themeVars.color.main_yellow,
 });
 
 export const foundDateTimeContainer = style({

@@ -21,15 +21,15 @@ export const messageContainer = style({
 
 export const message = style({
   ...themeVars.fontStyles.title_b_16,
-  color: themeVars.color.main_blue,
+  color: themeVars.color.main_yellow,
 });
 export const time = style({
   ...themeVars.fontStyles.body1_r_15,
-  color: themeVars.color.gray_900,
+  color: themeVars.color.bg_white,
 });
 export const caution = style({
   ...themeVars.fontStyles.caption2_m_12,
-  color: themeVars.color.gray_900,
+  color: themeVars.color.bg_white,
 });
 export const notice = style({
   display: 'flex',
@@ -37,5 +37,5 @@ export const notice = style({
   gap: '0.3rem',
   paddingTop: '0.6rem',
   ...themeVars.fontStyles.button_r_12,
-  color: themeVars.color.gray_900,
+  color: themeVars.color.bg_white,
 });

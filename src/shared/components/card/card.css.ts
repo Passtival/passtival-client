@@ -8,12 +8,11 @@ export const container = recipe({
     display: 'flex',
     justifyContent: 'space-between',
 
-    boxShadow: '2px 2px 5px rgba(24, 118, 250, 0.20)',
-
     borderRadius: '10px',
     position: 'relative',
     width: '100%',
     height: '13.3rem',
+    backgroundColor: themeVars.color.gray_500_40,
 
     marginLeft: '0.8rem',
   },
@@ -30,23 +29,11 @@ export const container = recipe({
   },
 });
 
-export const blur = style({
-  position: 'absolute',
-  width: '100%',
-  height: '100%',
-  filter: 'blur(8px)',
-  zIndex: themeVars.zIndex.header,
-  background: themeVars.color.sub_blue_40,
-});
-
 export const content = style({
   zIndex: themeVars.zIndex.modal,
   display: 'flex',
   flexDirection: 'column',
-  width: '16rem',
-
-  overflow: 'hidden',
-  textOverflow: 'ellipsis',
+  minWidth: '16rem',
 });
 
 export const title = recipe({
@@ -54,7 +41,7 @@ export const title = recipe({
     display: '-webkit-box',
 
     ...themeVars.fontStyles.title_b_18,
-    color: themeVars.color.gray_900,
+    color: themeVars.color.bg_white,
     overflow: 'hidden',
     WebkitLineClamp: 1,
     WebkitBoxOrient: 'vertical',
@@ -76,7 +63,7 @@ export const assignee = style({
   display: '-webkit-box',
 
   ...themeVars.fontStyles.title_b_14,
-  color: themeVars.color.main_blue,
+  color: themeVars.color.main_yellow,
   margin: '0 1.1rem 0.5rem 1.5rem',
 
   overflow: 'hidden',
@@ -88,7 +75,7 @@ export const description = recipe({
   base: {
     display: '-webkit-box',
 
-    color: themeVars.color.gray_600,
+    color: themeVars.color.gray_200,
     overflow: 'hidden',
     WebkitLineClamp: 2,
     WebkitBoxOrient: 'vertical',

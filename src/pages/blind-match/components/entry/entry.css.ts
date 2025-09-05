@@ -16,5 +16,5 @@ export const notice = style({
   paddingTop: '0.6rem',
 
   ...themeVars.fontStyles.button_r_12,
-  color: themeVars.color.gray_900,
+  color: themeVars.color.bg_white,
 });
