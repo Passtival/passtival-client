@@ -11,4 +11,5 @@ export const message = style({
   ...themeVars.fontStyles.button_r_12,
   color: themeVars.color.bg_white,
   paddingTop: '0.3rem',
+  marginBottom: '12rem',
 });
