@@ -12,6 +12,7 @@ import {
   publicRoutesOthers,
   protectedRoutes,
   onBoardingRoutes,
+  protectedAdminRoutes,
 } from './routes/global-routes';
 
 export const router = createBrowserRouter([
@@ -23,6 +24,7 @@ export const router = createBrowserRouter([
         Component: MainLayout,
         children: [
           ...publicRoutesWithMain,
+          ...protectedAdminRoutes,
           {
             Component: ProtectedRoute,
             children: protectedRoutes,

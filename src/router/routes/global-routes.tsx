@@ -14,6 +14,8 @@ import {
   LostItemReportPage,
   InfoShareConsentPage,
   onBoardingPage,
+  AdminMainPage,
+  GenerateAuthKeyPage,
 } from '../lazy';
 import { routePath } from '../path';
 
@@ -38,6 +40,11 @@ export const publicRoutesOthers = [
 export const protectedRoutes = [
   { path: routePath.BLIND_MATCH, Component: BlindMatchPage },
   { path: routePath.TICKET, Component: TicketPage },
+];
+
+export const protectedAdminRoutes = [
+  { path: routePath.ADMIN_MAIN, Component: AdminMainPage },
+  { path: routePath.GENERATE_AUTH_KEY, Component: GenerateAuthKeyPage },
 ];
 
 export const onBoardingRoutes = [
