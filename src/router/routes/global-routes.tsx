@@ -38,8 +38,5 @@ export const publicRoutesOthers = [
 export const protectedRoutes = [
   { path: routePath.BLIND_MATCH, Component: BlindMatchPage },
   { path: routePath.TICKET, Component: TicketPage },
-];
-
-export const ticketOnBoardingRoutes = [
   { path: routePath.TICKET_ONBOARDING, Component: TicketOnboardingPage },
 ];
