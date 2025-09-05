@@ -1,7 +1,9 @@
+import { useEffect } from 'react';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 
 import { routePath } from '@router/path';
 
+import { tokenService } from '@shared/auth/services/token-service';
 import Button from '@shared/components/button/button';
 
 import { ONBOARDING_STEPS } from './constants/onboarding-text';
@@ -13,10 +15,18 @@ const OnBoarding = () => {
   const step = Number(searchParams.get('step') ?? 0);
   const current = ONBOARDING_STEPS[step];
 
+  useEffect(() => {
+    const token = tokenService.getGoToOnboardingToken();
+    if (token) {
+      navigate(routePath.HOME, { replace: true });
+    }
+  }, [navigate]);
+
   const handleNext = () => {
     if (step < ONBOARDING_STEPS.length - 1) {
       setSearchParams({ step: String(step + 1) });
     } else {
+      tokenService.saveGoToOnboardingToken('1');
       navigate(routePath.HOME);
     }
   };
