@@ -25,11 +25,11 @@ const Ticket = () => {
   });
 
   const [modalType, setModalType] = useState<
-    'confirm' | 'success' | 'info' | 'error' | null
+    'confirm' | 'success' | 'error' | null
   >(null);
 
   const [selectedLevel, setSelectedLevel] = useState(1);
-  const isErrorState = modalType === 'error' || modalType === 'info';
+  const isErrorState = modalType === 'error';
 
   const handleFormChange = (name: keyof TicketForm, value: string) => {
     setForm((prevForm) => ({
@@ -40,7 +40,7 @@ const Ticket = () => {
 
   const handleApplyClick = useCallback(() => {
     if (!form.name || !form.studentNum || !form.key) {
-      setModalType('info');
+      setModalType('error');
       return;
     }
     setModalType('confirm');

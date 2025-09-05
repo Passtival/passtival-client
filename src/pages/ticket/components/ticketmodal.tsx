@@ -2,11 +2,10 @@ import Modal from '@shared/components/modal/modal';
 
 import ConfirmModal from './modal-type/confirm-modal';
 import ErrorModal from './modal-type/error-modal';
-import InfoModal from './modal-type/info-modal';
 import SuccessModal from './modal-type/success-modal';
 
 interface TicketModalProps {
-  modalType: 'confirm' | 'success' | 'info' | 'error' | null;
+  modalType: 'confirm' | 'success' | 'error' | null;
   name: string;
   studentNumber: string;
   onClose: () => void;
@@ -39,8 +38,6 @@ const TicketModal = ({
             onClose={onClose}
           />
         );
-      case 'info':
-        return <InfoModal onClose={onClose} />;
       case 'error':
         return <ErrorModal onClose={onClose} />;
       default:

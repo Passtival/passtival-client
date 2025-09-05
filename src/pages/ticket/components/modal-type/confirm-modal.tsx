@@ -29,7 +29,7 @@ const ConfirmModal = ({
             />
           </Modal.InfoSection>
           <Modal.Description>
-            * 응모 조건을 반드시 확인해주세요!
+            * 응모 조건을 반드시 확인해 주세요!
           </Modal.Description>
         </Modal.Summary>
       </Modal.Body>

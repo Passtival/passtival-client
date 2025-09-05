@@ -12,7 +12,7 @@ const ErrorModal = ({ onClose }: ErrorModalProps) => {
         <Modal.Description>
           유효하지 않은 인증키 입니다.
           <br />
-          다시 시도해주세요.
+          다시 시도해 주세요.
         </Modal.Description>
       </Modal.Body>
       <Modal.Footer>
