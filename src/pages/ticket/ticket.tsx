@@ -4,6 +4,7 @@ import InputSection from '@pages/ticket/components/inpur-section/input-section';
 
 import Button from '@shared/components/button/button';
 import Thumbnail from '@shared/components/Thumbnail/Thumbnail';
+import Title from '@shared/components/title/title';
 
 import TicketModal from './components/ticketmodal';
 import * as styles from './ticket.css';
@@ -53,20 +54,17 @@ const Ticket = () => {
 
   return (
     <>
-      <div className={styles.headercontainer}>
-        <p className={styles.header}>프리미엄 응모권</p>
-        <p className={styles.subheader}>
-          축제 기간 중 한 번만 응모할 수 있습니다.
-        </p>
-      </div>
       <div className={styles.container}>
-        <p className={styles.product}>당첨 상품</p>
+        <Title
+          mainTitle="상품 응모권"
+          subTitle="상품 당첨의 기회를 잡아보세요!"
+        />
+
         <Thumbnail
           src={ticketData.src}
           alt=""
           type="square_lg"
         />
-        <p className={styles.productName}>{ticketData.productName}</p>
         <InputSection
           name={name}
           studentNumber={studentNumber}
@@ -80,14 +78,14 @@ const Ticket = () => {
         <p className={styles.message}>
           일차별 행사 모두 참여시 전체 응모권 제공!
         </p>
+        <TicketModal
+          modalType={modalType}
+          name={name}
+          studentNumber={studentNumber}
+          onClose={handleCloseModal}
+          onConfirm={handleConfirm}
+        />
       </div>
-      <TicketModal
-        modalType={modalType}
-        name={name}
-        studentNumber={studentNumber}
-        onClose={handleCloseModal}
-        onConfirm={handleConfirm}
-      />
     </>
   );
 };
