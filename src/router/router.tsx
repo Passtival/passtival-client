@@ -10,7 +10,9 @@ import {
   publicRoutesWithMain,
   publicRoutesOthers,
   protectedRoutes,
+  ticketOnBoardingRoutes,
 } from './routes/global-routes';
+import TicketOnBoardingLayout from './ticketonboarding-layout';
 
 export const router = createBrowserRouter([
   {
@@ -29,5 +31,9 @@ export const router = createBrowserRouter([
       },
       ...publicRoutesOthers,
     ],
+  },
+  {
+    Component: TicketOnBoardingLayout,
+    children: ticketOnBoardingRoutes,
   },
 ]);

@@ -1,21 +1,9 @@
 import { style } from '@vanilla-extract/css';
+import { recipe } from '@vanilla-extract/recipes';
 
 import { themeVars } from '@shared/styles';
 
-export const img = style({ width: '24.3rem', height: '25.3rem' });
-export const title = style({
-  ...themeVars.fontStyles.title_b_22,
-  color: themeVars.color.main_yellow,
-});
-export const header = style({
-  ...themeVars.fontStyles.caption2_m_15,
-  color: themeVars.color.main_yellow,
-});
-export const description = style({
-  ...themeVars.fontStyles.caption2_m_12,
-  color: themeVars.color.bg_white,
-});
-export const point = style({
-  ...themeVars.fontStyles.caption2_m_12,
-  color: themeVars.color.main_yellow,
+export const container = style({
+  display: 'flex',
+  padding: '0 2.4rem',
 });
