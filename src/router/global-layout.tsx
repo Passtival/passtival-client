@@ -20,7 +20,7 @@ export default function GlobalLayout() {
   if (isHome && !hasOnboardingToken) {
     return (
       <Navigate
-        to={routePath.ONBOARDING}
+        to={routePath.LAND}
         replace
       />
     );

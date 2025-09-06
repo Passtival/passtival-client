@@ -13,6 +13,7 @@ export { default as IcSvgClock } from './ic_clock';
 export { default as IcSvgEntry } from './ic_entry';
 export { default as IcSvgKakaoTalk } from './ic_kakaotalk';
 export { default as IcSvgLocation } from './ic_location';
+export { default as IcSvgLogo } from './ic_logo';
 export { default as IcSvgLostfind } from './ic_lostfind';
 export { default as IcSvgMain } from './ic_main';
 export { default as IcSvgMatch } from './ic_match';

@@ -4,21 +4,22 @@ import { themeVars } from '@shared/styles';
 
 export const container = style({
   display: 'flex',
-  height: '100%',
+  flex: '1',
+  flexDirection: 'column',
   alignItems: 'center',
   justifyContent: 'center',
-  flexDirection: 'column',
-  gap: '16.8rem',
-  padding: '26.8rem 8.7rem 24.9rem 8.6rem',
+  textAlign: 'center',
+  gap: '0.6rem',
+  padding: '0 7.3rem',
 });
 
 export const title = style({
-  textAlign: 'center',
+  ...themeVars.fontStyles.title2_m_45,
   color: themeVars.color.bg_white,
-  ...themeVars.fontStyles.title_b_18,
 });
 
 export const passtival = style({
+  ...themeVars.fontStyles.title_b_18,
   color: themeVars.color.bg_white,
-  fontSize: '45px',
+  whiteSpace: 'pre-wrap',
 });

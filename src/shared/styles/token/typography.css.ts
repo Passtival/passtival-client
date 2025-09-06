@@ -8,6 +8,7 @@ export const typography = {
     18: '1.8rem',
     20: '2rem',
     22: '2.2rem',
+    45: '4.5rem',
   },
   fontWeight: {
     regular: '400',
@@ -26,5 +27,6 @@ export const typography = {
     tight: '-0.01em',
     none: '0',
     wide: '0.01em',
+    xl: '0.02em',
   },
 } as const;
