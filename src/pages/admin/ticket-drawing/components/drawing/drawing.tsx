@@ -1,13 +1,17 @@
 import Title from '@shared/components/title/title';
 
-const Drawimng = () => {
+import * as styles from './drawing.css';
+
+const Drawing = () => {
   return (
     <>
-      <Title
-        mainTitle="당첨자 추첨"
-        subTitle="응모권 당첨자 페이지입니다."
-      />
+      <div className={styles.title}>
+        <Title
+          mainTitle="당첨자 추첨"
+          subTitle="응모권 당첨자 페이지입니다."
+        />
+      </div>
     </>
   );
 };
-export default Drawimng;
+export default Drawing;

@@ -19,7 +19,6 @@ import {
   AdminMainPage,
   GenerateAuthKeyPage,
   TicketDrawingPage,
-  DrawingPage,
 } from '../lazy';
 import { routePath } from '../path';
 
@@ -52,7 +51,6 @@ export const protectedAdminRoutes = [
   { path: routePath.ADMIN_MAIN, Component: AdminMainPage },
   { path: routePath.GENERATE_AUTH_KEY, Component: GenerateAuthKeyPage },
   { path: routePath.TICKET_DRAWING, Component: TicketDrawingPage },
-  { path: routePath.DRAWING, Component: DrawingPage },
 ];
 
 export const onBoardingRoutes = [

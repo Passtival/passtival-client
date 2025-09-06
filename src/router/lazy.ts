@@ -24,9 +24,6 @@ export const TicketPage = lazy(() => import('@pages/ticket/ticket'));
 export const TicketDrawingPage = lazy(
   () => import('@pages/admin/ticket-drawing/ticket-drawing'),
 );
-export const DrawingPage = lazy(
-  () => import('@pages/admin/ticket-drawing/components/drawing/drawing'),
-);
 export const LoginFallbackPage = lazy(
   () => import('@pages/login-fallback/login-fallback'),
 );

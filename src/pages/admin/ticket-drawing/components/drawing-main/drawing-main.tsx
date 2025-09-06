@@ -1,8 +1,8 @@
 import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 
 import Button from '@shared/components/button/button';
 
+import Drawing from '../drawing/drawing';
 import DrawingModal from '../modal';
 import * as styles from './drawing-main.css';
 
@@ -12,7 +12,7 @@ interface DrawingMainProps {
 
 const DrawingMain = ({ currentDay }: DrawingMainProps) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const navigate = useNavigate();
+  const [viewState, setViewState] = useState<'initial' | 'result'>('initial');
 
   const handleOpenModal = () => {
     setIsModalOpen(true);
@@ -23,8 +23,13 @@ const DrawingMain = ({ currentDay }: DrawingMainProps) => {
   };
 
   const handleCheck = () => {
-    navigate('/drawing');
+    setIsModalOpen(false);
+    setViewState('result');
   };
+
+  if (viewState === 'result') {
+    return <Drawing />;
+  }
 
   return (
     <>
