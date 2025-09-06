@@ -1,16 +1,41 @@
+import { useState } from 'react';
+
 import Button from '@shared/components/button/button';
 
+import DrawingModal from './components/modal';
 import * as styles from './drawing-component.css';
 
-const DrawingComponent = () => {
-  const handleButtonClick = () => {
-    console.log('응모권 추첨 버튼이 클릭되었습니다!');
+interface DrawingComponentProps {
+  currentDay: string;
+}
+
+const DrawingComponent = ({ currentDay }: DrawingComponentProps) => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const handleOpenModal = () => {
+    setIsModalOpen(true);
   };
+
+  const handleCloseModal = () => {
+    setIsModalOpen(false);
+  };
+
+  const handleCheck = () => {
+    setIsModalOpen(false);
+  };
+
   return (
     <>
       <p className={styles.text}>응모권 추첨</p>
       <div className={styles.container}>
-        <Button onClick={handleButtonClick}>응모권 추첨</Button>
+        <Button onClick={handleOpenModal}>응모권 추첨</Button>
+
+        <DrawingModal
+          isModalOpen={isModalOpen}
+          onClose={handleCloseModal}
+          onCheck={handleCheck}
+          currentDay={currentDay}
+        />
       </div>
     </>
   );

@@ -16,16 +16,16 @@ const BlindMatch = () => {
         </Tab.List>
         <Tab.Panels>
           <Tab.Panel value="1">
-            <DrawingComponent />
+            <DrawingComponent currentDay="1일차" />
           </Tab.Panel>
           <Tab.Panel value="2">
-            <DrawingComponent />
+            <DrawingComponent currentDay="2일차" />
           </Tab.Panel>
           <Tab.Panel value="3">
-            <DrawingComponent />
+            <DrawingComponent currentDay="3일차" />
           </Tab.Panel>
           <Tab.Panel value="4">
-            <DrawingComponent />
+            <DrawingComponent currentDay="Premium" />
           </Tab.Panel>
         </Tab.Panels>
       </Tab.Container>
