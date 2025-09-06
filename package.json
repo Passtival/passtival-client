@@ -25,6 +25,7 @@
     "swiper": "^11.2.10"
   },
   "devDependencies": {
+    "lottie-react": "^2.4.1",
     "@commitlint/cli": "^19.8.1",
     "@commitlint/config-conventional": "^19.8.1",
     "@eslint/js": "^9.30.1",
