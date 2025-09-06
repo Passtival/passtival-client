@@ -15,6 +15,7 @@ export const routePath = {
   ADMIN_MAIN: '/admin-main',
   GENERATE_AUTH_KEY: '/generate-auth-key',
   INFO_SHARE_CONSENT: '/info-share-consent',
+  LINDING: '/landing',
   TICKET_ONBOARDING: 'ticket-onboarding',
   ONBOARDING: '/onboarding',
 } as const;
