@@ -12,6 +12,7 @@ export const routePath = {
   LOST_ITEM_REPORT: '/lost-item-report',
   TICKET: '/ticket',
   TICKET_DRAWING: '/ticket-drawing',
+  DRAWING: '/drawing',
   ADMIN_LOGIN: '/admin-login',
   ADMIN_MAIN: '/admin-main',
   GENERATE_AUTH_KEY: '/generate-auth-key',

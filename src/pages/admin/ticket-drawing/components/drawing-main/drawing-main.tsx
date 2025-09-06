@@ -1,16 +1,18 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 import Button from '@shared/components/button/button';
 
-import DrawingModal from './components/modal';
-import * as styles from './drawing-component.css';
+import DrawingModal from '../modal';
+import * as styles from './drawing-main.css';
 
-interface DrawingComponentProps {
+interface DrawingMainProps {
   currentDay: string;
 }
 
-const DrawingComponent = ({ currentDay }: DrawingComponentProps) => {
+const DrawingMain = ({ currentDay }: DrawingMainProps) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const navigate = useNavigate();
 
   const handleOpenModal = () => {
     setIsModalOpen(true);
@@ -21,7 +23,7 @@ const DrawingComponent = ({ currentDay }: DrawingComponentProps) => {
   };
 
   const handleCheck = () => {
-    setIsModalOpen(false);
+    navigate('/drawing');
   };
 
   return (
@@ -41,4 +43,4 @@ const DrawingComponent = ({ currentDay }: DrawingComponentProps) => {
   );
 };
 
-export default DrawingComponent;
+export default DrawingMain;

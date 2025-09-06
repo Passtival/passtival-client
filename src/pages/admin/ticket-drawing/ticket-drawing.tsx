@@ -1,6 +1,6 @@
 import Tab from '@shared/components/tab/tab';
 
-import DrawingComponent from './drawing-component';
+import DrawingMain from './components/drawing-main/drawing-main';
 
 const BlindMatch = () => {
   const initialDay = '1';
@@ -16,16 +16,16 @@ const BlindMatch = () => {
         </Tab.List>
         <Tab.Panels>
           <Tab.Panel value="1">
-            <DrawingComponent currentDay="1일차" />
+            <DrawingMain currentDay="1일차" />
           </Tab.Panel>
           <Tab.Panel value="2">
-            <DrawingComponent currentDay="2일차" />
+            <DrawingMain currentDay="2일차" />
           </Tab.Panel>
           <Tab.Panel value="3">
-            <DrawingComponent currentDay="3일차" />
+            <DrawingMain currentDay="3일차" />
           </Tab.Panel>
           <Tab.Panel value="4">
-            <DrawingComponent currentDay="Premium" />
+            <DrawingMain currentDay="Premium" />
           </Tab.Panel>
         </Tab.Panels>
       </Tab.Container>
