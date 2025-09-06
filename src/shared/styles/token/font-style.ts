@@ -59,6 +59,14 @@ export const fontStyles = {
     letterSpacing: typography.letterSpacing.wide,
   },
 
+  // Title (Medium)
+  title2_m_45: {
+    fontSize: typography.fontSize[45],
+    fontWeight: typography.fontWeight.medium,
+    lineHeight: typography.lineHeight.normal,
+    letterSpacing: typography.letterSpacing.xl,
+  },
+
   // Body (Regular)
   body1_r_22: {
     fontSize: typography.fontSize[22],
