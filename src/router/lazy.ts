@@ -25,10 +25,25 @@ export const LoginFallbackPage = lazy(
   () => import('@pages/login-fallback/login-fallback'),
 );
 export const AdminLoginPage = lazy(
-  () => import('@pages/admin-login/admin-login'),
+  () => import('@pages/admin/admin-login/admin-login'),
+);
+
+export const AdminMainPage = lazy(
+  () => import('@pages/admin/admin-main/admin-main'),
+);
+
+export const GenerateAuthKeyPage = lazy(
+  () => import('@pages/admin/generate-auth-key/generate-auth-key'),
 );
 
 export const InfoShareConsentPage = lazy(
   () => import('@pages/info-share/info-share'),
 );
-export const LandingPage = lazy(() => import('@pages/land/land'));
+
+export const TicketOnboardingPage = lazy(
+  () => import('@pages/ticket-onboarding/onboarding'),
+);
+
+export const onBoardingPage = lazy(
+  () => import('@pages/onboarding/onboarding'),
+);

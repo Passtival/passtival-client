@@ -1,19 +1,21 @@
 import type { ReactNode } from 'react';
 
-import { buttonVariants } from './button.css';
+import { IcSvgArrowRight } from '@shared/icons';
+
+import * as styles from './button.css';
 
 interface ButtonProps {
-  children: ReactNode;
+  children?: ReactNode;
   disabled?: boolean;
-  color?: 'blue';
-  size?: 'sm' | 'lg';
+  color?: 'yellow' | 'gray';
+  size?: 'sm' | 'lg' | 'icon' | 'xl';
   onClick?: () => void;
 }
 
 const Button = ({
   children,
   disabled = false,
-  color = 'blue',
+  color = 'yellow',
   size = 'lg',
   onClick,
 }: ButtonProps) => {
@@ -21,10 +23,20 @@ const Button = ({
     <button
       type="button"
       disabled={disabled}
-      className={buttonVariants({ color, size })}
+      className={styles.buttonVariants({ color, size })}
       onClick={onClick}
     >
-      {children}
+      {size === 'icon' ? (
+        <>
+          <span>{children}</span>
+          <IcSvgArrowRight
+            width={20}
+            height={20}
+          />
+        </>
+      ) : (
+        children
+      )}
     </button>
   );
 };

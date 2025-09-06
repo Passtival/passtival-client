@@ -1,4 +1,9 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+
+import { routePath } from '@router/path';
+
+import { TITLE } from '@pages/admin/constants/TITLE';
 
 import Button from '@shared/components/button/button';
 import Input from '@shared/components/input/input';
@@ -6,10 +11,19 @@ import Input from '@shared/components/input/input';
 import * as styles from './admin-login.css';
 
 const AdminLogin = () => {
+  const navigate = useNavigate();
   const [password, setPassword] = useState('');
+
+  const handleAdminLogin = () => {
+    navigate(routePath.ADMIN_MAIN);
+  };
+
   return (
     <div>
-      <p className={styles.title}>관리자 로그인</p>
+      <div className={styles.contentWrapper}>
+        <p className={styles.title}>{TITLE.LOGIN}</p>
+        <p className={styles.subTitle}>{TITLE.SUB}</p>
+      </div>
       <div className={styles.loginContainer}>
         <Input
           value={password}
@@ -18,7 +32,7 @@ const AdminLogin = () => {
         />
         <Button
           children="로그인"
-          onClick={() => {}}
+          onClick={handleAdminLogin}
         />
       </div>
     </div>
