@@ -31,7 +31,7 @@ export const authKey = style({
 
   ...themeVars.fontStyles.head_eb_22,
   backgroundColor: themeVars.color.bg_white_70,
-  color: themeVars.color.cool_gray_100,
+  color: themeVars.color.gray_900,
 
   borderRadius: '12px',
 });
