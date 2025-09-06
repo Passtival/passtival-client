@@ -12,7 +12,7 @@ const CONTENT = {
   DESCRIPTION: '안양대 축제를 한눈에 담은\n단 하나의 앱',
 };
 
-const SPLASH_TIMEOUT = 2000;
+const LAND_TIMEOUT = 2000;
 
 const Land = () => {
   const navigate = useNavigate();
@@ -20,7 +20,7 @@ const Land = () => {
   useEffect(() => {
     const timer = setTimeout(() => {
       navigate(routePath.ONBOARDING);
-    }, SPLASH_TIMEOUT);
+    }, LAND_TIMEOUT);
     return () => clearTimeout(timer);
   }, [navigate]);
 
