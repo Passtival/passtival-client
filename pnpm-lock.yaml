@@ -17,9 +17,6 @@ importers:
       axios:
         specifier: ^1.11.0
         version: 1.11.0
-      lottie-react:
-        specifier: ^2.4.1
-        version: 2.4.1(react-dom@19.1.1(react@19.1.1))(react@19.1.1)
       react:
         specifier: ^19.1.0
         version: 19.1.1
@@ -111,6 +108,9 @@ importers:
       lint-staged:
         specifier: ^16.1.2
         version: 16.1.2
+      lottie-react:
+        specifier: ^2.4.1
+        version: 2.4.1(react-dom@19.1.1(react@19.1.1))(react@19.1.1)
       openapi-typescript:
         specifier: ^7.9.1
         version: 7.9.1(typescript@5.8.3)
