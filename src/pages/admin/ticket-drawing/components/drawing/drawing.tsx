@@ -1,3 +1,4 @@
+// Drawing.jsx
 import { useState } from 'react';
 
 import Title from '@shared/components/title/title';
@@ -6,31 +7,34 @@ import * as styles from './drawing.css';
 import InfoSection from '../info-section/info-section';
 
 const Drawing = () => {
-  const [winners, setWinners] = useState<{ name: string; number: string }[]>(
-    [],
-  );
+  const [winners, setWinners] = useState<
+    { name: string; number: string; id: number }[]
+  >([]);
 
   const mockWinners = [
-    { name: '홍길동', number: '20230001' },
-    { name: '김철수', number: '20230002' },
-    { name: '이영희', number: '20230003' },
-    { name: '박민준', number: '20230004' },
+    { name: '홍길동', number: '20230001', id: 1 },
+    { name: '김철수', number: '20230002', id: 2 },
+    { name: '이영희', number: '20230003', id: 3 },
+    { name: '박민준', number: '20230004', id: 4 },
   ];
 
   const handleButtonClick = () => {
     const randomIndex = Math.floor(Math.random() * mockWinners.length);
     const randomWinner = mockWinners[randomIndex];
 
-    setWinners((prevWinners) => [...prevWinners, randomWinner]);
+    setWinners((prevWinners) => [
+      ...prevWinners,
+      { ...randomWinner, id: Date.now() },
+    ]);
   };
 
-  const handleReDrawButtonClick = () => {
+  const handleReDrawButtonClick = (index: number) => {
     const randomIndex = Math.floor(Math.random() * mockWinners.length);
-    const newWinner = mockWinners[randomIndex];
+    const newWinner = { ...mockWinners[randomIndex], id: Date.now() };
 
     setWinners((prevWinners) => {
       const updatedWinners = [...prevWinners];
-      updatedWinners[updatedWinners.length - 1] = newWinner;
+      updatedWinners[index] = newWinner;
       return updatedWinners;
     });
   };
@@ -45,23 +49,22 @@ const Drawing = () => {
       </div>
       {winners.map((winner, index) => (
         <div
-          key={index}
+          key={winner.id}
           className={styles.container}
         >
           <p className={styles.text}>당첨자 {index + 1}</p>
           <InfoSection
             value={winner.name}
             studentnumber={winner.number}
-            handleButtonClick={handleReDrawButtonClick}
+            handleButtonClick={() => handleReDrawButtonClick(index)}
           />
         </div>
       ))}
-
       <div className={styles.container}>
         <p className={styles.text}>당첨자 {winners.length + 1}</p>
         <InfoSection
-          value=""
-          studentnumber=""
+          value={''}
+          studentnumber={''}
           handleButtonClick={handleButtonClick}
         />
       </div>
