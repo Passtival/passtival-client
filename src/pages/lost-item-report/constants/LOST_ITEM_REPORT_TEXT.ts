@@ -1,0 +1,15 @@
+export const LOST_ITEM_REPORT_TEXT = {
+  LOST_ITEM_CREATE: '분실물 등록',
+  TITLE: '제목',
+  TITLE_PLACEHOLDER: '글 제목',
+  FOUND_LOCATION: '습득 장소',
+  FOUND_LOCATION_PLACEHOLDER: 'ex) 운동장',
+  FOUND_DATE_TIME: '습득 날짜 및 시간',
+  CREATE: '등록하기',
+  UPLOADING: '업로드 중...',
+  CREATING: '등록 중...',
+  ERROR_UPLOAD_URL: '업로드 URL을 가져오는데 실패했습니다.',
+  ERROR_IMAGE_UPLOAD: '이미지 업로드에 실패했습니다.',
+  ERROR_CREATE_ITEM: '분실물 등록에 실패했습니다.',
+  ERROR_NETWORK: '네트워크 오류가 발생했습니다.',
+};

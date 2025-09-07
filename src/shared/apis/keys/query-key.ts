@@ -10,6 +10,7 @@ export const PERFORMANCES_QUERY_KEY = {
 export const LOST_ITEM_QUERY_KEY = {
   ALL: ['lost'],
   LOST_ITEM_PREVIEW: () => [...LOST_ITEM_QUERY_KEY.ALL, 'items'],
+  ADMIN_FOUND_ITEM: () => [...LOST_ITEM_QUERY_KEY.ALL, 'admin', 'found-item'],
 } as const;
 
 export const RAFFLE_QUERY_KEY = {
@@ -27,4 +28,14 @@ export const MATCHING_QUERY_KEY = {
 export const ADMIN_QUERY_KEY = {
   ALL: ['admin'],
   ADMIN_LOGIN: () => [...ADMIN_QUERY_KEY.ALL, 'login'],
+  ADMIN_FOUND_ITEM: () => [...ADMIN_QUERY_KEY.ALL, 'found-item'],
+} as const;
+
+export const S3_QUERY_KEY = {
+  ALL: ['s3'],
+  UPLOAD_URL: (fileName: string) => [
+    ...S3_QUERY_KEY.ALL,
+    'upload-url',
+    fileName,
+  ],
 } as const;
