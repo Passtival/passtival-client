@@ -1,4 +1,3 @@
-// Drawing.jsx
 import { useState } from 'react';
 
 import Title from '@shared/components/title/title';
