@@ -1,6 +1,7 @@
 import { createBrowserRouter } from 'react-router-dom';
 
 import OnBoardingLayout from '@router/onboarding-layout';
+import { AdminProtectedRoute } from '@router/routes/admin-protected-route';
 import { ProtectedRoute } from '@router/routes/protected-route';
 
 import ErrorPage from '@pages/error/error';
@@ -25,10 +26,13 @@ export const router = createBrowserRouter([
         Component: MainLayout,
         children: [
           ...publicRoutesWithMain,
-          ...protectedAdminRoutes,
           {
             Component: ProtectedRoute,
             children: protectedRoutes,
+          },
+          {
+            Component: AdminProtectedRoute,
+            children: protectedAdminRoutes,
           },
         ],
       },

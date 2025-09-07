@@ -1,12 +1,15 @@
+import { useMutation } from '@tanstack/react-query';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import { routePath } from '@router/path';
 
+import { ADMIN_MUTATION_OPTIONS } from '@pages/admin/apis/queries';
 import { TITLE } from '@pages/admin/constants/TITLE';
 
 import Button from '@shared/components/button/button';
 import Input from '@shared/components/input/input';
+import { appConfig } from '@shared/configs/app-config';
 
 import * as styles from './admin-login.css';
 
@@ -14,12 +17,27 @@ const AdminLogin = () => {
   const navigate = useNavigate();
   const [password, setPassword] = useState('');
 
+  const { mutate, isPending } = useMutation({
+    ...ADMIN_MUTATION_OPTIONS.ADMIN_LOGIN(),
+    onSuccess: (isLoginSuccess) => {
+      if (!isLoginSuccess) {
+        alert('비밀번호가 올바르지 않습니다.');
+        return;
+      }
+      navigate(appConfig.adminAuth.loginSuccessUrl || routePath.ADMIN_MAIN);
+    },
+    onError: () => {
+      alert('로그인에 실패했습니다. 비밀번호를 확인해주세요.');
+    },
+  });
+
   const handleAdminLogin = () => {
-    navigate(routePath.ADMIN_MAIN);
+    if (!password) return;
+    mutate(password);
   };
 
   return (
-    <div>
+    <>
       <div className={styles.contentWrapper}>
         <p className={styles.title}>{TITLE.LOGIN}</p>
         <p className={styles.subTitle}>{TITLE.SUB}</p>
@@ -31,11 +49,13 @@ const AdminLogin = () => {
           placeholder="비밀번호"
         />
         <Button
-          children="로그인"
           onClick={handleAdminLogin}
-        />
+          disabled={!password || isPending}
+        >
+          로그인
+        </Button>
       </div>
-    </div>
+    </>
   );
 };
 
