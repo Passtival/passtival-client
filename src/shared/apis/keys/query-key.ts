@@ -8,9 +8,14 @@ export const PERFORMANCES_QUERY_KEY = {
 } as const;
 
 export const LOST_ITEM_QUERY_KEY = {
-  ALL: ['lost'],
-  LOST_ITEM_PREVIEW: () => [...LOST_ITEM_QUERY_KEY.ALL, 'items'],
-  ADMIN_FOUND_ITEM: () => [...LOST_ITEM_QUERY_KEY.ALL, 'admin', 'found-item'],
+  ALL: ['lost'] as const,
+  LOST_ITEM_PREVIEW: () => [...LOST_ITEM_QUERY_KEY.ALL, 'items'] as const,
+  ADMIN_FOUND_ITEM: () =>
+    [...LOST_ITEM_QUERY_KEY.ALL, 'admin', 'found-item'] as const,
+  ADMIN_FOUND_ITEM_DELETE: () =>
+    [...LOST_ITEM_QUERY_KEY.ALL, 'admin', 'found-item', 'delete'] as const,
+  FOUND_ITEM_DETAIL: (id: number) =>
+    [...LOST_ITEM_QUERY_KEY.ALL, 'detail', id] as const,
 } as const;
 
 export const RAFFLE_QUERY_KEY = {

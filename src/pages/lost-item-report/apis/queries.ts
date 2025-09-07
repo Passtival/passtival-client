@@ -3,17 +3,18 @@ import { mutationOptions } from '@tanstack/react-query';
 import type {
   FoundItemRequest,
   FoundItemResponse,
+  FoundItemDeleteResponse,
   S3UploadUrlResponse,
+  FoundItemDetailResponse,
 } from '@pages/lost-item-report/types/types';
+import {
+  getFileUrlFromPreSignedUrl,
+  uploadImageToS3,
+} from '@pages/lost-item-report/utils/s3-upload';
 
 import { END_POINT } from '@shared/apis/config/end-point';
-import { adminApi } from '@shared/apis/config/instance';
+import { api, adminApi } from '@shared/apis/config/instance';
 import { LOST_ITEM_QUERY_KEY } from '@shared/apis/keys/query-key';
-
-import {
-  uploadImageToS3,
-  getFileUrlFromPreSignedUrl,
-} from '../utils/s3-upload';
 
 // =============================================================================
 // QUERY FUNCTIONS
@@ -81,6 +82,34 @@ export const createFoundItem = async (data: {
   return response;
 };
 
+/**
+ * 분실물을 삭제합니다.
+ * @param id - 삭제할 분실물 ID
+ * @returns 분실물 삭제 응답 데이터
+ */
+export const deleteFoundItem = async (
+  id: number,
+): Promise<FoundItemDeleteResponse> => {
+  const { data } = await adminApi.delete<FoundItemDeleteResponse>(
+    END_POINT.ADMIN_FOUND_ITEM_DELETE.replace('{id}', id.toString()),
+  );
+  return data;
+};
+
+/**
+ * 분실물 상세를 조회합니다.
+ * @param id - 조회할 분실물 ID
+ * @returns 분실물 상세 응답 데이터
+ */
+export const getFoundItemDetail = async (
+  id: number,
+): Promise<FoundItemDetailResponse> => {
+  const response = await api.get<FoundItemDetailResponse>(
+    `${END_POINT.FOUND_ITEM_DETAIL.replace('{id}', id.toString())}`,
+  );
+  return response.data;
+};
+
 // =============================================================================
 // MUTATION OPTIONS
 // =============================================================================
@@ -92,4 +121,18 @@ export const LOST_ITEM_MUTATION_OPTIONS = {
       mutationFn: createFoundItem,
     });
   },
+
+  DELETE_FOUND_ITEM: () => {
+    return mutationOptions({
+      mutationKey: LOST_ITEM_QUERY_KEY.ADMIN_FOUND_ITEM_DELETE(),
+      mutationFn: deleteFoundItem,
+    });
+  },
 };
+
+export const FOUND_ITEM_QUERY_OPTIONS = {
+  FOUND_ITEM_DETAIL: (id: number) => ({
+    queryKey: LOST_ITEM_QUERY_KEY.FOUND_ITEM_DETAIL(id),
+    queryFn: () => getFoundItemDetail(id),
+  }),
+} as const;

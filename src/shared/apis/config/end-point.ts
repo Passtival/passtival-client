@@ -3,5 +3,7 @@ export const END_POINT = {
   LOST_ITEMS: '/api/found-items',
   ADMIN_LOGIN: '/api/admin/login',
   ADMIN_FOUND_ITEM: '/api/admin/found-item',
+  ADMIN_FOUND_ITEM_DELETE: '/api/admin/found-item/{id}',
   S3_UPLOAD_URL: '/api/s3/upload-url',
-};
+  FOUND_ITEM_DETAIL: '/api/found-items/{id}',
+} as const;
