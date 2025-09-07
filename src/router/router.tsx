@@ -45,6 +45,7 @@ export const router = createBrowserRouter([
   },
   {
     Component: OnBoardingLayout,
+    ErrorBoundary: ErrorPage,
     children: onBoardingRoutes,
   },
 ]);
