@@ -2,6 +2,7 @@ import { Suspense, type ReactNode } from 'react';
 import { ErrorBoundary } from 'react-error-boundary';
 
 import ErrorPage from '@pages/error/error';
+import LoadingPage from '@pages/loading/loading';
 
 interface GlobalErrorBoundaryProps {
   children: ReactNode;
@@ -10,7 +11,7 @@ interface GlobalErrorBoundaryProps {
 const GlobalErrorBoundary = ({ children }: GlobalErrorBoundaryProps) => {
   return (
     <ErrorBoundary FallbackComponent={ErrorPage}>
-      <Suspense fallback={'로딩 페이지 넣을곳...'}>{children}</Suspense>
+      <Suspense fallback={<LoadingPage />}>{children}</Suspense>
     </ErrorBoundary>
   );
 };
