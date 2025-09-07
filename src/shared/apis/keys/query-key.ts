@@ -31,9 +31,11 @@ export const MATCHING_QUERY_KEY = {
 };
 
 export const ADMIN_QUERY_KEY = {
-  ALL: ['admin'],
-  ADMIN_LOGIN: () => [...ADMIN_QUERY_KEY.ALL, 'login'],
-  ADMIN_FOUND_ITEM: () => [...ADMIN_QUERY_KEY.ALL, 'found-item'],
+  ALL: ['admin'] as const,
+  LOGIN: () => [...ADMIN_QUERY_KEY.ALL, 'login'] as const,
+  FOUND_ITEM: () => [...ADMIN_QUERY_KEY.ALL, 'found-item'] as const,
+  RAFFLE_AUTH_KEY: () =>
+    [...ADMIN_QUERY_KEY.ALL, 'raffle', 'auth-key'] as const,
 } as const;
 
 export const S3_QUERY_KEY = {

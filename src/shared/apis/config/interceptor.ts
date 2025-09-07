@@ -109,7 +109,14 @@ export const createHandleResponseError =
       return Promise.reject(error);
     }
 
-    const refreshToken = tokenService.getRefreshToken();
+    // 관리자 API인지 확인
+    const isAdminApi = (originalRequest.url ?? '').includes('/admin/');
+
+    // 관리자 API면 adminRefreshToken, 일반 API면 refreshToken 사용
+    const refreshToken = isAdminApi
+      ? tokenService.getAdminRefreshToken()
+      : tokenService.getRefreshToken();
+
     if (!refreshToken) {
       redirectToLogin();
       return Promise.reject(error);
@@ -129,8 +136,14 @@ export const createHandleResponseError =
       const { accessToken: newAccessToken, refreshToken: newRefreshToken } =
         refreshResponse.data.result;
 
-      tokenService.saveAccessToken(newAccessToken);
-      tokenService.saveRefreshToken(newRefreshToken);
+      // 관리자 API면 admin 토큰, 일반 API면 일반 토큰 저장
+      if (isAdminApi) {
+        tokenService.saveAdminAccessToken(newAccessToken);
+        tokenService.saveAdminRefreshToken(newRefreshToken);
+      } else {
+        tokenService.saveAccessToken(newAccessToken);
+        tokenService.saveRefreshToken(newRefreshToken);
+      }
 
       if (originalRequest.headers instanceof AxiosHeaders) {
         originalRequest.headers.set(

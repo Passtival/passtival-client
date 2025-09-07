@@ -35,3 +35,9 @@ export const authKey = style({
 
   borderRadius: '12px',
 });
+
+export const buttonContainer = style({
+  display: 'flex',
+  flexDirection: 'column',
+  gap: '1rem',
+});
