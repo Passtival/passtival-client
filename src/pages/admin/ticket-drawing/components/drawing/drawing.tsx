@@ -48,19 +48,17 @@ const Drawing = () => {
           key={index}
           className={styles.container}
         >
-          <p>당첨자 {index + 1}</p>
+          <p className={styles.text}>당첨자 {index + 1}</p>
           <InfoSection
             value={winner.name}
             studentnumber={winner.number}
-            // 재추첨 버튼을 위한 함수를 전달합니다.
             handleButtonClick={handleReDrawButtonClick}
           />
         </div>
       ))}
 
-      {/* 새로운 당첨자를 뽑는 추첨 버튼을 마지막에 하나만 렌더링합니다. */}
       <div className={styles.container}>
-        <p>당첨자 {winners.length + 1}</p>
+        <p className={styles.text}>당첨자 {winners.length + 1}</p>
         <InfoSection
           value=""
           studentnumber=""
