@@ -37,7 +37,7 @@ const AdminLogin = () => {
         </Button>
         <Button
           onClick={() => {
-            // @ TODO handleNavigate(routePath.응모권추첨);
+            handleNavigate(routePath.TICKET_DRAWING);
           }}
         >
           {NAVIGATE.TICKET}
