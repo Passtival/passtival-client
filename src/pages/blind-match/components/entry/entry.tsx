@@ -35,8 +35,7 @@ const EntryForm = ({ currentDay, onApplicationComplete }: EntryFormProps) => {
   useEffect(() => {
     const phoneRegex = /^010-\d{4}-\d{4}$/;
     const isValid = Boolean(
-      form.instaId &&
-        form.phoneNumber &&
+      form.phoneNumber &&
         form.gender &&
         agreed &&
         phoneRegex.test(form.phoneNumber),
