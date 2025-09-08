@@ -1,4 +1,5 @@
 import { useQuery, useMutation } from '@tanstack/react-query';
+import { useState } from 'react';
 
 import {
   ADMIN_QUERY_OPTIONS,
@@ -6,11 +7,21 @@ import {
 } from '@pages/admin/apis/queries';
 import { TITLE } from '@pages/admin/constants/TITLE';
 
-import Button from '@shared/components/button/button';
+import DropDown from '@shared/components/drop-down/drop-down';
+import { IcSvgEntry } from '@shared/icons';
 
 import * as styles from './generate-auth-key.css';
 
+// Level 선택 옵션 정의
+const LEVEL_OPTIONS = [
+  { displayName: 'Level 1 인증키', value: '1' },
+  { displayName: 'Level 2 인증키', value: '2' },
+  { displayName: 'Level 3 인증키', value: '3' },
+];
+
 const GenerateAuthKey = () => {
+  const [selectedLevel, setSelectedLevel] = useState<string | null>(null);
+
   const {
     data: authKeyData,
     error,
@@ -27,16 +38,9 @@ const GenerateAuthKey = () => {
     },
   });
 
-  const handleLevel1 = () => {
-    setLevelMutation.mutate(1);
-  };
-
-  const handleLevel2 = () => {
-    setLevelMutation.mutate(2);
-  };
-
-  const handleLevel3 = () => {
-    setLevelMutation.mutate(3);
+  const handleLevelSelect = (level: string) => {
+    setSelectedLevel(level);
+    setLevelMutation.mutate(Number(level));
   };
 
   if (error) return <div>인증키를 불러오는데 실패했습니다.</div>;
@@ -49,27 +53,19 @@ const GenerateAuthKey = () => {
           {authKeyData?.result?.authenticationKey || ''}
         </p>
 
-        <div className={styles.buttonContainer}>
-          <Button
-            size="xl"
-            onClick={handleLevel1}
-          >
-            Level 1 인증키
-          </Button>
-
-          <Button
-            size="xl"
-            onClick={handleLevel2}
-          >
-            Level 2 인증키
-          </Button>
-
-          <Button
-            size="xl"
-            onClick={handleLevel3}
-          >
-            Level 3 인증키
-          </Button>
+        <div>
+          <DropDown
+            selected={selectedLevel}
+            onSelect={handleLevelSelect}
+            options={LEVEL_OPTIONS}
+            placeholder="레벨을 선택하세요"
+            icon={
+              <IcSvgEntry
+                width="1.6rem"
+                height="1.6rem"
+              />
+            }
+          />
         </div>
       </div>
     </>
