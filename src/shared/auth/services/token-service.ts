@@ -2,8 +2,8 @@
  * 토큰 관리를 위한 서비스
  */
 
-const TOKEN_KEY_ACCESS = 'accessToken';
-const TOKEN_KEY_REFRESH = 'refreshToken';
+const TOKEN_KEY_ACCESS = 'access_token';
+const TOKEN_KEY_REFRESH = 'refresh_token';
 
 const TOKEN_KEY_ADMIN_ACCESS = 'adminAccessToken';
 const TOKEN_KEY_ADMIN_REFRESH = 'adminRefreshToken';
