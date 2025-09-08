@@ -26,4 +26,5 @@ export const MATCHING_QUERY_KEY = {
 
 export const ADMIN_QUERY_KEY = {
   ALL: ['admin'],
-};
+  ADMIN_LOGIN: () => [...ADMIN_QUERY_KEY.ALL, 'login'],
+} as const;

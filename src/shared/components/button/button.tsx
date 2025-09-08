@@ -8,7 +8,7 @@ interface ButtonProps {
   children?: ReactNode;
   disabled?: boolean;
   color?: 'yellow' | 'gray';
-  size?: 'sm' | 'lg' | 'icon';
+  size?: 'sm' | 'lg' | 'icon' | 'xl';
   onClick?: () => void;
 }
 

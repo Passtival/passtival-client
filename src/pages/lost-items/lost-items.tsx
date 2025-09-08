@@ -1,11 +1,11 @@
 import { useQuery } from '@tanstack/react-query';
-import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import { routePath } from '@router/path';
 
 import { COMMUNITY_QUERY_OPTIONS } from '@pages/lost-items/apis/queries';
 
+import { tokenService } from '@shared/auth/services/token-service';
 import Button from '@shared/components/button/button';
 import Card from '@shared/components/card/card';
 import { themeVars } from '@shared/styles';
@@ -14,14 +14,10 @@ import { LOST_ITEMS } from './constants/lostItems';
 import * as styles from './lost-items.css';
 
 const LostItems = () => {
-  const [isAdmin, setIsAdmin] = useState(false);
   const navigate = useNavigate();
   const { data } = useQuery(COMMUNITY_QUERY_OPTIONS.LOST_ITEMS_LIST());
 
-  useEffect(() => {
-    const userRole: 'user' | 'admin' = 'admin';
-    setIsAdmin(userRole === 'admin');
-  }, []);
+  const isAdmin = !!tokenService.getAdminAccessToken();
 
   const handleCardClick = (id: number) => {
     navigate(`${routePath.LOST_ITEMS}/${id}`);

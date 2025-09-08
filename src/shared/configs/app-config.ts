@@ -9,6 +9,11 @@ const DEFAULT_CONFIG = {
     loginSuccessUrl: routePath.HOME,
     loginFailureUrl: routePath.LOGIN,
   },
+  adminAuth: {
+    isEnabled: false,
+    loginSuccessUrl: routePath.ADMIN_MAIN,
+    loginFailureUrl: routePath.ADMIN_LOGIN,
+  },
   api: {
     baseUrl: import.meta.env.VITE_API_BASE_URL,
   },

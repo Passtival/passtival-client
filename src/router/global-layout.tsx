@@ -20,7 +20,19 @@ export default function GlobalLayout() {
   if (isHome && !hasOnboardingToken) {
     return (
       <Navigate
-        to={routePath.ONBOARDING}
+        to={routePath.LAND}
+        replace
+      />
+    );
+  }
+
+  const isTicket = pathname === routePath.TICKET;
+  const hasTicketOnboardingToken = !!tokenService.getTicketOnboardingToken();
+
+  if (isTicket && !hasTicketOnboardingToken) {
+    return (
+      <Navigate
+        to={routePath.TICKET_ONBOARDING}
         replace
       />
     );
