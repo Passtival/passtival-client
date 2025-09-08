@@ -11,7 +11,10 @@ export function ProtectedRoute() {
   if (!isAuthenticated) {
     const currentPath = location.pathname;
 
-    if (currentPath === routePath.BLIND_MATCH) {
+    if (
+      currentPath === routePath.BLIND_MATCH ||
+      currentPath === routePath.TICKET
+    ) {
       return (
         <Navigate
           to={routePath.LOGIN}
