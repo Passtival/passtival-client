@@ -36,12 +36,14 @@ const TicketOnBoarding = () => {
           src="/ticket.svg"
           className={styles.ticketImg}
         />
-        {current.lines.map((line, idx) => (
-          <p key={idx}>{line}</p>
-        ))}
         <section className={styles.section}>
-          <Button onClick={handleNext}>{current.buttonLabel}</Button>
+          {current.lines.map((line, idx) => (
+            <p key={idx}>{line}</p>
+          ))}
         </section>
+        <div className={styles.button}>
+          <Button onClick={handleNext}>{current.buttonLabel}</Button>
+        </div>
       </article>
     </>
   );

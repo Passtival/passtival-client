@@ -7,13 +7,22 @@ export const container = style({
 });
 
 export const ticketImg = style({
-  width: '100%',
-  padding: '3.9rem 8.8rem 1.8rem 8.8rem',
+  display: 'flex',
+  justifyContent: 'center',
+  height: '20rem',
+  width: '20rem',
+  padding: '3.9rem 0 1.8rem 0',
 });
 
 export const section = style({
-  position: 'fixed',
   width: '100%',
-  bottom: '13.1rem',
   padding: '0 2.4rem',
+});
+
+export const button = style({
+  width: '100%',
+  padding: '0 2.4rem',
+
+  position: 'fixed',
+  bottom: '13.1rem',
 });
