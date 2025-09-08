@@ -3,11 +3,10 @@ import { style } from '@vanilla-extract/css';
 import { themeVars } from '@shared/styles';
 
 export const container = style({
-  padding: '1.3rem 2.4rem 0 2.4rem',
+  padding: '0 2.4rem 0 2.4rem',
 });
-export const header = style({
-  ...themeVars.fontStyles.title_b_22,
-});
+
+export const title = style({ padding: '1.3rem 0 1rem' });
 
 export const subheader = style({
   ...themeVars.fontStyles.button_r_12,

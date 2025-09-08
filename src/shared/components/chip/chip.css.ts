@@ -30,7 +30,7 @@ export const chipVariants = recipe({
         padding: '0.8rem 1.2rem',
       },
       lg: {
-        width: '16.1rem',
+        width: '100%',
         justifyContent: 'center',
       },
     },

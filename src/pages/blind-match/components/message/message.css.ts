@@ -4,10 +4,9 @@ import { themeVars } from '@shared/styles';
 
 export const textcontainer = style({
   display: 'flex',
-  height: '11.3rem',
   flexDirection: 'column',
   alignItems: 'center',
-  padding: '4.4rem 0 2.5rem 0',
+  padding: '4.4rem 0 4.5rem 0',
 });
 export const message = style({
   ...themeVars.fontStyles.title_b_16,

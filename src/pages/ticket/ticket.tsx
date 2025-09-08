@@ -78,10 +78,12 @@ const Ticket = () => {
   return (
     <>
       <div className={styles.container}>
-        <Title
-          mainTitle="상품 응모권"
-          subTitle="상품 당첨의 기회를 잡아보세요!"
-        />
+        <div className={styles.title}>
+          <Title
+            mainTitle="상품 응모권"
+            subTitle="상품 당첨의 기회를 잡아보세요!"
+          />
+        </div>
         <TicketCarousel />
         <TicketChip
           selectedLevel={selectedLevel}

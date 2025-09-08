@@ -6,8 +6,8 @@ import Input from '@shared/components/input/input';
 import * as styles from './use-info-form.css';
 
 const USE_INFO_FORM = {
-  PHONE: '전화번호를 입력하세요 (필수X)',
-  INSTAR_ID: '인스타그램 ID를 입력하세요 (필수)',
+  PHONE: '전화번호를 입력하세요 (필수)',
+  INSTAR_ID: '인스타그램 ID를 입력하세요 (선택)',
 };
 
 interface UseInfoFormProps {
