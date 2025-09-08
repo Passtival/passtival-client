@@ -1,5 +1,6 @@
 import { useParams } from 'react-router-dom';
 
+import Header from '@shared/components/header/header';
 import Tab from '@shared/components/tab/tab';
 
 import ApplyPage from './components/apply/apply';
@@ -11,6 +12,11 @@ const BlindMatch = () => {
 
   return (
     <>
+      <Header
+        description="Passtival"
+        borderRadius="square"
+        bgColor="gray"
+      />
       <Tab.Container initialValue={`day-${initialDay}`}>
         <Tab.List>
           <Tab.Item value="day-1">1일차 매칭</Tab.Item>

@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 
 import Carousel from '@shared/components/carousel/carousel';
 import Chip from '@shared/components/chip/chip';
+import Header from '@shared/components/header/header';
 import TimeTable from '@shared/components/timeTable/timeTable';
 import Title from '@shared/components/title/title';
 import TitlInfo from '@shared/components/title-info/title-info';
@@ -94,7 +95,12 @@ const Home = () => {
   };
 
   return (
-    <div className={styles.container}>
+    <>
+      <Header
+        description="Passtival"
+        borderRadius="rounded"
+        bgColor="gray"
+      />
       <div className={styles.noticeText}>
         <Title
           mainTitle={HOME_TEXT.NOTICE}
@@ -155,7 +161,7 @@ const Home = () => {
           />
         ),
       )}
-    </div>
+    </>
   );
 };
 export default Home;

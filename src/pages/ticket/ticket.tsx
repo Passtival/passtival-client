@@ -3,6 +3,7 @@ import { useState, useCallback, useEffect } from 'react';
 import InputSection from '@pages/ticket/components/inpur-section/input-section';
 
 import Button from '@shared/components/button/button';
+import Header from '@shared/components/header/header';
 import Title from '@shared/components/title/title';
 
 import Caption from './components/caption/caption';
@@ -77,6 +78,11 @@ const Ticket = () => {
 
   return (
     <>
+      <Header
+        description="Passtival"
+        borderRadius="rounded"
+        bgColor="gray"
+      />
       <div className={styles.container}>
         <div className={styles.title}>
           <Title
@@ -85,22 +91,24 @@ const Ticket = () => {
           />
         </div>
         <TicketCarousel />
-        <TicketChip
-          selectedLevel={selectedLevel}
-          setSelectedLevel={setSelectedLevel}
-          completedLevel={completedLevel}
-        />
-        <InputSection
-          name={form.name}
-          studentNum={form.studentNum}
-          accessKey={form.key}
-          isErrorState={isErrorState}
-          onNameChange={(value) => handleFormChange('name', value)}
-          onStudentNumberChange={(value) =>
-            handleFormChange('studentNum', value)
-          }
-          onKeyChange={(value) => handleFormChange('key', value)}
-        />
+        <div className={styles.inputsection}>
+          <TicketChip
+            selectedLevel={selectedLevel}
+            setSelectedLevel={setSelectedLevel}
+            completedLevel={completedLevel}
+          />
+          <InputSection
+            name={form.name}
+            studentNum={form.studentNum}
+            accessKey={form.key}
+            isErrorState={isErrorState}
+            onNameChange={(value) => handleFormChange('name', value)}
+            onStudentNumberChange={(value) =>
+              handleFormChange('studentNum', value)
+            }
+            onKeyChange={(value) => handleFormChange('key', value)}
+          />
+        </div>
         <Button
           onClick={handleApplyClick}
           disabled={!isFormValid}
@@ -108,6 +116,7 @@ const Ticket = () => {
           응모하기
         </Button>
         <Caption />
+
         <TicketModal
           modalType={modalType}
           name={form.name}

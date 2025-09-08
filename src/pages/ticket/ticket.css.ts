@@ -12,4 +12,9 @@ export const subheader = style({
   ...themeVars.fontStyles.button_r_12,
 });
 
-export const button = style({ padding: '1.2rem 0 0.2rem 0' });
+export const inputsection = style({
+  display: 'flex',
+  flexDirection: 'column',
+  justifyContent: 'center',
+  height: 'calc(84vh - 5.6rem - 28.5rem)',
+});
