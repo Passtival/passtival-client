@@ -7,9 +7,10 @@ export const container = style({
 
 export const chipContainer = style({
   display: 'flex',
-  gap: '4.1rem',
+  width: '100%',
+  padding: '0 6.6rem',
   height: '4.7rem',
-  justifyContent: 'center',
+  justifyContent: 'space-between',
 });
 
 export const noticeText = style({
