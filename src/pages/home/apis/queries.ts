@@ -11,6 +11,7 @@ export const PERFORMANCE_QUERY_OPTIONS = {
     return queryOptions({
       queryKey: PERFORMANCES_QUERY_KEY.PERFORMANCE_PREVIEW(),
       queryFn: getPerformanceList,
+      select: (raw) => (Array.isArray(raw.result) ? raw.result : []),
     });
   },
 };
