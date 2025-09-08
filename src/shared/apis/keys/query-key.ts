@@ -1,5 +1,6 @@
 export const PERFORMANCES_QUERY_KEY = {
   ALL: ['performance'],
+  PERFORMANCE_PREVIEW: () => [...PERFORMANCES_QUERY_KEY.ALL, 'list'],
   PERFORMANCE_DETAIL: (performanceId: string) => [
     ...PERFORMANCES_QUERY_KEY.ALL,
     'detail',

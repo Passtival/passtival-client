@@ -1,5 +1,8 @@
+import { useQuery } from '@tanstack/react-query';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+
+import { PERFORMANCE_QUERY_OPTIONS } from '@pages/home/apis/queries';
 
 import Carousel from '@shared/components/carousel/carousel';
 import Chip from '@shared/components/chip/chip';
@@ -87,6 +90,7 @@ const MOCK_TITME_TABLE = [
 const Home = () => {
   const [selectedDay, setSelectedDay] = useState(1);
   const navigate = useNavigate();
+  const { data } = useQuery(PERFORMANCE_QUERY_OPTIONS.PERFORMANCE_LIST());
 
   const handleClick = (id: number) => {
     navigate(`/show-detail/${id}`);
