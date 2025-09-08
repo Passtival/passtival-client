@@ -20,7 +20,12 @@ const InfoShare = () => {
             <h2 className={styles.itemTitle}>{TITLE}</h2>
             <ul>
               {TEXT.map((text, i) => (
-                <li key={i}>{text}</li>
+                <li
+                  className={styles.text}
+                  key={i}
+                >
+                  {text}
+                </li>
               ))}
             </ul>
           </li>

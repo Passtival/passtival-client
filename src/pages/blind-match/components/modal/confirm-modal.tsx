@@ -25,10 +25,13 @@ const ConfirmModal = ({
           <Modal.Title>응모하시겠습니까?</Modal.Title>
           <Modal.Summary>
             <Modal.InfoSection>
-              <Modal.Info
-                label="인스타그램ID"
-                value={instaId}
-              />
+              {instaId && (
+                <Modal.Info
+                  label="인스타그램ID"
+                  value={instaId}
+                />
+              )}
+
               <Modal.Info
                 label="전화번호"
                 value={phoneNumber}

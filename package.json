@@ -10,7 +10,7 @@
     "preview": "vite preview",
     "prepare": "husky install",
     "build:icons": "tsx scripts/build-icons.ts",
-    "generate:types": "openapi-typescript http://43.202.147.115:8080/v3/api-docs -o ./src/shared/apis/types/schema.d.ts"
+    "generate:types": "openapi-typescript https://passtival.cloud/v3/api-docs -o ./src/shared/apis/types/schema.d.ts"
   },
   "dependencies": {
     "@tanstack/react-query": "^5.84.1",
@@ -25,6 +25,7 @@
     "swiper": "^11.2.10"
   },
   "devDependencies": {
+    "lottie-react": "^2.4.1",
     "@commitlint/cli": "^19.8.1",
     "@commitlint/config-conventional": "^19.8.1",
     "@eslint/js": "^9.30.1",

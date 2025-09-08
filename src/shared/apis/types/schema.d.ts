@@ -4,26 +4,6 @@
  */
 
 export interface paths {
-  '/api/raffle/authentication-key': {
-    parameters: {
-      query?: never;
-      header?: never;
-      path?: never;
-      cookie?: never;
-    };
-    get?: never;
-    /**
-     * 인증키 변경
-     * @description 기존 인증키를 검증하고 새로운 인증키로 변경합니다.
-     */
-    put: operations['updateAuthenticationKey'];
-    post?: never;
-    delete?: never;
-    options?: never;
-    head?: never;
-    patch?: never;
-    trace?: never;
-  };
   '/api/test/matching/apply-all-test-members': {
     parameters: {
       query?: never;
@@ -44,7 +24,7 @@ export interface paths {
     patch?: never;
     trace?: never;
   };
-  '/api/raffle/applicants': {
+  '/api/matching': {
     parameters: {
       query?: never;
       header?: never;
@@ -52,54 +32,10 @@ export interface paths {
       cookie?: never;
     };
     get?: never;
-    put?: never;
-    /**
-     * 신청자 등록
-     * @description 신청자의 이름과 학번, 인증키를 입력받아 신청자를 등록합니다.
-     */
-    post: operations['saveApplicant'];
-    delete?: never;
-    options?: never;
-    head?: never;
-    patch?: never;
-    trace?: never;
-  };
-  '/api/me/profile': {
-    parameters: {
-      query?: never;
-      header?: never;
-      path?: never;
-      cookie?: never;
-    };
-    get?: never;
-    put?: never;
-    /**
-     * 온보딩 (추가 정보 입력)
-     * @description 소셜 로그인으로 가입된 사용자가 추가 정보(성별, 전화번호)를 입력하여 가입을 완료합니다. **인증 토큰이 필요합니다.**전화번호 허용 형식: "010-1234-5678", "010 1234 5678", "01012345678"인스타그램 Id 선택 사항
-     */
-    post: operations['completeOnboarding'];
-    delete?: never;
-    options?: never;
-    head?: never;
-    patch?: never;
-    trace?: never;
-  };
-  '/api/matches/': {
-    parameters: {
-      query?: never;
-      header?: never;
-      path?: never;
-      cookie?: never;
-    };
-    /**
-     * 매칭 결과 조회
-     * @description 오늘의 매칭 결과를 조회합니다. 매칭 성공 시 내 정보와 파트너 정보를 반환합니다.
-     */
-    get: operations['getMatchingResult'];
     put?: never;
     /**
      * 매칭 신청
-     * @description 매칭 신청을 합니다. 인스타그램 ID는 선택사항입니다.
+     * @description 매칭 신청을 합니다. 별도의 추가 정보 없이 신청만 처리됩니다.
      */
     post: operations['applyMatching'];
     delete?: never;
@@ -108,24 +44,33 @@ export interface paths {
     patch?: never;
     trace?: never;
   };
-  '/api/foundItem/create': {
+  '/api/matching/me': {
     parameters: {
       query?: never;
       header?: never;
       path?: never;
       cookie?: never;
     };
-    get?: never;
+    /**
+     * 내 프로필 조회
+     * @description 현재 로그인한 사용자의 프로필 정보를 조회합니다. **인증 토큰이 필요합니다.**
+     */
+    get: operations['getProfile'];
     put?: never;
     /**
-     * 분실물 등록
-     * @description 습득한 분실물의 정보를 등록합니다. 이미지는 사전에 업로드하고 해당 URL을 포함해야 합니다.
+     * 내 프로필 생성
+     * @description 현재 로그인한 사용자의 프로필 정보를 생성합니다.
      */
-    post: operations['createFoundItem'];
+    post: operations['createProfile'];
     delete?: never;
     options?: never;
     head?: never;
-    patch?: never;
+    /**
+     * 정보 저장 (추가 정보 입력)
+     * @description 소셜 로그인으로 가입된 사용자가 추가 정보(성별, 전화번호)를 입력 **인증 토큰이 필요합니다.**
+     *     성별 (필수): db에 성별이 없으면 실패전화번호 허용 형식: "010-1234-5678"인스타그램 Id 선택 사항
+     */
+    patch: operations['patchProfile'];
     trace?: never;
   };
   '/api/auth/refresh': {
@@ -137,11 +82,157 @@ export interface paths {
     };
     get?: never;
     put?: never;
+    /**
+     * 액세스 토큰 갱신
+     * @description 리프레시 토큰을 Authorization 헤더에 담아서 새로운 액세스 토큰을 발급받습니다.
+     */
     post: operations['refreshToken'];
     delete?: never;
     options?: never;
     head?: never;
     patch?: never;
+    trace?: never;
+  };
+  '/api/admin/seed/performances': {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    post: operations['insertPerformances'];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  '/api/admin/seed/booths': {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    post: operations['insertBooths'];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  '/api/admin/raffle/{day}': {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    /** 관리자 일차별 당첨자 조회 */
+    get: operations['getRaffleWinnersByDay'];
+    put?: never;
+    /** 관리자 일차별 추첨 실행 */
+    post: operations['executeRaffleByDay'];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  '/api/admin/raffle/premium': {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    /** 관리자 프리미엄 당첨자 조회 */
+    get: operations['getRaffleWinnerOfPremium'];
+    put?: never;
+    /** 관리자 프리미엄 추첨 실행 */
+    post: operations['executeRaffleOfPremium'];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  '/api/admin/login': {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    /**
+     * 관리자 로그인
+     * @description 분실물 관리자 계정으로 로그인하여 JWT 토큰을 발급받습니다.
+     */
+    post: operations['login'];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  '/api/admin/found-item': {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    /**
+     * 분실물 등록
+     * @description 습득한 분실물의 정보를 등록합니다. 이미지는 사전에 업로드하고 해당 URL을 포함해야 합니다. **관리자 권한이 필요합니다.**
+     */
+    post: operations['createFoundItem'];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  '/api/member/level-up': {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    post?: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch: operations['levelUp'];
+    trace?: never;
+  };
+  '/api/admin/raffle/authentication-key': {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    /** 관리자 인증키 조회 */
+    get: operations['getAuthenticationKey'];
+    put?: never;
+    post?: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    /** 관리자 인증키 레벨 설정 */
+    patch: operations['setAuthenticationKeyLevel'];
     trace?: never;
   };
   '/api/test/token/{memberId}': {
@@ -304,6 +395,26 @@ export interface paths {
     patch?: never;
     trace?: never;
   };
+  '/api/s3/upload-url': {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    /**
+     * 이미지 업로드 URL(PreSignedURL) 조회
+     * @description 클라이언트가 S3에 직접 이미지를 업로드하기 위한 Presigned URL을 생성합니다.
+     */
+    get: operations['getUploadUrl'];
+    put?: never;
+    post?: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
   '/api/raffle/prizes': {
     parameters: {
       query?: never;
@@ -344,7 +455,7 @@ export interface paths {
     patch?: never;
     trace?: never;
   };
-  '/api/foundItem/upload-url': {
+  '/api/raffle/member': {
     parameters: {
       query?: never;
       header?: never;
@@ -352,10 +463,10 @@ export interface paths {
       cookie?: never;
     };
     /**
-     * 이미지 업로드 URL 조회
-     * @description 클라이언트가 S3에 직접 이미지를 업로드하기 위한 Presigned URL을 생성합니다.
+     * 회원 응모권 정보 조회
+     * @description 로그인한 회원의 응모권 정보를 조회합니다. (응모권 개수, 응모권 사용 내역 등)
      */
-    get: operations['getUploadUrl'];
+    get: operations['getMemberRaffleProfile'];
     put?: never;
     post?: never;
     delete?: never;
@@ -364,14 +475,18 @@ export interface paths {
     patch?: never;
     trace?: never;
   };
-  '/api/festival/{boothName}/menus': {
+  '/api/member/login/kakao': {
     parameters: {
       query?: never;
       header?: never;
       path?: never;
       cookie?: never;
     };
-    get: operations['getMenusByBoothName'];
+    /**
+     * 사용자 로그인 - 소개팅 소셜로그인
+     * @description GET 요청을 받고 kakao 로그인 페이지를 리다이렉트합니다.
+     */
+    get: operations['redirectLoginKakao'];
     put?: never;
     post?: never;
     delete?: never;
@@ -380,13 +495,97 @@ export interface paths {
     patch?: never;
     trace?: never;
   };
-  '/api/festival/performance': {
+  '/api/matching/result': {
     parameters: {
       query?: never;
       header?: never;
       path?: never;
       cookie?: never;
     };
+    /**
+     * 매칭 결과 조회
+     * @description 오늘의 매칭 결과를 조회합니다. 매칭 성공 시 내 정보와 파트너 정보를 반환합니다.
+     */
+    get: operations['getMatchingResult'];
+    put?: never;
+    post?: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  '/api/found-items': {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    /**
+     * 모든 분실물 조회
+     * @description 등록된 모든 분실물의 정보를 조회합니다.
+     */
+    get: operations['getAllFoundItems'];
+    put?: never;
+    post?: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  '/api/found-items/{id}': {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    /**
+     * 분실물 상세 조회
+     * @description ID로 등록된 분실물의 상세 정보를 조회합니다.
+     */
+    get: operations['getFoundItemById'];
+    put?: never;
+    post?: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  '/api/festival/{boothId}/menus': {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    /**
+     * 부스 ID로 해당 부스의 메뉴 조회
+     * @description 부스 ID로 특정 부스의 메뉴들을 조회합니다.
+     */
+    get: operations['getMenusByBoothId'];
+    put?: never;
+    post?: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  '/api/festival/performances': {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    /**
+     * 공연 목록 조회
+     * @description 모든 공연을 페이지 단위로 조회합니다. 기본 페이지 크기는 5입니다.
+     */
     get: operations['getPerformances'];
     put?: never;
     post?: never;
@@ -396,14 +595,18 @@ export interface paths {
     patch?: never;
     trace?: never;
   };
-  '/api/festival/performance/{performanceTitle}': {
+  '/api/festival/performances/{performanceId}': {
     parameters: {
       query?: never;
       header?: never;
       path?: never;
       cookie?: never;
     };
-    get: operations['getPerformanceByTitle'];
+    /**
+     * 공연 단일 조회
+     * @description 공연 ID로 특정 공연의 상세 정보를 조회합니다.
+     */
+    get: operations['getPerformanceById'];
     put?: never;
     post?: never;
     delete?: never;
@@ -412,13 +615,37 @@ export interface paths {
     patch?: never;
     trace?: never;
   };
-  '/api/festival/booth': {
+  '/api/festival/performances/cursor': {
     parameters: {
       query?: never;
       header?: never;
       path?: never;
       cookie?: never;
     };
+    /**
+     * 공연 목록 조회 (커서 기반)
+     * @description 커서 기반으로 공연 목록을 조회합니다. 첫 요청은 cursor 없이, 이후 요청은 cursor와 size 지정
+     */
+    get: operations['getPerformancesCursor'];
+    put?: never;
+    post?: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  '/api/festival/booths': {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    /**
+     * 부스 목록 조회
+     * @description 부스전체 목록을 조회합니다.
+     */
     get: operations['getBooths'];
     put?: never;
     post?: never;
@@ -428,13 +655,17 @@ export interface paths {
     patch?: never;
     trace?: never;
   };
-  '/api/festival/booth/{boothName}': {
+  '/api/festival/booths/{boothId}': {
     parameters: {
       query?: never;
       header?: never;
       path?: never;
       cookie?: never;
     };
+    /**
+     * 부스 id로 조회
+     * @description 상품 boothId으로 특정 부스의 정보를 조회합니다.
+     */
     get: operations['getBoothDetail'];
     put?: never;
     post?: never;
@@ -444,21 +675,66 @@ export interface paths {
     patch?: never;
     trace?: never;
   };
+  '/api/festival/booths/cursor': {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get: operations['getBoothsCursor'];
+    put?: never;
+    post?: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  '/api/admin/test': {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    /**
+     * 관리자 인증 테스트
+     * @description 현재 인증된 관리자 정보를 확인합니다.
+     */
+    get: operations['test'];
+    put?: never;
+    post?: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  '/api/admin/found-item/{id}': {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    post?: never;
+    /**
+     * 분실물 삭제
+     * @description 등록된 분실물을 ID로 삭제합니다. 삭제 시 관리자 인증키가 필요합니다.
+     */
+    delete: operations['deleteFoundItem'];
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
 }
 export type webhooks = Record<string, never>;
 export interface components {
   schemas: {
-    UpdateAuthenticationKeyRequest: {
-      newKey: string;
-      oldKey: string;
-    };
-    BaseResponseVoid: {
-      isSuccess?: boolean;
-      /** Format: int32 */
-      code?: number;
-      message?: string;
-      result?: unknown;
-    };
     BaseResponseString: {
       isSuccess?: boolean;
       /** Format: int32 */
@@ -466,29 +742,12 @@ export interface components {
       message?: string;
       result?: string;
     };
-    ApplicantRegistrationRequest: {
-      applicantName: string;
-      studentId: string;
-      key: string;
-    };
-    MemberOnboardingRequest: {
-      /** @enum {string} */
-      gender: 'MALE' | 'FEMALE';
-      phoneNumber: string;
-      instagramId?: string;
-    };
-    MatchingRequest: {
-      instagramId?: string;
-    };
-    FoundItemRequest: {
-      title?: string;
-      area?: string;
-      /** Format: date-time */
-      foundDateTime?: string;
-      imagePath?: string;
-    };
-    RefreshTokenRequest: {
-      refreshToken?: string;
+    BaseResponseVoid: {
+      isSuccess?: boolean;
+      /** Format: int32 */
+      code?: number;
+      message?: string;
+      result?: unknown;
     };
     BaseResponseTokenResponse: {
       isSuccess?: boolean;
@@ -500,6 +759,83 @@ export interface components {
     TokenResponse: {
       accessToken?: string;
       refreshToken?: string;
+    };
+    PerformanceRequest: {
+      title: string;
+      artist: string;
+      /** Format: date-time */
+      startTime: string;
+      /** Format: date-time */
+      endTime: string;
+      area: string;
+      imagePath?: string;
+      introduction?: string;
+      /** Format: int32 */
+      day?: number;
+      songs: components['schemas']['SongRequest'][];
+      validTimeRange?: boolean;
+    };
+    SongRequest: {
+      singer: string;
+      title: string;
+    };
+    BaseResponseObject: {
+      isSuccess?: boolean;
+      /** Format: int32 */
+      code?: number;
+      message?: string;
+      result?: unknown;
+    };
+    BoothRequest: {
+      name: string;
+      type: string;
+      department?: string;
+      /** Format: date-time */
+      operatingStart: string;
+      /** Format: date-time */
+      operatingEnd: string;
+      location: string;
+      info?: string;
+      imagePath?: string;
+      locationImagePath?: string;
+      menus?: components['schemas']['MenuRequest'][];
+      validOperatingTime?: boolean;
+    };
+    MenuRequest: {
+      type: string;
+      name?: string;
+      introduction?: string;
+      imagePath?: string;
+      /** Format: int32 */
+      price?: number;
+    };
+    AdminLoginRequest: {
+      adminId: string;
+      authKey: string;
+    };
+    FoundItemRequest: {
+      title: string;
+      area: string;
+      /** Format: date-time */
+      foundDateTime: string;
+      imagePath?: string;
+    };
+    LevelUpRequest: {
+      name?: string;
+      studentId?: string;
+      authenticationKey?: string;
+      /** Format: int32 */
+      level?: number;
+    };
+    MatchingApplicantPatchRequest: {
+      /** @enum {string} */
+      gender?: 'MALE' | 'FEMALE';
+      phoneNumber?: string;
+      instagramId?: string;
+    };
+    AuthenticationLevelRequest: {
+      /** Format: int32 */
+      level?: number;
     };
     BaseResponseUserInfoResponse: {
       isSuccess?: boolean;
@@ -556,6 +892,347 @@ export interface components {
       message?: string;
       result?: components['schemas']['PrizeResponse'];
     };
+    BaseResponseMemberRaffleProfileResponse: {
+      isSuccess?: boolean;
+      /** Format: int32 */
+      code?: number;
+      message?: string;
+      result?: components['schemas']['MemberRaffleProfileResponse'];
+    };
+    MemberRaffleProfileResponse: {
+      /** Format: int32 */
+      level?: number;
+      name?: string;
+      studentId?: string;
+    };
+    ApplicationContext: {
+      parent?: unknown;
+      id?: string;
+      displayName?: string;
+      applicationName?: string;
+      /** Format: int64 */
+      startupDate?: number;
+      autowireCapableBeanFactory?: components['schemas']['AutowireCapableBeanFactory'];
+      environment?: components['schemas']['Environment'];
+      /** Format: int32 */
+      beanDefinitionCount?: number;
+      beanDefinitionNames?: string[];
+      parentBeanFactory?: components['schemas']['BeanFactory'];
+      classLoader?: {
+        name?: string;
+        registeredAsParallelCapable?: boolean;
+        parent?: {
+          name?: string;
+          registeredAsParallelCapable?: boolean;
+          unnamedModule?: {
+            name?: string;
+            classLoader?: {
+              name?: string;
+              registeredAsParallelCapable?: boolean;
+              definedPackages?: {
+                name?: string;
+                annotations?: unknown[];
+                declaredAnnotations?: unknown[];
+                sealed?: boolean;
+                specificationTitle?: string;
+                specificationVersion?: string;
+                specificationVendor?: string;
+                implementationTitle?: string;
+                implementationVersion?: string;
+                implementationVendor?: string;
+              }[];
+              defaultAssertionStatus?: boolean;
+            };
+            descriptor?: {
+              open?: boolean;
+              automatic?: boolean;
+            };
+            named?: boolean;
+            annotations?: unknown[];
+            declaredAnnotations?: unknown[];
+            packages?: string[];
+            layer?: unknown;
+          };
+          definedPackages?: {
+            name?: string;
+            annotations?: unknown[];
+            declaredAnnotations?: unknown[];
+            sealed?: boolean;
+            specificationTitle?: string;
+            specificationVersion?: string;
+            specificationVendor?: string;
+            implementationTitle?: string;
+            implementationVersion?: string;
+            implementationVendor?: string;
+          }[];
+          defaultAssertionStatus?: boolean;
+        };
+        unnamedModule?: {
+          name?: string;
+          classLoader?: {
+            name?: string;
+            registeredAsParallelCapable?: boolean;
+            definedPackages?: {
+              name?: string;
+              annotations?: unknown[];
+              declaredAnnotations?: unknown[];
+              sealed?: boolean;
+              specificationTitle?: string;
+              specificationVersion?: string;
+              specificationVendor?: string;
+              implementationTitle?: string;
+              implementationVersion?: string;
+              implementationVendor?: string;
+            }[];
+            defaultAssertionStatus?: boolean;
+          };
+          descriptor?: {
+            open?: boolean;
+            automatic?: boolean;
+          };
+          named?: boolean;
+          annotations?: unknown[];
+          declaredAnnotations?: unknown[];
+          packages?: string[];
+          layer?: unknown;
+        };
+        definedPackages?: {
+          name?: string;
+          annotations?: unknown[];
+          declaredAnnotations?: unknown[];
+          sealed?: boolean;
+          specificationTitle?: string;
+          specificationVersion?: string;
+          specificationVendor?: string;
+          implementationTitle?: string;
+          implementationVersion?: string;
+          implementationVendor?: string;
+        }[];
+        defaultAssertionStatus?: boolean;
+      };
+    };
+    AutowireCapableBeanFactory: unknown;
+    BeanFactory: unknown;
+    DefaultHttpStatusCode: components['schemas']['HttpStatusCode'];
+    Environment: {
+      activeProfiles?: string[];
+      defaultProfiles?: string[];
+    };
+    FilterRegistration: {
+      servletNameMappings?: string[];
+      urlPatternMappings?: string[];
+      name?: string;
+      className?: string;
+      initParameters?: {
+        [key: string]: string;
+      };
+    };
+    /** @enum {unknown} */
+    HttpStatus:
+      | '100 CONTINUE'
+      | '101 SWITCHING_PROTOCOLS'
+      | '102 PROCESSING'
+      | '103 EARLY_HINTS'
+      | '103 CHECKPOINT'
+      | '200 OK'
+      | '201 CREATED'
+      | '202 ACCEPTED'
+      | '203 NON_AUTHORITATIVE_INFORMATION'
+      | '204 NO_CONTENT'
+      | '205 RESET_CONTENT'
+      | '206 PARTIAL_CONTENT'
+      | '207 MULTI_STATUS'
+      | '208 ALREADY_REPORTED'
+      | '226 IM_USED'
+      | '300 MULTIPLE_CHOICES'
+      | '301 MOVED_PERMANENTLY'
+      | '302 FOUND'
+      | '302 MOVED_TEMPORARILY'
+      | '303 SEE_OTHER'
+      | '304 NOT_MODIFIED'
+      | '305 USE_PROXY'
+      | '307 TEMPORARY_REDIRECT'
+      | '308 PERMANENT_REDIRECT'
+      | '400 BAD_REQUEST'
+      | '401 UNAUTHORIZED'
+      | '402 PAYMENT_REQUIRED'
+      | '403 FORBIDDEN'
+      | '404 NOT_FOUND'
+      | '405 METHOD_NOT_ALLOWED'
+      | '406 NOT_ACCEPTABLE'
+      | '407 PROXY_AUTHENTICATION_REQUIRED'
+      | '408 REQUEST_TIMEOUT'
+      | '409 CONFLICT'
+      | '410 GONE'
+      | '411 LENGTH_REQUIRED'
+      | '412 PRECONDITION_FAILED'
+      | '413 PAYLOAD_TOO_LARGE'
+      | '413 REQUEST_ENTITY_TOO_LARGE'
+      | '414 URI_TOO_LONG'
+      | '414 REQUEST_URI_TOO_LONG'
+      | '415 UNSUPPORTED_MEDIA_TYPE'
+      | '416 REQUESTED_RANGE_NOT_SATISFIABLE'
+      | '417 EXPECTATION_FAILED'
+      | '418 I_AM_A_TEAPOT'
+      | '419 INSUFFICIENT_SPACE_ON_RESOURCE'
+      | '420 METHOD_FAILURE'
+      | '421 DESTINATION_LOCKED'
+      | '422 UNPROCESSABLE_ENTITY'
+      | '423 LOCKED'
+      | '424 FAILED_DEPENDENCY'
+      | '425 TOO_EARLY'
+      | '426 UPGRADE_REQUIRED'
+      | '428 PRECONDITION_REQUIRED'
+      | '429 TOO_MANY_REQUESTS'
+      | '431 REQUEST_HEADER_FIELDS_TOO_LARGE'
+      | '451 UNAVAILABLE_FOR_LEGAL_REASONS'
+      | '500 INTERNAL_SERVER_ERROR'
+      | '501 NOT_IMPLEMENTED'
+      | '502 BAD_GATEWAY'
+      | '503 SERVICE_UNAVAILABLE'
+      | '504 GATEWAY_TIMEOUT'
+      | '505 HTTP_VERSION_NOT_SUPPORTED'
+      | '506 VARIANT_ALSO_NEGOTIATES'
+      | '507 INSUFFICIENT_STORAGE'
+      | '508 LOOP_DETECTED'
+      | '509 BANDWIDTH_LIMIT_EXCEEDED'
+      | '510 NOT_EXTENDED'
+      | '511 NETWORK_AUTHENTICATION_REQUIRED';
+    HttpStatusCode: {
+      error?: boolean;
+      is4xxClientError?: boolean;
+      is5xxServerError?: boolean;
+      is1xxInformational?: boolean;
+      is2xxSuccessful?: boolean;
+      is3xxRedirection?: boolean;
+    };
+    JspConfigDescriptor: {
+      taglibs?: components['schemas']['TaglibDescriptor'][];
+      jspPropertyGroups?: components['schemas']['JspPropertyGroupDescriptor'][];
+    };
+    JspPropertyGroupDescriptor: {
+      buffer?: string;
+      elIgnored?: string;
+      errorOnELNotFound?: string;
+      pageEncoding?: string;
+      scriptingInvalid?: string;
+      isXml?: string;
+      includePreludes?: string[];
+      includeCodas?: string[];
+      deferredSyntaxAllowedAsLiteral?: string;
+      trimDirectiveWhitespaces?: string;
+      errorOnUndeclaredNamespace?: string;
+      urlPatterns?: string[];
+      defaultContentType?: string;
+    };
+    RedirectView: {
+      applicationContext?: components['schemas']['ApplicationContext'];
+      servletContext?: components['schemas']['ServletContext'];
+      contentType?: string;
+      requestContextAttribute?: string;
+      staticAttributes?: {
+        [key: string]: unknown;
+      };
+      exposePathVariables?: boolean;
+      exposeContextBeansAsAttributes?: boolean;
+      exposedContextBeanNames?: string[];
+      beanName?: string;
+      url?: string;
+      contextRelative?: boolean;
+      http10Compatible?: boolean;
+      exposeModelAttributes?: boolean;
+      encodingScheme?: string;
+      statusCode?:
+        | components['schemas']['DefaultHttpStatusCode']
+        | components['schemas']['HttpStatus'];
+      expandUriTemplateVariables?: boolean;
+      propagateQueryParams?: boolean;
+      hosts?: string[];
+      redirectView?: boolean;
+      propagateQueryProperties?: boolean;
+      attributes?: {
+        [key: string]: string;
+      };
+      attributesMap?: {
+        [key: string]: unknown;
+      };
+      attributesCSV?: string;
+    };
+    ServletContext: {
+      classLoader?: {
+        name?: string;
+        registeredAsParallelCapable?: boolean;
+        definedPackages?: {
+          name?: string;
+          annotations?: unknown[];
+          declaredAnnotations?: unknown[];
+          sealed?: boolean;
+          specificationTitle?: string;
+          specificationVersion?: string;
+          specificationVendor?: string;
+          implementationTitle?: string;
+          implementationVersion?: string;
+          implementationVendor?: string;
+        }[];
+        defaultAssertionStatus?: boolean;
+      };
+      /** Format: int32 */
+      majorVersion?: number;
+      /** Format: int32 */
+      minorVersion?: number;
+      attributeNames?: unknown;
+      contextPath?: string;
+      initParameterNames?: unknown;
+      sessionTrackingModes?: ('COOKIE' | 'URL' | 'SSL')[];
+      /** Format: int32 */
+      sessionTimeout?: number;
+      servletRegistrations?: {
+        [key: string]: components['schemas']['ServletRegistration'];
+      };
+      /** Format: int32 */
+      effectiveMajorVersion?: number;
+      /** Format: int32 */
+      effectiveMinorVersion?: number;
+      serverInfo?: string;
+      servletContextName?: string;
+      filterRegistrations?: {
+        [key: string]: components['schemas']['FilterRegistration'];
+      };
+      sessionCookieConfig?: components['schemas']['SessionCookieConfig'];
+      defaultSessionTrackingModes?: ('COOKIE' | 'URL' | 'SSL')[];
+      effectiveSessionTrackingModes?: ('COOKIE' | 'URL' | 'SSL')[];
+      jspConfigDescriptor?: components['schemas']['JspConfigDescriptor'];
+      virtualServerName?: string;
+      requestCharacterEncoding?: string;
+      responseCharacterEncoding?: string;
+    };
+    ServletRegistration: {
+      mappings?: string[];
+      runAsRole?: string;
+      name?: string;
+      className?: string;
+      initParameters?: {
+        [key: string]: string;
+      };
+    };
+    SessionCookieConfig: {
+      name?: string;
+      path?: string;
+      attributes?: {
+        [key: string]: string;
+      };
+      /** @deprecated */
+      comment?: string;
+      secure?: boolean;
+      /** Format: int32 */
+      maxAge?: number;
+      domain?: string;
+      httpOnly?: boolean;
+    };
+    TaglibDescriptor: {
+      taglibURI?: string;
+      taglibLocation?: string;
+    };
     BaseResponseMatchingResponse: {
       isSuccess?: boolean;
       /** Format: int32 */
@@ -572,6 +1249,45 @@ export interface components {
       phoneNumber?: string;
       instagramId?: string;
     };
+    BaseResponseMatchingApplicantResponse: {
+      isSuccess?: boolean;
+      /** Format: int32 */
+      code?: number;
+      message?: string;
+      result?: components['schemas']['MatchingApplicantResponse'];
+    };
+    MatchingApplicantResponse: {
+      memberName?: string;
+      /** Format: int64 */
+      memberId?: number;
+      /** @enum {string} */
+      memberGender?: 'MALE' | 'FEMALE';
+      memberPhoneNumber?: string;
+      memberInstagramId?: string;
+    };
+    BaseResponseListFoundItemResponse: {
+      isSuccess?: boolean;
+      /** Format: int32 */
+      code?: number;
+      message?: string;
+      result?: components['schemas']['FoundItemResponse'][];
+    };
+    FoundItemResponse: {
+      /** Format: int64 */
+      id?: number;
+      title?: string;
+      area?: string;
+      /** Format: date-time */
+      foundDateTime?: string;
+      imagePath?: string;
+    };
+    BaseResponseFoundItemResponse: {
+      isSuccess?: boolean;
+      /** Format: int32 */
+      code?: number;
+      message?: string;
+      result?: components['schemas']['FoundItemResponse'];
+    };
     BaseResponseListMenuResponse: {
       isSuccess?: boolean;
       /** Format: int32 */
@@ -580,6 +1296,8 @@ export interface components {
       result?: components['schemas']['MenuResponse'][];
     };
     MenuResponse: {
+      /** Format: int64 */
+      id?: number;
       type?: string;
       name?: string;
       introduction?: string;
@@ -594,13 +1312,6 @@ export interface components {
       size?: number;
       sort?: string[];
     };
-    BaseResponseObject: {
-      isSuccess?: boolean;
-      /** Format: int32 */
-      code?: number;
-      message?: string;
-      result?: unknown;
-    };
     BaseResponsePerformanceDetailResponse: {
       isSuccess?: boolean;
       /** Format: int32 */
@@ -609,6 +1320,8 @@ export interface components {
       result?: components['schemas']['PerformanceDetailResponse'];
     };
     PerformanceDetailResponse: {
+      /** Format: int64 */
+      id?: number;
       title?: string;
       artist?: string;
       /** Format: date-time */
@@ -649,6 +1362,36 @@ export interface components {
       locationImagePath?: string;
       menus?: components['schemas']['MenuResponse'][];
     };
+    BaseResponseMapStringObject: {
+      isSuccess?: boolean;
+      /** Format: int32 */
+      code?: number;
+      message?: string;
+      result?: {
+        [key: string]: unknown;
+      };
+    };
+    BaseResponseWinnerResponse: {
+      isSuccess?: boolean;
+      /** Format: int32 */
+      code?: number;
+      message?: string;
+      result?: components['schemas']['WinnerResponse'];
+    };
+    WinnerResponse: {
+      name?: string;
+      studentId?: string;
+    };
+    AuthenticationKeyResponse: {
+      authenticationKey?: string;
+    };
+    BaseResponseAuthenticationKeyResponse: {
+      isSuccess?: boolean;
+      /** Format: int32 */
+      code?: number;
+      message?: string;
+      result?: components['schemas']['AuthenticationKeyResponse'];
+    };
   };
   responses: never;
   parameters: never;
@@ -658,31 +1401,6 @@ export interface components {
 }
 export type $defs = Record<string, never>;
 export interface operations {
-  updateAuthenticationKey: {
-    parameters: {
-      query?: never;
-      header?: never;
-      path?: never;
-      cookie?: never;
-    };
-    /** @description 인증키 변경 요청 정보 */
-    requestBody: {
-      content: {
-        'application/json': components['schemas']['UpdateAuthenticationKeyRequest'];
-      };
-    };
-    responses: {
-      /** @description OK */
-      200: {
-        headers: {
-          [name: string]: unknown;
-        };
-        content: {
-          '*/*': components['schemas']['BaseResponseVoid'];
-        };
-      };
-    };
-  };
   applyAllTestMembers: {
     parameters: {
       query?: never;
@@ -703,57 +1421,7 @@ export interface operations {
       };
     };
   };
-  saveApplicant: {
-    parameters: {
-      query?: never;
-      header?: never;
-      path?: never;
-      cookie?: never;
-    };
-    /** @description 신청자 등록 요청 정보 */
-    requestBody: {
-      content: {
-        'application/json': components['schemas']['ApplicantRegistrationRequest'];
-      };
-    };
-    responses: {
-      /** @description OK */
-      200: {
-        headers: {
-          [name: string]: unknown;
-        };
-        content: {
-          '*/*': components['schemas']['BaseResponseVoid'];
-        };
-      };
-    };
-  };
-  completeOnboarding: {
-    parameters: {
-      query?: never;
-      header?: never;
-      path?: never;
-      cookie?: never;
-    };
-    /** @description 추가 입력 정보 */
-    requestBody: {
-      content: {
-        'application/json': components['schemas']['MemberOnboardingRequest'];
-      };
-    };
-    responses: {
-      /** @description OK */
-      200: {
-        headers: {
-          [name: string]: unknown;
-        };
-        content: {
-          '*/*': components['schemas']['BaseResponseVoid'];
-        };
-      };
-    };
-  };
-  getMatchingResult: {
+  applyMatching: {
     parameters: {
       query?: never;
       header?: never;
@@ -768,22 +1436,62 @@ export interface operations {
           [name: string]: unknown;
         };
         content: {
-          '*/*': components['schemas']['BaseResponseMatchingResponse'];
+          '*/*': components['schemas']['BaseResponseVoid'];
         };
       };
     };
   };
-  applyMatching: {
+  getProfile: {
     parameters: {
       query?: never;
       header?: never;
       path?: never;
       cookie?: never;
     };
-    /** @description 매칭 신청 요청 정보 */
+    requestBody?: never;
+    responses: {
+      /** @description OK */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          '*/*': components['schemas']['BaseResponseMatchingApplicantResponse'];
+        };
+      };
+    };
+  };
+  createProfile: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description OK */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          '*/*': components['schemas']['BaseResponseVoid'];
+        };
+      };
+    };
+  };
+  patchProfile: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    /** @description 추가 입력 정보 */
     requestBody: {
       content: {
-        'application/json': components['schemas']['MatchingRequest'];
+        'application/json': components['schemas']['MatchingApplicantPatchRequest'];
       };
     };
     responses: {
@@ -794,6 +1502,193 @@ export interface operations {
         };
         content: {
           '*/*': components['schemas']['BaseResponseVoid'];
+        };
+      };
+    };
+  };
+  refreshToken: {
+    parameters: {
+      query?: never;
+      header: {
+        /**
+         * @description Bearer {refreshToken} 형식의 리프레시 토큰
+         * @example Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...
+         */
+        Authorization: string;
+      };
+      path?: never;
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description OK */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          '*/*': components['schemas']['BaseResponseTokenResponse'];
+        };
+      };
+    };
+  };
+  insertPerformances: {
+    parameters: {
+      query?: never;
+      header: {
+        'X-ADMIN-KEY': string;
+      };
+      path?: never;
+      cookie?: never;
+    };
+    requestBody: {
+      content: {
+        'application/json': components['schemas']['PerformanceRequest'][];
+      };
+    };
+    responses: {
+      /** @description OK */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          '*/*': components['schemas']['BaseResponseObject'];
+        };
+      };
+    };
+  };
+  insertBooths: {
+    parameters: {
+      query?: never;
+      header: {
+        'X-ADMIN-KEY': string;
+      };
+      path?: never;
+      cookie?: never;
+    };
+    requestBody: {
+      content: {
+        'application/json': components['schemas']['BoothRequest'][];
+      };
+    };
+    responses: {
+      /** @description OK */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          '*/*': components['schemas']['BaseResponseString'];
+        };
+      };
+    };
+  };
+  getRaffleWinnersByDay: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        day: number;
+      };
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description OK */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          '*/*': components['schemas']['BaseResponseWinnerResponse'];
+        };
+      };
+    };
+  };
+  executeRaffleByDay: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        day: number;
+      };
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description OK */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          '*/*': components['schemas']['BaseResponseVoid'];
+        };
+      };
+    };
+  };
+  getRaffleWinnerOfPremium: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description OK */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          '*/*': components['schemas']['BaseResponseWinnerResponse'];
+        };
+      };
+    };
+  };
+  executeRaffleOfPremium: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description OK */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          '*/*': components['schemas']['BaseResponseVoid'];
+        };
+      };
+    };
+  };
+  login: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    /** @description 관리자 로그인 요청 정보 */
+    requestBody: {
+      content: {
+        'application/json': components['schemas']['AdminLoginRequest'];
+      };
+    };
+    responses: {
+      /** @description OK */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          '*/*': components['schemas']['BaseResponseTokenResponse'];
         };
       };
     };
@@ -823,7 +1718,7 @@ export interface operations {
       };
     };
   };
-  refreshToken: {
+  levelUp: {
     parameters: {
       query?: never;
       header?: never;
@@ -832,7 +1727,7 @@ export interface operations {
     };
     requestBody: {
       content: {
-        'application/json': components['schemas']['RefreshTokenRequest'];
+        'application/json': components['schemas']['LevelUpRequest'];
       };
     };
     responses: {
@@ -842,7 +1737,51 @@ export interface operations {
           [name: string]: unknown;
         };
         content: {
-          '*/*': components['schemas']['BaseResponseTokenResponse'];
+          '*/*': components['schemas']['BaseResponseVoid'];
+        };
+      };
+    };
+  };
+  getAuthenticationKey: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description OK */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          '*/*': components['schemas']['BaseResponseAuthenticationKeyResponse'];
+        };
+      };
+    };
+  };
+  setAuthenticationKeyLevel: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody: {
+      content: {
+        'application/json': components['schemas']['AuthenticationLevelRequest'];
+      };
+    };
+    responses: {
+      /** @description OK */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          '*/*': components['schemas']['BaseResponseVoid'];
         };
       };
     };
@@ -1009,6 +1948,32 @@ export interface operations {
       };
     };
   };
+  getUploadUrl: {
+    parameters: {
+      query: {
+        /**
+         * @description 업로드할 이미지 파일명 (확장자 포함)
+         * @example lost-wallet.jpg
+         */
+        fileName: string;
+      };
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description OK */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          '*/*': components['schemas']['BaseResponseString'];
+        };
+      };
+    };
+  };
   getPrizes: {
     parameters: {
       query?: never;
@@ -1055,15 +2020,9 @@ export interface operations {
       };
     };
   };
-  getUploadUrl: {
+  getMemberRaffleProfile: {
     parameters: {
-      query: {
-        /**
-         * @description 업로드할 이미지 파일명 (확장자 포함)
-         * @example lost-wallet.jpg
-         */
-        fileName: string;
-      };
+      query?: never;
       header?: never;
       path?: never;
       cookie?: never;
@@ -1076,17 +2035,107 @@ export interface operations {
           [name: string]: unknown;
         };
         content: {
-          '*/*': components['schemas']['BaseResponseString'];
+          '*/*': components['schemas']['BaseResponseMemberRaffleProfileResponse'];
         };
       };
     };
   };
-  getMenusByBoothName: {
+  redirectLoginKakao: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description OK */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          '*/*': components['schemas']['RedirectView'];
+        };
+      };
+    };
+  };
+  getMatchingResult: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description OK */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          '*/*': components['schemas']['BaseResponseMatchingResponse'];
+        };
+      };
+    };
+  };
+  getAllFoundItems: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description OK */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          '*/*': components['schemas']['BaseResponseListFoundItemResponse'];
+        };
+      };
+    };
+  };
+  getFoundItemById: {
     parameters: {
       query?: never;
       header?: never;
       path: {
-        boothName: string;
+        /**
+         * @description 조회할 분실물의 ID
+         * @example 1
+         */
+        id: number;
+      };
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description OK */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          '*/*': components['schemas']['BaseResponseFoundItemResponse'];
+        };
+      };
+    };
+  };
+  getMenusByBoothId: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        /**
+         * @description 조회할 부스의 ID
+         * @example 1
+         */
+        boothId: number;
       };
       cookie?: never;
     };
@@ -1125,12 +2174,16 @@ export interface operations {
       };
     };
   };
-  getPerformanceByTitle: {
+  getPerformanceById: {
     parameters: {
       query?: never;
       header?: never;
       path: {
-        performanceTitle: string;
+        /**
+         * @description 조회할 공연 ID
+         * @example 1
+         */
+        performanceId: number;
       };
       cookie?: never;
     };
@@ -1143,6 +2196,29 @@ export interface operations {
         };
         content: {
           '*/*': components['schemas']['BaseResponsePerformanceDetailResponse'];
+        };
+      };
+    };
+  };
+  getPerformancesCursor: {
+    parameters: {
+      query?: {
+        cursor?: number;
+        size?: number;
+      };
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description OK */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          '*/*': components['schemas']['BaseResponseObject'];
         };
       };
     };
@@ -1174,7 +2250,11 @@ export interface operations {
       query?: never;
       header?: never;
       path: {
-        boothName: string;
+        /**
+         * @description 조회할 부스의 id
+         * @example 1
+         */
+        boothId: number;
       };
       cookie?: never;
     };
@@ -1187,6 +2267,75 @@ export interface operations {
         };
         content: {
           '*/*': components['schemas']['BaseResponseBoothDetailResponse'];
+        };
+      };
+    };
+  };
+  getBoothsCursor: {
+    parameters: {
+      query?: {
+        cursor?: number;
+        size?: number;
+      };
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description OK */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          '*/*': components['schemas']['BaseResponseObject'];
+        };
+      };
+    };
+  };
+  test: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description OK */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          '*/*': components['schemas']['BaseResponseMapStringObject'];
+        };
+      };
+    };
+  };
+  deleteFoundItem: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        /**
+         * @description 삭제할 분실물의 ID
+         * @example 1
+         */
+        id: number;
+      };
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description OK */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          '*/*': components['schemas']['BaseResponseVoid'];
         };
       };
     };

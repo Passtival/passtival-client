@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 
 import Carousel from '@shared/components/carousel/carousel';
 import Chip from '@shared/components/chip/chip';
+import Header from '@shared/components/header/header';
 import TimeTable from '@shared/components/timeTable/timeTable';
 import Title from '@shared/components/title/title';
 
@@ -89,6 +90,11 @@ const Booth = () => {
 
   return (
     <>
+      <Header
+        description="Passtival"
+        borderRadius="square"
+        bgColor="gray"
+      />
       <div className={styles.noticeText}>
         <Title mainTitle={VENUE_GUIDE} />
       </div>
@@ -116,7 +122,6 @@ const Booth = () => {
             label={type}
             selected={selectedType === type}
             onChange={() => setSelectedType(type)}
-            size="lg"
           />
         ))}
       </div>

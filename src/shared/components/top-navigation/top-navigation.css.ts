@@ -8,8 +8,8 @@ export const topnavigationVariants = style({
   justifyContent: 'space-between',
   width: '100%',
   height: '5.6rem',
-  color: themeVars.color.gray_900,
-  backgroundColor: themeVars.color.bg_white,
+  color: themeVars.color.bg_white,
+  backgroundColor: themeVars.color.gray_900,
   borderBottom: `1px solid ${themeVars.color.gray_400}`,
 });
 

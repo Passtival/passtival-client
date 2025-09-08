@@ -1,6 +1,10 @@
+import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { useMemo, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
+import { LOST_ITEM_REPORT_TEXT } from '@pages/lost-item-report/constants/LOST_ITEM_REPORT_TEXT';
+
+import { LOST_ITEM_QUERY_KEY } from '@shared/apis/keys/query-key';
 import AddImage from '@shared/components/add-image/add-image';
 import Button from '@shared/components/button/button';
 import {
@@ -11,21 +15,14 @@ import DropDown from '@shared/components/drop-down/drop-down';
 import Input from '@shared/components/input/input';
 import TopNavigation from '@shared/components/top-navigation/top-navigation';
 import { IcSvgCalendar, IcSvgClock } from '@shared/icons';
+import { themeVars } from '@shared/styles';
 
+import { LOST_ITEM_MUTATION_OPTIONS } from './apis/queries';
 import * as styles from './lost-item-report.css';
-
-const LOST_ITEM_REPORT_TEXT = {
-  LOST_ITEM_CREATE: '분실물 등록',
-  TITLE: '제목',
-  TITLE_PLACEHOLDER: '글 제목',
-  FOUND_LOCATION: '습득 장소',
-  FOUND_LOCATION_PLACEHOLDER: 'ex) 운동장',
-  FOUND_DATE_TIME: '습득 날짜 및 시간',
-  CREATE: '등록하기',
-};
 
 export interface LostItemForm {
   image?: string;
+  imageFile?: File;
   title: string;
   foundLocation: string;
   date: string | null;
@@ -37,6 +34,7 @@ const LostItemReport = () => {
   const navigate = useNavigate();
   const [reportForm, setReportForm] = useState<LostItemForm>({
     image: undefined,
+    imageFile: undefined,
     title: '',
     foundLocation: '',
     date: null,
@@ -44,11 +42,26 @@ const LostItemReport = () => {
     minute: null,
   });
 
+  const queryClient = useQueryClient();
+
+  const createFoundItemMutation = useMutation({
+    ...LOST_ITEM_MUTATION_OPTIONS.CREATE_FOUND_ITEM(),
+    onSuccess: () => {
+      queryClient.invalidateQueries({
+        queryKey: LOST_ITEM_QUERY_KEY.LOST_ITEM_PREVIEW(),
+      });
+    },
+    onError: (error) => {
+      console.error('분실물 등록 실패:', error);
+      alert(error.message || '분실물 등록에 실패했습니다.');
+    },
+  });
+
   const isFormReady = useMemo(
     () =>
       Boolean(
-        reportForm.title.trim() &&
-          reportForm.foundLocation.trim() &&
+        reportForm.title &&
+          reportForm.foundLocation &&
           reportForm.date &&
           reportForm.hour &&
           reportForm.minute,
@@ -56,20 +69,42 @@ const LostItemReport = () => {
     [reportForm],
   );
 
-  const handleSubmit = () => {
+  const isLoading = createFoundItemMutation.isPending;
+
+  const handleSubmit = async () => {
     if (!isFormReady) return;
+
+    const foundDateTime = new Date(
+      `${reportForm.date}T${reportForm.hour}:${reportForm.minute}:00`,
+    ).toISOString();
+
+    await createFoundItemMutation.mutateAsync({
+      title: reportForm.title,
+      area: reportForm.foundLocation,
+      foundDateTime,
+      imageFile: reportForm.imageFile,
+    });
+
     navigate(-1);
   };
 
   const handleChange = (file?: File) => {
     if (file) {
       const url = URL.createObjectURL(file);
-      setReportForm((prevForm) => ({ ...prevForm, image: url }));
+      setReportForm((prevForm) => ({
+        ...prevForm,
+        image: url,
+        imageFile: file,
+      }));
     } else {
       if (reportForm.image) {
         URL.revokeObjectURL(reportForm.image);
       }
-      setReportForm((prevForm) => ({ ...prevForm, image: undefined }));
+      setReportForm((prevForm) => ({
+        ...prevForm,
+        image: undefined,
+        imageFile: undefined,
+      }));
     }
   };
 
@@ -81,7 +116,7 @@ const LostItemReport = () => {
         setReportForm((prev) => ({ ...prev, date: value })),
       options: DROP_DOWN_OPTIONS.DATE,
       placeholder: DROP_DOWN_PLACEHOLDER.DATE,
-      icon: <IcSvgCalendar />,
+      icon: <IcSvgCalendar color={themeVars.color.bg_white} />,
     },
     {
       key: 'hour',
@@ -90,7 +125,7 @@ const LostItemReport = () => {
         setReportForm((prev) => ({ ...prev, hour: value })),
       options: DROP_DOWN_OPTIONS.TIME_HOUR,
       placeholder: DROP_DOWN_PLACEHOLDER.TIME,
-      icon: <IcSvgClock />,
+      icon: <IcSvgClock color={themeVars.color.bg_white} />,
     },
     {
       key: 'minute',
@@ -99,9 +134,10 @@ const LostItemReport = () => {
         setReportForm((prev) => ({ ...prev, minute: value })),
       options: DROP_DOWN_OPTIONS.TIME_MINUTE,
       placeholder: DROP_DOWN_PLACEHOLDER.TIME,
-      icon: <IcSvgClock />,
+      icon: <IcSvgClock color={themeVars.color.bg_white} />,
     },
   ];
+
   return (
     <>
       <TopNavigation
@@ -152,13 +188,16 @@ const LostItemReport = () => {
       </div>
       <div className={styles.button}>
         <Button
-          disabled={!isFormReady}
+          disabled={!isFormReady || isLoading}
           onClick={handleSubmit}
         >
-          {LOST_ITEM_REPORT_TEXT.CREATE}
+          {isLoading
+            ? LOST_ITEM_REPORT_TEXT.UPLOADING
+            : LOST_ITEM_REPORT_TEXT.CREATE}
         </Button>
       </div>
     </>
   );
 };
+
 export default LostItemReport;

@@ -1,3 +1,5 @@
+import { routePath } from '@router/path';
+
 import { BLIND_MATCH_TEXT } from '@pages/blind-match/constants/blind-match-text';
 
 import AgreementOption from '@shared/components/agreement-option/agreement-option';
@@ -14,7 +16,7 @@ const Agreement = ({ checked, onChange }: AgreementProps) => {
     <div className={styles.agreementoption}>
       <AgreementOption
         label={BLIND_MATCH_TEXT.CONSENT}
-        navigateTo="/info-share-consent"
+        navigateTo={routePath.INFO_SHARE_CONSENT}
         checked={checked}
         onChange={onChange}
       />
