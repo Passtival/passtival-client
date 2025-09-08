@@ -13,3 +13,10 @@ export const text = style({
   color: themeVars.color.bg_white,
   padding: '1rem 0 0.9rem 0.7rem',
 });
+
+export const buttonContainer = style({
+  display: 'flex',
+  gap: '1rem',
+  marginTop: '2rem',
+  justifyContent: 'center',
+});

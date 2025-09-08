@@ -36,6 +36,10 @@ export const ADMIN_QUERY_KEY = {
   FOUND_ITEM: () => [...ADMIN_QUERY_KEY.ALL, 'found-item'] as const,
   RAFFLE_AUTH_KEY: () =>
     [...ADMIN_QUERY_KEY.ALL, 'raffle', 'auth-key'] as const,
+  RAFFLE_DAY: (day: number) =>
+    [...ADMIN_QUERY_KEY.ALL, 'raffle', 'day', day] as const,
+  RAFFLE_WINNERS: (day: number) =>
+    [...ADMIN_QUERY_KEY.ALL, 'raffle', 'winners', day] as const,
 } as const;
 
 export const S3_QUERY_KEY = {

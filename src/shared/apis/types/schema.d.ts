@@ -1150,11 +1150,11 @@ export interface components {
       hosts?: string[];
       redirectView?: boolean;
       propagateQueryProperties?: boolean;
-      attributesMap?: {
-        [key: string]: unknown;
-      };
       attributes?: {
         [key: string]: string;
+      };
+      attributesMap?: {
+        [key: string]: unknown;
       };
       attributesCSV?: string;
     };
