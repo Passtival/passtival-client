@@ -5,6 +5,7 @@ import Carousel from '@shared/components/carousel/carousel';
 import Chip from '@shared/components/chip/chip';
 import TimeTable from '@shared/components/timeTable/timeTable';
 import Title from '@shared/components/title/title';
+import TitlInfo from '@shared/components/title-info/title-info';
 import { HOME_TEXT } from '@shared/constants/festivalSchedule';
 
 import * as styles from './home.css';
@@ -112,7 +113,7 @@ const Home = () => {
         </Carousel>
       </div>
       <div className={styles.festivalScheduleText}>
-        <Title
+        <TitlInfo
           mainTitle={HOME_TEXT.TODAY_FESTIVAL_SCHEDULE}
           subTitle={HOME_TEXT.TODAY_FESTIVAL_SCHEDULE_DETAIL}
         />

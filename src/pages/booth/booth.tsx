@@ -6,6 +6,7 @@ import Chip from '@shared/components/chip/chip';
 import Header from '@shared/components/header/header';
 import TimeTable from '@shared/components/timeTable/timeTable';
 import Title from '@shared/components/title/title';
+import TitlInfo from '@shared/components/title-info/title-info';
 
 import * as styles from './booth.css';
 import {
@@ -110,7 +111,7 @@ const Booth = () => {
         </Carousel>
       </div>
       <div className={styles.boothinfoText}>
-        <Title
+        <TitlInfo
           mainTitle={BOOTH_INFO}
           subTitle={BOOTH_INFO_DETAIL}
         />
