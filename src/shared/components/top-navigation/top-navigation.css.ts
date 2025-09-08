@@ -10,6 +10,7 @@ export const topnavigationVariants = style({
   height: '5.6rem',
   color: themeVars.color.bg_white,
   backgroundColor: themeVars.color.gray_900,
+  borderBottom: `1px solid ${themeVars.color.gray_400}`,
 });
 
 export const leftButton = style({
