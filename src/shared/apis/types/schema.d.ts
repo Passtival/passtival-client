@@ -135,8 +135,26 @@ export interface paths {
     /** 관리자 일차별 당첨자 조회 */
     get: operations['getRaffleWinnersByDay'];
     put?: never;
-    /** 관리자 추첨 실행 */
-    post: operations['executeRaffle'];
+    /** 관리자 일차별 추첨 실행 */
+    post: operations['executeRaffleByDay'];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  '/api/admin/raffle/premium': {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    /** 관리자 프리미엄 당첨자 조회 */
+    get: operations['getRaffleWinnerOfPremium'];
+    put?: never;
+    /** 관리자 프리미엄 추첨 실행 */
+    post: operations['executeRaffleOfPremium'];
     delete?: never;
     options?: never;
     head?: never;
@@ -1094,18 +1112,18 @@ export interface components {
     };
     JspPropertyGroupDescriptor: {
       buffer?: string;
-      includeCodas?: string[];
-      deferredSyntaxAllowedAsLiteral?: string;
-      trimDirectiveWhitespaces?: string;
-      errorOnUndeclaredNamespace?: string;
       elIgnored?: string;
       errorOnELNotFound?: string;
       pageEncoding?: string;
       scriptingInvalid?: string;
       isXml?: string;
+      includePreludes?: string[];
+      includeCodas?: string[];
+      deferredSyntaxAllowedAsLiteral?: string;
+      trimDirectiveWhitespaces?: string;
+      errorOnUndeclaredNamespace?: string;
       urlPatterns?: string[];
       defaultContentType?: string;
-      includePreludes?: string[];
     };
     RedirectView: {
       applicationContext?: components['schemas']['ApplicationContext'];
@@ -1132,11 +1150,11 @@ export interface components {
       hosts?: string[];
       redirectView?: boolean;
       propagateQueryProperties?: boolean;
-      attributesMap?: {
-        [key: string]: unknown;
-      };
       attributes?: {
         [key: string]: string;
+      };
+      attributesMap?: {
+        [key: string]: unknown;
       };
       attributesCSV?: string;
     };
@@ -1278,6 +1296,8 @@ export interface components {
       result?: components['schemas']['MenuResponse'][];
     };
     MenuResponse: {
+      /** Format: int64 */
+      id?: number;
       type?: string;
       name?: string;
       introduction?: string;
@@ -1586,13 +1606,53 @@ export interface operations {
       };
     };
   };
-  executeRaffle: {
+  executeRaffleByDay: {
     parameters: {
       query?: never;
       header?: never;
       path: {
         day: number;
       };
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description OK */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          '*/*': components['schemas']['BaseResponseVoid'];
+        };
+      };
+    };
+  };
+  getRaffleWinnerOfPremium: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description OK */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          '*/*': components['schemas']['BaseResponseWinnerResponse'];
+        };
+      };
+    };
+  };
+  executeRaffleOfPremium: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
       cookie?: never;
     };
     requestBody?: never;

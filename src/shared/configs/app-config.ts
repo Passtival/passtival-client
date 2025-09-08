@@ -10,7 +10,7 @@ const DEFAULT_CONFIG = {
     loginFailureUrl: routePath.LOGIN,
   },
   adminAuth: {
-    isEnabled: false,
+    isEnabled: true,
     loginSuccessUrl: routePath.ADMIN_MAIN,
     loginFailureUrl: routePath.ADMIN_LOGIN,
   },
