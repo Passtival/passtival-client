@@ -39,12 +39,12 @@ export const publicRoutesOthers = [
   { path: routePath.LOST_ITEM_REPORT, Component: LostItemReportPage },
   { path: routePath.INFO_SHARE_CONSENT, Component: InfoShareConsentPage },
   { path: routePath.LINDING, Component: LandingPage },
+  { path: routePath.TICKET_ONBOARDING, Component: TicketOnboardingPage },
 ];
 
 export const protectedRoutes = [
   { path: routePath.BLIND_MATCH, Component: BlindMatchPage },
   { path: routePath.TICKET, Component: TicketPage },
-  { path: routePath.TICKET_ONBOARDING, Component: TicketOnboardingPage },
 ];
 
 export const protectedAdminRoutes = [

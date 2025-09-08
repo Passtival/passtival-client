@@ -5,7 +5,7 @@ import { routePath } from '@router/path';
  */
 const DEFAULT_CONFIG = {
   auth: {
-    isEnabled: false, // 인증 기능 활성화 여부
+    isEnabled: true, // 인증 기능 활성화 여부
     loginSuccessUrl: routePath.HOME,
     loginFailureUrl: routePath.LOGIN,
   },
