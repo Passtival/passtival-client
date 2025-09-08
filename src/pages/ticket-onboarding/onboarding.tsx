@@ -4,6 +4,7 @@ import { routePath } from '@router/path';
 
 import { tokenService } from '@shared/auth/services/token-service';
 import Button from '@shared/components/button/button';
+import Header from '@shared/components/header/header';
 
 import { ONBOARDING_STEPS } from './constatns/onboarding-text';
 import * as styles from './onboarding.css';
@@ -24,19 +25,25 @@ const TicketOnBoarding = () => {
   };
 
   return (
-    <article className={styles.container}>
-      <img
-        src="/ticket.svg"
-        className={styles.ticketImg}
+    <>
+      <Header
+        description="Passtival"
+        borderRadius="rounded"
+        bgColor="gray"
       />
-      <section className={styles.section}>
+      <article className={styles.container}>
+        <img
+          src="/ticket.svg"
+          className={styles.ticketImg}
+        />
         {current.lines.map((line, idx) => (
           <p key={idx}>{line}</p>
         ))}
-
-        <Button onClick={handleNext}>{current.buttonLabel}</Button>
-      </section>
-    </article>
+        <section className={styles.section}>
+          <Button onClick={handleNext}>{current.buttonLabel}</Button>
+        </section>
+      </article>
+    </>
   );
 };
 export default TicketOnBoarding;
