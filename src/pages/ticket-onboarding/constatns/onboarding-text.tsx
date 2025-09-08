@@ -39,6 +39,7 @@ export const ONBOARDING_STEPS = [
     id: 2,
     lines: [
       <div className={styles.container}>
+        <div className={styles.nottitle}> </div>
         <div className={styles.section}>
           <h2 className={styles.header}>3.응모는 누적 유지</h2>
           <p className={styles.description}>

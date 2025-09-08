@@ -19,6 +19,10 @@ export const header = style({
   color: themeVars.color.main_yellow,
 });
 
+export const nottitle = style({
+  paddingTop: '4rem',
+});
+
 export const description = style({
   ...themeVars.fontStyles.caption2_m_12,
   color: themeVars.color.bg_white,
