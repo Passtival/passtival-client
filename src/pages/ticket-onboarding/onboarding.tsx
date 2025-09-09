@@ -2,7 +2,6 @@ import { useNavigate, useSearchParams } from 'react-router-dom';
 
 import { routePath } from '@router/path';
 
-import { tokenService } from '@shared/auth/services/token-service';
 import Button from '@shared/components/button/button';
 import Header from '@shared/components/header/header';
 
@@ -18,10 +17,11 @@ const TicketOnBoarding = () => {
   const handleNext = () => {
     if (step < ONBOARDING_STEPS.length - 1) {
       setSearchParams({ step: String(step + 1) });
-    } else {
-      tokenService.saveTicketOnboardingToken('1');
-      navigate(routePath.TICKET, { replace: true });
     }
+  };
+
+  const handTicket = () => {
+    navigate(routePath.TICKET, { replace: true });
   };
 
   return (
@@ -32,19 +32,18 @@ const TicketOnBoarding = () => {
         bgColor="gray"
       />
       <article className={styles.container}>
-        <img
-          src="/ticket.svg"
-          className={styles.ticketImg}
-        />
         <section className={styles.section}>
           {current.lines.map((line, idx) => (
             <p key={idx}>{line}</p>
           ))}
         </section>
-        <div className={styles.button}>
-          <Button onClick={handleNext}>{current.buttonLabel}</Button>
+        <div className={styles.detail}>
+          <button onClick={handleNext}>{current.buttonLabel}</button>
         </div>
       </article>
+      <div className={styles.button}>
+        <Button onClick={handTicket}>응모하러 가기</Button>
+      </div>
     </>
   );
 };
