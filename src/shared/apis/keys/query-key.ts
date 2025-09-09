@@ -12,6 +12,11 @@ export const LOST_ITEM_QUERY_KEY = {
   LOST_ITEM_PREVIEW: () => [...LOST_ITEM_QUERY_KEY.ALL, 'items'],
 } as const;
 
+export const BLIND_MATCH_QUERY_KEY = {
+  ALL: ['blind'],
+  BLIND_MATCH_PREVIEW: () => [...BLIND_MATCH_QUERY_KEY.ALL, 'match'],
+} as const;
+
 export const RAFFLE_QUERY_KEY = {
   ALL: ['raffle'],
 } as const;

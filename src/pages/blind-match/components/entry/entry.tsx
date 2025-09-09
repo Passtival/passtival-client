@@ -1,4 +1,7 @@
+import { useMutation } from '@tanstack/react-query';
 import { useState, useEffect } from 'react';
+
+import { patchBlindMatchInfoStorage } from '@pages/blind-match/apis/queries';
 
 import Button from '@shared/components/button/button';
 import { IcSvgCaution } from '@shared/icons';
@@ -32,6 +35,14 @@ const EntryForm = ({ currentDay, onApplicationComplete }: EntryFormProps) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isFormValid, setIsFormValid] = useState(false);
 
+  const { mutate, isPending } = useMutation({
+    mutationFn: patchBlindMatchInfoStorage,
+    onSuccess: () => {
+      setIsModalOpen(false);
+      onApplicationComplete();
+    },
+  });
+
   useEffect(() => {
     const phoneRegex = /^010-\d{4}-\d{4}$/;
     const isValid = Boolean(
@@ -61,8 +72,12 @@ const EntryForm = ({ currentDay, onApplicationComplete }: EntryFormProps) => {
   };
 
   const handleConfirm = () => {
-    setIsModalOpen(false);
-    onApplicationComplete();
+    if (isPending) return;
+    mutate({
+      memberInstagramId: form.instaId.trim(),
+      memberPhoneNumber: form.phoneNumber.replaceAll('-', ''),
+      memberGender: form.gender === '여성' ? 'FEMALE' : 'MALE',
+    });
   };
 
   const handleCloseModal = () => {
