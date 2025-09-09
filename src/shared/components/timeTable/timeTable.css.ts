@@ -28,6 +28,12 @@ export const bottom = style({
   width: '100%',
   height: '14.5rem',
   borderLeft: `1px solid ${themeVars.color.main_yellow}`,
+  gap: '0.8rem',
+});
+
+export const leftBar = style({
+  height: '100%',
+  borderRadius: `1px solid ${themeVars.color.main_yellow}`,
 });
 
 export const text = style({
