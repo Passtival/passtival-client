@@ -4,12 +4,12 @@ import { END_POINT } from '@shared/apis/config/end-point';
 import { api } from '@shared/apis/config/instance';
 import { RAFFLE_QUERY_KEY } from '@shared/apis/keys/query-key';
 
-import type { RafflePrizesResult } from '../types/types';
+import type { RafflePrizesResponse } from '../types/types';
 
 export const getRafflePrizes = async (
   days: number,
-): Promise<RafflePrizesResult> => {
-  const { data } = await api.get<RafflePrizesResult>(
+): Promise<RafflePrizesResponse> => {
+  const { data } = await api.get<RafflePrizesResponse>(
     END_POINT.RAFFLE_PRIZES.replace('{days}', days.toString()),
   );
   return data;
