@@ -1,7 +1,7 @@
 import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 
-import Card from '@shared/components/card/card';
+import BoothList from '@pages/booth/components/booth-list';
+
 import Carousel from '@shared/components/carousel/carousel';
 import Chip from '@shared/components/chip/chip';
 import Header from '@shared/components/header/header';
@@ -21,62 +21,8 @@ const mokImages = [
   'https://placehold.co/600x400',
 ];
 
-const MOCK_BOOTH_DATA = [
-  {
-    id: 1,
-    boothType: '학내부스',
-    title: '공연 1',
-    assignee: '컴공',
-    description: '#즐겨보자',
-    imgSrc: 'https://placehold.co/600x400',
-    imgAlt: '공연 1 이미지',
-  },
-  {
-    id: 2,
-    boothType: '체험',
-    title: '공연 2',
-    assignee: '디자인',
-    description: '#흥겨운 무대',
-    imgSrc: 'https://placehold.co/600x400',
-    imgAlt: '공연 2 이미지',
-  },
-  {
-    id: 3,
-    boothType: '푸드존',
-    title: '공연 3',
-    assignee: '경영',
-    description: '#마지막날을_불태우자',
-    imgSrc: 'https://placehold.co/600x400',
-    imgAlt: '공연 3 이미지',
-  },
-  {
-    id: 4,
-    boothType: '푸드존',
-    title: '공연 3',
-    assignee: '경영',
-    description: '#마지막날을_불태우자',
-    imgSrc: 'https://placehold.co/600x400',
-    imgAlt: '공연 3 이미지',
-  },
-  {
-    id: 5,
-    boothType: '푸드존',
-    title: '공연 3',
-    assignee: '경영',
-    description: '#마지막날을_불태우자',
-    imgSrc: 'https://placehold.co/600x400',
-    imgAlt: '공연 3 이미지',
-  },
-];
-
 const Booth = () => {
   const [selectedType, setSelectedType] = useState(BOOTH_TYPES[0]);
-
-  const navigate = useNavigate();
-
-  const handleClick = (id: number) => {
-    navigate(`/booth-detail/${id}`);
-  };
 
   return (
     <>
@@ -116,20 +62,7 @@ const Booth = () => {
         ))}
       </div>
       <div className={styles.cardContainer}>
-        {MOCK_BOOTH_DATA.filter((schedule) =>
-          selectedType === '전체' ? true : schedule.boothType === selectedType,
-        ).map(({ id, title, assignee, description, imgSrc, imgAlt }) => (
-          <Card
-            type="lg"
-            key={id}
-            title={title}
-            assignee={assignee}
-            description={description}
-            imgSrc={imgSrc}
-            imgAlt={imgAlt}
-            onClick={() => handleClick(id)}
-          />
-        ))}
+        <BoothList selectedType={selectedType} />
       </div>
     </>
   );

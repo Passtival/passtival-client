@@ -435,7 +435,7 @@ export interface paths {
     patch?: never;
     trace?: never;
   };
-  '/api/raffle/prizes/{prizeId}': {
+  '/api/raffle/prizes/{days}': {
     parameters: {
       query?: never;
       header?: never;
@@ -444,7 +444,7 @@ export interface paths {
     };
     /**
      * 상품 조회
-     * @description 상품 ID로 특정 상품의 정보를 조회합니다.
+     * @description 날짜를 통해 특정 상품의 정보를 조회합니다.
      */
     get: operations['getPrizeById'];
     put?: never;
@@ -885,13 +885,6 @@ export interface components {
       prizeImagePath?: string;
       prizeName?: string;
     };
-    BaseResponsePrizeResponse: {
-      isSuccess?: boolean;
-      /** Format: int32 */
-      code?: number;
-      message?: string;
-      result?: components['schemas']['PrizeResponse'];
-    };
     BaseResponseMemberRaffleProfileResponse: {
       isSuccess?: boolean;
       /** Format: int32 */
@@ -1150,11 +1143,11 @@ export interface components {
       hosts?: string[];
       redirectView?: boolean;
       propagateQueryProperties?: boolean;
-      attributes?: {
-        [key: string]: string;
-      };
       attributesMap?: {
         [key: string]: unknown;
+      };
+      attributes?: {
+        [key: string]: string;
       };
       attributesCSV?: string;
     };
@@ -1180,8 +1173,8 @@ export interface components {
       majorVersion?: number;
       /** Format: int32 */
       minorVersion?: number;
-      attributeNames?: unknown;
       contextPath?: string;
+      attributeNames?: unknown;
       initParameterNames?: unknown;
       sessionTrackingModes?: ('COOKIE' | 'URL' | 'SSL')[];
       /** Format: int32 */
@@ -2000,10 +1993,10 @@ export interface operations {
       header?: never;
       path: {
         /**
-         * @description 조회할 상품의 ID
+         * @description 조회할 상품의 날짜 / 프리미엄의 경우 4
          * @example 1
          */
-        prizeId: number;
+        days: number;
       };
       cookie?: never;
     };
@@ -2015,7 +2008,7 @@ export interface operations {
           [name: string]: unknown;
         };
         content: {
-          '*/*': components['schemas']['BaseResponsePrizeResponse'];
+          '*/*': components['schemas']['BaseResponseListPrizeResponse'];
         };
       };
     };
