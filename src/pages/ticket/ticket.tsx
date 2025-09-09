@@ -82,7 +82,7 @@ const Ticket = () => {
           mainTitle="상품 응모권"
           subTitle="상품 당첨의 기회를 잡아보세요!"
         />
-        <TicketCarousel />
+        <TicketCarousel selectedLevel={selectedLevel} />
         <TicketChip
           selectedLevel={selectedLevel}
           setSelectedLevel={setSelectedLevel}
