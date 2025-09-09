@@ -9,7 +9,7 @@ export const ticketImg = style({
   justifyContent: 'center',
   height: '20rem',
   width: '100%',
-  margin: '3.9rem 0 3.7rem 0',
+  margin: '4.9rem 0 3.7rem',
 });
 
 export const title = style({

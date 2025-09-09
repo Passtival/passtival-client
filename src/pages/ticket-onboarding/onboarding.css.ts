@@ -8,6 +8,7 @@ export const container = style({
   alignItems: 'center',
   justifyContent: 'center',
   height: '60vh',
+  overflowY: 'auto',
 });
 
 export const section = style({
