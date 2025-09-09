@@ -1,10 +1,10 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
+import Card from '@shared/components/card/card';
 import Carousel from '@shared/components/carousel/carousel';
 import Chip from '@shared/components/chip/chip';
 import Header from '@shared/components/header/header';
-import TimeTable from '@shared/components/timeTable/timeTable';
 import Title from '@shared/components/title/title';
 
 import * as styles from './booth.css';
@@ -25,8 +25,6 @@ const MOCK_BOOTH_DATA = [
   {
     id: 1,
     boothType: '학내부스',
-    startIso: '2025-08-28T13:00:00',
-    endIso: '2025-08-28T14:00:00',
     title: '공연 1',
     assignee: '컴공',
     description: '#즐겨보자',
@@ -36,8 +34,6 @@ const MOCK_BOOTH_DATA = [
   {
     id: 2,
     boothType: '체험',
-    startIso: '2025-08-28T15:00:00',
-    endIso: '2025-08-28T16:00:00',
     title: '공연 2',
     assignee: '디자인',
     description: '#흥겨운 무대',
@@ -47,8 +43,6 @@ const MOCK_BOOTH_DATA = [
   {
     id: 3,
     boothType: '푸드존',
-    startIso: '2025-08-28T18:00:00',
-    endIso: '2025-08-28T19:30:00',
     title: '공연 3',
     assignee: '경영',
     description: '#마지막날을_불태우자',
@@ -58,8 +52,6 @@ const MOCK_BOOTH_DATA = [
   {
     id: 4,
     boothType: '푸드존',
-    startIso: '2025-08-28T18:00:00',
-    endIso: '2025-08-28T19:30:00',
     title: '공연 3',
     assignee: '경영',
     description: '#마지막날을_불태우자',
@@ -69,8 +61,6 @@ const MOCK_BOOTH_DATA = [
   {
     id: 5,
     boothType: '푸드존',
-    startIso: '2025-08-28T18:00:00',
-    endIso: '2025-08-28T19:30:00',
     title: '공연 3',
     assignee: '경영',
     description: '#마지막날을_불태우자',
@@ -125,24 +115,13 @@ const Booth = () => {
           />
         ))}
       </div>
-
-      {MOCK_BOOTH_DATA.filter((schedule) =>
-        selectedType === '전체' ? true : schedule.boothType === selectedType,
-      ).map(
-        ({
-          id,
-          startIso,
-          endIso,
-          title,
-          assignee,
-          description,
-          imgSrc,
-          imgAlt,
-        }) => (
-          <TimeTable
+      <div className={styles.cardContainer}>
+        {MOCK_BOOTH_DATA.filter((schedule) =>
+          selectedType === '전체' ? true : schedule.boothType === selectedType,
+        ).map(({ id, title, assignee, description, imgSrc, imgAlt }) => (
+          <Card
+            type="lg"
             key={id}
-            startIso={startIso}
-            endIso={endIso}
             title={title}
             assignee={assignee}
             description={description}
@@ -150,8 +129,8 @@ const Booth = () => {
             imgAlt={imgAlt}
             onClick={() => handleClick(id)}
           />
-        ),
-      )}
+        ))}
+      </div>
     </>
   );
 };
