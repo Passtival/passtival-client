@@ -11,6 +11,12 @@ import { api } from '@shared/apis/config/instance';
 import { BLIND_MATCH_QUERY_KEY } from '@shared/apis/keys/query-key';
 
 export const BLIND_MATCH_QUERY_OPTIONS = {
+  BLIND_MATCH_RESULT: () => {
+    return queryOptions({
+      queryKey: [...BLIND_MATCH_QUERY_KEY.ALL, 'result'],
+      queryFn: getBlindMatchResult,
+    });
+  },
   BLIND_MATCH_INFO_STORAGE: () => {
     return queryOptions({
       queryKey: BLIND_MATCH_QUERY_KEY.BLIND_MATCH_PREVIEW(),

@@ -1,3 +1,7 @@
+import { useQuery } from '@tanstack/react-query';
+import { useEffect } from 'react';
+
+import { BLIND_MATCH_QUERY_OPTIONS } from '@pages/blind-match/apis/queries';
 import { formatPhoneNumber } from '@pages/blind-match/utils/formattied-number';
 
 import Chip from '@shared/components/chip/chip';
@@ -27,6 +31,19 @@ const UseInfoForm = ({
   onPhoneNumberChange,
   onGenderChange,
 }: UseInfoFormProps) => {
+  const { data } = useQuery(
+    BLIND_MATCH_QUERY_OPTIONS.BLIND_MATCH_INFO_STORAGE(),
+  );
+  useEffect(() => {
+    const apiGender = data?.result?.memberGender as
+      | 'FEMALE'
+      | 'MALE'
+      | undefined;
+    if (!gender && apiGender) {
+      onGenderChange(apiGender === 'FEMALE' ? '여성' : '남성');
+    }
+  }, [data?.result?.memberGender, gender, onGenderChange]);
+
   const handleInstaIdChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     onInstaIdChange(e.target.value);
   };
@@ -40,12 +57,12 @@ const UseInfoForm = ({
       <Input
         value={phoneNumber}
         onChange={handlePhoneChange}
-        placeholder={USE_INFO_FORM.PHONE}
+        placeholder={data?.result?.memberPhoneNumber ?? USE_INFO_FORM.PHONE}
       />
       <Input
         value={instaId}
         onChange={handleInstaIdChange}
-        placeholder={USE_INFO_FORM.INSTAR_ID}
+        placeholder={data?.result?.memberInstagramId ?? USE_INFO_FORM.INSTAR_ID}
       />
       <div className={styles.chip}>
         <Chip
