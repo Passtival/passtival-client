@@ -5,7 +5,7 @@ import { themeVars } from '@shared/styles';
 export const container = style({
   display: 'flex',
   flexDirection: 'column',
-  padding: '0 2.4rem',
+  padding: '0 2.4rem 12rem',
 });
 
 export const notice = style({

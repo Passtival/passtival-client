@@ -19,7 +19,7 @@ export const messageContainer = style({
   flexDirection: 'column',
   alignItems: 'center',
   justifyContent: 'center',
-  height: 'calc(84vh - 5.6rem - 13.7rem)',
+  height: 'calc(70vh - 5.6rem - 13.7rem)',
 });
 
 export const message = style({

@@ -16,5 +16,4 @@ export const inputsection = style({
   display: 'flex',
   flexDirection: 'column',
   justifyContent: 'center',
-  height: 'calc(84vh - 5.6rem - 28.5rem)',
 });
