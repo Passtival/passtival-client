@@ -1,0 +1,85 @@
+import { useInfiniteQuery } from '@tanstack/react-query';
+import { useNavigate } from 'react-router-dom';
+
+import Card from '@shared/components/card/card';
+import ErrorMessage from '@shared/components/error-message/error-message';
+import Loading from '@shared/components/loading/loading';
+import { useIntersectionObserver } from '@shared/hooks/use-intersection-observer';
+
+import { getBoothsCursor } from '../apis/queries';
+
+interface BoothListProps {
+  selectedType: string;
+}
+
+const BoothList = ({ selectedType }: BoothListProps) => {
+  const navigate = useNavigate();
+
+  const {
+    data,
+    fetchNextPage,
+    hasNextPage,
+    isFetchingNextPage,
+    isLoading,
+    error,
+  } = useInfiniteQuery({
+    queryKey: ['booth', 'cursor'],
+    queryFn: ({ pageParam }) => getBoothsCursor(pageParam, 10),
+    initialPageParam: undefined as number | undefined,
+    getNextPageParam: (lastPage) => lastPage?.result?.nextCursor,
+    throwOnError: false,
+  });
+
+  const intersectionRef = useIntersectionObserver(() => {
+    if (hasNextPage && !isFetchingNextPage) {
+      fetchNextPage();
+    }
+  }, hasNextPage && !isFetchingNextPage);
+
+  const handleClick = (id: number) => {
+    navigate(`/booth-detail/${id}`);
+  };
+  if (isLoading) {
+    return (
+      <Loading
+        size="medium"
+        message="부스 정보를 불러오는 중..."
+      />
+    );
+  }
+
+  if (error) {
+    return <ErrorMessage message="부스 정보를 불러올 수 없습니다." />;
+  }
+
+  return (
+    <>
+      {data?.pages
+        .flatMap((page) => page?.result?.content || [])
+        .filter((booth) =>
+          selectedType === '전체' ? true : booth?.type === selectedType,
+        )
+        .map((booth) => (
+          <Card
+            type="lg"
+            key={booth.id}
+            title={booth.name}
+            assignee={booth.department}
+            description={booth.info}
+            imgSrc={booth.imagePath}
+            imgAlt={`${booth.name} 이미지`}
+            onClick={() => handleClick(booth.id)}
+          />
+        ))}
+      {hasNextPage && (
+        <div
+          ref={intersectionRef}
+          style={{ height: '1px' }}
+        />
+      )}
+      {isFetchingNextPage && <div>더 많은 부스를 불러오는 중...</div>}
+    </>
+  );
+};
+
+export default BoothList;
