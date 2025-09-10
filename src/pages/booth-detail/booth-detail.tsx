@@ -25,13 +25,13 @@ const BoothDetailPage = () => {
         </Tab.List>
         <Tab.Panels>
           <Tab.Panel value="booth-info">
-            <BoothInfo id={id} />
+            <BoothInfo />
           </Tab.Panel>
           <Tab.Panel value="menu">
-            <MenuInfo id={id} />
+            <MenuInfo />
           </Tab.Panel>
           <Tab.Panel value="activities">
-            <ActivitiesInfo id={id} />
+            <ActivitiesInfo />
           </Tab.Panel>
         </Tab.Panels>
       </Tab.Container>

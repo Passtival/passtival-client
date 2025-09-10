@@ -1,42 +1,32 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
+import Loading from '@shared/components/loading/loading';
 import Title from '@shared/components/title/title';
 
 import * as styles from './drawing.css';
+import type { WinnerData } from '../../types/winner-data';
 import InfoSection from '../info-section/info-section';
 
-const Drawing = () => {
-  const [winners, setWinners] = useState<
-    { name: string; number: string; id: number }[]
-  >([]);
+interface DrawingProps {
+  winners: WinnerData[];
+  isLoading: boolean;
+  onReExecuteRaffle: () => void;
+  onExecuteSecondRaffle: () => void;
+}
 
-  const mockWinners = [
-    { name: '홍길동', number: '20230001', id: 1 },
-    { name: '김철수', number: '20230002', id: 2 },
-    { name: '이영희', number: '20230003', id: 3 },
-    { name: '박민준', number: '20230004', id: 4 },
-  ];
+const Drawing = ({
+  winners,
+  isLoading,
+  onReExecuteRaffle,
+  onExecuteSecondRaffle,
+}: DrawingProps) => {
+  const [displayWinners, setDisplayWinners] = useState<WinnerData[]>([]);
 
-  const handleButtonClick = () => {
-    const randomIndex = Math.floor(Math.random() * mockWinners.length);
-    const randomWinner = mockWinners[randomIndex];
-
-    setWinners((prevWinners) => [
-      ...prevWinners,
-      { ...randomWinner, id: Date.now() },
-    ]);
-  };
-
-  const handleReDrawButtonClick = (index: number) => {
-    const randomIndex = Math.floor(Math.random() * mockWinners.length);
-    const newWinner = { ...mockWinners[randomIndex], id: Date.now() };
-
-    setWinners((prevWinners) => {
-      const updatedWinners = [...prevWinners];
-      updatedWinners[index] = newWinner;
-      return updatedWinners;
-    });
-  };
+  useEffect(() => {
+    if (winners.length > 0) {
+      setDisplayWinners(winners);
+    }
+  }, [winners]);
 
   return (
     <>
@@ -46,27 +36,37 @@ const Drawing = () => {
           subTitle="응모권 당첨자 페이지입니다."
         />
       </div>
-      {winners.map((winner, index) => (
-        <div
-          key={winner.id}
-          className={styles.container}
-        >
-          <p className={styles.text}>당첨자 {index + 1}</p>
-          <InfoSection
-            value={winner.name}
-            studentnumber={winner.number}
-            handleButtonClick={() => handleReDrawButtonClick(index)}
-          />
-        </div>
-      ))}
-      <div className={styles.container}>
-        <p className={styles.text}>당첨자 {winners.length + 1}</p>
-        <InfoSection
-          value={''}
-          studentnumber={''}
-          handleButtonClick={handleButtonClick}
+
+      {isLoading ? (
+        <Loading
+          size="medium"
+          message="추첨 중입니다..."
         />
-      </div>
+      ) : (
+        <>
+          {/* 당첨자 1 - 항상 렌더링 */}
+          <div className={styles.container}>
+            <p className={styles.text}>당첨자 1</p>
+            <InfoSection
+              value={displayWinners[0]?.name || ''}
+              studentnumber={displayWinners[0]?.studentId || ''}
+              handleButtonClick={onReExecuteRaffle}
+            />
+          </div>
+
+          {/* 당첨자 2 - 당첨자 1이 있을 때만 렌더링 */}
+          {displayWinners.length > 0 && (
+            <div className={styles.container}>
+              <p className={styles.text}>당첨자 2</p>
+              <InfoSection
+                value={displayWinners[1]?.name || ''}
+                studentnumber={displayWinners[1]?.studentId || ''}
+                handleButtonClick={onExecuteSecondRaffle}
+              />
+            </div>
+          )}
+        </>
+      )}
     </>
   );
 };

@@ -7,7 +7,7 @@ import {
   LostItemsPage,
   LoginPage,
   TicketPage,
-  LoginFallbackPage,
+  LoginCallbackPage,
   AdminLoginPage,
   LostItemIngoPage,
   BoothDetailPage,
@@ -27,10 +27,11 @@ export const publicRoutesWithMain = [
   { path: routePath.BOOTH, Component: BoothPage },
   { path: routePath.LOST_ITEMS, Component: LostItemsPage },
   { path: routePath.LOGIN, Component: LoginPage },
+  { path: routePath.TICKET_ONBOARDING, Component: TicketOnboardingPage },
 ];
 
 export const publicRoutesOthers = [
-  { path: routePath.LOGIN_FALLBACK, Component: LoginFallbackPage },
+  { path: routePath.LOGIN_CALLBACK, Component: LoginCallbackPage },
   { path: routePath.LAND, Component: LandPage },
   { path: routePath.ADMIN_LOGIN, Component: AdminLoginPage },
   { path: routePath.SHOW_DETAIL, Component: ShowDetailPage },
@@ -44,7 +45,6 @@ export const publicRoutesOthers = [
 export const protectedRoutes = [
   { path: routePath.BLIND_MATCH, Component: BlindMatchPage },
   { path: routePath.TICKET, Component: TicketPage },
-  { path: routePath.TICKET_ONBOARDING, Component: TicketOnboardingPage },
 ];
 
 export const protectedAdminRoutes = [

@@ -4,11 +4,10 @@ import { themeVars } from '@shared/styles';
 
 export const textInputContainer = style({
   width: '100%',
-  height: '9.1rem',
   display: 'flex',
   flexDirection: 'column',
   gap: '1.2rem',
-  padding: '0.4rem 2.4rem 1.1rem 2.4rem',
+  padding: '0.8rem 2.4rem 1.6rem ',
 });
 
 export const text = style({
@@ -17,11 +16,10 @@ export const text = style({
 });
 
 export const foundDateTimeContainer = style({
-  height: '10.4rem',
   display: 'flex',
   flexDirection: 'column',
-  gap: '1.4rem',
-  padding: '0.4rem 2.4rem 2.4rem 2.4rem',
+  gap: '1.2rem',
+  padding: '0.4rem 2.4rem 1.1rem 2.4rem',
 });
 
 export const dropdownContainer = style({
@@ -30,8 +28,8 @@ export const dropdownContainer = style({
 });
 
 export const button = style({
-  left: '50%',
-  transform: 'translateX(-50%)',
+  width: '100%',
+  padding: '0 2.4rem',
   position: 'fixed',
   bottom: '5.8rem',
 });
