@@ -1,8 +1,22 @@
 export const END_POINT = {
   PERFORMANCES_INFO: '/api/festival/performances/{performanceId}',
   LOST_ITEMS: '/api/found-items',
+  BOOTH_MENUS: '/api/festival/{boothId}/menus',
+  BOOTH_ACTIVITIES: '/api/festival/{boothId}/activities',
+  BOOTH_INFO: '/api/festival/booths/{boothId}',
   ADMIN_LOGIN: '/api/admin/login',
   BLIND_MATCH_INFO_STORAGE: '/api/matching/me',
   BLIND_MATCH_APPLY: '/api/matching',
   BLIND_MATCH_RESULT: '/api/matching/result',
-};
+  ADMIN_FOUND_ITEM: '/api/admin/found-item',
+  ADMIN_FOUND_ITEM_DELETE: '/api/admin/found-item/{id}',
+  S3_UPLOAD_URL: '/api/s3/upload-url',
+  FOUND_ITEM_DETAIL: '/api/found-items/{id}',
+  ADMIN_RAFFLE_AUTH_KEY: '/api/admin/raffle/authentication-key',
+  AUTH_REFRESH: '/api/auth/refresh',
+  MEMBER_LEVEL_UP: '/api/member/level-up',
+  ADMIN_RAFFLE_DAY: '/api/admin/raffle/{day}',
+  ADMIN_RAFFLE_WINNERS: '/api/admin/raffle/{day}',
+  BOOTHS_CURSOR: '/api/festival/booths/cursor',
+  RAFFLE_PRIZES: '/api/raffle/prizes/{days}',
+} as const;
