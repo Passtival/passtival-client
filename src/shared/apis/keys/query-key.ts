@@ -18,11 +18,7 @@ export const RAFFLE_QUERY_KEY = {
 
 export const BOOTH_QUERY_KEY = {
   ALL: ['booth'],
-  BOOTH_MENU_ITEM: (boothId: string) => [
-    ...BOOTH_QUERY_KEY.ALL,
-    'items',
-    boothId,
-  ],
+  BOOTH_MENUS: (boothId: string) => [...BOOTH_QUERY_KEY.ALL, 'menus', boothId],
 } as const;
 
 export const MATCHING_QUERY_KEY = {

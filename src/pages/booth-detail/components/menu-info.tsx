@@ -7,27 +7,26 @@ import * as style from './booth-detail.css';
 import { BOOTH_MENU_QUERY_OPTIONS } from '../apis/queries';
 
 const MenuInfo = () => {
-  const { boothId } = useParams<{ boothId: string }>();
-
-  if (!boothId) {
+  const { id } = useParams<{ id: string }>();
+  if (!id) {
     throw new Error('부스가 없습니다.');
   }
 
-  const { data } = useQuery(BOOTH_MENU_QUERY_OPTIONS.BOOTH_MENU_ITEM());
+  const { data } = useQuery(BOOTH_MENU_QUERY_OPTIONS.BOOTH_MENUS(id));
 
   return (
     <>
-      {data?.result?.map((m) => (
+      {data?.map((menu) => (
         <div
           className={style.boothDetailItemContainer}
-          key={boothId}
+          key={menu.id}
         >
           <BoothDetailItem
-            name={m.name ?? ''}
-            info={m.introduction ?? ''}
-            imgSrc={m.imagePath ?? ''}
-            alt={`${m.name ?? '메뉴'} 이미지`}
-            price={m.price ?? 0}
+            name={menu.name!}
+            info={menu.introduction!}
+            imgSrc={menu.imagePath!}
+            alt={`${menu.name} 이미지`}
+            price={menu.price}
           />
         </div>
       ))}
