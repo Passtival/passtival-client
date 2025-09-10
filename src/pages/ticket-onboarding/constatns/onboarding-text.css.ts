@@ -2,6 +2,13 @@ import { style } from '@vanilla-extract/css';
 
 import { themeVars } from '@shared/styles';
 
+export const container = style({
+  display: 'flex',
+  flexDirection: 'column',
+  justifyContent: 'space-between',
+  height: '50vh',
+});
+
 export const ticketImg = style({
   display: 'flex',
   alignItems: 'center',
@@ -9,13 +16,12 @@ export const ticketImg = style({
   justifyContent: 'center',
   height: '20rem',
   width: '100%',
-  margin: '4.9rem 0 3.7rem',
 });
 
 export const title = style({
   ...themeVars.fontStyles.title_b_22,
   color: themeVars.color.main_yellow,
-  padding: '3.4rem 0 0.6rem ',
+  padding: '1rem 0 0.6rem ',
 });
 
 export const section = style({});
