@@ -134,16 +134,21 @@ export const createHandleResponseError =
         headers: { Authorization: `Bearer ${refreshToken}` },
       });
 
+      console.log('인터셉터 토큰 재발급 응답:', refreshResponse.data); // 디버깅용
+
       const { accessToken: newAccessToken, refreshToken: newRefreshToken } =
         refreshResponse.data.result;
+
+      // refreshToken이 없으면 기존 refreshToken 유지
+      const finalRefreshToken = newRefreshToken || refreshToken;
 
       // 관리자 API면 admin 토큰, 일반 API면 일반 토큰 저장
       if (isAdminApi) {
         tokenService.saveAdminAccessToken(newAccessToken);
-        tokenService.saveAdminRefreshToken(newRefreshToken);
+        tokenService.saveAdminRefreshToken(finalRefreshToken);
       } else {
         tokenService.saveAccessToken(newAccessToken);
-        tokenService.saveRefreshToken(newRefreshToken);
+        tokenService.saveRefreshToken(finalRefreshToken);
       }
 
       if (originalRequest.headers instanceof AxiosHeaders) {
@@ -179,20 +184,4 @@ export const createHandleAdminRequest =
       config.headers.set('Authorization', `Bearer ${adminToken}`);
     }
     return config;
-  };
-
-/**
- * 관리자 API용 에러 핸들러
- */
-export const createHandleAdminResponseError =
-  () => async (error: AxiosError) => {
-    const { response } = error;
-
-    if (!response || response.status !== HTTP_STATUS.UNAUTHORIZED) {
-      return Promise.reject(error);
-    }
-
-    // 관리자 인증 실패 시 관리자 로그인 페이지로 리다이렉트
-    window.location.replace(routePath.ADMIN_LOGIN);
-    return Promise.reject(error);
   };
