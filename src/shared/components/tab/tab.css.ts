@@ -24,7 +24,7 @@ export const buttonVariants = recipe({
     selected: {
       true: {
         backgroundColor: themeVars.color.main_yellow,
-        borderBottom: `1px solid ${themeVars.color.main_yellow}`,
+        borderBottom: `1px solid ${themeVars.color.bg_white}`,
 
         color: themeVars.color.bg_white,
       },

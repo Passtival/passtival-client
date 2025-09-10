@@ -9,6 +9,7 @@ import { tokenService } from '@shared/auth/services/token-service';
 import Button from '@shared/components/button/button';
 import Card from '@shared/components/card/card';
 import ErrorMessage from '@shared/components/error-message/error-message';
+import Header from '@shared/components/header/header';
 import Loading from '@shared/components/loading/loading';
 import { themeVars } from '@shared/styles';
 
@@ -33,6 +34,11 @@ const LostItems = () => {
 
   return (
     <>
+      <Header
+        description="Passtival"
+        borderRadius="rounded"
+        bgColor="gray"
+      />
       <div className={styles.headerContainer}>
         <div className={styles.textContainer}>
           <p style={themeVars.fontStyles.title_b_20}>
