@@ -48,7 +48,7 @@ const Booth = () => {
           </Carousel>
         </div>
         <div className={styles.boothinfoText}>
-          <Title
+          <TitlInfo
             mainTitle={BOOTH_INFO}
             subTitle={BOOTH_INFO_DETAIL}
           />
