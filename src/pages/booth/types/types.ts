@@ -1,7 +1,7 @@
 import type { paths } from '@shared/apis/types/schema';
 
 export type BoothCursorResponse =
-  paths['/api/festival/booths/cursor']['get']['responses']['200']['content']['*/*'];
+  paths['/api/festival/booths/cursor']['get']['responses']['200']['content']['application/json'];
 
 export interface BoothCursorResult {
   content: Array<{
