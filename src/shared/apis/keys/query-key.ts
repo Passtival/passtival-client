@@ -25,6 +25,12 @@ export const RAFFLE_QUERY_KEY = {
 
 export const BOOTH_QUERY_KEY = {
   ALL: ['booth'],
+  BOOTHS_CURSOR: (cursor?: number, size?: number) => [
+    ...BOOTH_QUERY_KEY.ALL,
+    'cursor',
+    cursor,
+    size,
+  ],
 } as const;
 
 export const MATCHING_QUERY_KEY = {

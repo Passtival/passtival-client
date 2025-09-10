@@ -11,5 +11,6 @@ export const END_POINT = {
   MEMBER_LEVEL_UP: '/api/member/level-up',
   ADMIN_RAFFLE_DAY: '/api/admin/raffle/{day}',
   ADMIN_RAFFLE_WINNERS: '/api/admin/raffle/{day}',
+  BOOTHS_CURSOR: '/api/festival/booths/cursor',
   RAFFLE_PRIZES: '/api/raffle/prizes/{days}',
 } as const;

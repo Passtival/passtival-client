@@ -31,3 +31,10 @@ export const boothinfoText = style({
 export const carouselWrapper = style({
   padding: '0 2.4rem',
 });
+
+export const cardContainer = style({
+  padding: '0 2.4rem',
+  display: 'flex',
+  flexDirection: 'column',
+  gap: '2rem',
+});

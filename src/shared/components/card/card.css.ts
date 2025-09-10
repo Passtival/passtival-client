@@ -13,8 +13,6 @@ export const container = recipe({
     width: '100%',
     height: '13.3rem',
     backgroundColor: themeVars.color.gray_500_40,
-
-    marginLeft: '0.8rem',
   },
 
   variants: {
