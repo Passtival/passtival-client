@@ -25,6 +25,13 @@ export const RAFFLE_QUERY_KEY = {
 
 export const BOOTH_QUERY_KEY = {
   ALL: ['booth'],
+  BOOTH_INFO: (boothId: string) => [...BOOTH_QUERY_KEY.ALL, 'info', boothId],
+  BOOTH_MENUS: (boothId: string) => [...BOOTH_QUERY_KEY.ALL, 'menus', boothId],
+  BOOTH_ACTIVITIES: (boothId: string) => [
+    ...BOOTH_QUERY_KEY.ALL,
+    'activities',
+    boothId,
+  ],
   BOOTHS_CURSOR: (cursor?: number, size?: number) => [
     ...BOOTH_QUERY_KEY.ALL,
     'cursor',
