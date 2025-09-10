@@ -10,7 +10,7 @@ export const container = recipe({
     display: 'flex',
     position: 'fixed',
     padding: '1.8rem 1.6rem',
-    zIndex: themeVars.zIndex.header,
+    zIndex: themeVars.zIndex.overlay,
     width: '100%',
     gap: '0.4rem',
   },

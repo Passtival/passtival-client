@@ -21,4 +21,5 @@ export const cardlist = style({
   alignItems: 'center',
   padding: '1rem 1.5rem',
   gap: '2rem',
+  marginBottom: '15.3rem',
 });
