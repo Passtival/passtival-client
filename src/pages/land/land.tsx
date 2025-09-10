@@ -9,7 +9,7 @@ import * as styles from './land.css';
 
 const CONTENT = {
   TITLE: 'Passtival',
-  DESCRIPTION: '안양대 축제를 한눈에 담은\n단 하나의 앱',
+  DESCRIPTION: '안양대 축제를 한눈에 담은\n단 하나의 서비스',
 };
 
 const LAND_TIMEOUT = 2000;

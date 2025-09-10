@@ -22,7 +22,7 @@ const ConfirmModal = ({
     <Modal.Container open={isModalOpen}>
       <Modal.Content>
         <Modal.Body>
-          <Modal.Title>응모하시겠습니까?</Modal.Title>
+          <Modal.Title>신청하시겠습니까?</Modal.Title>
           <Modal.Summary>
             <Modal.InfoSection>
               {instaId && (

@@ -3,9 +3,9 @@ import { style } from '@vanilla-extract/css';
 import { themeVars } from '@shared/styles';
 
 export const container = style({
-  display: 'grid',
-  justifyContent: 'center',
-  alignItems: 'center',
+  display: 'flex',
+  flexDirection: 'column',
+  padding: '0 2.4rem 12rem',
 });
 
 export const notice = style({

@@ -8,6 +8,7 @@ import { COMMUNITY_QUERY_OPTIONS } from '@pages/lost-items/apis/queries';
 import { tokenService } from '@shared/auth/services/token-service';
 import Button from '@shared/components/button/button';
 import Card from '@shared/components/card/card';
+import Header from '@shared/components/header/header';
 import { themeVars } from '@shared/styles';
 
 import { LOST_ITEMS } from './constants/lostItems';
@@ -29,6 +30,11 @@ const LostItems = () => {
 
   return (
     <>
+      <Header
+        description="Passtival"
+        borderRadius="rounded"
+        bgColor="gray"
+      />
       <div className={styles.headerContainer}>
         <div className={styles.textContainer}>
           <p style={themeVars.fontStyles.title_b_20}>
