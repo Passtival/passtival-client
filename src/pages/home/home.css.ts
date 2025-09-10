@@ -3,7 +3,8 @@ import { style } from '@vanilla-extract/css';
 import { HEADER_HEIGHT } from '@shared/components/header/header.css';
 
 export const container = style({
-  paddingTop: HEADER_HEIGHT,
+  marginTop: HEADER_HEIGHT,
+  marginBottom: '15.3rem',
 });
 
 export const chipContainer = style({
