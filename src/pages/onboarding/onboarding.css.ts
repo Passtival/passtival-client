@@ -5,11 +5,12 @@ import { themeVars } from '@shared/styles';
 
 export const container = style({
   display: 'flex',
+  width: '100%',
   flexDirection: 'column',
   minHeight: '100dvh',
   alignItems: 'center',
   justifyContent: 'flex-end',
-  paddingBottom: 'clamp(10rem, 10vh, 10rem)',
+  paddingBottom: 'clamp(14rem, 10vh, 10rem)',
 });
 
 export const contentWrapper = style({
@@ -32,17 +33,17 @@ export const highlight = style({
 export const buttonWrapper = recipe({
   base: {
     position: 'fixed',
+    right: '2.4rem',
   },
   variants: {
     step: {
       next: {
-        right: '2.4rem',
-        bottom: '3.4rem',
+        bottom: '4.8rem',
       },
       goToHome: {
-        left: '50%',
-        transform: 'translateX(-50%)',
+        width: '100%',
         bottom: '4rem',
+        paddingLeft: '4.8rem',
       },
     },
   },

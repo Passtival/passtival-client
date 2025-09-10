@@ -14,7 +14,7 @@ export const inputVariants = recipe({
     ...themeVars.fontStyles.button2_sb_14,
 
     selectors: {
-      '&::placeholder': { color: themeVars.color.gray_400 },
+      '&::placeholder': { color: themeVars.color.bg_white },
       '&:focus, &:not(:placeholder-shown)': {
         color: themeVars.color.gray_900,
         backgroundColor: themeVars.color.bg_white,

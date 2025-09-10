@@ -8,5 +8,4 @@ export const container = style({
 export const chip = style({
   display: 'flex',
   gap: '0.5rem',
-  paddingBottom: '0.6rem',
 });

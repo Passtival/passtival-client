@@ -17,7 +17,7 @@ const navItems = [
   { path: routePath.BOOTH, label: '부스정보', icon: IcSvgBooth },
   { path: routePath.BLIND_MATCH, label: '번호팅', icon: IcSvgMatch },
   { path: routePath.LOST_ITEMS, label: '분실물', icon: IcSvgLostfind },
-  { path: routePath.TICKET, label: '응모권', icon: IcSvgEntry },
+  { path: routePath.TICKET_ONBOARDING, label: '응모권', icon: IcSvgEntry },
 ];
 
 const BottomNavigation = () => {

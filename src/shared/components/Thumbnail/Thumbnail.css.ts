@@ -25,11 +25,13 @@ export const img = recipe({
 
       square_md: {
         height: '10.5rem',
+        width: '11.9rem',
         borderRadius: '5px',
       },
 
       square_sm: {
         height: '10rem',
+        width: '10rem',
         borderRadius: '5px',
       },
     },
