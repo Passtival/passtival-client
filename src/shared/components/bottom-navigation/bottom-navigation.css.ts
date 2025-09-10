@@ -14,6 +14,7 @@ export const navLinkRecipe = recipe({
 
     ...themeVars.fontStyles.button_r_12,
     color: themeVars.color.bg_white,
+    transition: 'all 0.3s ease',
   },
   variants: {
     isActive: {

@@ -29,7 +29,7 @@ export const container = recipe({
         color: themeVars.color.gray_900,
       },
       gray: {
-        backgroundColor: themeVars.color.gray_500_40,
+        backgroundColor: themeVars.color.gray_800,
         color: themeVars.color.bg_white,
       },
     },
