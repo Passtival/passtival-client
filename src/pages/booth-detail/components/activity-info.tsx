@@ -1,57 +1,44 @@
+import { useQuery } from '@tanstack/react-query';
+import { useParams } from 'react-router-dom';
+
 import BoothDetailItem from '@pages/booth-detail/components/booth-detail-item/booth-detail-item';
 
+import Loading from '@shared/components/loading/loading';
+
 import * as style from './booth-detail.css';
+import { BOOTH_ACTIVITY_QUERY_OPTIONS } from '../apis/queries';
 
-interface ActivityInfoProps {
-  id: string;
-}
+const ActivitiesInfo = () => {
+  const { id } = useParams<{ id: string }>();
+  if (!id) {
+    throw new Error('부스가 없습니다.');
+  }
 
-const MOCK_ACTIVITY_ITEM = {
-  result: [
-    {
-      id: 1,
-      name: '10분 컷 도예 물레',
-      info: '돌돌돌돌 돌리고 빚고, 나만의 미니 컵을 만들어 볼까요?',
-      imgSrc: 'https://placehold.co/600x400',
-      alt: '도예 물레 체험',
-    },
-    {
-      id: 1,
-      name: '실크 스크린 체험',
-      info: '컴공인들이 머리 맞대고 만든 실크 스크린 기계를 체험해 보세요!',
-      imgSrc: 'https://placehold.co/600x400',
-      alt: '실크 스크린 기계',
-    },
-    {
-      id: 2,
-      name: '미로 찾기',
-      info: '엉키고 꼬여버린 깃 미로의 끝을 찾아 보세요!',
-      imgSrc: 'https://placehold.co/600x400',
-      alt: '미로 찾기',
-    },
-    {
-      id: 2,
-      name: '틀린 그림 찾기',
-      info: '피그마에서 간격이 다른 부분을 찾아 보세요!',
-      imgSrc: 'https://placehold.co/600x400',
-      alt: '틀린 그림 찾기',
-    },
-  ],
-};
+  const { data, isLoading } = useQuery(
+    BOOTH_ACTIVITY_QUERY_OPTIONS.BOOTH_ACTIVITIES(id),
+  );
 
-const ActivitiesInfo = ({ id: _id }: ActivityInfoProps) => {
+  if (isLoading) {
+    return <Loading message="체험활동을 불러오는 중..." />;
+  }
+
+  if (!data || data.length === 0) {
+    return <div>등록된 체험활동이 없습니다.</div>;
+  }
+
   return (
     <>
-      {MOCK_ACTIVITY_ITEM.result.map(({ id, name, info, imgSrc, alt }) => (
+      {data.map((activity) => (
         <div
           className={style.boothDetailItemContainer}
-          key={id}
+          key={activity.id}
         >
           <BoothDetailItem
-            name={name}
-            info={info}
-            imgSrc={imgSrc}
-            alt={alt}
+            name={activity.name!}
+            info={activity.introduction!}
+            imgSrc={activity.imagePath!}
+            alt={`${activity.name} 이미지`}
+            price={activity.price}
           />
         </div>
       ))}

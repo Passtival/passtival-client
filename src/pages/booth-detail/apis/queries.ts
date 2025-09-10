@@ -3,6 +3,8 @@ import { queryOptions } from '@tanstack/react-query';
 import type {
   BoothMenuResponse,
   BoothMenuApiResponse,
+  BoothActivityResponse,
+  BoothActivityApiResponse,
 } from '@pages/booth-detail/types/types';
 
 import { END_POINT } from '@shared/apis/config/end-point';
@@ -17,11 +19,28 @@ export const BOOTH_MENU_QUERY_OPTIONS = {
     }),
 };
 
+export const BOOTH_ACTIVITY_QUERY_OPTIONS = {
+  BOOTH_ACTIVITIES: (boothId: string) =>
+    queryOptions<BoothActivityResponse>({
+      queryKey: BOOTH_QUERY_KEY.BOOTH_ACTIVITIES(boothId),
+      queryFn: () => getBoothActivityList(boothId),
+    }),
+};
+
 export const getBoothMenuList = async (
   boothId: string,
 ): Promise<BoothMenuResponse> => {
   const { data } = await api.get<BoothMenuApiResponse>(
     END_POINT.BOOTH_MENUS.replace('{boothId}', boothId),
+  );
+  return data.result ?? [];
+};
+
+export const getBoothActivityList = async (
+  boothId: string,
+): Promise<BoothActivityResponse> => {
+  const { data } = await api.get<BoothActivityApiResponse>(
+    END_POINT.BOOTH_ACTIVITIES.replace('{boothId}', boothId),
   );
   return data.result ?? [];
 };
