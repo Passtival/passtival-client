@@ -39,6 +39,7 @@ export const navBar = style({
   backgroundColor: themeVars.color.gray_500_40,
   boxShadow:
     '1px 1px 3.4px 1px rgba(255, 255, 255, 0.38) inset, 2px 2px 5px 0 rgba(93, 93, 93, 0.20)',
+  backdropFilter: 'blur(11.3px)',
 });
 
 export const navList = style({
