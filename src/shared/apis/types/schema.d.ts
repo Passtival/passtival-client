@@ -52,14 +52,16 @@ export interface paths {
       cookie?: never;
     };
     /**
-     * 내 프로필 조회
-     * @description 현재 로그인한 사용자의 프로필 정보를 조회합니다. **인증 토큰이 필요합니다.**
+     * 내 소개팅 정보 조회
+     * @description 사용자가 번호팅 페이지(응모)에 진입할 때 이 API를 호출 인스타 id, 전화 번호를 기존에 저장된 정보를 불러와서 화면에 채워 넣는다.
+     *     **인증 토큰이 필요합니다.**
      */
     get: operations['getProfile'];
     put?: never;
     /**
-     * 내 프로필 생성
-     * @description 현재 로그인한 사용자의 프로필 정보를 생성합니다.
+     * 내 소개팅 정보 생성
+     * @description 처음 소셜 로그인을 한다고 해서 소개팅 정보를 저장할 수 있는 것이 아님. 해당 api를 통해 소개팅 회원가입을 해야 함.
+     *     추가정보 불필요 토큰만 필요
      */
     post: operations['createProfile'];
     delete?: never;
@@ -67,7 +69,7 @@ export interface paths {
     head?: never;
     /**
      * 정보 저장 (추가 정보 입력)
-     * @description 소셜 로그인으로 가입된 사용자가 추가 정보(성별, 전화번호)를 입력 **인증 토큰이 필요합니다.**
+     * @description Get를 통해 얻은 정보중의 사용자가 추가 정보 혹은 기존의 정보에서 변경하고 싶은 정보를 입력하여, 요청하면 소개팅 정보가 수정된다.**인증 토큰이 필요합니다.**
      *     성별 (필수): db에 성별이 없으면 실패전화번호 허용 형식: "010-1234-5678"인스타그램 Id 선택 사항
      */
     patch: operations['patchProfile'];
@@ -82,6 +84,10 @@ export interface paths {
     };
     get?: never;
     put?: never;
+    /**
+     * 액세스 토큰 갱신
+     * @description 리프레시 토큰을 Authorization 헤더에 담아서 새로운 액세스 토큰을 발급받습니다.
+     */
     post: operations['refreshToken'];
     delete?: never;
     options?: never;
@@ -98,6 +104,7 @@ export interface paths {
     };
     get?: never;
     put?: never;
+    /** [백엔드 용] 공연 seed api */
     post: operations['insertPerformances'];
     delete?: never;
     options?: never;
@@ -114,7 +121,56 @@ export interface paths {
     };
     get?: never;
     put?: never;
+    /** [백엔드 용] 부스 seed api */
     post: operations['insertBooths'];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  '/api/admin/raffle/{day}': {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    /**
+     * 관리자 일차별 당첨자 조회
+     * @description 관리자(학생회)가 일별 추첨 후에 당첨자를 조회하는 api | day은 1~3
+     */
+    get: operations['getRaffleWinnersByDay'];
+    put?: never;
+    /**
+     * 관리자 일차별 추첨 실행
+     * @description 관리자(학생회)가 일별 추첨을 진행하는 api | day은 1~3
+     */
+    post: operations['executeRaffleByDay'];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  '/api/admin/raffle/premium': {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    /**
+     * 관리자 프리미엄 당첨자 조회
+     * @description 관리자(학생회)가 프리미엄 추첨 후에 당첨자를 조회하는 api
+     */
+    get: operations['getRaffleWinnerOfPremium'];
+    put?: never;
+    /**
+     * 관리자 프리미엄 추첨 실행
+     * @description 관리자(학생회)가 프리미엄 추첨을 진행하는 api
+     */
+    post: operations['executeRaffleOfPremium'];
     delete?: never;
     options?: never;
     head?: never;
@@ -155,6 +211,82 @@ export interface paths {
      * @description 습득한 분실물의 정보를 등록합니다. 이미지는 사전에 업로드하고 해당 URL을 포함해야 합니다. **관리자 권한이 필요합니다.**
      */
     post: operations['createFoundItem'];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  '/api/member/level-up': {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    post?: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    /**
+     * 사용자 레벨업 신청
+     * @description 부스를 돌고 학생회를 찾아가서 본인에 맞는 레벨의 인증키를 발급 받고올바른 인증키와 학번, 이름과 본인이 될 레벨을 함께 입력하면 성공인증키 레벨과 요청하는 레벨이 다르면 실패
+     */
+    patch: operations['levelUp'];
+    trace?: never;
+  };
+  '/api/admin/raffle/authentication-key': {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    /**
+     * 관리자 인증키 조회
+     * @description 관리자(학생회)가 인증키 레벨 설정 후 학생에게 인증키를 보여줄때 사용하는 api
+     */
+    get: operations['getAuthenticationKey'];
+    put?: never;
+    post?: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    /**
+     * 관리자 인증키 레벨 설정
+     * @description 관리자(학생회)가 인증키 레벨 설정 - 학생이 인증키 입력 후 레벨 비교를 위해 필요
+     */
+    patch: operations['setAuthenticationKeyLevel'];
+    trace?: never;
+  };
+  '/oauth2/authorization/kakao/**/wlwmanifest.xml': {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get: operations['blockBots'];
+    put?: never;
+    post?: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  '/oauth2/authorization/kakao/**/xmlrpc.php': {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get: operations['blockBots_1'];
+    put?: never;
+    post?: never;
     delete?: never;
     options?: never;
     head?: never;
@@ -349,8 +481,8 @@ export interface paths {
       cookie?: never;
     };
     /**
-     * 상품 목록 조회
-     * @description 등록된 상품의 목록을 조회합니다.
+     * 상품 목록 전체 조회
+     * @description 등록된 상품을 전부 조회합니다.
      */
     get: operations['getPrizes'];
     put?: never;
@@ -361,7 +493,7 @@ export interface paths {
     patch?: never;
     trace?: never;
   };
-  '/api/raffle/prizes/{prizeId}': {
+  '/api/raffle/prizes/{days}': {
     parameters: {
       query?: never;
       header?: never;
@@ -369,10 +501,30 @@ export interface paths {
       cookie?: never;
     };
     /**
-     * 상품 조회
-     * @description 상품 ID로 특정 상품의 정보를 조회합니다.
+     * 일차별 혹은 프리미엄 상품 조회
+     * @description days를 통해 해당 날짜에 맞는 상품들을 정보를 조회합니다.
      */
     get: operations['getPrizeById'];
+    put?: never;
+    post?: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  '/api/raffle/member': {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    /**
+     * 회원 응모권 정보 조회
+     * @description 로그인한 회원의 응모권 정보를 조회합니다. (응모권 개수, 응모권 사용 내역 등)
+     */
+    get: operations['getMemberRaffleProfile'];
     put?: never;
     post?: never;
     delete?: never;
@@ -410,7 +562,7 @@ export interface paths {
     };
     /**
      * 매칭 결과 조회
-     * @description 오늘의 매칭 결과를 조회합니다. 매칭 성공 시 내 정보와 파트너 정보를 반환합니다.
+     * @description 오늘의 매칭 결과를 조회합니다. 매칭 성공 시 내 정보와 파트너 정보를 반환합니다.실패하면 오늘 소개팅 정보가 없다고 나옴
      */
     get: operations['getMatchingResult'];
     put?: never;
@@ -469,7 +621,7 @@ export interface paths {
       cookie?: never;
     };
     /**
-     * 부스 ID로 해당 부스의 메뉴 조회
+     * 부스 ID로 메뉴 조회
      * @description 부스 ID로 특정 부스의 메뉴들을 조회합니다.
      */
     get: operations['getMenusByBoothId'];
@@ -481,7 +633,7 @@ export interface paths {
     patch?: never;
     trace?: never;
   };
-  '/api/festival/performances': {
+  '/api/festival/{boothId}/activities': {
     parameters: {
       query?: never;
       header?: never;
@@ -489,10 +641,10 @@ export interface paths {
       cookie?: never;
     };
     /**
-     * 공연 목록 조회
-     * @description 모든 공연을 페이지 단위로 조회합니다. 기본 페이지 크기는 5입니다.
+     * 부스 ID로 체험활동 조회
+     * @description 부스 ID로 특정 부스의 체험활동들을 조회합니다.
      */
-    get: operations['getPerformances'];
+    get: operations['getActivitiesByBoothId'];
     put?: never;
     post?: never;
     delete?: never;
@@ -521,7 +673,7 @@ export interface paths {
     patch?: never;
     trace?: never;
   };
-  '/api/festival/performances/cursor': {
+  '/api/festival/performances/closest': {
     parameters: {
       query?: never;
       header?: never;
@@ -529,30 +681,10 @@ export interface paths {
       cookie?: never;
     };
     /**
-     * 공연 목록 조회 (커서 기반)
-     * @description 커서 기반으로 공연 목록을 조회합니다. 첫 요청은 cursor 없이, 이후 요청은 cursor와 size 지정
+     * 공연 시간순 조회
+     * @description 현재 시간과 가장 가까운 공연부터 순서대로 조회합니다.
      */
-    get: operations['getPerformancesCursor'];
-    put?: never;
-    post?: never;
-    delete?: never;
-    options?: never;
-    head?: never;
-    patch?: never;
-    trace?: never;
-  };
-  '/api/festival/booths': {
-    parameters: {
-      query?: never;
-      header?: never;
-      path?: never;
-      cookie?: never;
-    };
-    /**
-     * 부스 목록 조회
-     * @description 부스전체 목록을 조회합니다.
-     */
-    get: operations['getBooths'];
+    get: operations['getPerformancesByClosestTime'];
     put?: never;
     post?: never;
     delete?: never;
@@ -569,8 +701,8 @@ export interface paths {
       cookie?: never;
     };
     /**
-     * 부스 id로 조회
-     * @description 상품 boothId으로 특정 부스의 정보를 조회합니다.
+     * 부스 단일 조회
+     * @description 부스 ID로 특정 부스 정보를 조회합니다.
      */
     get: operations['getBoothDetail'];
     put?: never;
@@ -588,6 +720,10 @@ export interface paths {
       path?: never;
       cookie?: never;
     };
+    /**
+     * 부스 목록 조회 (커서 기반)
+     * @description 커서 기반으로 부스를 조회합니다. 첫 요청은 cursor 없이, 이후 요청은 cursor와 size 지정
+     */
     get: operations['getBoothsCursor'];
     put?: never;
     post?: never;
@@ -606,26 +742,9 @@ export interface paths {
     };
     /**
      * 관리자 인증 테스트
-     * @description 현재 인증된 관리자 정보를 확인합니다.
+     * @description 관리자 엑세스 토큰이 올바르게 생성되었는지 테스트를 위한 api
      */
     get: operations['test'];
-    put?: never;
-    post?: never;
-    delete?: never;
-    options?: never;
-    head?: never;
-    patch?: never;
-    trace?: never;
-  };
-  '/api/admin/raffle/authentication-key': {
-    parameters: {
-      query?: never;
-      header?: never;
-      path?: never;
-      cookie?: never;
-    };
-    /** 관리자 인증키 조회 */
-    get: operations['getAuthenticationKey'];
     put?: never;
     post?: never;
     delete?: never;
@@ -671,9 +790,6 @@ export interface components {
       code?: number;
       message?: string;
       result?: unknown;
-    };
-    RefreshTokenRequest: {
-      refreshToken?: string;
     };
     BaseResponseTokenResponse: {
       isSuccess?: boolean;
@@ -746,11 +862,22 @@ export interface components {
       foundDateTime: string;
       imagePath?: string;
     };
+    LevelUpRequest: {
+      name?: string;
+      studentId?: string;
+      authenticationKey?: string;
+      /** Format: int32 */
+      level?: number;
+    };
     MatchingApplicantPatchRequest: {
       /** @enum {string} */
       gender?: 'MALE' | 'FEMALE';
       phoneNumber?: string;
       instagramId?: string;
+    };
+    AuthenticationLevelRequest: {
+      /** Format: int32 */
+      level?: number;
     };
     BaseResponseUserInfoResponse: {
       isSuccess?: boolean;
@@ -800,21 +927,27 @@ export interface components {
       prizeImagePath?: string;
       prizeName?: string;
     };
-    BaseResponsePrizeResponse: {
+    BaseResponseMemberRaffleProfileResponse: {
       isSuccess?: boolean;
       /** Format: int32 */
       code?: number;
       message?: string;
-      result?: components['schemas']['PrizeResponse'];
+      result?: components['schemas']['MemberRaffleProfileResponse'];
+    };
+    MemberRaffleProfileResponse: {
+      /** Format: int32 */
+      level?: number;
+      name?: string;
+      studentId?: string;
     };
     ApplicationContext: {
       parent?: unknown;
       id?: string;
       displayName?: string;
+      applicationName?: string;
       /** Format: int64 */
       startupDate?: number;
       autowireCapableBeanFactory?: components['schemas']['AutowireCapableBeanFactory'];
-      applicationName?: string;
       environment?: components['schemas']['Environment'];
       /** Format: int32 */
       beanDefinitionCount?: number;
@@ -921,8 +1054,8 @@ export interface components {
       defaultProfiles?: string[];
     };
     FilterRegistration: {
-      urlPatternMappings?: string[];
       servletNameMappings?: string[];
+      urlPatternMappings?: string[];
       name?: string;
       className?: string;
       initParameters?: {
@@ -1002,15 +1135,15 @@ export interface components {
       | '511 NETWORK_AUTHENTICATION_REQUIRED';
     HttpStatusCode: {
       error?: boolean;
+      is4xxClientError?: boolean;
+      is5xxServerError?: boolean;
       is1xxInformational?: boolean;
       is2xxSuccessful?: boolean;
       is3xxRedirection?: boolean;
-      is4xxClientError?: boolean;
-      is5xxServerError?: boolean;
     };
     JspConfigDescriptor: {
-      jspPropertyGroups?: components['schemas']['JspPropertyGroupDescriptor'][];
       taglibs?: components['schemas']['TaglibDescriptor'][];
+      jspPropertyGroups?: components['schemas']['JspPropertyGroupDescriptor'][];
     };
     JspPropertyGroupDescriptor: {
       buffer?: string;
@@ -1083,14 +1216,20 @@ export interface components {
       /** Format: int32 */
       minorVersion?: number;
       attributeNames?: unknown;
-      initParameterNames?: unknown;
       contextPath?: string;
       sessionTrackingModes?: ('COOKIE' | 'URL' | 'SSL')[];
+      initParameterNames?: unknown;
       /** Format: int32 */
       sessionTimeout?: number;
       servletRegistrations?: {
         [key: string]: components['schemas']['ServletRegistration'];
       };
+      /** Format: int32 */
+      effectiveMajorVersion?: number;
+      /** Format: int32 */
+      effectiveMinorVersion?: number;
+      serverInfo?: string;
+      servletContextName?: string;
       filterRegistrations?: {
         [key: string]: components['schemas']['FilterRegistration'];
       };
@@ -1101,16 +1240,10 @@ export interface components {
       virtualServerName?: string;
       requestCharacterEncoding?: string;
       responseCharacterEncoding?: string;
-      /** Format: int32 */
-      effectiveMajorVersion?: number;
-      /** Format: int32 */
-      effectiveMinorVersion?: number;
-      serverInfo?: string;
-      servletContextName?: string;
     };
     ServletRegistration: {
-      mappings?: string[];
       runAsRole?: string;
+      mappings?: string[];
       name?: string;
       className?: string;
       initParameters?: {
@@ -1190,14 +1323,9 @@ export interface components {
       message?: string;
       result?: components['schemas']['FoundItemResponse'];
     };
-    BaseResponseListMenuResponse: {
-      isSuccess?: boolean;
-      /** Format: int32 */
-      code?: number;
-      message?: string;
-      result?: components['schemas']['MenuResponse'][];
-    };
     MenuResponse: {
+      /** Format: int64 */
+      id?: number;
       type?: string;
       name?: string;
       introduction?: string;
@@ -1205,19 +1333,14 @@ export interface components {
       /** Format: int32 */
       price?: number;
     };
-    Pageable: {
+    ActivityResponse: {
+      /** Format: int64 */
+      id?: number;
+      name?: string;
+      introduction?: string;
+      imagePath?: string;
       /** Format: int32 */
-      page?: number;
-      /** Format: int32 */
-      size?: number;
-      sort?: string[];
-    };
-    BaseResponsePerformanceDetailResponse: {
-      isSuccess?: boolean;
-      /** Format: int32 */
-      code?: number;
-      message?: string;
-      result?: components['schemas']['PerformanceDetailResponse'];
+      price?: number;
     };
     PerformanceDetailResponse: {
       /** Format: int64 */
@@ -1239,12 +1362,17 @@ export interface components {
       singer?: string;
       title?: string;
     };
-    BaseResponseBoothDetailResponse: {
-      isSuccess?: boolean;
+    PerformanceResponse: {
+      title?: string;
+      artist?: string;
+      /** Format: date-time */
+      startTime?: string;
+      /** Format: date-time */
+      endTime?: string;
+      imagePath?: string;
+      introduction?: string;
       /** Format: int32 */
-      code?: number;
-      message?: string;
-      result?: components['schemas']['BoothDetailResponse'];
+      day?: number;
     };
     BoothDetailResponse: {
       /** Format: int64 */
@@ -1262,6 +1390,21 @@ export interface components {
       locationImagePath?: string;
       menus?: components['schemas']['MenuResponse'][];
     };
+    BoothResponse: {
+      /** Format: int64 */
+      id?: number;
+      name?: string;
+      type?: string;
+      department?: string;
+      /** Format: date-time */
+      operatingStart?: string;
+      /** Format: date-time */
+      operatingEnd?: string;
+      location?: string;
+      info?: string;
+      imagePath?: string;
+      locationImagePath?: string;
+    };
     BaseResponseMapStringObject: {
       isSuccess?: boolean;
       /** Format: int32 */
@@ -1270,6 +1413,17 @@ export interface components {
       result?: {
         [key: string]: unknown;
       };
+    };
+    BaseResponseWinnerResponse: {
+      isSuccess?: boolean;
+      /** Format: int32 */
+      code?: number;
+      message?: string;
+      result?: components['schemas']['WinnerResponse'];
+    };
+    WinnerResponse: {
+      name?: string;
+      studentId?: string;
     };
     AuthenticationKeyResponse: {
       authenticationKey?: string;
@@ -1398,15 +1552,17 @@ export interface operations {
   refreshToken: {
     parameters: {
       query?: never;
-      header?: never;
+      header: {
+        /**
+         * @description Bearer {refreshToken} 형식의 리프레시 토큰
+         * @example Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...
+         */
+        Authorization: string;
+      };
       path?: never;
       cookie?: never;
     };
-    requestBody: {
-      content: {
-        'application/json': components['schemas']['RefreshTokenRequest'];
-      };
-    };
+    requestBody?: never;
     responses: {
       /** @description OK */
       200: {
@@ -1471,6 +1627,90 @@ export interface operations {
       };
     };
   };
+  getRaffleWinnersByDay: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        day: number;
+      };
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description OK */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          '*/*': components['schemas']['BaseResponseWinnerResponse'];
+        };
+      };
+    };
+  };
+  executeRaffleByDay: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        day: number;
+      };
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description OK */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          '*/*': components['schemas']['BaseResponseVoid'];
+        };
+      };
+    };
+  };
+  getRaffleWinnerOfPremium: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description OK */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          '*/*': components['schemas']['BaseResponseWinnerResponse'];
+        };
+      };
+    };
+  };
+  executeRaffleOfPremium: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description OK */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          '*/*': components['schemas']['BaseResponseVoid'];
+        };
+      };
+    };
+  };
   login: {
     parameters: {
       query?: never;
@@ -1518,6 +1758,110 @@ export interface operations {
         content: {
           '*/*': components['schemas']['BaseResponseVoid'];
         };
+      };
+    };
+  };
+  levelUp: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody: {
+      content: {
+        'application/json': components['schemas']['LevelUpRequest'];
+      };
+    };
+    responses: {
+      /** @description OK */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          '*/*': components['schemas']['BaseResponseVoid'];
+        };
+      };
+    };
+  };
+  getAuthenticationKey: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description OK */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          '*/*': components['schemas']['BaseResponseAuthenticationKeyResponse'];
+        };
+      };
+    };
+  };
+  setAuthenticationKeyLevel: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody: {
+      content: {
+        'application/json': components['schemas']['AuthenticationLevelRequest'];
+      };
+    };
+    responses: {
+      /** @description OK */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          '*/*': components['schemas']['BaseResponseVoid'];
+        };
+      };
+    };
+  };
+  blockBots: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description OK */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
+      };
+    };
+  };
+  blockBots_1: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description OK */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
       };
     };
   };
@@ -1735,10 +2079,10 @@ export interface operations {
       header?: never;
       path: {
         /**
-         * @description 조회할 상품의 ID
+         * @description 조회할 상품의 날짜 / 프리미엄의 경우 4
          * @example 1
          */
-        prizeId: number;
+        days: number;
       };
       cookie?: never;
     };
@@ -1750,7 +2094,27 @@ export interface operations {
           [name: string]: unknown;
         };
         content: {
-          '*/*': components['schemas']['BaseResponsePrizeResponse'];
+          '*/*': components['schemas']['BaseResponseListPrizeResponse'];
+        };
+      };
+    };
+  };
+  getMemberRaffleProfile: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description OK */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          '*/*': components['schemas']['BaseResponseMemberRaffleProfileResponse'];
         };
       };
     };
@@ -1856,35 +2220,39 @@ export interface operations {
     };
     requestBody?: never;
     responses: {
-      /** @description OK */
+      /** @description 부스 메뉴 조회 성공 */
       200: {
         headers: {
           [name: string]: unknown;
         };
         content: {
-          '*/*': components['schemas']['BaseResponseListMenuResponse'];
+          'application/json': components['schemas']['MenuResponse'][];
         };
       };
     };
   };
-  getPerformances: {
+  getActivitiesByBoothId: {
     parameters: {
-      query: {
-        pageable: components['schemas']['Pageable'];
-      };
+      query?: never;
       header?: never;
-      path?: never;
+      path: {
+        /**
+         * @description 조회할 부스의 ID
+         * @example 1
+         */
+        boothId: number;
+      };
       cookie?: never;
     };
     requestBody?: never;
     responses: {
-      /** @description OK */
+      /** @description 부스 체험활동 조회 성공 */
       200: {
         headers: {
           [name: string]: unknown;
         };
         content: {
-          '*/*': components['schemas']['BaseResponseObject'];
+          'application/json': components['schemas']['ActivityResponse'][];
         };
       };
     };
@@ -1904,58 +2272,33 @@ export interface operations {
     };
     requestBody?: never;
     responses: {
-      /** @description OK */
+      /** @description 공연 단일 조회 성공 */
       200: {
         headers: {
           [name: string]: unknown;
         };
         content: {
-          '*/*': components['schemas']['BaseResponsePerformanceDetailResponse'];
+          'application/json': components['schemas']['PerformanceDetailResponse'];
         };
       };
     };
   };
-  getPerformancesCursor: {
+  getPerformancesByClosestTime: {
     parameters: {
-      query?: {
-        cursor?: number;
-        size?: number;
-      };
+      query?: never;
       header?: never;
       path?: never;
       cookie?: never;
     };
     requestBody?: never;
     responses: {
-      /** @description OK */
+      /** @description 공연 시간순 조회 성공 */
       200: {
         headers: {
           [name: string]: unknown;
         };
         content: {
-          '*/*': components['schemas']['BaseResponseObject'];
-        };
-      };
-    };
-  };
-  getBooths: {
-    parameters: {
-      query: {
-        pageable: components['schemas']['Pageable'];
-      };
-      header?: never;
-      path?: never;
-      cookie?: never;
-    };
-    requestBody?: never;
-    responses: {
-      /** @description OK */
-      200: {
-        headers: {
-          [name: string]: unknown;
-        };
-        content: {
-          '*/*': components['schemas']['BaseResponseObject'];
+          'application/json': components['schemas']['PerformanceResponse'][];
         };
       };
     };
@@ -1966,7 +2309,7 @@ export interface operations {
       header?: never;
       path: {
         /**
-         * @description 조회할 부스의 id
+         * @description 조회할 부스의 ID
          * @example 1
          */
         boothId: number;
@@ -1975,13 +2318,13 @@ export interface operations {
     };
     requestBody?: never;
     responses: {
-      /** @description OK */
+      /** @description 부스 단일 조회 성공 */
       200: {
         headers: {
           [name: string]: unknown;
         };
         content: {
-          '*/*': components['schemas']['BaseResponseBoothDetailResponse'];
+          'application/json': components['schemas']['BoothDetailResponse'];
         };
       };
     };
@@ -1989,7 +2332,15 @@ export interface operations {
   getBoothsCursor: {
     parameters: {
       query?: {
+        /**
+         * @description 마지막으로 조회한 부스 ID (없으면 첫 페이지)
+         * @example 6
+         */
         cursor?: number;
+        /**
+         * @description 한 페이지 크기
+         * @example 5
+         */
         size?: number;
       };
       header?: never;
@@ -1998,13 +2349,13 @@ export interface operations {
     };
     requestBody?: never;
     responses: {
-      /** @description OK */
+      /** @description 커서 기반 부스 목록 조회 성공 */
       200: {
         headers: {
           [name: string]: unknown;
         };
         content: {
-          '*/*': components['schemas']['BaseResponseObject'];
+          'application/json': components['schemas']['BoothResponse'][];
         };
       };
     };
@@ -2025,26 +2376,6 @@ export interface operations {
         };
         content: {
           '*/*': components['schemas']['BaseResponseMapStringObject'];
-        };
-      };
-    };
-  };
-  getAuthenticationKey: {
-    parameters: {
-      query?: never;
-      header?: never;
-      path?: never;
-      cookie?: never;
-    };
-    requestBody?: never;
-    responses: {
-      /** @description OK */
-      200: {
-        headers: {
-          [name: string]: unknown;
-        };
-        content: {
-          '*/*': components['schemas']['BaseResponseAuthenticationKeyResponse'];
         };
       };
     };

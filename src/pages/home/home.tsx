@@ -21,7 +21,7 @@ const mokImages = [
 const Home = () => {
   const [selectedDay, setSelectedDay] = useState(1);
   const navigate = useNavigate();
-  const { data = [] } = useQuery(PERFORMANCE_QUERY_OPTIONS.PERFORMANCE_LIST());
+  const { data } = useQuery(PERFORMANCE_QUERY_OPTIONS.PERFORMANCE_LIST());
 
   const handleClick = (id: number) => {
     navigate(`/show-detail/${id}`);
@@ -65,29 +65,31 @@ const Home = () => {
           );
         })}
       </div>
-      {data
-        .filter((schedule) => schedule.day === selectedDay)
+      {data?.result
+        ?.filter((schedule: { day: number }) => schedule.day === selectedDay)
         .map(
-          ({
-            id,
-            startIso,
-            endIso,
-            title,
-            assignee,
-            description,
-            imgSrc,
-            imgAlt,
-          }) => (
+          (
+            schedule: {
+              title: string;
+              artist: string;
+              startTime: string;
+              endTime: string;
+              imagePath: string;
+              introduction: string;
+              day: number;
+            },
+            index: number,
+          ) => (
             <TimeTable
-              key={id}
-              startIso={startIso}
-              endIso={endIso}
-              title={title}
-              assignee={assignee}
-              description={description}
-              imgSrc={imgSrc}
-              imgAlt={imgAlt}
-              onClick={() => handleClick(id)}
+              key={index}
+              startIso={schedule.startTime}
+              endIso={schedule.endTime}
+              title={schedule.title}
+              assignee={schedule.artist}
+              description={schedule.introduction}
+              imgSrc={schedule.imagePath}
+              imgAlt={schedule.title}
+              onClick={() => handleClick(index)}
             />
           ),
         )}
