@@ -1,9 +1,10 @@
-import { useMutation } from '@tanstack/react-query';
+import { useMutation, useQuery } from '@tanstack/react-query';
 import { useState, useEffect } from 'react';
 
 import {
   patchBlindMatchInfoStorage,
   postBlindMatchApply,
+  BLIND_MATCH_QUERY_OPTIONS,
 } from '@pages/blind-match/apis/queries';
 
 import Button from '@shared/components/button/button';
@@ -28,6 +29,12 @@ interface EntryFormProps {
   onApplicationComplete: () => void;
 }
 
+interface BlindMatchInfoUpdate {
+  instagramId?: string;
+  phoneNumber?: string;
+  gender?: 'FEMALE' | 'MALE';
+}
+
 const EntryForm = ({ currentDay, onApplicationComplete }: EntryFormProps) => {
   const [form, setForm] = useState<MatchingForm>({
     instaId: '',
@@ -38,8 +45,18 @@ const EntryForm = ({ currentDay, onApplicationComplete }: EntryFormProps) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isFormValid, setIsFormValid] = useState(false);
 
-  const { mutate, isPending } = useMutation({
-    mutationFn: patchBlindMatchInfoStorage,
+  const { data } = useQuery(
+    BLIND_MATCH_QUERY_OPTIONS.BLIND_MATCH_INFO_STORAGE(),
+  );
+  type PatchPayload = Parameters<typeof patchBlindMatchInfoStorage>[0];
+
+  const { mutate, isPending } = useMutation<
+    unknown,
+    unknown,
+    Partial<PatchPayload>
+  >({
+    mutationFn: (partial) =>
+      patchBlindMatchInfoStorage(partial as PatchPayload),
     onSuccess: () => {
       setIsModalOpen(false);
       onApplicationComplete();
@@ -75,22 +92,37 @@ const EntryForm = ({ currentDay, onApplicationComplete }: EntryFormProps) => {
   };
 
   const handleConfirm = () => {
-    if (isPending) return;
-    mutate(
-      {
-        instagramId: form.instaId.trim(),
-        phoneNumber: form.phoneNumber,
-        gender: form.gender === '여성' ? 'FEMALE' : 'MALE',
-      },
-      {
+    if (isPending || !data) return;
+
+    const update: Partial<BlindMatchInfoUpdate> = {};
+    if (data.result?.memberInstagramId !== form.instaId.trim()) {
+      update.instagramId = form.instaId.trim();
+    }
+    if (data.result?.memberPhoneNumber !== form.phoneNumber) {
+      update.phoneNumber = form.phoneNumber;
+    }
+    const serverGender = data.result?.memberGender;
+    const formGenderApi: 'FEMALE' | 'MALE' =
+      form.gender === '여성' ? 'FEMALE' : 'MALE';
+
+    if (serverGender !== formGenderApi) {
+      update.gender = formGenderApi;
+    }
+
+    if (Object.keys(update).length > 0) {
+      mutate(update, {
         onSuccess: async () => {
           await postBlindMatchApply();
-
           setIsModalOpen(false);
           onApplicationComplete();
         },
-      },
-    );
+      });
+    } else {
+      postBlindMatchApply().then(() => {
+        setIsModalOpen(false);
+        onApplicationComplete();
+      });
+    }
   };
 
   const handleCloseModal = () => {
