@@ -17,7 +17,7 @@ export const chipVariants = recipe({
       false: {
         backgroundColor: themeVars.color.gray_500_40,
         color: themeVars.color.bg_white,
-        border: `1px solid ${themeVars.color.bg_white}`,
+        border: `1px solid ${themeVars.color.gray_400}`,
       },
       true: {
         backgroundColor: themeVars.color.main_yellow,
@@ -30,9 +30,10 @@ export const chipVariants = recipe({
         padding: '0.8rem 1.2rem',
       },
       lg: {
-        width: '16.1rem',
+        width: '100%',
         justifyContent: 'center',
       },
     },
+    disabled: {},
   },
 });

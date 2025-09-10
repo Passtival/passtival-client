@@ -3,8 +3,10 @@ import { useNavigate } from 'react-router-dom';
 
 import Carousel from '@shared/components/carousel/carousel';
 import Chip from '@shared/components/chip/chip';
+import Header from '@shared/components/header/header';
 import TimeTable from '@shared/components/timeTable/timeTable';
 import Title from '@shared/components/title/title';
+import TitlInfo from '@shared/components/title-info/title-info';
 import { HOME_TEXT } from '@shared/constants/festivalSchedule';
 
 import * as styles from './home.css';
@@ -93,68 +95,77 @@ const Home = () => {
   };
 
   return (
-    <div className={styles.container}>
-      <div className={styles.noticeText}>
-        <Title
-          mainTitle={HOME_TEXT.NOTICE}
-          subTitle={HOME_TEXT.FESTIVAL_PERIOD}
-        />
-      </div>
-      <div className={styles.carouselWrapper}>
-        <Carousel type="details">
-          {mokImages.map((imageUrl, index) => (
-            <img
-              key={index}
-              src={imageUrl}
-              alt={`분실물 이미지 ${index + 1}`}
-            />
-          ))}
-        </Carousel>
-      </div>
-      <div className={styles.festivalScheduleText}>
-        <Title
-          mainTitle={HOME_TEXT.TODAY_FESTIVAL_SCHEDULE}
-          subTitle={HOME_TEXT.TODAY_FESTIVAL_SCHEDULE_DETAIL}
-        />
-      </div>
-      <div className={styles.chipContainer}>
-        {HOME_TEXT.FESTIVAL_DAY.map((dayLabel, idx) => {
-          const dayNumber = idx + 1;
-          return (
-            <Chip
-              key={dayNumber}
-              label={dayLabel}
-              selected={selectedDay === dayNumber}
-              onChange={() => setSelectedDay(dayNumber)}
-            />
-          );
-        })}
-      </div>
-      {MOCK_TITME_TABLE.filter((schedule) => schedule.day === selectedDay).map(
-        ({
-          id,
-          startIso,
-          endIso,
-          title,
-          assignee,
-          description,
-          imgSrc,
-          imgAlt,
-        }) => (
-          <TimeTable
-            key={id}
-            startIso={startIso}
-            endIso={endIso}
-            title={title}
-            assignee={assignee}
-            description={description}
-            imgSrc={imgSrc}
-            imgAlt={imgAlt}
-            onClick={() => handleClick(id)}
+    <>
+      <Header
+        description="Passtival"
+        borderRadius="rounded"
+        bgColor="gray"
+      />
+      <div className={styles.container}>
+        <div className={styles.noticeText}>
+          <Title
+            mainTitle={HOME_TEXT.NOTICE}
+            subTitle={HOME_TEXT.FESTIVAL_PERIOD}
           />
-        ),
-      )}
-    </div>
+        </div>
+        <div className={styles.carouselWrapper}>
+          <Carousel type="details">
+            {mokImages.map((imageUrl, index) => (
+              <img
+                key={index}
+                src={imageUrl}
+                alt={`분실물 이미지 ${index + 1}`}
+              />
+            ))}
+          </Carousel>
+        </div>
+        <div className={styles.festivalScheduleText}>
+          <TitlInfo
+            mainTitle={HOME_TEXT.TODAY_FESTIVAL_SCHEDULE}
+            subTitle={HOME_TEXT.TODAY_FESTIVAL_SCHEDULE_DETAIL}
+          />
+        </div>
+        <div className={styles.chipContainer}>
+          {HOME_TEXT.FESTIVAL_DAY.map((dayLabel, idx) => {
+            const dayNumber = idx + 1;
+            return (
+              <Chip
+                key={dayNumber}
+                label={dayLabel}
+                selected={selectedDay === dayNumber}
+                onChange={() => setSelectedDay(dayNumber)}
+              />
+            );
+          })}
+        </div>
+        {MOCK_TITME_TABLE.filter(
+          (schedule) => schedule.day === selectedDay,
+        ).map(
+          ({
+            id,
+            startIso,
+            endIso,
+            title,
+            assignee,
+            description,
+            imgSrc,
+            imgAlt,
+          }) => (
+            <TimeTable
+              key={id}
+              startIso={startIso}
+              endIso={endIso}
+              title={title}
+              assignee={assignee}
+              description={description}
+              imgSrc={imgSrc}
+              imgAlt={imgAlt}
+              onClick={() => handleClick(id)}
+            />
+          ),
+        )}
+      </div>
+    </>
   );
 };
 export default Home;

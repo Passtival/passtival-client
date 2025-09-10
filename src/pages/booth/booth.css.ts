@@ -1,11 +1,19 @@
 import { style } from '@vanilla-extract/css';
 
+import { HEADER_HEIGHT } from '@shared/components/header/header.css';
+
+export const container = style({
+  marginTop: HEADER_HEIGHT,
+  marginBottom: '15.3rem',
+});
+
 export const chipContainer = style({
   display: 'flex',
   gap: '0.9rem',
   height: '6rem',
-  justifyContent: 'center',
-  padding: '0 1rem 0 2.4rem',
+  justifyContent: 'space-between',
+  alignItems: 'center',
+  padding: '0 2.4rem',
 });
 
 export const noticeText = style({
@@ -22,4 +30,11 @@ export const boothinfoText = style({
 
 export const carouselWrapper = style({
   padding: '0 2.4rem',
+});
+
+export const cardContainer = style({
+  padding: '0 2.4rem',
+  display: 'flex',
+  flexDirection: 'column',
+  gap: '2rem',
 });

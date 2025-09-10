@@ -25,31 +25,24 @@ const Carousel = ({ children, type, infinite, autoplay }: CarouselProps) => {
     ? {
         autoplay: autoplay,
         infinite: infinite,
+        autoplaySpeed: 2000,
         afterChange: (index: number) => setCurrentSlide(index),
       }
     : {
-        slidesToShow: 3,
+        autoplaySpeed: 2000,
         infinite: true,
         autoplay: true,
-        autoplaySpeed: 0,
-        speed: 8000,
-        cssEase: 'linear',
-        pauseOnHover: false,
-        pauseOnFocus: false,
+        pauseOnHover: true,
+        pauseOnFocus: true,
+        swipe: false,
       };
-
-  const typeStyle = isDetailsType
-    ? styles.carouselType.details
-    : styles.carouselType.Apply;
 
   const styledChildren = isDetailsType
     ? children
-    : React.Children.map(children, (child) => (
-        <div className={styles.img}>{child}</div>
-      ));
+    : React.Children.map(children, (child) => <div>{child}</div>);
 
   return (
-    <div className={`${typeStyle}`}>
+    <div className={styles.carousel}>
       <Slider {...mergedSettings}>{styledChildren}</Slider>
       {type === 'details' && (
         <SlideIndicator

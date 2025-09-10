@@ -14,7 +14,9 @@ export const color = {
   gray_500_40: 'rgba(99, 99, 99, 0.40)',
   gray_500: 'rgb(99,99,99)',
   gray_600: '#808080',
+  gray_800: '#3D3D3D',
   gray_900: '#242424',
+  cool_gray_100: '#121619',
 
   error_red: '#FF0080',
   success_green: '#1AD27C',

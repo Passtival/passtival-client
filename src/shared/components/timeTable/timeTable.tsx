@@ -42,6 +42,7 @@ const TimeTable = ({
         </p>
       </div>
       <div className={styles.bottom}>
+        <div className={styles.leftBar} />
         <Card
           title={title}
           assignee={assignee}

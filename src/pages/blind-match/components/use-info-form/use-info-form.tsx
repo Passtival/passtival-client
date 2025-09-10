@@ -6,8 +6,8 @@ import Input from '@shared/components/input/input';
 import * as styles from './use-info-form.css';
 
 const USE_INFO_FORM = {
-  INSTAR_ID: '인스타그램 ID를 입력하세요',
-  PHONE: '전화번호를 입력하세요',
+  PHONE: '전화번호를 입력하세요 (필수)',
+  INSTAR_ID: '인스타그램 ID를 입력하세요 (선택)',
 };
 
 interface UseInfoFormProps {
@@ -38,14 +38,14 @@ const UseInfoForm = ({
   return (
     <div className={styles.container}>
       <Input
-        value={instaId}
-        onChange={handleInstaIdChange}
-        placeholder={USE_INFO_FORM.INSTAR_ID}
-      />
-      <Input
         value={phoneNumber}
         onChange={handlePhoneChange}
         placeholder={USE_INFO_FORM.PHONE}
+      />
+      <Input
+        value={instaId}
+        onChange={handleInstaIdChange}
+        placeholder={USE_INFO_FORM.INSTAR_ID}
       />
       <div className={styles.chip}>
         <Chip

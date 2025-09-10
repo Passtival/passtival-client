@@ -8,6 +8,7 @@ export const typography = {
     18: '1.8rem',
     20: '2rem',
     22: '2.2rem',
+    45: '4.5rem',
   },
   fontWeight: {
     regular: '400',
@@ -17,14 +18,15 @@ export const typography = {
     extrabold: '800',
   },
   lineHeight: {
-    tighter: '100%',
+    tighter: '130%',
     tight: '145%',
     normal: '150%',
   },
   letterSpacing: {
-    tighter: '-0.05rem',
+    tighter: '-0.065rem',
     tight: '-0.01em',
     none: '0',
     wide: '0.01em',
+    xl: '0.02em',
   },
 } as const;

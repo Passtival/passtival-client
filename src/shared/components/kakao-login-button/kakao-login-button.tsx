@@ -1,3 +1,5 @@
+import { routePath } from '@router/path';
+
 import { appConfig } from '@shared/configs/app-config';
 import { IcSvgKakaoTalk } from '@shared/icons';
 
@@ -7,14 +9,12 @@ const BUTTON_TEXT = '카카오 로그인';
 
 const KakaoLoginButton = () => {
   const handleKakaoLogin = () => {
-    const redirectUri =
-      window.location.hostname === 'localhost'
-        ? appConfig.auth.kakaoLocalRedirectUrl
-        : appConfig.auth.kakaoProdRedirectUrl;
-
-    const loginUrl = `${appConfig.auth.kakaoLoginUrl}&redirect_uri=${encodeURIComponent(redirectUri)}`;
-
-    window.location.href = loginUrl;
+    const returnTo = location.pathname + location.search;
+    const redirectUrl = `${location.origin}${routePath.LOGIN_CALLBACK}`;
+    window.location.href =
+      `${appConfig.api.baseUrl}/api/member/login/kakao` +
+      `?returnTo=${encodeURIComponent(returnTo)}` +
+      `&redirectUrl=${encodeURIComponent(redirectUrl)}`;
   };
 
   return (
