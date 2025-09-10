@@ -20,6 +20,7 @@ export const LOST_ITEM_QUERY_KEY = {
 
 export const RAFFLE_QUERY_KEY = {
   ALL: ['raffle'],
+  PRIZES: (days: number) => [...RAFFLE_QUERY_KEY.ALL, 'prizes', days],
 } as const;
 
 export const BOOTH_QUERY_KEY = {
