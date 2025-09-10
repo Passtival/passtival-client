@@ -6,6 +6,7 @@ import Carousel from '@shared/components/carousel/carousel';
 import Chip from '@shared/components/chip/chip';
 import Header from '@shared/components/header/header';
 import Title from '@shared/components/title/title';
+import TitlInfo from '@shared/components/title-info/title-info';
 
 import * as styles from './booth.css';
 import {
@@ -31,38 +32,40 @@ const Booth = () => {
         borderRadius="square"
         bgColor="gray"
       />
-      <div className={styles.noticeText}>
-        <Title mainTitle={VENUE_GUIDE} />
-      </div>
-      <div className={styles.carouselWrapper}>
-        <Carousel type="details">
-          {mokImages.map((imageUrl, index) => (
-            <img
-              key={index}
-              src={imageUrl}
-              alt={`분실물 이미지 ${index + 1}`}
+      <div className={styles.container}>
+        <div className={styles.noticeText}>
+          <Title mainTitle={VENUE_GUIDE} />
+        </div>
+        <div className={styles.carouselWrapper}>
+          <Carousel type="details">
+            {mokImages.map((imageUrl, index) => (
+              <img
+                key={index}
+                src={imageUrl}
+                alt={`분실물 이미지 ${index + 1}`}
+              />
+            ))}
+          </Carousel>
+        </div>
+        <div className={styles.boothinfoText}>
+          <Title
+            mainTitle={BOOTH_INFO}
+            subTitle={BOOTH_INFO_DETAIL}
+          />
+        </div>
+        <div className={styles.chipContainer}>
+          {BOOTH_TYPES.map((type) => (
+            <Chip
+              key={type}
+              label={type}
+              selected={selectedType === type}
+              onChange={() => setSelectedType(type)}
             />
           ))}
-        </Carousel>
-      </div>
-      <div className={styles.boothinfoText}>
-        <Title
-          mainTitle={BOOTH_INFO}
-          subTitle={BOOTH_INFO_DETAIL}
-        />
-      </div>
-      <div className={styles.chipContainer}>
-        {BOOTH_TYPES.map((type) => (
-          <Chip
-            key={type}
-            label={type}
-            selected={selectedType === type}
-            onChange={() => setSelectedType(type)}
-          />
-        ))}
-      </div>
-      <div className={styles.cardContainer}>
-        <BoothList selectedType={selectedType} />
+        </div>
+        <div className={styles.cardContainer}>
+          <BoothList selectedType={selectedType} />
+        </div>
       </div>
     </>
   );
