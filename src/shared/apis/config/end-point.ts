@@ -9,6 +9,7 @@ export const END_POINT = {
   ADMIN_RAFFLE_AUTH_KEY: '/api/admin/raffle/authentication-key',
   AUTH_REFRESH: '/api/auth/refresh',
   MEMBER_LEVEL_UP: '/api/member/level-up',
+  MEMBER_LOGIN: '/api/member/login/kakao',
   ADMIN_RAFFLE_DAY: '/api/admin/raffle/{day}',
   ADMIN_RAFFLE_WINNERS: '/api/admin/raffle/{day}',
 } as const;
