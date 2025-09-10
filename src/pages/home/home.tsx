@@ -73,30 +73,22 @@ const Home = () => {
             );
           })}
         </div>
-        {data?.result
-          ?.filter((schedule: { day: number }) => schedule.day === selectedDay)
+        {data
+          ?.filter((schedule) => schedule.day === selectedDay)
           .map(
             (
-              schedule: {
-                title: string;
-                artist: string;
-                startTime: string;
-                endTime: string;
-                imagePath: string;
-                introduction: string;
-                day: number;
-              },
+              { title, artist, startTime, endTime, imagePath, introduction },
               index: number,
             ) => (
               <TimeTable
                 key={index}
-                startIso={schedule.startTime}
-                endIso={schedule.endTime}
-                title={schedule.title}
-                assignee={schedule.artist}
-                description={schedule.introduction}
-                imgSrc={schedule.imagePath}
-                imgAlt={schedule.title}
+                startIso={startTime || ''}
+                endIso={endTime || ''}
+                title={title || ''}
+                assignee={artist || ''}
+                description={introduction || ''}
+                imgSrc={imagePath || ''}
+                imgAlt={title || ''}
                 onClick={() => handleClick(index)}
               />
             ),
