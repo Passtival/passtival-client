@@ -1,3 +1,4 @@
+import Header from '@shared/components/header/header';
 import KakaoLoginButton from '@shared/components/kakao-login-button/kakao-login-button';
 
 import * as styles from './login.css';
@@ -10,15 +11,22 @@ const LOGIN_TEXT = {
 
 const Login = () => {
   return (
-    <div className={styles.container}>
-      <div className={styles.body}>
-        <h1 className={styles.title}>{LOGIN_TEXT.TITLE}</h1>
-        <p className={styles.description}>{LOGIN_TEXT.DESCRIPTION}</p>
+    <>
+      <Header
+        description="Passtival"
+        borderRadius="square"
+        bgColor="white"
+      />
+      <div className={styles.container}>
+        <div className={styles.body}>
+          <h1 className={styles.title}>{LOGIN_TEXT.TITLE}</h1>
+          <p className={styles.description}>{LOGIN_TEXT.DESCRIPTION}</p>
+        </div>
+        <div className={styles.kakaoButton}>
+          <KakaoLoginButton />
+        </div>
       </div>
-      <div className={styles.kakaoButton}>
-        <KakaoLoginButton />
-      </div>
-    </div>
+    </>
   );
 };
 

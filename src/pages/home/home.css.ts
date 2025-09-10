@@ -1,5 +1,11 @@
 import { style } from '@vanilla-extract/css';
 
+import { HEADER_HEIGHT } from '@shared/components/header/header.css';
+
+export const container = style({
+  marginTop: HEADER_HEIGHT,
+});
+
 export const chipContainer = style({
   display: 'flex',
   width: '100%',

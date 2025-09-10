@@ -1,5 +1,6 @@
 import { style } from '@vanilla-extract/css';
 
+import { HEADER_HEIGHT } from '@shared/components/header/header.css';
 import { themeVars } from '@shared/styles';
 
 export const container = style({
@@ -7,8 +8,8 @@ export const container = style({
   flexDirection: 'column',
   alignItems: 'center',
   justifyContent: 'center',
-  height: '60vh',
-  overflowY: 'auto',
+  paddingBottom: '20rem',
+  marginTop: HEADER_HEIGHT,
 });
 
 export const section = style({

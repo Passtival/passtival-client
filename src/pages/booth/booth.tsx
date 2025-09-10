@@ -96,63 +96,65 @@ const Booth = () => {
         borderRadius="rounded"
         bgColor="gray"
       />
-      <div className={styles.noticeText}>
-        <Title mainTitle={VENUE_GUIDE} />
-      </div>
-      <div className={styles.carouselWrapper}>
-        <Carousel type="details">
-          {mokImages.map((imageUrl, index) => (
-            <img
-              key={index}
-              src={imageUrl}
-              alt={`분실물 이미지 ${index + 1}`}
+      <div className={styles.container}>
+        <div className={styles.noticeText}>
+          <Title mainTitle={VENUE_GUIDE} />
+        </div>
+        <div className={styles.carouselWrapper}>
+          <Carousel type="details">
+            {mokImages.map((imageUrl, index) => (
+              <img
+                key={index}
+                src={imageUrl}
+                alt={`분실물 이미지 ${index + 1}`}
+              />
+            ))}
+          </Carousel>
+        </div>
+        <div className={styles.boothinfoText}>
+          <TitlInfo
+            mainTitle={BOOTH_INFO}
+            subTitle={BOOTH_INFO_DETAIL}
+          />
+        </div>
+        <div className={styles.chipContainer}>
+          {BOOTH_TYPES.map((type) => (
+            <Chip
+              key={type}
+              label={type}
+              selected={selectedType === type}
+              onChange={() => setSelectedType(type)}
             />
           ))}
-        </Carousel>
-      </div>
-      <div className={styles.boothinfoText}>
-        <TitlInfo
-          mainTitle={BOOTH_INFO}
-          subTitle={BOOTH_INFO_DETAIL}
-        />
-      </div>
-      <div className={styles.chipContainer}>
-        {BOOTH_TYPES.map((type) => (
-          <Chip
-            key={type}
-            label={type}
-            selected={selectedType === type}
-            onChange={() => setSelectedType(type)}
-          />
-        ))}
-      </div>
+        </div>
 
-      {MOCK_BOOTH_DATA.filter((schedule) =>
-        selectedType === '전체' ? true : schedule.boothType === selectedType,
-      ).map(
-        ({
-          id,
-          startIso,
-          endIso,
-          title,
-          assignee,
-          description,
-          imgSrc,
-          imgAlt,
-        }) => (
-          <TimeTable
-            key={id}
-            startIso={startIso}
-            endIso={endIso}
-            title={title}
-            assignee={assignee}
-            description={description}
-            imgSrc={imgSrc}
-            imgAlt={imgAlt}
-            onClick={() => handleClick(id)}
-          />
-        ),
-      )}
+        {MOCK_BOOTH_DATA.filter((schedule) =>
+          selectedType === '전체' ? true : schedule.boothType === selectedType,
+        ).map(
+          ({
+            id,
+            startIso,
+            endIso,
+            title,
+            assignee,
+            description,
+            imgSrc,
+            imgAlt,
+          }) => (
+            <TimeTable
+              key={id}
+              startIso={startIso}
+              endIso={endIso}
+              title={title}
+              assignee={assignee}
+              description={description}
+              imgSrc={imgSrc}
+              imgAlt={imgAlt}
+              onClick={() => handleClick(id)}
+            />
+          ),
+        )}
+      </div>
     </>
   );
 };
