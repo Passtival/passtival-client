@@ -1,3 +1,5 @@
+import { IcSvgImage } from '@shared/icons';
+
 import * as styles from './Thumbnail.css';
 
 interface ThumbnailProps {
@@ -6,20 +8,20 @@ interface ThumbnailProps {
   type: 'square_sm' | 'square_md' | 'square_lg';
 }
 
-const NO_IMAGE_PLACEHOLDER = '/public/carousel1.jpg';
-
 const Thumbnail = ({ src, alt, type }: ThumbnailProps) => {
-  const imageSrc = src || NO_IMAGE_PLACEHOLDER;
-
-  const imageAlt = alt || '썸네일 이미지';
-
   return (
     <div className={styles.container}>
-      <img
-        className={styles.img({ type })}
-        src={imageSrc}
-        alt={imageAlt}
-      />
+      {src ? (
+        <img
+          className={styles.img({ type })}
+          src={src}
+          alt={alt}
+        />
+      ) : (
+        <div className={styles.img({ type, hasImage: false })}>
+          <IcSvgImage style={{ width: '3.2rem', height: '3.2rem' }} />{' '}
+        </div>
+      )}
     </div>
   );
 };

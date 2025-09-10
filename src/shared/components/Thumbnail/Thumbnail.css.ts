@@ -14,6 +14,7 @@ export const img = recipe({
     border: `1.5px solid ${themeVars.color.gray_500_40}`,
     objectFit: 'cover',
     width: '100%',
+    backgroundColor: themeVars.color.gray_600,
   },
 
   variants: {
@@ -33,6 +34,14 @@ export const img = recipe({
         height: '10rem',
         width: '10rem',
         borderRadius: '5px',
+      },
+    },
+    hasImage: {
+      false: {
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        color: themeVars.color.gray_400,
       },
     },
   },
