@@ -61,7 +61,7 @@ export const useTicketForm = () => {
         name: form.name,
         studentId: form.studentNum,
         authenticationKey: form.key,
-        level: selectedLevel,
+        level: selectedLevel - 1,
       });
 
       setModalType('success');
@@ -82,6 +82,7 @@ export const useTicketForm = () => {
       });
       if (selectedLevel < 3) {
         setSelectedLevel(selectedLevel + 1);
+        setCompletedLevel(selectedLevel);
       }
     }
   }, [modalType, selectedLevel]);
