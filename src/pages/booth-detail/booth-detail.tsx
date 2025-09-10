@@ -25,7 +25,7 @@ const BoothDetailPage = () => {
         </Tab.List>
         <Tab.Panels>
           <Tab.Panel value="booth-info">
-            <BoothInfo id={id} />
+            <BoothInfo />
           </Tab.Panel>
           <Tab.Panel value="menu">
             <MenuInfo />

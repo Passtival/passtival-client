@@ -5,11 +5,21 @@ import type {
   BoothMenuApiResponse,
   BoothActivityResponse,
   BoothActivityApiResponse,
+  BoothInfoResponse,
+  BoothInfoApiResponse,
 } from '@pages/booth-detail/types/types';
 
 import { END_POINT } from '@shared/apis/config/end-point';
 import { api } from '@shared/apis/config/instance';
 import { BOOTH_QUERY_KEY } from '@shared/apis/keys/query-key';
+
+export const BOOTH_INFO_QUERY_OPTIONS = {
+  BOOTH_INFO: (boothId: string) =>
+    queryOptions<BoothInfoResponse>({
+      queryKey: BOOTH_QUERY_KEY.BOOTH_INFO(boothId),
+      queryFn: () => getBoothInfo(boothId),
+    }),
+};
 
 export const BOOTH_MENU_QUERY_OPTIONS = {
   BOOTH_MENUS: (boothId: string) =>
@@ -25,6 +35,15 @@ export const BOOTH_ACTIVITY_QUERY_OPTIONS = {
       queryKey: BOOTH_QUERY_KEY.BOOTH_ACTIVITIES(boothId),
       queryFn: () => getBoothActivityList(boothId),
     }),
+};
+
+export const getBoothInfo = async (
+  boothId: string,
+): Promise<BoothInfoResponse> => {
+  const { data } = await api.get<BoothInfoApiResponse>(
+    END_POINT.BOOTH_INFO.replace('{boothId}', boothId),
+  );
+  return data.result;
 };
 
 export const getBoothMenuList = async (

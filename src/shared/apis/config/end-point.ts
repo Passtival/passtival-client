@@ -3,6 +3,7 @@ export const END_POINT = {
   LOST_ITEMS: '/api/found-items',
   BOOTH_MENUS: '/api/festival/{boothId}/menus',
   BOOTH_ACTIVITIES: '/api/festival/{boothId}/activities',
+  BOOTH_INFO: '/api/festival/booths/{boothId}',
   ADMIN_LOGIN: '/api/admin/login',
   ADMIN_FOUND_ITEM: '/api/admin/found-item',
   ADMIN_FOUND_ITEM_DELETE: '/api/admin/found-item/{id}',
