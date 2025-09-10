@@ -32,6 +32,7 @@ export const handleRequest = (config: InternalAxiosRequestConfig) => {
     '/api/s3/upload-url',
     '/api/found-items', // 분실물 목록 조회
     '/api/admin/login', // 관리자 로그인
+    '/api/raffle/prizes', // 상품 조회
   ];
 
   const isPublicApi = publicApis.some((api) => url.includes(api));

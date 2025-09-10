@@ -12,4 +12,5 @@ export const END_POINT = {
   MEMBER_LOGIN: '/api/member/login/kakao',
   ADMIN_RAFFLE_DAY: '/api/admin/raffle/{day}',
   ADMIN_RAFFLE_WINNERS: '/api/admin/raffle/{day}',
+  RAFFLE_PRIZES: '/api/raffle/prizes/{days}',
 } as const;
