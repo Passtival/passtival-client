@@ -1,4 +1,3 @@
-// ../apis/queries.ts
 import { queryOptions } from '@tanstack/react-query';
 
 import type {
@@ -13,7 +12,6 @@ import { BOOTH_QUERY_KEY } from '@shared/apis/keys/query-key';
 export const BOOTH_MENU_QUERY_OPTIONS = {
   BOOTH_MENUS: (boothId: string) =>
     queryOptions<BoothMenuItem[]>({
-      // ← 여기서 결과 타입 고정
       queryKey: BOOTH_QUERY_KEY.BOOTH_MENUS(boothId),
       queryFn: () => getBoothMenuList(boothId),
     }),
@@ -25,5 +23,5 @@ export const getBoothMenuList = async (
   const { data } = await api.get<BoothMenuResponse>(
     END_POINT.BOOTH_MENUS.replace('{boothId}', boothId),
   );
-  return (data.result ?? []) as BoothMenuItem[]; // ← 안전 가드 + 확정
+  return (data.result ?? []) as BoothMenuItem[];
 };
