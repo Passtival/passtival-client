@@ -19,7 +19,7 @@ const Thumbnail = ({ src, alt, type }: ThumbnailProps) => {
         />
       ) : (
         <div className={styles.img({ type, hasImage: false })}>
-          <IcSvgImage style={{ width: '3.2rem', height: '3.2rem' }} />{' '}
+          <IcSvgImage style={{ width: '3.2rem', height: '3.2rem' }} />
         </div>
       )}
     </div>
