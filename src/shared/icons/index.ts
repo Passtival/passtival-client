@@ -12,6 +12,7 @@ export { default as IcSvgCheck } from './ic_check';
 export { default as IcSvgClock } from './ic_clock';
 export { default as IcSvgEntry } from './ic_entry';
 export { default as IcSvgError } from './ic_error';
+export { default as IcSvgImage } from './ic_image';
 export { default as IcSvgKakaoTalk } from './ic_kakaotalk';
 export { default as IcSvgLocation } from './ic_location';
 export { default as IcSvgLogo } from './ic_logo';
