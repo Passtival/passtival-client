@@ -90,7 +90,8 @@ const Ticket = () => {
             subTitle="상품 당첨의 기회를 잡아보세요!"
           />
         </div>
-        <TicketCarousel />
+
+        <TicketCarousel selectedLevel={selectedLevel} />
         <div className={styles.inputsection}>
           <TicketChip
             selectedLevel={selectedLevel}
