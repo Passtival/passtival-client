@@ -2,7 +2,7 @@ import { queryOptions } from '@tanstack/react-query';
 
 import type {
   BoothMenuResponse,
-  BoothMenuItem,
+  BoothMenuApiResponse,
 } from '@pages/booth-detail/types/types';
 
 import { END_POINT } from '@shared/apis/config/end-point';
@@ -11,7 +11,7 @@ import { BOOTH_QUERY_KEY } from '@shared/apis/keys/query-key';
 
 export const BOOTH_MENU_QUERY_OPTIONS = {
   BOOTH_MENUS: (boothId: string) =>
-    queryOptions<BoothMenuItem[]>({
+    queryOptions<BoothMenuResponse>({
       queryKey: BOOTH_QUERY_KEY.BOOTH_MENUS(boothId),
       queryFn: () => getBoothMenuList(boothId),
     }),
@@ -19,9 +19,9 @@ export const BOOTH_MENU_QUERY_OPTIONS = {
 
 export const getBoothMenuList = async (
   boothId: string,
-): Promise<BoothMenuItem[]> => {
-  const { data } = await api.get<BoothMenuResponse>(
+): Promise<BoothMenuResponse> => {
+  const { data } = await api.get<BoothMenuApiResponse>(
     END_POINT.BOOTH_MENUS.replace('{boothId}', boothId),
   );
-  return (data.result ?? []) as BoothMenuItem[];
+  return data.result ?? [];
 };
