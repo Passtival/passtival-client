@@ -1,4 +1,4 @@
-import { queryOptions } from '@tanstack/react-query';
+import { infiniteQueryOptions } from '@tanstack/react-query';
 
 import { END_POINT } from '@shared/apis/config/end-point';
 import { api } from '@shared/apis/config/instance';
@@ -22,10 +22,30 @@ export const getBoothsCursor = async (
   return data;
 };
 
-export const BOOTH_QUERY_OPTIONS = {
-  BOOTHS_CURSOR: (cursor?: number, size?: number) =>
-    queryOptions({
-      queryKey: BOOTH_QUERY_KEY.BOOTHS_CURSOR(cursor, size),
-      queryFn: () => getBoothsCursor(cursor, size),
+export const BOOTH_INFINITE_QUERY_OPTIONS = {
+  BOOTHS_CURSOR: (size: number = 5) =>
+    infiniteQueryOptions({
+      queryKey: BOOTH_QUERY_KEY.ALL,
+      queryFn: ({ pageParam }) => getBoothsCursor(pageParam, size),
+      initialPageParam: undefined as number | undefined,
+      getNextPageParam: (lastPage) => {
+        if (!lastPage?.isSuccess) {
+          return undefined;
+        }
+
+        const content = lastPage?.result?.content || [];
+        const serverNextCursor = lastPage?.result?.nextCursor;
+
+        if (!serverNextCursor) {
+          return undefined;
+        }
+
+        if (content.length < size) {
+          return undefined;
+        }
+
+        return serverNextCursor;
+      },
+      throwOnError: false,
     }),
 } as const;

@@ -6,7 +6,7 @@ import ErrorMessage from '@shared/components/error-message/error-message';
 import Loading from '@shared/components/loading/loading';
 import { useIntersectionObserver } from '@shared/hooks/use-intersection-observer';
 
-import { getBoothsCursor } from '../apis/queries';
+import { BOOTH_INFINITE_QUERY_OPTIONS } from '../apis/queries';
 
 interface BoothListProps {
   selectedType: string;
@@ -22,13 +22,7 @@ const BoothList = ({ selectedType }: BoothListProps) => {
     isFetchingNextPage,
     isLoading,
     error,
-  } = useInfiniteQuery({
-    queryKey: ['booth', 'cursor'],
-    queryFn: ({ pageParam }) => getBoothsCursor(pageParam, 10),
-    initialPageParam: undefined as number | undefined,
-    getNextPageParam: (lastPage) => lastPage?.result?.nextCursor,
-    throwOnError: false,
-  });
+  } = useInfiniteQuery(BOOTH_INFINITE_QUERY_OPTIONS.BOOTHS_CURSOR(5));
 
   const intersectionRef = useIntersectionObserver(() => {
     if (hasNextPage && !isFetchingNextPage) {
@@ -39,6 +33,7 @@ const BoothList = ({ selectedType }: BoothListProps) => {
   const handleClick = (id: number) => {
     navigate(`/booth-detail/${id}`);
   };
+
   if (isLoading) {
     return (
       <Loading
