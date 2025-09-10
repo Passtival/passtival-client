@@ -17,6 +17,6 @@ export const cardlist = style({
   display: 'flex',
   flexDirection: 'column',
   alignItems: 'center',
-  padding: '1rem 1.5rem',
+  padding: '1rem 1.5rem 15.3rem 1.5rem',
   gap: '2rem',
 });

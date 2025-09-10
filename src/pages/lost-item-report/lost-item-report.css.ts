@@ -34,4 +34,6 @@ export const button = style({
   transform: 'translateX(-50%)',
   position: 'fixed',
   bottom: '5.8rem',
+  width: '100%',
+  padding: '0 2.4rem',
 });

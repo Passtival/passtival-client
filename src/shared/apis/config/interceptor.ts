@@ -8,6 +8,7 @@ import axios, {
 
 import { routePath } from '@router/path';
 
+import { END_POINT } from '@shared/apis/config/end-point';
 import { authService } from '@shared/auth/services/auth-service';
 import { tokenService } from '@shared/auth/services/token-service';
 import { appConfig } from '@shared/configs/app-config';
@@ -29,10 +30,9 @@ export const handleRequest = (config: InternalAxiosRequestConfig) => {
 
   // 인증이 필요하지 않은 API들은 토큰을 붙이지 않음
   const publicApis = [
-    '/api/s3/upload-url',
-    '/api/found-items', // 분실물 목록 조회
-    '/api/admin/login', // 관리자 로그인
-    '/api/raffle/prizes', // 상품 조회
+    END_POINT.LOST_ITEMS,
+    END_POINT.ADMIN_LOGIN,
+    END_POINT.RAFFLE_PRIZES,
   ];
 
   const isPublicApi = publicApis.some((api) => url.includes(api));
@@ -41,7 +41,16 @@ export const handleRequest = (config: InternalAxiosRequestConfig) => {
   }
 
   // 관리자 API인지 확인
-  const isAdminApi = url.includes('/admin/');
+  const adminApis = [
+    END_POINT.ADMIN_FOUND_ITEM,
+    END_POINT.ADMIN_FOUND_ITEM_DELETE,
+    END_POINT.ADMIN_RAFFLE_AUTH_KEY,
+    END_POINT.ADMIN_RAFFLE_DAY,
+    END_POINT.ADMIN_RAFFLE_WINNERS,
+    END_POINT.S3_UPLOAD_URL,
+  ];
+
+  const isAdminApi = adminApis.some((adminApi) => url.includes(adminApi));
 
   // 관리자 API면 adminAccessToken, 일반 API면 accessToken 사용
   const token = isAdminApi
@@ -134,21 +143,16 @@ export const createHandleResponseError =
         headers: { Authorization: `Bearer ${refreshToken}` },
       });
 
-      console.log('인터셉터 토큰 재발급 응답:', refreshResponse.data); // 디버깅용
-
       const { accessToken: newAccessToken, refreshToken: newRefreshToken } =
         refreshResponse.data.result;
-
-      // refreshToken이 없으면 기존 refreshToken 유지
-      const finalRefreshToken = newRefreshToken || refreshToken;
 
       // 관리자 API면 admin 토큰, 일반 API면 일반 토큰 저장
       if (isAdminApi) {
         tokenService.saveAdminAccessToken(newAccessToken);
-        tokenService.saveAdminRefreshToken(finalRefreshToken);
+        tokenService.saveAdminRefreshToken(newRefreshToken);
       } else {
         tokenService.saveAccessToken(newAccessToken);
-        tokenService.saveRefreshToken(finalRefreshToken);
+        tokenService.saveRefreshToken(newRefreshToken);
       }
 
       if (originalRequest.headers instanceof AxiosHeaders) {
@@ -184,4 +188,20 @@ export const createHandleAdminRequest =
       config.headers.set('Authorization', `Bearer ${adminToken}`);
     }
     return config;
+  };
+
+/**
+ * 관리자 API용 에러 핸들러
+ */
+export const createHandleAdminResponseError =
+  () => async (error: AxiosError) => {
+    const { response } = error;
+
+    if (!response || response.status !== HTTP_STATUS.UNAUTHORIZED) {
+      return Promise.reject(error);
+    }
+
+    // 관리자 인증 실패 시 관리자 로그인 페이지로 리다이렉트
+    window.location.replace(routePath.ADMIN_LOGIN);
+    return Promise.reject(error);
   };
