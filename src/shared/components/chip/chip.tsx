@@ -6,22 +6,22 @@ interface ChipProps {
   label: ReactNode;
   selected: boolean;
   onChange: (isSelected: boolean) => void;
-  size?: 'sm' | 'lg';
   disabled?: boolean;
+  fullWidth?: boolean;
 }
 
 const Chip = ({
   label,
   selected,
   onChange,
-  size = 'sm',
   disabled,
+  fullWidth,
 }: ChipProps) => {
   return (
     <button
       type="button"
       aria-pressed={selected}
-      className={chipVariants({ selected, size })}
+      className={chipVariants({ selected, fullWidth })}
       onClick={() => onChange(!selected)}
       disabled={disabled}
     >

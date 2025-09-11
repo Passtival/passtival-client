@@ -34,7 +34,7 @@ const TicketOnBoarding = () => {
       <article className={styles.container}>
         <section className={styles.section}>
           {current.lines.map((line, idx) => (
-            <p key={idx}>{line}</p>
+            <div key={idx}>{line}</div>
           ))}
         </section>
         <div className={styles.detail}>

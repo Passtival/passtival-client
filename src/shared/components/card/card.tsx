@@ -24,13 +24,17 @@ const Card = ({
 }: CardProps) => {
   return (
     <div
-      className={styles.container({ type })}
+      className={styles.container}
       onClick={onClick}
     >
       <div className={styles.content}>
-        <p className={styles.title({ type })}>{title}</p>
-        {assignee && <p className={styles.assignee}>{assignee}</p>}
-        <p className={styles.description({ type })}>{description}</p>
+        <div className={styles.titleContainer}>
+          <p className={styles.title({ type })}>{title}</p>
+          {assignee && <p className={styles.assignee}>{assignee}</p>}
+        </div>
+        <div className={styles.descriptionContainer}>
+          <p className={styles.description({ type })}>{description}</p>
+        </div>
       </div>
       <div className={styles.img}>
         <Thumbnail

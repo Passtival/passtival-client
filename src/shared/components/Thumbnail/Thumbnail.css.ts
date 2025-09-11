@@ -12,7 +12,7 @@ export const container = style({
 export const img = recipe({
   base: {
     border: `1.5px solid ${themeVars.color.gray_500_40}`,
-    objectFit: 'cover',
+    objectFit: 'fill',
     width: '100%',
     backgroundColor: themeVars.color.gray_600,
   },
@@ -34,14 +34,6 @@ export const img = recipe({
         height: '10rem',
         width: '10rem',
         borderRadius: '5px',
-      },
-    },
-    hasImage: {
-      false: {
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        color: themeVars.color.gray_400,
       },
     },
   },
