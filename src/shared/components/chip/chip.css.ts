@@ -29,6 +29,11 @@ export const chipVariants = recipe({
         border: `1px solid ${themeVars.color.bg_white}`,
       },
     },
-    disabled: {},
+    fullWidth: {
+      true: {
+        flex: 1,
+      },
+      false: {},
+    },
   },
 });

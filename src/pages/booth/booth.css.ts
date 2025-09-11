@@ -9,7 +9,6 @@ export const chipContainer = style({
   gap: '0.9rem',
   height: '6rem',
   justifyContent: 'center',
-  alignItems: 'center',
   padding: '0 1.27rem',
 });
 
