@@ -64,11 +64,6 @@ const UseInfoForm = ({
         onChange={handleInstaIdChange}
         placeholder={USE_INFO_FORM.INSTAR_ID}
       />
-      <Input
-        value={instaId}
-        onChange={handleInstaIdChange}
-        placeholder={USE_INFO_FORM.INSTAR_ID}
-      />
       <div className={styles.chip}>
         <Chip
           label="여성"
