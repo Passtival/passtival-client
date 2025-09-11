@@ -1,5 +1,3 @@
-import { useState, useCallback, useEffect } from 'react';
-
 import InputSection from '@pages/ticket/components/inpur-section/input-section';
 
 import Button from '@shared/components/button/button';
@@ -10,71 +8,23 @@ import Caption from './components/caption/caption';
 import TicketCarousel from './components/carousel/carousel';
 import TicketChip from './components/chip/chip';
 import TicketModal from './components/ticketmodal';
+import { useTicketForm } from './hooks/use-ticket-form';
 import * as styles from './ticket.css';
 
-interface TicketForm {
-  name: string;
-  studentNum: string;
-  key: string;
-}
-
 const Ticket = () => {
-  const [form, setForm] = useState<TicketForm>({
-    name: '',
-    studentNum: '',
-    key: '',
-  });
-
-  const [modalType, setModalType] = useState<
-    'confirm' | 'success' | 'error' | 'premium' | null
-  >(null);
-
-  const [selectedLevel, setSelectedLevel] = useState(1);
-  const isErrorState = modalType === 'error';
-  const [completedLevel, setCompletedLevel] = useState(0);
-  const [isFormValid, setIsFormValid] = useState(false);
-
-  useEffect(() => {
-    const isValid =
-      form.name.trim() !== '' &&
-      form.studentNum.trim() !== '' &&
-      form.key.trim() !== '';
-    setIsFormValid(isValid);
-  }, [form]);
-
-  const handleFormChange = (name: keyof TicketForm, value: string) => {
-    setForm((prevForm) => ({
-      ...prevForm,
-      [name]: value,
-    }));
-  };
-
-  const handleApplyClick = useCallback(() => {
-    if (selectedLevel === 3) {
-      setModalType('premium');
-    } else {
-      setModalType('confirm');
-    }
-  }, [isFormValid, selectedLevel]);
-
-  const handleConfirm = useCallback(() => {
-    setModalType('success');
-    setCompletedLevel(selectedLevel);
-  }, [selectedLevel]);
-
-  const handleCloseModal = useCallback(() => {
-    setModalType(null);
-    if (modalType === 'success') {
-      setForm({
-        name: '',
-        studentNum: '',
-        key: '',
-      });
-      if (selectedLevel < 3) {
-        setSelectedLevel(selectedLevel + 1);
-      }
-    }
-  }, [modalType, selectedLevel]);
+  const {
+    form,
+    modalType,
+    selectedLevel,
+    completedLevel,
+    isFormValid,
+    isErrorState,
+    handleFormChange,
+    handleApplyClick,
+    handleConfirm,
+    handleCloseModal,
+    setSelectedLevel,
+  } = useTicketForm();
 
   return (
     <>

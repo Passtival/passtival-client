@@ -7,7 +7,6 @@ import {
   handleRequest,
   handleResponse,
   createHandleAdminRequest,
-  createHandleAdminResponseError,
 } from './interceptor';
 
 export const api = axios.create({
@@ -32,5 +31,5 @@ api.interceptors.response.use(handleResponse, createHandleResponseError(api));
 adminApi.interceptors.request.use(createHandleAdminRequest());
 adminApi.interceptors.response.use(
   handleResponse,
-  createHandleAdminResponseError(),
+  createHandleResponseError(adminApi),
 );

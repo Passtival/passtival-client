@@ -37,7 +37,6 @@ export const publicRoutesOthers = [
   { path: routePath.SHOW_DETAIL, Component: ShowDetailPage },
   { path: routePath.LOST_ITEM_INFO, Component: LostItemIngoPage },
   { path: routePath.BOOTH_DETAIL, Component: BoothDetailPage },
-  { path: routePath.LOST_ITEM_REPORT, Component: LostItemReportPage },
   { path: routePath.INFO_SHARE_CONSENT, Component: InfoShareConsentPage },
   { path: routePath.LINDING, Component: LandingPage },
 ];
@@ -51,6 +50,7 @@ export const protectedAdminRoutes = [
   { path: routePath.ADMIN_MAIN, Component: AdminMainPage },
   { path: routePath.GENERATE_AUTH_KEY, Component: GenerateAuthKeyPage },
   { path: routePath.TICKET_DRAWING, Component: TicketDrawingPage },
+  { path: routePath.LOST_ITEM_REPORT, Component: LostItemReportPage },
 ];
 
 export const onBoardingRoutes = [

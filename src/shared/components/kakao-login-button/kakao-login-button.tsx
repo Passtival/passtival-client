@@ -1,5 +1,6 @@
 import { routePath } from '@router/path';
 
+import { END_POINT } from '@shared/apis/config/end-point';
 import { appConfig } from '@shared/configs/app-config';
 import { IcSvgKakaoTalk } from '@shared/icons';
 
@@ -12,7 +13,7 @@ const KakaoLoginButton = () => {
     const returnTo = location.pathname + location.search;
     const redirectUrl = `${location.origin}${routePath.LOGIN_CALLBACK}`;
     window.location.href =
-      `${appConfig.api.baseUrl}/api/member/login/kakao` +
+      `${appConfig.api.baseUrl}${END_POINT.MEMBER_LOGIN}` +
       `?returnTo=${encodeURIComponent(returnTo)}` +
       `&redirectUrl=${encodeURIComponent(redirectUrl)}`;
   };
