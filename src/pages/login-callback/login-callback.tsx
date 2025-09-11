@@ -3,10 +3,7 @@ import { useNavigate, useLocation } from 'react-router-dom';
 
 import { routePath } from '@router/path';
 
-import {
-  postBlindMatchMyInfo,
-  getBlindMatchMyInfo,
-} from '@pages/blind-match/apis/queries';
+import { postBlindMatchMyInfo } from '@pages/blind-match/apis/queries';
 
 import { tokenService } from '@shared/auth/services/token-service';
 
@@ -37,9 +34,6 @@ const LoginCallback = () => {
     (async () => {
       try {
         await postBlindMatchMyInfo();
-        const data = await getBlindMatchMyInfo();
-        console.log('blind-match myget:', data);
-
         navigate(returnTo, { replace: true });
       } catch (e) {
         console.error(e);
