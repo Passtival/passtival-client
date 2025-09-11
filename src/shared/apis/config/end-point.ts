@@ -17,6 +17,7 @@ export const END_POINT = {
   AUTH_REFRESH: '/api/auth/refresh',
   MEMBER_LEVEL_UP: '/api/member/level-up',
   MEMBER_LOGIN: '/api/member/login/kakao',
+  MEMBER_RAFFLE: '/api/raffle/member',
   ADMIN_RAFFLE_DAY: '/api/admin/raffle/{day}',
   ADMIN_RAFFLE_WINNERS: '/api/admin/raffle/{day}',
   BOOTHS_CURSOR: '/api/festival/booths/cursor',

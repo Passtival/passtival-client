@@ -8,6 +8,7 @@ import type {
   RafflePrizesResponse,
   MemberLevelUpRequest,
   MemberLevelUpResponse,
+  MemberRaffleProfileResponse,
 } from '../types/types';
 
 export const setMemberLevelUp = async (
@@ -36,11 +37,25 @@ export const getRafflePrizes = async (
   return data;
 };
 
+export const getMemberRaffleProfile =
+  async (): Promise<MemberRaffleProfileResponse> => {
+    const { data } = await api.get<MemberRaffleProfileResponse>(
+      END_POINT.MEMBER_RAFFLE,
+    );
+    return data;
+  };
+
 export const TICKET_QUERY_OPTIONS = {
   RAFFLE_PRIZES: (days: number) =>
     queryOptions({
       queryKey: RAFFLE_QUERY_KEY.PRIZES(days),
       queryFn: () => getRafflePrizes(days),
+      throwOnError: false,
+    }),
+  MEMBER_RAFFLE_PROFILE: () =>
+    queryOptions({
+      queryKey: ['member', 'raffle', 'profile'],
+      queryFn: getMemberRaffleProfile,
       throwOnError: false,
     }),
 } as const;
