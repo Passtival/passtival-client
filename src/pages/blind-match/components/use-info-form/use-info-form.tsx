@@ -69,13 +69,11 @@ const UseInfoForm = ({
           label="여성"
           selected={gender === '여성'}
           onChange={() => onGenderChange('여성')}
-          size="lg"
         />
         <Chip
           label="남성"
           selected={gender === '남성'}
           onChange={() => onGenderChange('남성')}
-          size="lg"
         />
       </div>
     </div>

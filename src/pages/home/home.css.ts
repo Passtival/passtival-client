@@ -1,17 +1,15 @@
 import { style } from '@vanilla-extract/css';
 
-import { HEADER_HEIGHT } from '@shared/components/header/header.css';
-
 export const container = style({
-  marginTop: HEADER_HEIGHT,
   marginBottom: '15.3rem',
 });
 
 export const chipContainer = style({
   display: 'flex',
   width: '100%',
-  padding: '0 6.6rem',
+  padding: '0 5.7rem 0 6.6rem',
   height: '4.7rem',
+  gap: '0.9rem',
   justifyContent: 'space-between',
 });
 
