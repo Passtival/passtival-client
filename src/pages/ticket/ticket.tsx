@@ -1,104 +1,65 @@
-import { useState, useCallback, useEffect } from 'react';
-
 import InputSection from '@pages/ticket/components/inpur-section/input-section';
 
 import Button from '@shared/components/button/button';
+import Header from '@shared/components/header/header';
 import Title from '@shared/components/title/title';
 
 import Caption from './components/caption/caption';
 import TicketCarousel from './components/carousel/carousel';
 import TicketChip from './components/chip/chip';
 import TicketModal from './components/ticketmodal';
+import { useTicketForm } from './hooks/use-ticket-form';
 import * as styles from './ticket.css';
 
-interface TicketForm {
-  name: string;
-  studentNum: string;
-  key: string;
-}
-
 const Ticket = () => {
-  const [form, setForm] = useState<TicketForm>({
-    name: '',
-    studentNum: '',
-    key: '',
-  });
-
-  const [modalType, setModalType] = useState<
-    'confirm' | 'success' | 'error' | 'premium' | null
-  >(null);
-
-  const [selectedLevel, setSelectedLevel] = useState(1);
-  const isErrorState = modalType === 'error';
-  const [completedLevel, setCompletedLevel] = useState(0);
-  const [isFormValid, setIsFormValid] = useState(false);
-
-  useEffect(() => {
-    const isValid =
-      form.name.trim() !== '' &&
-      form.studentNum.trim() !== '' &&
-      form.key.trim() !== '';
-    setIsFormValid(isValid);
-  }, [form]);
-
-  const handleFormChange = (name: keyof TicketForm, value: string) => {
-    setForm((prevForm) => ({
-      ...prevForm,
-      [name]: value,
-    }));
-  };
-
-  const handleApplyClick = useCallback(() => {
-    if (selectedLevel === 3) {
-      setModalType('premium');
-    } else {
-      setModalType('confirm');
-    }
-  }, [isFormValid, selectedLevel]);
-
-  const handleConfirm = useCallback(() => {
-    setModalType('success');
-    setCompletedLevel(selectedLevel);
-  }, [selectedLevel]);
-
-  const handleCloseModal = useCallback(() => {
-    setModalType(null);
-    if (modalType === 'success') {
-      setForm({
-        name: '',
-        studentNum: '',
-        key: '',
-      });
-      if (selectedLevel < 3) {
-        setSelectedLevel(selectedLevel + 1);
-      }
-    }
-  }, [modalType, selectedLevel]);
+  const {
+    form,
+    modalType,
+    selectedLevel,
+    completedLevel,
+    isFormValid,
+    isErrorState,
+    handleFormChange,
+    handleApplyClick,
+    handleConfirm,
+    handleCloseModal,
+    setSelectedLevel,
+  } = useTicketForm();
 
   return (
     <>
+      <Header
+        description="Passtival"
+        borderRadius="rounded"
+        bgColor="gray"
+      />
       <div className={styles.container}>
-        <Title
-          mainTitle="상품 응모권"
-          subTitle="상품 당첨의 기회를 잡아보세요!"
-        />
-        <TicketCarousel />
-        <TicketChip
-          selectedLevel={selectedLevel}
-          setSelectedLevel={setSelectedLevel}
-          completedLevel={completedLevel}
-        />
-        <InputSection
-          name={form.name}
-          studentNum={form.studentNum}
-          accessKey={form.key}
-          isErrorState={isErrorState}
-          onNameChange={(value) => handleFormChange('name', value)}
-          onStudentNumberChange={(value) =>
-            handleFormChange('studentNum', value)
-          }
-          onKeyChange={(value) => handleFormChange('key', value)}
-        />
+        <div className={styles.title}>
+          <Title
+            mainTitle="상품 응모권"
+            subTitle="상품 당첨의 기회를 잡아보세요!"
+          />
+        </div>
+
+        <TicketCarousel selectedLevel={selectedLevel} />
+        <div className={styles.inputsection}>
+          <TicketChip
+            selectedLevel={selectedLevel}
+            setSelectedLevel={setSelectedLevel}
+            completedLevel={completedLevel}
+          />
+          <InputSection
+            name={form.name}
+            studentNum={form.studentNum}
+            accessKey={form.key}
+            isErrorState={isErrorState}
+            onNameChange={(value) => handleFormChange('name', value)}
+            onStudentNumberChange={(value) =>
+              handleFormChange('studentNum', value)
+            }
+            onKeyChange={(value) => handleFormChange('key', value)}
+          />
+        </div>
         <Button
           onClick={handleApplyClick}
           disabled={!isFormValid}

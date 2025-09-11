@@ -22,7 +22,7 @@ const TicketChip = ({
         {DAY.map((levelLabel, idx) => {
           const dayNumber = idx + 1;
           const isDisabled =
-            completedLevel >= LAST_LEVEL || dayNumber > completedLevel + 1;
+            completedLevel >= LAST_LEVEL || dayNumber !== completedLevel + 1;
 
           return (
             <Chip

@@ -1,16 +1,19 @@
 import { Navigate, Outlet, useLocation } from 'react-router-dom';
 
-import { authService } from '@shared/auth/services/auth-service.ts';
+import { useAuthRefresh } from '@shared/hooks/use-auth-check';
 
 import { routePath } from '../path';
 
 export function ProtectedRoute() {
-  const isAuthenticated = authService.isAuthenticated();
   const location = useLocation();
+  const { isChecking, isAuthenticated } = useAuthRefresh('user');
+
+  if (isChecking) {
+    return null;
+  }
 
   if (!isAuthenticated) {
     const currentPath = location.pathname;
-
     if (
       currentPath === routePath.BLIND_MATCH ||
       currentPath === routePath.TICKET

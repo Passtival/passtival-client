@@ -10,9 +10,9 @@ import {
 
 import { LOST_ITEM_QUERY_KEY } from '@shared/apis/keys/query-key';
 import { tokenService } from '@shared/auth/services/token-service';
-import Carousel from '@shared/components/carousel/carousel';
 import DetailInfo from '@shared/components/detail-eventinfo/detail-info';
 import Modal from '@shared/components/modal/modal';
+import Thumbnail from '@shared/components/Thumbnail/Thumbnail';
 import TopNavigation from '@shared/components/top-navigation/top-navigation';
 import { IcSvgTrashcan } from '@shared/icons';
 import { getFormattedDateTime } from '@shared/utils/formatDateTime';
@@ -92,26 +92,21 @@ const LostItemsInfo = () => {
         onRightClick={isAdmin ? handleTrashcanClick : undefined}
       />
 
-      <div className={styles.container}>
-        <Carousel type="details">
-          {result.imagePath ? (
-            <img
-              src={result.imagePath}
-              alt={result.title}
-            />
-          ) : (
-            <div>이미지가 없습니다</div>
-          )}
-        </Carousel>
-
-        <DetailInfo
-          title={result.title}
-          time="습득시간"
-          timevalue={getFormattedDateTime(result.foundDateTime ?? '')}
-          location="습득위치"
-          locationvalue={result.area}
+      <div className={styles.carousel}>
+        <Thumbnail
+          src={result.imagePath}
+          alt={result.title}
+          type="square_lg"
         />
       </div>
+
+      <DetailInfo
+        title={result.title}
+        time="습득시간"
+        timevalue={getFormattedDateTime(result.foundDateTime ?? '')}
+        location="습득위치"
+        locationvalue={result.area}
+      />
 
       {isModalOpen && (
         <Modal.Container open={isModalOpen}>
