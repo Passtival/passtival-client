@@ -72,9 +72,15 @@ export const handleRequest = (config: InternalAxiosRequestConfig) => {
  * - 저장된 인증 정보를 제거합니다.
  * - '/login' 페이지로 강제 이동합니다.
  */
-const redirectToLogin = (): void => {
-  authService.logout();
-  window.location.replace(routePath.LOGIN);
+const redirectToLogin = (isAdminApi: boolean = false): void => {
+  if (isAdminApi) {
+    tokenService.removeAdminAccessToken();
+    tokenService.removeAdminRefreshToken();
+    window.location.replace(routePath.ADMIN_LOGIN);
+  } else {
+    authService.logout();
+    window.location.replace(routePath.LOGIN);
+  }
 };
 
 /**
@@ -128,12 +134,12 @@ export const createHandleResponseError =
       : tokenService.getRefreshToken();
 
     if (!refreshToken) {
-      redirectToLogin();
+      redirectToLogin(isAdminApi);
       return Promise.reject(error);
     }
 
     if (originalRequest.retry) {
-      redirectToLogin();
+      redirectToLogin(isAdminApi);
       return Promise.reject(error);
     }
     originalRequest.retry = true;
@@ -170,7 +176,7 @@ export const createHandleResponseError =
 
       return client.request(originalRequest);
     } catch (error) {
-      redirectToLogin();
+      redirectToLogin(isAdminApi);
       return Promise.reject(error);
     }
   };
