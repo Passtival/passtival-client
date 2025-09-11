@@ -32,6 +32,4 @@ export const button = style({
   padding: '0 2.4rem',
   position: 'fixed',
   bottom: '5.8rem',
-  width: '100%',
-  padding: '0 2.4rem',
 });
