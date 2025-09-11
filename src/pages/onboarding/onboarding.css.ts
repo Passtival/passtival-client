@@ -32,7 +32,7 @@ export const highlight = style({
 
 export const buttonWrapper = recipe({
   base: {
-    position: 'fixed',
+    position: 'absolute',
     right: '2.4rem',
   },
   variants: {
