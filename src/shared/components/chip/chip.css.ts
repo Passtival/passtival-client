@@ -7,9 +7,13 @@ export const chipVariants = recipe({
     display: 'inline-flex',
     height: '3.4rem',
     alignItems: 'center',
+    justifyContent: 'center',
     ...themeVars.fontStyles.button_r_14,
     cursor: 'pointer',
     borderRadius: '8px',
+    width: 'auto',
+    padding: '0.8rem 1.2rem',
+    textAlign: 'center',
   },
 
   variants: {
@@ -25,15 +29,11 @@ export const chipVariants = recipe({
         border: `1px solid ${themeVars.color.bg_white}`,
       },
     },
-    size: {
-      sm: {
-        padding: '0.8rem 1.2rem',
+    fullWidth: {
+      true: {
+        flex: 1,
       },
-      lg: {
-        width: '100%',
-        justifyContent: 'center',
-      },
+      false: {},
     },
-    disabled: {},
   },
 });

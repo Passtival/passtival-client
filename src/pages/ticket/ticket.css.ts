@@ -1,11 +1,9 @@
 import { style } from '@vanilla-extract/css';
 
-import { HEADER_HEIGHT } from '@shared/components/header/header.css';
 import { themeVars } from '@shared/styles';
 
 export const container = style({
   padding: '0 2.4rem 0 2.4rem',
-  marginTop: HEADER_HEIGHT,
 });
 
 export const title = style({ padding: '1.3rem 0 1rem' });

@@ -3,12 +3,11 @@ import { recipe } from '@vanilla-extract/recipes';
 
 import { themeVars } from '@shared/styles';
 
-export const HEADER_HEIGHT = '6rem';
-
 export const container = recipe({
   base: {
     display: 'flex',
-    position: 'fixed',
+    position: 'sticky',
+    top: 0,
     padding: '1.8rem 1.6rem',
     zIndex: themeVars.zIndex.overlay,
     width: '100%',

@@ -1,13 +1,12 @@
 import { style } from '@vanilla-extract/css';
 
-import { HEADER_HEIGHT } from '@shared/components/header/header.css';
 import { themeVars } from '@shared/styles';
 
 export const container = style({
   display: 'flex',
   flexDirection: 'column',
   alignItems: 'center',
-  marginTop: HEADER_HEIGHT,
+
   height: '65vh',
 });
 

@@ -57,25 +57,25 @@ const UseInfoForm = ({
       <Input
         value={phoneNumber}
         onChange={handlePhoneChange}
-        placeholder={data?.result?.memberPhoneNumber ?? USE_INFO_FORM.PHONE}
+        placeholder={USE_INFO_FORM.PHONE}
       />
       <Input
         value={instaId}
         onChange={handleInstaIdChange}
-        placeholder={data?.result?.memberInstagramId ?? USE_INFO_FORM.INSTAR_ID}
+        placeholder={USE_INFO_FORM.INSTAR_ID}
       />
       <div className={styles.chip}>
         <Chip
           label="여성"
           selected={gender === '여성'}
           onChange={() => onGenderChange('여성')}
-          size="lg"
+          fullWidth
         />
         <Chip
           label="남성"
           selected={gender === '남성'}
           onChange={() => onGenderChange('남성')}
-          size="lg"
+          fullWidth
         />
       </div>
     </div>

@@ -1,7 +1,6 @@
 import { useParams } from 'react-router-dom';
 
 import Header from '@shared/components/header/header';
-import { HEADER_HEIGHT } from '@shared/components/header/header.css';
 import Tab from '@shared/components/tab/tab';
 
 import ApplyPage from './components/apply/apply';
@@ -18,7 +17,7 @@ const BlindMatch = () => {
         borderRadius="square"
         bgColor="gray"
       />
-      <div style={{ marginTop: HEADER_HEIGHT }}>
+      <div>
         <Tab.Container initialValue={`day-${initialDay}`}>
           <Tab.List>
             <Tab.Item value="day-1">1일차 매칭</Tab.Item>
