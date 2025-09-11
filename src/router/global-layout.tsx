@@ -33,18 +33,6 @@ export default function GlobalLayout() {
     );
   }
 
-  const isTicket = pathname === routePath.TICKET;
-  const hasTicketOnboardingToken = !!tokenService.getTicketOnboardingToken();
-
-  if (isTicket && !hasTicketOnboardingToken) {
-    return (
-      <Navigate
-        to={routePath.TICKET_ONBOARDING}
-        replace
-      />
-    );
-  }
-
   return (
     <div className={isLogin ? noBackgroundColor : rootStyle}>
       <Outlet />

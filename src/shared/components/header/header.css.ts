@@ -3,10 +3,14 @@ import { recipe } from '@vanilla-extract/recipes';
 
 import { themeVars } from '@shared/styles';
 
+export const HEADER_HEIGHT = '6rem';
+
 export const container = recipe({
   base: {
     display: 'flex',
+    position: 'fixed',
     padding: '1.8rem 1.6rem',
+    zIndex: themeVars.zIndex.overlay,
     width: '100%',
     gap: '0.4rem',
   },
@@ -25,7 +29,7 @@ export const container = recipe({
         color: themeVars.color.gray_900,
       },
       gray: {
-        backgroundColor: themeVars.color.gray_500_40,
+        backgroundColor: themeVars.color.gray_800,
         color: themeVars.color.bg_white,
       },
     },

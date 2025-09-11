@@ -1,3 +1,7 @@
+import { useQuery } from '@tanstack/react-query';
+
+import { BLIND_MATCH_QUERY_OPTIONS } from '@pages/blind-match/apis/queries';
+
 import Title from '@shared/components/title/title';
 
 import * as styles from './result.css';
@@ -14,6 +18,7 @@ interface SuccessProps {
 }
 
 const Success = ({ currentDay }: SuccessProps) => {
+  const { data } = useQuery(BLIND_MATCH_QUERY_OPTIONS.BLIND_MATCH_RESULT());
   return (
     <>
       <div className={styles.header}>
@@ -27,13 +32,13 @@ const Success = ({ currentDay }: SuccessProps) => {
       </p>
       <UserInfo
         title="나의 정보"
-        instaId="안녕하신지요"
-        phoneNumber="010-1588-1588"
+        instaId={data?.result?.myInfo?.instagramId ?? ''}
+        phoneNumber={data?.result?.myInfo?.phoneNumber ?? ''}
       />
       <UserInfo
         title="매칭 상대의 정보"
-        instaId=""
-        phoneNumber=""
+        instaId={data?.result?.partnerInfo?.instagramId ?? ''}
+        phoneNumber={data?.result?.partnerInfo?.phoneNumber ?? ''}
       />
     </>
   );

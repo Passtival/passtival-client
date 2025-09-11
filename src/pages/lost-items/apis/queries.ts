@@ -11,6 +11,7 @@ export const COMMUNITY_QUERY_OPTIONS = {
     return queryOptions({
       queryKey: LOST_ITEM_QUERY_KEY.LOST_ITEM_PREVIEW(),
       queryFn: getLostItemList,
+      throwOnError: false,
     });
   },
 };

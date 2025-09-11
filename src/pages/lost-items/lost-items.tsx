@@ -8,6 +8,9 @@ import { COMMUNITY_QUERY_OPTIONS } from '@pages/lost-items/apis/queries';
 import { tokenService } from '@shared/auth/services/token-service';
 import Button from '@shared/components/button/button';
 import Card from '@shared/components/card/card';
+import ErrorMessage from '@shared/components/error-message/error-message';
+import Header from '@shared/components/header/header';
+import Loading from '@shared/components/loading/loading';
 import { themeVars } from '@shared/styles';
 
 import { LOST_ITEMS } from './constants/lostItems';
@@ -15,7 +18,9 @@ import * as styles from './lost-items.css';
 
 const LostItems = () => {
   const navigate = useNavigate();
-  const { data } = useQuery(COMMUNITY_QUERY_OPTIONS.LOST_ITEMS_LIST());
+  const { data, error, isLoading } = useQuery(
+    COMMUNITY_QUERY_OPTIONS.LOST_ITEMS_LIST(),
+  );
 
   const isAdmin = !!tokenService.getAdminAccessToken();
 
@@ -29,6 +34,11 @@ const LostItems = () => {
 
   return (
     <>
+      <Header
+        description="Passtival"
+        borderRadius="rounded"
+        bgColor="gray"
+      />
       <div className={styles.headerContainer}>
         <div className={styles.textContainer}>
           <p style={themeVars.fontStyles.title_b_20}>
@@ -48,16 +58,25 @@ const LostItems = () => {
         )}
       </div>
       <div className={styles.cardlist}>
-        {data?.result?.map(({ id, title, area, imagePath }) => (
-          <Card
-            key={id}
-            type="lg"
-            imgSrc={imagePath}
-            title={title}
-            description={area}
-            onClick={() => handleCardClick(id!)}
+        {isLoading ? (
+          <Loading
+            size="medium"
+            message="분실물 정보를 불러오는 중..."
           />
-        ))}
+        ) : error ? (
+          <ErrorMessage message="분실물 정보를 불러올 수 없습니다." />
+        ) : (
+          data?.result?.map(({ id, title, area, imagePath }) => (
+            <Card
+              key={id}
+              type="lg"
+              imgSrc={imagePath}
+              title={title}
+              description={area}
+              onClick={() => handleCardClick(id!)}
+            />
+          ))
+        )}
       </div>
     </>
   );

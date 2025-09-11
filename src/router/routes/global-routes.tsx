@@ -27,6 +27,7 @@ export const publicRoutesWithMain = [
   { path: routePath.BOOTH, Component: BoothPage },
   { path: routePath.LOST_ITEMS, Component: LostItemsPage },
   { path: routePath.LOGIN, Component: LoginPage },
+  { path: routePath.TICKET_ONBOARDING, Component: TicketOnboardingPage },
 ];
 
 export const publicRoutesOthers = [
@@ -38,7 +39,6 @@ export const publicRoutesOthers = [
   { path: routePath.BOOTH_DETAIL, Component: BoothDetailPage },
   { path: routePath.INFO_SHARE_CONSENT, Component: InfoShareConsentPage },
   { path: routePath.LINDING, Component: LandingPage },
-  { path: routePath.TICKET_ONBOARDING, Component: TicketOnboardingPage },
 ];
 
 export const protectedRoutes = [

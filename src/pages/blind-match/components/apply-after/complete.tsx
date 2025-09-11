@@ -28,12 +28,13 @@ const Complete = ({ currentDay }: CompleteProps) => {
             ※ 성비 불균형으로 인해 매칭이 이루어지지 않을 수 잇습니다.
           </p>
         </div>
+        <div className={styles.button}>
+          <Button disabled={true}>매칭 결과 대기중</Button>
 
-        <Button disabled={true}>매칭 결과 대기중</Button>
-
-        <div className={styles.notice}>
-          <IcSvgCaution style={{ width: 12, height: 12 }} />
-          <p>18시에 매칭결과가 제공됩니다.</p>
+          <div className={styles.notice}>
+            <IcSvgCaution style={{ width: 12, height: 12 }} />
+            <p>18시에 매칭결과가 제공됩니다.</p>
+          </div>
         </div>
       </div>
     </>

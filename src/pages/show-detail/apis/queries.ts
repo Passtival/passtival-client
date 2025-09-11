@@ -16,9 +16,9 @@ export const PERFORMANCE_DETAIL_QUERY_OPTIONS = {
 
 export const getPerformanceDetail = async (
   performanceId: string,
-): Promise<ShowDetailResponse['result']> => {
+): Promise<ShowDetailResponse> => {
   const { data } = await api.get<ShowDetailResponse>(
     END_POINT.PERFORMANCES_INFO.replace('{performanceId}', performanceId),
   );
-  return data.result;
+  return data;
 };

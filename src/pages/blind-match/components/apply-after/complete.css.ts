@@ -8,15 +8,18 @@ export const header = style({
 });
 
 export const container = style({
-  display: 'grid',
-  placeItems: 'center',
+  display: 'flex',
+  flexDirection: 'column',
+  alignItems: 'center',
+  padding: '0 2.4rem',
 });
 
 export const messageContainer = style({
   display: 'flex',
   flexDirection: 'column',
   alignItems: 'center',
-  padding: '14.5rem 0 16.5rem 0',
+  justifyContent: 'center',
+  height: 'calc(70vh - 5.6rem - 13.7rem)',
 });
 
 export const message = style({
@@ -31,9 +34,20 @@ export const caution = style({
   ...themeVars.fontStyles.caption2_m_12,
   color: themeVars.color.bg_white,
 });
+
+export const button = style({
+  display: 'flex',
+  flexDirection: 'column',
+  alignItems: 'center',
+  padding: '0 2.4rem',
+
+  position: 'fixed',
+  bottom: '13.7rem',
+  width: '100%',
+});
+
 export const notice = style({
   display: 'flex',
-  alignItems: 'center',
   gap: '0.3rem',
   paddingTop: '0.6rem',
   ...themeVars.fontStyles.button_r_12,
