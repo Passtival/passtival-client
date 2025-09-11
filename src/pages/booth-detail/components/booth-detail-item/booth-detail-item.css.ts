@@ -36,7 +36,7 @@ export const boothPrice = style({
 
 export const boothInfo = style({
   maxWidth: '17.7rem',
-  height: '4.6rem',
+  height: '4.4rem',
   display: '-webkit-box',
   WebkitBoxOrient: 'vertical',
   WebkitLineClamp: 2,
