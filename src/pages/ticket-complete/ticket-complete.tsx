@@ -1,3 +1,4 @@
+import Header from '@shared/components/header/header';
 import Title from '@shared/components/title/title';
 
 import * as styles from './ticket-complete.css';
@@ -5,6 +6,11 @@ import * as styles from './ticket-complete.css';
 const Complete = () => {
   return (
     <>
+      <Header
+        description="Passtival"
+        borderRadius="rounded"
+        bgColor="gray"
+      />
       <div className={styles.title}>
         <Title
           mainTitle="상품 응모권"
