@@ -23,10 +23,10 @@ export const useApplication = (currentDay: string) => {
   const [isSuccess, setIsSuccess] = useState(false);
 
   useEffect(() => {
-    if (currentDay === '1일차') {
+    if (currentDay === '1일차 매칭') {
       setHasApplied(true);
       setIsSuccess(false);
-    } else if (currentDay === '2일차') {
+    } else if (currentDay === '2일차 매칭') {
       setHasApplied(true);
       setIsSuccess(true);
     } else {
@@ -40,13 +40,13 @@ export const useApplication = (currentDay: string) => {
       const resultsTime = new Date();
 
       // 각 일차별 날짜 설정
-      if (currentDay === '1일차') {
+      if (currentDay === '1일차 매칭') {
         deadline.setFullYear(EVENT_YEAR, EVENT_MONTH, EVENT_DAYS.DAY_1);
         resultsTime.setFullYear(EVENT_YEAR, EVENT_MONTH, EVENT_DAYS.DAY_1);
-      } else if (currentDay === '2일차') {
+      } else if (currentDay === '2일차 매칭') {
         deadline.setFullYear(EVENT_YEAR, EVENT_MONTH, EVENT_DAYS.DAY_2);
         resultsTime.setFullYear(EVENT_YEAR, EVENT_MONTH, EVENT_DAYS.DAY_2);
-      } else if (currentDay === '3일차') {
+      } else if (currentDay === '3일차 매칭') {
         deadline.setFullYear(EVENT_YEAR, EVENT_MONTH, EVENT_DAYS.DAY_3);
         resultsTime.setFullYear(EVENT_YEAR, EVENT_MONTH, EVENT_DAYS.DAY_3);
       }
