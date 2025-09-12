@@ -1,5 +1,6 @@
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 import { useState, useCallback, useEffect } from 'react';
+import { useNavigate } from 'react-router';
 
 import { TICKET_MUTATION_OPTIONS, TICKET_QUERY_OPTIONS } from '../apis/queries';
 
@@ -13,6 +14,7 @@ type ModalType = 'confirm' | 'success' | 'error' | 'premium' | null;
 
 export const useTicketForm = () => {
   const queryClient = useQueryClient();
+  const complete = useNavigate();
 
   const [form, setForm] = useState<TicketForm>({
     name: '',
@@ -88,6 +90,9 @@ export const useTicketForm = () => {
 
       setModalType('success');
       setCompletedLevel(selectedLevel);
+      if (selectedLevel === 3) {
+        complete('/ticket-complete');
+      }
     } catch (error) {
       console.error('Level up failed:', error);
       setModalType('error');
