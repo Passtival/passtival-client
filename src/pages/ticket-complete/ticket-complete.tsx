@@ -1,6 +1,6 @@
 import Title from '@shared/components/title/title';
 
-import * as styles from './complete.css';
+import * as styles from './ticket-complete.css';
 
 const Complete = () => {
   return (

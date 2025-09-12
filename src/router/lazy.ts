@@ -21,7 +21,9 @@ export const LostItemReportPage = lazy(
   () => import('@pages/lost-item-report/lost-item-report'),
 );
 export const TicketPage = lazy(() => import('@pages/ticket/ticket'));
-
+export const TicketCompletePage = lazy(
+  () => import('@pages/ticket-complete/ticket-complete'),
+);
 export const LoginCallbackPage = lazy(
   () => import('@pages/login-callback/login-callback'),
 );
