@@ -26,13 +26,13 @@ const BlindMatch = () => {
           </Tab.List>
           <Tab.Panels>
             <Tab.Panel value="day-1">
-              <ApplyPage currentDay="1일차 매칭" />
+              <ApplyPage currentDay="1일차" />
             </Tab.Panel>
             <Tab.Panel value="day-2">
-              <ApplyPage currentDay="2일차 매칭" />
+              <ApplyPage currentDay="2일차" />
             </Tab.Panel>
             <Tab.Panel value="day-3">
-              <ApplyPage currentDay="3일차 매칭" />
+              <ApplyPage currentDay="3일차" />
             </Tab.Panel>
           </Tab.Panels>
         </Tab.Container>
