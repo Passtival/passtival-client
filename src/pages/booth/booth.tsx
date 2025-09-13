@@ -29,7 +29,7 @@ const Booth = () => {
     <>
       <Header
         description="Passtival"
-        borderRadius="square"
+        borderRadius="rounded"
         bgColor="gray"
       />
       <div className={styles.container}>
