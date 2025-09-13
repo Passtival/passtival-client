@@ -19,10 +19,6 @@ export const getPerformanceDetail = async (
 ): Promise<ShowDetailResponse> => {
   const numericId = Number(performanceId);
 
-  if (isNaN(numericId)) {
-    throw new Error('Invalid performance ID');
-  }
-
   const { data } = await api.get<{ result: ShowDetailResponse }>(
     END_POINT.PERFORMANCES_INFO.replace(
       '{performanceId}',
