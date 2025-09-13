@@ -25,8 +25,8 @@ const Home = () => {
   const navigate = useNavigate();
   const { data } = useQuery(PERFORMANCE_QUERY_OPTIONS.PERFORMANCE_LIST());
 
-  const handleClick = (id: number) => {
-    navigate(`/show-detail/${id}`);
+  const handleClick = (id: number | undefined) => {
+    if (id) navigate(`/show-detail/${id}`);
   };
 
   return (
@@ -76,12 +76,17 @@ const Home = () => {
         {data
           ?.filter((schedule) => schedule.day === selectedDay)
           .map(
-            (
-              { title, artist, startTime, endTime, imagePath, introduction },
-              index: number,
-            ) => (
+            ({
+              id,
+              title,
+              artist,
+              startTime,
+              endTime,
+              imagePath,
+              introduction,
+            }) => (
               <TimeTable
-                key={index}
+                key={id}
                 startIso={startTime || ''}
                 endIso={endTime || ''}
                 title={title || ''}
@@ -89,7 +94,7 @@ const Home = () => {
                 description={introduction || ''}
                 imgSrc={imagePath || ''}
                 imgAlt={title || ''}
-                onClick={() => handleClick(index)}
+                onClick={() => handleClick(id)}
               />
             ),
           )}
