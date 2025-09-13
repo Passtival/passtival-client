@@ -24,11 +24,11 @@ export const top = style({
 export const bottom = style({
   display: 'flex',
   justifyContent: 'center',
-  alignItems: 'center',
   width: '100%',
-  height: '14.7rem',
+  height: '15.5rem',
   borderLeft: `1px solid ${themeVars.color.main_yellow}`,
   gap: '0.8rem',
+  paddingTop: '0.6rem',
 });
 
 export const leftBar = style({
