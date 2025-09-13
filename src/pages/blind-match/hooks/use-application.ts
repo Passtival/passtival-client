@@ -73,12 +73,6 @@ export const useApplication = (currentDay: string) => {
    */
   useEffect(() => {
     const checkStatus = () => {
-      // 신청이 완료된 경우 complete 상태 유지
-      if (isApplicationCompleted) {
-        setViewState('complete');
-        return;
-      }
-
       const now = new Date();
       const startTime = new Date();
       const deadline = new Date();
@@ -110,8 +104,14 @@ export const useApplication = (currentDay: string) => {
       } else if (now.getTime() > deadline.getTime()) {
         setViewState('closed');
       } else if (now.getTime() >= startTime.getTime()) {
-        setViewState('entry');
+        // 신청 시간 이후에만 신청 완료 상태 확인
+        if (isApplicationCompleted) {
+          setViewState('complete');
+        } else {
+          setViewState('entry');
+        }
       } else {
+        // 신청 시간 이전에는 무조건 before-match 상태
         setViewState('before-match');
       }
     };
@@ -137,13 +137,31 @@ export const useApplication = (currentDay: string) => {
    */
   useEffect(() => {
     if (userInfo?.result) {
-      // 사용자가 이미 신청한 경우 complete 상태로 설정
+      // 사용자가 이미 신청한 경우 신청 완료 상태로 설정
       if (userInfo.result.memberId) {
-        setIsApplicationCompleted(true);
         setHasApplied(true);
+        // 단, 신청 시간 이후에만 complete 상태로 설정
+        const now = new Date();
+        const startTime = new Date();
+
+        // 현재 일차에 맞는 시작 시간 설정
+        if (currentDay === '1일차') {
+          startTime.setFullYear(EVENT_YEAR, EVENT_MONTH, EVENT_DAYS.DAY_1);
+        } else if (currentDay === '2일차') {
+          startTime.setFullYear(EVENT_YEAR, EVENT_MONTH, EVENT_DAYS.DAY_2);
+        } else if (currentDay === '3일차') {
+          startTime.setFullYear(EVENT_YEAR, EVENT_MONTH, EVENT_DAYS.DAY_3);
+        }
+
+        startTime.setHours(START_HOUR, START_MINUTE, 0, 0);
+
+        // 신청 시간 이후에만 complete 상태로 설정
+        if (now.getTime() >= startTime.getTime()) {
+          setIsApplicationCompleted(true);
+        }
       }
     }
-  }, [userInfo]);
+  }, [userInfo, currentDay]);
 
   /**
    * 신청 완료 핸들러
