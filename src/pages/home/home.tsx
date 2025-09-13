@@ -14,11 +14,7 @@ import { HOME_TEXT } from '@shared/constants/festivalSchedule';
 
 import * as styles from './home.css';
 
-const mokImages = [
-  'https://placehold.co/600x400',
-  'https://placehold.co/600x400',
-  'https://placehold.co/600x400',
-];
+const mokImages = ['/info.png'];
 
 const Home = () => {
   const [selectedDay, setSelectedDay] = useState(1);
@@ -49,7 +45,8 @@ const Home = () => {
               <img
                 key={index}
                 src={imageUrl}
-                alt={`분실물 이미지 ${index + 1}`}
+                alt={`공지 이미지 ${index + 1}`}
+                className={styles.carouselImage}
               />
             ))}
           </Carousel>
