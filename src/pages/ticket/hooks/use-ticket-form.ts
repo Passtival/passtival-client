@@ -24,6 +24,10 @@ type ModalType =
 export const useTicketForm = () => {
   const queryClient = useQueryClient();
 
+  const initialCompletedLevel =
+    Number(localStorage.getItem('completedLevel')) || 0;
+  const [completedLevel, setCompletedLevel] = useState(initialCompletedLevel);
+
   const [form, setForm] = useState<TicketForm>({
     name: '',
     studentNum: '',
@@ -32,10 +36,8 @@ export const useTicketForm = () => {
 
   const [modalType, setModalType] = useState<ModalType>(null);
   const [selectedLevel, setSelectedLevel] = useState(1);
-  const [completedLevel, setCompletedLevel] = useState(0);
   const [isFormValid, setIsFormValid] = useState(false);
 
-  // 사용자 응모권 정보 조회
   const { data: memberRaffleProfile } = useQuery(
     TICKET_QUERY_OPTIONS.MEMBER_RAFFLE_PROFILE(),
   );
@@ -46,7 +48,6 @@ export const useTicketForm = () => {
 
   const isErrorState = modalType === 'error' || modalType === 'auth_error';
 
-  // 사용자 레벨 정보를 기반으로 초기 상태 설정
   useEffect(() => {
     if (memberRaffleProfile?.result) {
       const serverLevel = memberRaffleProfile.result.level || 0;
