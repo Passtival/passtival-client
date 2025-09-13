@@ -10,7 +10,7 @@ export const container = style({
   minHeight: '100dvh',
   alignItems: 'center',
   justifyContent: 'flex-end',
-  paddingBottom: 'clamp(14rem, 10vh, 10rem)',
+  paddingBottom: 'clamp(10rem, 10vh, 10rem)',
 });
 
 export const contentWrapper = style({
