@@ -1,3 +1,7 @@
+import { useLocation } from 'react-router-dom';
+
+import { routePath } from '@router/path';
+
 import {
   CONSENT_CONTENT,
   CONSENT_SUBTITLE,
@@ -9,9 +13,14 @@ import TopNavigation from '@shared/components/top-navigation/top-navigation';
 import * as styles from './info-share.css';
 
 const InfoShare = () => {
+  const location = useLocation();
   return (
     <>
-      <TopNavigation title="개인정보" />
+      <TopNavigation
+        title="개인정보"
+        backTo={routePath.BLIND_MATCH}
+        backState={location.state}
+      />
       <article className={styles.container}>
         <div></div>
         <header>
