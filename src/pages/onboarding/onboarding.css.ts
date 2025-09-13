@@ -34,6 +34,7 @@ export const buttonWrapper = recipe({
   base: {
     position: 'absolute',
     right: '2.4rem',
+    fontFamily: `'Pretendard Variable', sans-serif`,
   },
   variants: {
     step: {
