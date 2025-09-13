@@ -9,6 +9,12 @@ export const container = style({
   padding: '3rem 0 0 3rem',
 });
 
+export const topNav = style({
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'center',
+});
+
 export const title = style({
   ...themeVars.fontStyles.head_eb_22,
   color: themeVars.color.bg_white,
