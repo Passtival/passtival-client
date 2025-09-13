@@ -22,7 +22,6 @@ const InfoShare = () => {
         backState={location.state}
       />
       <article className={styles.container}>
-        <div></div>
         <header>
           <h1 className={styles.title}>{CONSENT_TITLE}</h1>
           <p className={styles.subtitle}>{CONSENT_SUBTITLE}</p>
