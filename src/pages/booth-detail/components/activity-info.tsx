@@ -23,9 +23,8 @@ const ActivitiesInfo = () => {
   }
 
   if (!data || data.length === 0) {
-    return <div>등록된 체험활동이 없습니다.</div>;
+    return <div className={style.nonetext}>체험활동이 없습니다.</div>;
   }
-
   return (
     <>
       {data.map((activity) => (

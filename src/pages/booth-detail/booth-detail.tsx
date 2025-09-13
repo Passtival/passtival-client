@@ -1,4 +1,4 @@
-import { useParams } from 'react-router-dom';
+import { useParams, useLocation } from 'react-router-dom';
 
 import ActivitiesInfo from '@pages/booth-detail/components/activity-info';
 import BoothInfo from '@pages/booth-detail/components/booth-info';
@@ -9,13 +9,19 @@ import TopNavigation from '@shared/components/top-navigation/top-navigation';
 
 const BoothDetailPage = () => {
   const { id } = useParams<{ id: string }>();
+  const location = useLocation();
+  const boothType = location.state?.boothType;
+
   if (!id) {
     throw new Error('부스 ID가 없습니다.');
   }
 
+  const topNavigationTitle =
+    boothType === '푸드존' ? '푸드존 상세 정보' : '부스 상세 정보';
+
   return (
     <>
-      <TopNavigation title="부스 상세 정보" />
+      <TopNavigation title={topNavigationTitle} />
 
       <Tab.Container initialValue="booth-info">
         <Tab.List>
