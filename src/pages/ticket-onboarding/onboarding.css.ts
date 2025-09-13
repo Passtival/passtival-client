@@ -20,18 +20,18 @@ export const section = style({
 });
 
 export const detail = style({
-  position: 'fixed',
+  position: 'sticky',
   bottom: '20rem',
+  marginBottom: '1.5rem',
   ...themeVars.fontStyles.button_r_12,
   color: themeVars.color.gray_600,
   borderBottom: `1px solid ${themeVars.color.gray_600}`,
-  paddingTop: '2rem',
 });
 
 export const button = style({
   width: '100%',
   padding: '0 2.4rem',
 
-  position: 'fixed',
+  position: 'sticky',
   bottom: '13.1rem',
 });
