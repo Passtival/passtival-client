@@ -28,7 +28,7 @@ export const dropdownContainer = style({
 
 export const button = style({
   position: 'absolute',
-  bottom: '13.1rem',
+  bottom: '5.8rem',
   width: '100%',
   padding: '0 2.4rem',
 });
