@@ -28,3 +28,7 @@ export const festivalScheduleText = style({
 export const carouselWrapper = style({
   padding: '0 2.4rem',
 });
+
+export const carouselImage = style({
+  height: '21.4rem',
+});
