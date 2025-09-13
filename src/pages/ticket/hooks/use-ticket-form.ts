@@ -39,13 +39,11 @@ export const useTicketForm = () => {
 
   const isErrorState = modalType === 'error';
 
-  // 사용자 레벨 정보를 기반으로 초기 상태 설정
   useEffect(() => {
     if (memberRaffleProfile?.result) {
       const currentLevel = memberRaffleProfile.result.level || 0;
       setCompletedLevel(currentLevel);
 
-      // 서버에서 받은 최신 레벨을 localStorage에 저장합니다.
       localStorage.setItem('completedLevel', String(currentLevel));
 
       const nextLevel = Math.min(currentLevel + 1, 3);
