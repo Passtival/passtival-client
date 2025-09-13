@@ -16,11 +16,7 @@ import {
   BOOTH_TYPES,
 } from './constants/booth-text';
 
-const mokImages = [
-  'https://placehold.co/600x400',
-  'https://placehold.co/600x400',
-  'https://placehold.co/600x400',
-];
+const mokImages = ['/map1.png', '/map2.png'];
 
 const Booth = () => {
   const [selectedType, setSelectedType] = useState(BOOTH_TYPES[0]);
@@ -42,7 +38,8 @@ const Booth = () => {
               <img
                 key={index}
                 src={imageUrl}
-                alt={`분실물 이미지 ${index + 1}`}
+                alt={`행사장 이미지 ${index + 1}`}
+                className={styles.carouselImage}
               />
             ))}
           </Carousel>
