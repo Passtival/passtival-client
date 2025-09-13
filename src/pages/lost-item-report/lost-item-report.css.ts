@@ -32,3 +32,7 @@ export const button = style({
   width: '100%',
   padding: '0 2.4rem',
 });
+
+export const container = style({
+  paddingBottom: '20rem',
+});
