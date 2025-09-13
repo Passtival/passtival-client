@@ -1,4 +1,5 @@
 import InputSection from '@pages/ticket/components/inpur-section/input-section';
+import Complete from '@pages/ticket-complete/ticket-complete';
 
 import Button from '@shared/components/button/button';
 import Header from '@shared/components/header/header';
@@ -25,6 +26,10 @@ const Ticket = () => {
     handleCloseModal,
     setSelectedLevel,
   } = useTicketForm();
+
+  if (completedLevel >= 3) {
+    return <Complete />;
+  }
 
   return (
     <>
