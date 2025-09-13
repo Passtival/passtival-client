@@ -1,6 +1,5 @@
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 import { useState, useCallback, useEffect } from 'react';
-import { useNavigate } from 'react-router';
 
 import { TICKET_MUTATION_OPTIONS, TICKET_QUERY_OPTIONS } from '../apis/queries';
 
@@ -14,7 +13,10 @@ type ModalType = 'confirm' | 'success' | 'error' | 'premium' | null;
 
 export const useTicketForm = () => {
   const queryClient = useQueryClient();
-  const complete = useNavigate();
+
+  const initialCompletedLevel =
+    Number(localStorage.getItem('completedLevel')) || 0;
+  const [completedLevel, setCompletedLevel] = useState(initialCompletedLevel);
 
   const [form, setForm] = useState<TicketForm>({
     name: '',
@@ -24,7 +26,6 @@ export const useTicketForm = () => {
 
   const [modalType, setModalType] = useState<ModalType>(null);
   const [selectedLevel, setSelectedLevel] = useState(1);
-  const [completedLevel, setCompletedLevel] = useState(0);
   const [isFormValid, setIsFormValid] = useState(false);
 
   // 사용자 응모권 정보 조회
@@ -43,6 +44,9 @@ export const useTicketForm = () => {
     if (memberRaffleProfile?.result) {
       const currentLevel = memberRaffleProfile.result.level || 0;
       setCompletedLevel(currentLevel);
+
+      // 서버에서 받은 최신 레벨을 localStorage에 저장합니다.
+      localStorage.setItem('completedLevel', String(currentLevel));
 
       const nextLevel = Math.min(currentLevel + 1, 3);
       setSelectedLevel(nextLevel);
@@ -90,9 +94,8 @@ export const useTicketForm = () => {
 
       setModalType('success');
       setCompletedLevel(selectedLevel);
-      if (selectedLevel === 3) {
-        complete('/ticket-complete');
-      }
+
+      localStorage.setItem('completedLevel', String(selectedLevel));
     } catch (error) {
       console.error('Level up failed:', error);
       setModalType('error');
