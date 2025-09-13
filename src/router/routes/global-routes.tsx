@@ -19,7 +19,6 @@ import {
   AdminMainPage,
   GenerateAuthKeyPage,
   TicketDrawingPage,
-  TicketCompletePage,
 } from '../lazy';
 import { routePath } from '../path';
 
@@ -29,7 +28,6 @@ export const publicRoutesWithMain = [
   { path: routePath.LOST_ITEMS, Component: LostItemsPage },
   { path: routePath.LOGIN, Component: LoginPage },
   { path: routePath.TICKET_ONBOARDING, Component: TicketOnboardingPage },
-  { path: routePath.TICKET_COMPLETE, Component: TicketCompletePage },
 ];
 
 export const publicRoutesOthers = [

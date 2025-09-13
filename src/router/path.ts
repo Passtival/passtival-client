@@ -11,7 +11,6 @@ export const routePath = {
   LOST_ITEM_INFO: '/lost-items/:id',
   LOST_ITEM_REPORT: '/lost-item-report',
   TICKET: '/ticket',
-  TICKET_COMPLETE: '/ticket-complete',
   TICKET_DRAWING: '/ticket-drawing',
   ADMIN_LOGIN: '/admin-login',
   ADMIN_MAIN: '/admin-main',
