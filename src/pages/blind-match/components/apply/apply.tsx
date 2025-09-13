@@ -2,6 +2,7 @@ import { useApplication } from '@pages/blind-match/hooks/use-application.ts';
 
 import Closed from '../apply-after/closed.tsx';
 import Complete from '../apply-after/complete.tsx';
+import BeforeMatch from '../before-match/before-match.tsx';
 import EntryForm from '../entry/entry.tsx';
 import Fail from '../result/fail.tsx';
 import Success from '../result/success.tsx';
@@ -15,6 +16,8 @@ const ApplyPage = ({ currentDay }: EntryPageProps) => {
     useApplication(currentDay);
 
   switch (viewState) {
+    case 'before-match':
+      return <BeforeMatch currentDay={currentDay} />;
     case 'complete':
       return <Complete currentDay={currentDay} />;
     case 'closed':
