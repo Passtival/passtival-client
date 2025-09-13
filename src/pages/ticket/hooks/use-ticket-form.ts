@@ -28,7 +28,6 @@ export const useTicketForm = () => {
   const [selectedLevel, setSelectedLevel] = useState(1);
   const [isFormValid, setIsFormValid] = useState(false);
 
-  // 사용자 응모권 정보 조회
   const { data: memberRaffleProfile } = useQuery(
     TICKET_QUERY_OPTIONS.MEMBER_RAFFLE_PROFILE(),
   );
