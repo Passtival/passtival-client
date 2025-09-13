@@ -46,6 +46,7 @@ const Home = () => {
                 key={index}
                 src={imageUrl}
                 alt={`공지 이미지 ${index + 1}`}
+                className={styles.carouselImage}
               />
             ))}
           </Carousel>
