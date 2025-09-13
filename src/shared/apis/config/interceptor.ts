@@ -33,6 +33,7 @@ export const handleRequest = (config: InternalAxiosRequestConfig) => {
     END_POINT.LOST_ITEMS,
     END_POINT.ADMIN_LOGIN,
     END_POINT.RAFFLE_PRIZES,
+    END_POINT.PERFORMANCES_INFO,
   ];
 
   const isPublicApi = publicApis.some((api) => url.includes(api));

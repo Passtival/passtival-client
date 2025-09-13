@@ -261,38 +261,6 @@ export interface paths {
     patch: operations['setAuthenticationKeyLevel'];
     trace?: never;
   };
-  '/oauth2/authorization/kakao/**/wlwmanifest.xml': {
-    parameters: {
-      query?: never;
-      header?: never;
-      path?: never;
-      cookie?: never;
-    };
-    get: operations['blockBots'];
-    put?: never;
-    post?: never;
-    delete?: never;
-    options?: never;
-    head?: never;
-    patch?: never;
-    trace?: never;
-  };
-  '/oauth2/authorization/kakao/**/xmlrpc.php': {
-    parameters: {
-      query?: never;
-      header?: never;
-      path?: never;
-      cookie?: never;
-    };
-    get: operations['blockBots_1'];
-    put?: never;
-    post?: never;
-    delete?: never;
-    options?: never;
-    head?: never;
-    patch?: never;
-    trace?: never;
-  };
   '/api/test/token/{memberId}': {
     parameters: {
       query?: never;
@@ -1147,6 +1115,9 @@ export interface components {
     };
     JspPropertyGroupDescriptor: {
       buffer?: string;
+      deferredSyntaxAllowedAsLiteral?: string;
+      trimDirectiveWhitespaces?: string;
+      errorOnUndeclaredNamespace?: string;
       elIgnored?: string;
       errorOnELNotFound?: string;
       pageEncoding?: string;
@@ -1154,9 +1125,6 @@ export interface components {
       isXml?: string;
       includePreludes?: string[];
       includeCodas?: string[];
-      deferredSyntaxAllowedAsLiteral?: string;
-      trimDirectiveWhitespaces?: string;
-      errorOnUndeclaredNamespace?: string;
       urlPatterns?: string[];
       defaultContentType?: string;
     };
@@ -1216,11 +1184,11 @@ export interface components {
       /** Format: int32 */
       minorVersion?: number;
       attributeNames?: unknown;
-      contextPath?: string;
-      sessionTrackingModes?: ('COOKIE' | 'URL' | 'SSL')[];
-      initParameterNames?: unknown;
       /** Format: int32 */
       sessionTimeout?: number;
+      contextPath?: string;
+      initParameterNames?: unknown;
+      sessionTrackingModes?: ('COOKIE' | 'URL' | 'SSL')[];
       servletRegistrations?: {
         [key: string]: components['schemas']['ServletRegistration'];
       };
@@ -1242,8 +1210,8 @@ export interface components {
       responseCharacterEncoding?: string;
     };
     ServletRegistration: {
-      runAsRole?: string;
       mappings?: string[];
+      runAsRole?: string;
       name?: string;
       className?: string;
       initParameters?: {
@@ -1363,6 +1331,8 @@ export interface components {
       title?: string;
     };
     PerformanceResponse: {
+      /** Format: int64 */
+      id?: number;
       title?: string;
       artist?: string;
       /** Format: date-time */
@@ -1826,42 +1796,6 @@ export interface operations {
         content: {
           '*/*': components['schemas']['BaseResponseVoid'];
         };
-      };
-    };
-  };
-  blockBots: {
-    parameters: {
-      query?: never;
-      header?: never;
-      path?: never;
-      cookie?: never;
-    };
-    requestBody?: never;
-    responses: {
-      /** @description OK */
-      200: {
-        headers: {
-          [name: string]: unknown;
-        };
-        content?: never;
-      };
-    };
-  };
-  blockBots_1: {
-    parameters: {
-      query?: never;
-      header?: never;
-      path?: never;
-      cookie?: never;
-    };
-    requestBody?: never;
-    responses: {
-      /** @description OK */
-      200: {
-        headers: {
-          [name: string]: unknown;
-        };
-        content?: never;
       };
     };
   };
