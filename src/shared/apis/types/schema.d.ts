@@ -912,10 +912,10 @@ export interface components {
       parent?: unknown;
       id?: string;
       displayName?: string;
+      autowireCapableBeanFactory?: components['schemas']['AutowireCapableBeanFactory'];
       applicationName?: string;
       /** Format: int64 */
       startupDate?: number;
-      autowireCapableBeanFactory?: components['schemas']['AutowireCapableBeanFactory'];
       environment?: components['schemas']['Environment'];
       /** Format: int32 */
       beanDefinitionCount?: number;
@@ -1186,28 +1186,28 @@ export interface components {
       attributeNames?: unknown;
       contextPath?: string;
       initParameterNames?: unknown;
-      sessionTrackingModes?: ('COOKIE' | 'URL' | 'SSL')[];
-      /** Format: int32 */
-      sessionTimeout?: number;
       servletRegistrations?: {
         [key: string]: components['schemas']['ServletRegistration'];
       };
+      sessionTrackingModes?: ('COOKIE' | 'URL' | 'SSL')[];
+      /** Format: int32 */
+      sessionTimeout?: number;
+      defaultSessionTrackingModes?: ('COOKIE' | 'URL' | 'SSL')[];
+      effectiveSessionTrackingModes?: ('COOKIE' | 'URL' | 'SSL')[];
       jspConfigDescriptor?: components['schemas']['JspConfigDescriptor'];
       virtualServerName?: string;
       requestCharacterEncoding?: string;
       responseCharacterEncoding?: string;
+      filterRegistrations?: {
+        [key: string]: components['schemas']['FilterRegistration'];
+      };
+      sessionCookieConfig?: components['schemas']['SessionCookieConfig'];
       /** Format: int32 */
       effectiveMajorVersion?: number;
       /** Format: int32 */
       effectiveMinorVersion?: number;
       serverInfo?: string;
       servletContextName?: string;
-      filterRegistrations?: {
-        [key: string]: components['schemas']['FilterRegistration'];
-      };
-      sessionCookieConfig?: components['schemas']['SessionCookieConfig'];
-      defaultSessionTrackingModes?: ('COOKIE' | 'URL' | 'SSL')[];
-      effectiveSessionTrackingModes?: ('COOKIE' | 'URL' | 'SSL')[];
     };
     ServletRegistration: {
       mappings?: string[];
@@ -1226,11 +1226,11 @@ export interface components {
       };
       /** @deprecated */
       comment?: string;
-      secure?: boolean;
       domain?: string;
+      httpOnly?: boolean;
+      secure?: boolean;
       /** Format: int32 */
       maxAge?: number;
-      httpOnly?: boolean;
     };
     TaglibDescriptor: {
       taglibURI?: string;
@@ -1267,6 +1267,7 @@ export interface components {
       memberGender?: 'MALE' | 'FEMALE';
       memberPhoneNumber?: string;
       memberInstagramId?: string;
+      memberApplied?: boolean;
     };
     BaseResponseListFoundItemResponse: {
       isSuccess?: boolean;
