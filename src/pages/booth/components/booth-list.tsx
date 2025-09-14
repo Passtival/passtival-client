@@ -61,7 +61,8 @@ const BoothList = ({ selectedType }: BoothListProps) => {
         )
         .map((booth) => (
           <Card
-            type="lg"
+            type="sm"
+            descType="md"
             key={booth.id}
             title={booth.name}
             assignee={booth.department}

@@ -63,10 +63,15 @@ export const description = recipe({
     overflow: 'hidden',
   },
   variants: {
-    type: {
+    descType: {
       sm: {
         ...themeVars.fontStyles.caption2_m_12,
         color: themeVars.color.gray_200,
+        padding: '0 1.1rem 3.4rem 1.5rem',
+      },
+      md: {
+        ...themeVars.fontStyles.caption2_m_12,
+        color: themeVars.color.gray_400,
         padding: '0 1.1rem 3.4rem 1.5rem',
       },
       lg: {
