@@ -831,11 +831,11 @@ export interface components {
       imagePath?: string;
     };
     LevelUpRequest: {
-      name?: string;
-      studentId?: string;
-      authenticationKey?: string;
+      name: string;
+      studentId: string;
+      authenticationKey: string;
       /** Format: int32 */
-      level?: number;
+      level: number;
     };
     MatchingApplicantPatchRequest: {
       /** @enum {string} */
@@ -1115,9 +1115,6 @@ export interface components {
     };
     JspPropertyGroupDescriptor: {
       buffer?: string;
-      deferredSyntaxAllowedAsLiteral?: string;
-      trimDirectiveWhitespaces?: string;
-      errorOnUndeclaredNamespace?: string;
       elIgnored?: string;
       errorOnELNotFound?: string;
       pageEncoding?: string;
@@ -1125,8 +1122,11 @@ export interface components {
       isXml?: string;
       includePreludes?: string[];
       includeCodas?: string[];
-      urlPatterns?: string[];
+      deferredSyntaxAllowedAsLiteral?: string;
+      trimDirectiveWhitespaces?: string;
+      errorOnUndeclaredNamespace?: string;
       defaultContentType?: string;
+      urlPatterns?: string[];
     };
     RedirectView: {
       applicationContext?: components['schemas']['ApplicationContext'];
@@ -1184,14 +1184,18 @@ export interface components {
       /** Format: int32 */
       minorVersion?: number;
       attributeNames?: unknown;
-      /** Format: int32 */
-      sessionTimeout?: number;
       contextPath?: string;
       initParameterNames?: unknown;
       sessionTrackingModes?: ('COOKIE' | 'URL' | 'SSL')[];
+      /** Format: int32 */
+      sessionTimeout?: number;
       servletRegistrations?: {
         [key: string]: components['schemas']['ServletRegistration'];
       };
+      jspConfigDescriptor?: components['schemas']['JspConfigDescriptor'];
+      virtualServerName?: string;
+      requestCharacterEncoding?: string;
+      responseCharacterEncoding?: string;
       /** Format: int32 */
       effectiveMajorVersion?: number;
       /** Format: int32 */
@@ -1204,10 +1208,6 @@ export interface components {
       sessionCookieConfig?: components['schemas']['SessionCookieConfig'];
       defaultSessionTrackingModes?: ('COOKIE' | 'URL' | 'SSL')[];
       effectiveSessionTrackingModes?: ('COOKIE' | 'URL' | 'SSL')[];
-      jspConfigDescriptor?: components['schemas']['JspConfigDescriptor'];
-      virtualServerName?: string;
-      requestCharacterEncoding?: string;
-      responseCharacterEncoding?: string;
     };
     ServletRegistration: {
       mappings?: string[];
@@ -1227,9 +1227,9 @@ export interface components {
       /** @deprecated */
       comment?: string;
       secure?: boolean;
+      domain?: string;
       /** Format: int32 */
       maxAge?: number;
-      domain?: string;
       httpOnly?: boolean;
     };
     TaglibDescriptor: {
