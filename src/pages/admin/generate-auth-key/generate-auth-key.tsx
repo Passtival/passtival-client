@@ -7,6 +7,7 @@ import {
 } from '@pages/admin/apis/queries';
 import { TITLE } from '@pages/admin/constants/TITLE';
 
+import Button from '@shared/components/button/button';
 import DropDown from '@shared/components/drop-down/drop-down';
 import { IcSvgEntry } from '@shared/icons';
 
@@ -43,6 +44,10 @@ const GenerateAuthKey = () => {
     setLevelMutation.mutate(Number(level));
   };
 
+  const handleRefreshAuthKey = () => {
+    refetch();
+  };
+
   if (error) return <div>인증키를 불러오는데 실패했습니다.</div>;
 
   return (
@@ -66,6 +71,9 @@ const GenerateAuthKey = () => {
               />
             }
           />
+        </div>
+        <div className={styles.buttonContainer}>
+          <Button onClick={handleRefreshAuthKey}>인증키 새로고침</Button>
         </div>
       </div>
     </>
