@@ -17,9 +17,9 @@ export const EVENT_DAYS = {
 export const START_HOUR = 0; // 00:00부터 신청 가능
 export const START_MINUTE = 0;
 export const DEADLINE_HOUR = 23;
-export const DEADLINE_MINUTE = 5;
+export const DEADLINE_MINUTE = 17;
 export const RESULTS_HOUR = 23;
-export const RESULTS_MINUTE = 10;
+export const RESULTS_MINUTE = 20;
 
 /**
  * 시간 포맷팅 유틸리티 함수
