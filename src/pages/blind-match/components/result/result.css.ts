@@ -6,17 +6,10 @@ export const header = style({
   padding: '1.3rem 2.4rem',
 });
 
-export const container = style({
-  display: 'flex',
-  flexDirection: 'column',
-  alignItems: 'center',
-  height: 'calc(80vh - 5.6rem - 13.7rem)',
-});
-
 export const title = style({
   display: 'flex',
   justifyContent: 'center',
-  paddingBottom: '1.3rem',
+  padding: '5rem 0 1.3rem 0',
   ...themeVars.fontStyles.title_b_18,
   color: themeVars.color.main_yellow,
 });
