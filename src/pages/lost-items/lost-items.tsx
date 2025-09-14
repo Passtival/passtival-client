@@ -70,6 +70,7 @@ const LostItems = () => {
             <Card
               key={id}
               type="lg"
+              descType="lg"
               imgSrc={imagePath}
               title={title}
               description={area}
