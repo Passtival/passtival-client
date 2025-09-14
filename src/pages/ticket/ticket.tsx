@@ -1,18 +1,21 @@
+import Caption from '@pages/ticket/components/caption/caption';
+import TicketCarousel from '@pages/ticket/components/carousel/carousel';
+import TicketChip from '@pages/ticket/components/chip/chip';
 import InputSection from '@pages/ticket/components/inpur-section/input-section';
+import TicketModal from '@pages/ticket/components/ticketmodal';
+import { useDateSelection } from '@pages/ticket/hooks/use-date-selection';
+import { useTicketForm } from '@pages/ticket/hooks/use-ticket-form';
 import Complete from '@pages/ticket-complete/ticket-complete';
 
 import Button from '@shared/components/button/button';
 import Header from '@shared/components/header/header';
 import Title from '@shared/components/title/title';
 
-import Caption from './components/caption/caption';
-import TicketCarousel from './components/carousel/carousel';
-import TicketChip from './components/chip/chip';
-import TicketModal from './components/ticketmodal';
-import { useTicketForm } from './hooks/use-ticket-form';
 import * as styles from './ticket.css';
 
 const Ticket = () => {
+  const { selectedDayNumber } = useDateSelection();
+
   const {
     form,
     modalType,
@@ -46,7 +49,7 @@ const Ticket = () => {
           />
         </div>
 
-        <TicketCarousel selectedLevel={selectedLevel} />
+        <TicketCarousel selectedDayNumber={selectedDayNumber} />
         <div className={styles.inputsection}>
           <TicketChip
             selectedLevel={selectedLevel}
