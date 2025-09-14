@@ -44,6 +44,7 @@ export const button = style({
 
 export const notice = style({
   display: 'flex',
+  alignItems: 'center',
   gap: '0.3rem',
   paddingTop: '0.6rem',
   ...themeVars.fontStyles.button_r_12,

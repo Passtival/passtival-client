@@ -90,7 +90,12 @@ export const useApplication = (currentDay: string) => {
       if (now.getTime() >= resultsTime.getTime()) {
         setViewState('results');
       } else if (now.getTime() > deadline.getTime()) {
-        setViewState('closed');
+        // 마감 시간 후: 신청 완료한 사람은 complete 유지, 신청 안한 사람은 closed
+        if (hasApplied) {
+          setViewState('complete');
+        } else {
+          setViewState('closed');
+        }
       } else if (now.getTime() >= startTime.getTime()) {
         // 신청 시간 이후에만 신청 완료 상태 확인
         if (isApplicationCompleted) {
@@ -105,7 +110,7 @@ export const useApplication = (currentDay: string) => {
     };
 
     checkStatus();
-  }, [currentDay, isApplicationCompleted]);
+  }, [currentDay, isApplicationCompleted, hasApplied]);
 
   /**
    * 매칭 결과에 따른 성공/실패 판단
@@ -122,13 +127,14 @@ export const useApplication = (currentDay: string) => {
   }, [matchResult]);
 
   /**
-   * 사용자 정보를 통한 계정 존재 여부 확인
-   * @description 서버에서 사용자 정보가 있으면 계정이 존재하는 것으로 간주
-   * 단, 번호팅 신청 여부는 매칭 결과로 판단
+   * 사용자 정보를 통한 신청 여부 확인
+   * @description 서버에서 memberApplied 필드로 신청 여부를 확인
    */
   useEffect(() => {
-    // 계정 존재 여부만 확인, 신청 완료 여부는 매칭 결과로 판단
-  }, [userInfo, currentDay]);
+    if (userInfo?.result?.memberApplied) {
+      setHasApplied(true);
+    }
+  }, [userInfo]);
 
   /**
    * 신청 완료 핸들러
