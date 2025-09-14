@@ -7,6 +7,7 @@ interface CardProps {
   assignee?: string;
   description?: string;
   type: 'sm' | 'lg';
+  descType: 'sm' | 'md' | 'lg';
   alt?: string;
   onClick?: () => void;
   imgSrc?: string;
@@ -18,6 +19,7 @@ const Card = ({
   assignee,
   description,
   type,
+  descType,
   onClick,
   imgSrc,
   imgAlt,
@@ -33,7 +35,7 @@ const Card = ({
           {assignee && <p className={styles.assignee}>{assignee}</p>}
         </div>
         <div className={styles.descriptionContainer}>
-          <p className={styles.description({ type })}>{description}</p>
+          <p className={styles.description({ descType })}>{description}</p>
         </div>
       </div>
       <div className={styles.img}>

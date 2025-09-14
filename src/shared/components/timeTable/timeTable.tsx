@@ -50,6 +50,7 @@ const TimeTable = ({
           imgSrc={imgSrc}
           imgAlt={imgAlt}
           type="sm"
+          descType="sm"
           onClick={onClick}
         />
       </div>
