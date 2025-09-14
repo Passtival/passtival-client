@@ -7,7 +7,7 @@ export const container = style({
   flexDirection: 'column',
   justifyContent: 'center',
   width: '100%',
-  padding: '0 2.4rem 1.9rem 2.4rem',
+  padding: '0 2.4rem 0 2.4rem',
 });
 
 export const top = style({
@@ -24,11 +24,11 @@ export const top = style({
 export const bottom = style({
   display: 'flex',
   justifyContent: 'center',
-  alignItems: 'center',
   width: '100%',
-  height: '14.7rem',
+  height: '15.5rem',
   borderLeft: `1px solid ${themeVars.color.main_yellow}`,
   gap: '0.8rem',
+  paddingTop: '0.6rem',
 });
 
 export const leftBar = style({
