@@ -49,11 +49,11 @@ const ShowDetail = () => {
         locationvalue={data?.area}
       />
       <DetailDescription
-        title="동아리 소개"
+        title="소개"
         description={data?.introduction}
       />
       <DetailDescription
-        title="공연 소개"
+        title="설명"
         songsData={data?.songs}
       />
     </>
