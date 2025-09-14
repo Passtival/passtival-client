@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
 
 import { routePath } from '@router/path';
@@ -21,8 +22,43 @@ const navItems = [
 ];
 
 const BottomNavigation = () => {
+  const [navBottom, setNavBottom] = useState('3rem');
+
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.visualViewport) {
+        const viewportHeight = window.visualViewport.height;
+        const innerHeight = window.innerHeight;
+        const keyboardHeight = innerHeight - viewportHeight;
+
+        if (keyboardHeight > 0) {
+          setNavBottom('-100px');
+        } else {
+          setNavBottom('3rem');
+        }
+      }
+    };
+
+    if (window.visualViewport) {
+      window.visualViewport.addEventListener('resize', handleResize);
+    } else {
+      window.addEventListener('resize', handleResize);
+    }
+
+    return () => {
+      if (window.visualViewport) {
+        window.visualViewport.removeEventListener('resize', handleResize);
+      } else {
+        window.removeEventListener('resize', handleResize);
+      }
+    };
+  }, []);
+
   return (
-    <nav className={styles.navBar}>
+    <nav
+      className={styles.navBar}
+      style={{ bottom: navBottom }}
+    >
       <ul className={styles.navList}>
         {navItems.map((item) => (
           <li key={item.path}>

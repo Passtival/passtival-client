@@ -25,17 +25,16 @@ const ConfirmModal = ({
           <Modal.Title>신청하시겠습니까?</Modal.Title>
           <Modal.Summary>
             <Modal.InfoSection>
+              <Modal.Info
+                label="전화번호"
+                value={phoneNumber}
+              />
               {instaId && (
                 <Modal.Info
                   label="인스타그램ID"
                   value={instaId}
                 />
               )}
-
-              <Modal.Info
-                label="전화번호"
-                value={phoneNumber}
-              />
             </Modal.InfoSection>
             <Modal.Description>
               ※ 18시에 매칭결과가 제공됩니다.
