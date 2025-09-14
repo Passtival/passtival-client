@@ -43,7 +43,7 @@ export const useApplication = (currentDay: string) => {
    * 매칭 결과 조회
    * @description 18시 이후 매칭 결과를 서버에서 가져옴
    */
-  const { data: matchResult, error: matchResultError } = useQuery(
+  const { data: matchResult } = useQuery(
     BLIND_MATCH_QUERY_OPTIONS.BLIND_MATCH_RESULT(),
   );
 
@@ -51,7 +51,7 @@ export const useApplication = (currentDay: string) => {
    * 사용자 정보 조회
    * @description 현재 사용자의 번호팅 정보와 신청 여부를 확인
    */
-  const { data: userInfo, error: userInfoError } = useQuery(
+  const { data: userInfo } = useQuery(
     BLIND_MATCH_QUERY_OPTIONS.BLIND_MATCH_INFO_STORAGE(),
   );
 
