@@ -2,6 +2,7 @@ import Button from '@shared/components/button/button';
 import Title from '@shared/components/title/title';
 
 import * as styles from './before-match.css';
+import { APPLICATION_TIME_RANGE } from '../../constants/blind-match-time';
 
 interface BeforeMatchProps {
   currentDay: string;
@@ -36,7 +37,7 @@ const BeforeMatch = ({ currentDay }: BeforeMatchProps) => {
           <p className={styles.message}>
             {getDateByDay(currentDay)} 00:00부터 신청할 수 있습니다.
           </p>
-          <p className={styles.time}>[신청 가능 시간: 00:00 ~ 17:30]</p>
+          <p className={styles.time}>{APPLICATION_TIME_RANGE}</p>
         </div>
 
         <Button disabled={true}>매칭 신청 대기중</Button>

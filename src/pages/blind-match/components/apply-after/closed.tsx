@@ -3,6 +3,7 @@ import Title from '@shared/components/title/title';
 import { IcSvgCaution } from '@shared/icons';
 
 import * as styles from './complete.css';
+import { APPLICATION_TIME_RANGE } from '../../constants/blind-match-time';
 
 interface CompleteProps {
   currentDay: string;
@@ -23,7 +24,7 @@ const Closed = ({ currentDay }: CompleteProps) => {
           <p className={styles.message}>
             {currentDay} 매칭 신청이 마감되었습니다.
           </p>
-          <p className={styles.time}>[신청 가능 시간: 00:00 ~ 17:30]</p>
+          <p className={styles.time}>{APPLICATION_TIME_RANGE}</p>
         </div>
 
         <Button disabled={true}>매칭 결과 대기중</Button>

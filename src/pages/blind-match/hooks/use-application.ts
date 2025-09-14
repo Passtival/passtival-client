@@ -2,35 +2,23 @@ import { useQuery } from '@tanstack/react-query';
 import { useEffect, useState } from 'react';
 
 import { BLIND_MATCH_QUERY_OPTIONS } from '../apis/queries';
+import {
+  EVENT_YEAR,
+  EVENT_MONTH,
+  EVENT_DAYS,
+  START_HOUR,
+  START_MINUTE,
+  DEADLINE_HOUR,
+  DEADLINE_MINUTE,
+  RESULTS_HOUR,
+  RESULTS_MINUTE,
+} from '../constants/blind-match-time';
 
 /**
  * 번호팅 매칭 상태 타입
  * @description 사용자가 볼 수 있는 화면 상태를 나타냄
  */
 type ViewState = 'before-match' | 'entry' | 'complete' | 'closed' | 'results';
-
-/**
- * 번호팅 이벤트 날짜 상수
- * @description 2025년 9월 23, 24, 25일 3일간 진행
- */
-const EVENT_YEAR = 2025;
-const EVENT_MONTH = 8; // 9월 (0-based index)
-const EVENT_DAYS = {
-  DAY_1: 23,
-  DAY_2: 24,
-  DAY_3: 25,
-} as const;
-
-/**
- * 번호팅 시간 상수
- * @description 신청 시작, 마감, 결과 발표 시간
- */
-const START_HOUR = 0; // 00:00부터 신청 가능
-const START_MINUTE = 0;
-const DEADLINE_HOUR = 17;
-const DEADLINE_MINUTE = 30;
-const RESULTS_HOUR = 18;
-const RESULTS_MINUTE = 0;
 
 /**
  * 번호팅 신청 상태 관리 훅
