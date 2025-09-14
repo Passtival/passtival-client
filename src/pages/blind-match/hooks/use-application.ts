@@ -37,7 +37,13 @@ export const useApplication = (currentDay: string) => {
   const [isSuccess, setIsSuccess] = useState(false);
 
   /** 신청 완료 상태 (신청 완료 후 시간이 지나도 상태 유지) */
-  const [isApplicationCompleted, setIsApplicationCompleted] = useState(false);
+  const [isApplicationCompleted, setIsApplicationCompleted] = useState(() => {
+    // localStorage에서 신청 완료 상태 확인
+    const savedState = localStorage.getItem(
+      `blind-match-completed-${currentDay}`,
+    );
+    return savedState === 'true';
+  });
 
   /**
    * 매칭 결과 조회
@@ -143,9 +149,10 @@ export const useApplication = (currentDay: string) => {
 
         startTime.setHours(START_HOUR, START_MINUTE, 0, 0);
 
-        // 신청 시간 이후에만 complete 상태로 설정
+        // 신청 시간 이후에만 complete 상태로 설정하고 localStorage에도 저장
         if (now.getTime() >= startTime.getTime()) {
           setIsApplicationCompleted(true);
+          localStorage.setItem(`blind-match-completed-${currentDay}`, 'true');
         }
       }
     }
@@ -159,6 +166,10 @@ export const useApplication = (currentDay: string) => {
     setIsApplicationCompleted(true);
     setViewState('complete');
     setHasApplied(true);
+
+    // localStorage에 신청 완료 상태 저장 (일차별로 구분)
+    localStorage.setItem(`blind-match-completed-${currentDay}`, 'true');
+
     // 실제 API 결과를 기다리므로 여기서는 성공/실패를 설정하지 않음
     // 매칭 결과 조회 API에서 실제 결과를 가져옴
   };
