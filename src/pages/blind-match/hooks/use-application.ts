@@ -36,20 +36,14 @@ export const useApplication = (currentDay: string) => {
   /** 매칭 성공 여부 (신청 후 결과 발표 시점에 결정) */
   const [isSuccess, setIsSuccess] = useState(false);
 
-  /** 신청 완료 상태 (신청 완료 후 시간이 지나도 상태 유지) */
-  const [isApplicationCompleted, setIsApplicationCompleted] = useState(() => {
-    // localStorage에서 신청 완료 상태 확인
-    const savedState = localStorage.getItem(
-      `blind-match-completed-${currentDay}`,
-    );
-    return savedState === 'true';
-  });
+  /** 신청 완료 상태 (서버 데이터 기반으로 관리) */
+  const [isApplicationCompleted, setIsApplicationCompleted] = useState(false);
 
   /**
    * 매칭 결과 조회
    * @description 18시 이후 매칭 결과를 서버에서 가져옴
    */
-  const { data: matchResult } = useQuery(
+  const { data: matchResult, error: matchResultError } = useQuery(
     BLIND_MATCH_QUERY_OPTIONS.BLIND_MATCH_RESULT(),
   );
 
@@ -57,7 +51,7 @@ export const useApplication = (currentDay: string) => {
    * 사용자 정보 조회
    * @description 현재 사용자의 번호팅 정보와 신청 여부를 확인
    */
-  const { data: userInfo } = useQuery(
+  const { data: userInfo, error: userInfoError } = useQuery(
     BLIND_MATCH_QUERY_OPTIONS.BLIND_MATCH_INFO_STORAGE(),
   );
 
@@ -114,11 +108,13 @@ export const useApplication = (currentDay: string) => {
   }, [currentDay, isApplicationCompleted]);
 
   /**
-   * 매칭 결과에 따른 성공/실패 상태 업데이트
-   * @description API에서 받은 매칭 결과를 기반으로 성공/실패 판단
+   * 매칭 결과에 따른 성공/실패 판단
+   * @description 매칭 결과가 있으면 성공/실패 상태만 업데이트
+   * 신청 완료 여부는 POST /api/matching 성공으로 판단
    */
   useEffect(() => {
     if (matchResult?.result) {
+      // 매칭 결과가 있으면 이미 신청한 상태
       setHasApplied(true);
       // 매칭 결과에 partnerInfo가 있으면 성공, 없으면 실패
       setIsSuccess(!!matchResult.result.partnerInfo);
@@ -126,52 +122,25 @@ export const useApplication = (currentDay: string) => {
   }, [matchResult]);
 
   /**
-   * 사용자 정보를 통한 신청 여부 확인
-   * @description 서버에서 사용자 정보가 있으면 이미 신청한 것으로 간주
+   * 사용자 정보를 통한 계정 존재 여부 확인
+   * @description 서버에서 사용자 정보가 있으면 계정이 존재하는 것으로 간주
+   * 단, 번호팅 신청 여부는 매칭 결과로 판단
    */
   useEffect(() => {
-    if (userInfo?.result) {
-      // 사용자가 이미 신청한 경우 신청 완료 상태로 설정
-      if (userInfo.result.memberId) {
-        setHasApplied(true);
-        // 단, 신청 시간 이후에만 complete 상태로 설정
-        const now = new Date();
-        const startTime = new Date();
-
-        // 현재 일차에 맞는 시작 시간 설정
-        if (currentDay === '1일차') {
-          startTime.setFullYear(EVENT_YEAR, EVENT_MONTH, EVENT_DAYS.DAY_1);
-        } else if (currentDay === '2일차') {
-          startTime.setFullYear(EVENT_YEAR, EVENT_MONTH, EVENT_DAYS.DAY_2);
-        } else if (currentDay === '3일차') {
-          startTime.setFullYear(EVENT_YEAR, EVENT_MONTH, EVENT_DAYS.DAY_3);
-        }
-
-        startTime.setHours(START_HOUR, START_MINUTE, 0, 0);
-
-        // 신청 시간 이후에만 complete 상태로 설정하고 localStorage에도 저장
-        if (now.getTime() >= startTime.getTime()) {
-          setIsApplicationCompleted(true);
-          localStorage.setItem(`blind-match-completed-${currentDay}`, 'true');
-        }
-      }
-    }
+    // 계정 존재 여부만 확인, 신청 완료 여부는 매칭 결과로 판단
   }, [userInfo, currentDay]);
 
   /**
    * 신청 완료 핸들러
-   * @description 사용자가 번호팅 신청을 완료했을 때 호출
+   * @description POST /api/matching 성공 시에만 호출되어 신청 완료 상태 설정
    */
   const handleApplicationComplete = () => {
     setIsApplicationCompleted(true);
     setViewState('complete');
     setHasApplied(true);
 
-    // localStorage에 신청 완료 상태 저장 (일차별로 구분)
-    localStorage.setItem(`blind-match-completed-${currentDay}`, 'true');
-
-    // 실제 API 결과를 기다리므로 여기서는 성공/실패를 설정하지 않음
-    // 매칭 결과 조회 API에서 실제 결과를 가져옴
+    // 성공/실패는 매칭 결과 발표 시점에 결정
+    // 여기서는 신청 완료 상태만 설정
   };
 
   return {

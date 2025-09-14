@@ -5,6 +5,7 @@ import { useLocation } from 'react-router-dom';
 import {
   patchBlindMatchInfoStorage,
   postBlindMatchApply,
+  postBlindMatchMyInfo,
   BLIND_MATCH_QUERY_OPTIONS,
 } from '@pages/blind-match/apis/queries';
 
@@ -48,7 +49,7 @@ const EntryForm = ({ currentDay, onApplicationComplete }: EntryFormProps) => {
   const location = useLocation();
   const navState = { form, agreed };
 
-  const { data } = useQuery(
+  const { data, refetch } = useQuery(
     BLIND_MATCH_QUERY_OPTIONS.BLIND_MATCH_INFO_STORAGE(),
   );
   type PatchPayload = Parameters<typeof patchBlindMatchInfoStorage>[0];
@@ -65,6 +66,20 @@ const EntryForm = ({ currentDay, onApplicationComplete }: EntryFormProps) => {
       onApplicationComplete();
     },
   });
+
+  // 사용자 정보가 없을 때 소개팅 계정 생성
+  useEffect(() => {
+    if (data && !data.result && !data.isSuccess) {
+      postBlindMatchMyInfo()
+        .then(() => {
+          // 계정 생성 후 사용자 정보 다시 조회
+          refetch();
+        })
+        .catch(() => {
+          // 에러 처리
+        });
+    }
+  }, [data, refetch]);
   useEffect(() => {
     const s = location.state as {
       form?: MatchingForm;
@@ -123,16 +138,27 @@ const EntryForm = ({ currentDay, onApplicationComplete }: EntryFormProps) => {
     if (Object.keys(update).length > 0) {
       mutate(update, {
         onSuccess: async () => {
-          await postBlindMatchApply();
+          try {
+            await postBlindMatchApply();
+          } catch {
+            // 에러 처리
+          }
           setIsModalOpen(false);
           onApplicationComplete();
         },
+        onError: () => {
+          // 에러 처리
+        },
       });
     } else {
-      postBlindMatchApply().then(() => {
-        setIsModalOpen(false);
-        onApplicationComplete();
-      });
+      postBlindMatchApply()
+        .then(() => {
+          setIsModalOpen(false);
+          onApplicationComplete();
+        })
+        .catch(() => {
+          // 에러 처리
+        });
     }
   };
 
