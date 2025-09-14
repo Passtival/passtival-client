@@ -10,11 +10,7 @@ export const nonetext = style({
   display: 'flex',
   justifyContent: 'center',
   alignItems: 'center',
-  position: 'absolute',
-  top: 'calc(4rem)',
-  bottom: '0',
-  left: '0',
-  right: '0',
+  paddingTop: '28.8rem',
   ...themeVars.fontStyles.title_b_16,
   color: themeVars.color.main_yellow,
 });
