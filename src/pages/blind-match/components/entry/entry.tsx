@@ -61,7 +61,9 @@ const EntryForm = ({ currentDay, onApplicationComplete }: EntryFormProps) => {
   >({
     mutationFn: (partial) =>
       patchBlindMatchInfoStorage(partial as PatchPayload),
-    onSuccess: () => {
+    onSuccess: async () => {
+      // PATCH 성공 후 사용자 정보 다시 조회하여 폼 업데이트
+      await refetch();
       setIsModalOpen(false);
       onApplicationComplete();
     },
@@ -80,6 +82,22 @@ const EntryForm = ({ currentDay, onApplicationComplete }: EntryFormProps) => {
         });
     }
   }, [data, refetch]);
+
+  // 서버에서 받은 사용자 정보를 폼에 자동으로 채우기
+  useEffect(() => {
+    if (data?.result) {
+      setForm((prevForm) => ({
+        instaId: data.result?.memberInstagramId || prevForm.instaId,
+        phoneNumber: data.result?.memberPhoneNumber || prevForm.phoneNumber,
+        gender:
+          data.result?.memberGender === 'MALE'
+            ? '남성'
+            : data.result?.memberGender === 'FEMALE'
+              ? '여성'
+              : prevForm.gender,
+      }));
+    }
+  }, [data]);
   useEffect(() => {
     const s = location.state as {
       form?: MatchingForm;
