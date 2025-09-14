@@ -50,6 +50,9 @@ export const protectedAdminRoutes = [
   { path: routePath.ADMIN_MAIN, Component: AdminMainPage },
   { path: routePath.GENERATE_AUTH_KEY, Component: GenerateAuthKeyPage },
   { path: routePath.TICKET_DRAWING, Component: TicketDrawingPage },
+];
+
+export const lostItemRoutesWithoutNav = [
   { path: routePath.LOST_ITEM_REPORT, Component: LostItemReportPage },
 ];
 

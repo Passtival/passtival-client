@@ -34,3 +34,7 @@ export const cardContainer = style({
   flexDirection: 'column',
   gap: '2rem',
 });
+
+export const carouselImage = style({
+  height: '21.4rem',
+});

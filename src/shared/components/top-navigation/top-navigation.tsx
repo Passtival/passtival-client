@@ -9,16 +9,25 @@ interface TopNavigationProps {
   title: ReactNode;
   rightIcon?: ReactNode;
   onRightClick?: () => void;
+  backTo?: string;
+  backState?: unknown;
 }
 
 const TopNavigation = ({
   title,
   rightIcon,
   onRightClick,
+  backTo,
+  backState,
 }: TopNavigationProps) => {
-  const navigation = useNavigate();
+  const navigate = useNavigate();
+
   const handleLeftClick = () => {
-    navigation(-1);
+    if (backTo) {
+      navigate(backTo, { state: backState });
+    } else {
+      navigate(-1);
+    }
   };
 
   return (
@@ -32,7 +41,9 @@ const TopNavigation = ({
           height="2.4rem"
         />
       </button>
+
       <h1 className={styles.title}>{title}</h1>
+
       <button
         onClick={onRightClick}
         className={styles.rightButton}

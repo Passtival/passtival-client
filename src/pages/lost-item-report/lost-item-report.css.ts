@@ -3,7 +3,6 @@ import { style } from '@vanilla-extract/css';
 import { themeVars } from '@shared/styles';
 
 export const textInputContainer = style({
-  width: '100%',
   display: 'flex',
   flexDirection: 'column',
   gap: '1.2rem',
@@ -28,8 +27,8 @@ export const dropdownContainer = style({
 });
 
 export const button = style({
+  position: 'absolute',
+  bottom: '5.8rem',
   width: '100%',
   padding: '0 2.4rem',
-  position: 'fixed',
-  bottom: '5.8rem',
 });

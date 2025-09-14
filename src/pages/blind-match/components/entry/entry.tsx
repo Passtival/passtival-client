@@ -1,5 +1,6 @@
 import { useMutation, useQuery } from '@tanstack/react-query';
 import { useState, useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
 
 import {
   patchBlindMatchInfoStorage,
@@ -44,6 +45,8 @@ const EntryForm = ({ currentDay, onApplicationComplete }: EntryFormProps) => {
   const [agreed, setAgreed] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isFormValid, setIsFormValid] = useState(false);
+  const location = useLocation();
+  const navState = { form, agreed };
 
   const { data } = useQuery(
     BLIND_MATCH_QUERY_OPTIONS.BLIND_MATCH_INFO_STORAGE(),
@@ -62,6 +65,14 @@ const EntryForm = ({ currentDay, onApplicationComplete }: EntryFormProps) => {
       onApplicationComplete();
     },
   });
+  useEffect(() => {
+    const s = location.state as {
+      form?: MatchingForm;
+      agreed?: boolean;
+    } | null;
+    if (s?.form) setForm(s.form);
+    if (typeof s?.agreed === 'boolean') setAgreed(s.agreed);
+  }, [location.state]);
 
   useEffect(() => {
     const phoneRegex = /^010-\d{4}-\d{4}$/;
@@ -149,6 +160,7 @@ const EntryForm = ({ currentDay, onApplicationComplete }: EntryFormProps) => {
         <Agreement
           checked={agreed}
           onChange={handleConsentChange}
+          navState={navState}
         />
         <Button
           onClick={handleApplyClick}
