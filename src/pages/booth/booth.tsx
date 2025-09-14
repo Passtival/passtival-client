@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useLocation } from 'react-router-dom';
 
 import BoothList from '@pages/booth/components/booth-list';
 
@@ -19,7 +20,11 @@ import {
 const mokImages = ['/map1.png', '/map2.png'];
 
 const Booth = () => {
-  const [selectedType, setSelectedType] = useState(BOOTH_TYPES[0]);
+  const location = useLocation();
+
+  const [selectedType, setSelectedType] = useState(
+    location.state?.selectedType || BOOTH_TYPES[0],
+  );
 
   return (
     <>

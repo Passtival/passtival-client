@@ -21,7 +21,11 @@ const BoothDetailPage = () => {
 
   return (
     <>
-      <TopNavigation title={topNavigationTitle} />
+      <TopNavigation
+        title={topNavigationTitle}
+        backTo="/booth"
+        backState={{ selectedType: boothType }}
+      />
 
       <Tab.Container initialValue="booth-info">
         <Tab.List>
