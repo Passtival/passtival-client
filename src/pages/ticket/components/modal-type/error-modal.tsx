@@ -2,22 +2,17 @@ import Modal from '@shared/components/modal/modal';
 
 interface ErrorModalProps {
   onClose: () => void;
-  message?: string;
 }
 
-const ErrorModal = ({ onClose, message }: ErrorModalProps) => {
+const ErrorModal = ({ onClose }: ErrorModalProps) => {
   return (
     <Modal.Content>
       <Modal.Body>
         <Modal.Title>인증키 불일치</Modal.Title>
         <Modal.Description>
-          {message || (
-            <>
-              유효하지 않은 인증키 입니다.
-              <br />
-              다시 시도해 주세요.
-            </>
-          )}
+          유효하지 않은 인증키 입니다.
+          <br />
+          다시 시도해 주세요.
         </Modal.Description>
       </Modal.Body>
       <Modal.Footer>

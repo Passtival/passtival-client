@@ -13,13 +13,7 @@ interface TicketForm {
   key: string;
 }
 
-type ModalType =
-  | 'confirm'
-  | 'success'
-  | 'error'
-  | 'premium'
-  | 'auth_error'
-  | null;
+type ModalType = 'confirm' | 'success' | 'error' | 'premium' | null;
 
 export const useTicketForm = () => {
   const queryClient = useQueryClient();
@@ -46,7 +40,7 @@ export const useTicketForm = () => {
     TICKET_MUTATION_OPTIONS.MEMBER_LEVEL_UP(),
   );
 
-  const isErrorState = modalType === 'error' || modalType === 'auth_error';
+  const isErrorState = modalType === 'error';
 
   useEffect(() => {
     if (memberRaffleProfile?.result) {
@@ -155,8 +149,6 @@ export const useTicketForm = () => {
         errorMessage.includes('key') ||
         errorMessage.includes('인증')
       ) {
-        setModalType('auth_error');
-      } else {
         setModalType('error');
       }
     }

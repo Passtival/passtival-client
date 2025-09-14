@@ -23,7 +23,11 @@ const ActivitiesInfo = () => {
   }
 
   if (!data || data.length === 0) {
-    return <div className={style.nonetext}>체험활동이 없습니다.</div>;
+    return (
+      <div className={style.nonetext}>
+        <p>체험활동이 없습니다.</p>
+      </div>
+    );
   }
   return (
     <>

@@ -1183,31 +1183,31 @@ export interface components {
       majorVersion?: number;
       /** Format: int32 */
       minorVersion?: number;
-      servletRegistrations?: {
-        [key: string]: components['schemas']['ServletRegistration'];
-      };
       attributeNames?: unknown;
       contextPath?: string;
       initParameterNames?: unknown;
       sessionTrackingModes?: ('COOKIE' | 'URL' | 'SSL')[];
       /** Format: int32 */
       sessionTimeout?: number;
-      defaultSessionTrackingModes?: ('COOKIE' | 'URL' | 'SSL')[];
+      servletRegistrations?: {
+        [key: string]: components['schemas']['ServletRegistration'];
+      };
       effectiveSessionTrackingModes?: ('COOKIE' | 'URL' | 'SSL')[];
       jspConfigDescriptor?: components['schemas']['JspConfigDescriptor'];
       virtualServerName?: string;
       requestCharacterEncoding?: string;
       responseCharacterEncoding?: string;
+      filterRegistrations?: {
+        [key: string]: components['schemas']['FilterRegistration'];
+      };
+      sessionCookieConfig?: components['schemas']['SessionCookieConfig'];
+      defaultSessionTrackingModes?: ('COOKIE' | 'URL' | 'SSL')[];
       /** Format: int32 */
       effectiveMajorVersion?: number;
       /** Format: int32 */
       effectiveMinorVersion?: number;
       serverInfo?: string;
       servletContextName?: string;
-      filterRegistrations?: {
-        [key: string]: components['schemas']['FilterRegistration'];
-      };
-      sessionCookieConfig?: components['schemas']['SessionCookieConfig'];
     };
     ServletRegistration: {
       mappings?: string[];
@@ -1267,6 +1267,7 @@ export interface components {
       memberGender?: 'MALE' | 'FEMALE';
       memberPhoneNumber?: string;
       memberInstagramId?: string;
+      memberApplied?: boolean;
     };
     BaseResponseListFoundItemResponse: {
       isSuccess?: boolean;

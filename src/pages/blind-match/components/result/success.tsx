@@ -27,19 +27,21 @@ const Success = ({ currentDay }: SuccessProps) => {
           subTitle={RESULT_TEXT.SUBTITLE}
         />
       </div>
-      <p className={styles.title}>
-        {currentDay} {RESULT_TEXT.TITLE}
-      </p>
-      <UserInfo
-        title="나의 정보"
-        instaId={data?.result?.myInfo?.instagramId ?? ''}
-        phoneNumber={data?.result?.myInfo?.phoneNumber ?? ''}
-      />
-      <UserInfo
-        title="매칭 상대의 정보"
-        instaId={data?.result?.partnerInfo?.instagramId ?? ''}
-        phoneNumber={data?.result?.partnerInfo?.phoneNumber ?? ''}
-      />
+      <div className={styles.container}>
+        <p className={styles.title}>
+          {currentDay} {RESULT_TEXT.TITLE}
+        </p>
+        <UserInfo
+          title="나의 정보"
+          instaId={data?.result?.myInfo?.instagramId ?? ''}
+          phoneNumber={data?.result?.myInfo?.phoneNumber ?? ''}
+        />
+        <UserInfo
+          title="매칭 상대의 정보"
+          instaId={data?.result?.partnerInfo?.instagramId ?? ''}
+          phoneNumber={data?.result?.partnerInfo?.phoneNumber ?? ''}
+        />
+      </div>
     </>
   );
 };
