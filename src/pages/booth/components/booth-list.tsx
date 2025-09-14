@@ -36,7 +36,12 @@ const BoothList = ({ selectedType }: BoothListProps) => {
   }, hasNextPage && !isFetchingNextPage);
 
   const handleClick = (booth: Booth) => {
-    navigate(`/booth-detail/${booth.id}`, { state: { boothType: booth.type } });
+    navigate(`/booth-detail/${booth.id}`, {
+      state: {
+        boothType: booth.type,
+        selectedType,
+      },
+    });
   };
 
   if (isLoading) {
