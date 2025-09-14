@@ -86,6 +86,7 @@ export const title = style({
 export const modalBodyText = style({
   ...themeVars.fontStyles.button_r_14,
   color: themeVars.color.gray_600,
+  textAlign: 'center',
 });
 
 export const footer = style({
