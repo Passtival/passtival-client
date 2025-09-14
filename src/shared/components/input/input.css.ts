@@ -39,7 +39,8 @@ export const inputVariants = recipe({
             borderColor: themeVars.color.error_red,
           },
           '&:not(:placeholder-shown)': {
-            color: themeVars.color.bg_white,
+            color: themeVars.color.error_red,
+            borderColor: themeVars.color.error_red,
           },
           '&:focus::placeholder': {
             color: 'transparent',
