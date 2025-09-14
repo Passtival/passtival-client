@@ -10,7 +10,7 @@ export const container = style({
   minHeight: '100dvh',
   alignItems: 'center',
   justifyContent: 'flex-end',
-  paddingBottom: 'clamp(14rem, 10vh, 10rem)',
+  paddingBottom: 'clamp(10rem, 10vh, 10rem)',
 });
 
 export const contentWrapper = style({
@@ -34,6 +34,7 @@ export const buttonWrapper = recipe({
   base: {
     position: 'absolute',
     right: '2.4rem',
+    fontFamily: `'Pretendard Variable', sans-serif`,
   },
   variants: {
     step: {
