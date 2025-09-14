@@ -9,9 +9,10 @@ import * as styles from './agreement.css';
 interface AgreementProps {
   checked: boolean;
   onChange: (isAgreed: boolean) => void;
+  navState?: unknown;
 }
 
-const Agreement = ({ checked, onChange }: AgreementProps) => {
+const Agreement = ({ checked, onChange, navState }: AgreementProps) => {
   return (
     <div className={styles.agreementoption}>
       <AgreementOption
@@ -19,6 +20,7 @@ const Agreement = ({ checked, onChange }: AgreementProps) => {
         navigateTo={routePath.INFO_SHARE_CONSENT}
         checked={checked}
         onChange={onChange}
+        navState={navState}
       />
     </div>
   );

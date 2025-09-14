@@ -36,5 +36,13 @@ export const img = recipe({
         borderRadius: '5px',
       },
     },
+    hasImage: {
+      false: {
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        color: themeVars.color.gray_400,
+      },
+    },
   },
 });

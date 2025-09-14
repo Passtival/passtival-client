@@ -54,6 +54,7 @@ export const alignText = style({
 export const content = style({
   display: 'flex',
   width: '100%',
+  maxWidth: '400px',
   flexDirection: 'column',
   justifyContent: 'center',
   alignItems: 'center',

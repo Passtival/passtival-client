@@ -12,6 +12,11 @@ interface BoothListProps {
   selectedType: string;
 }
 
+interface Booth {
+  id: number;
+  type: string;
+}
+
 const BoothList = ({ selectedType }: BoothListProps) => {
   const navigate = useNavigate();
 
@@ -30,8 +35,8 @@ const BoothList = ({ selectedType }: BoothListProps) => {
     }
   }, hasNextPage && !isFetchingNextPage);
 
-  const handleClick = (id: number) => {
-    navigate(`/booth-detail/${id}`);
+  const handleClick = (booth: Booth) => {
+    navigate(`/booth-detail/${booth.id}`, { state: { boothType: booth.type } });
   };
 
   if (isLoading) {
@@ -56,14 +61,15 @@ const BoothList = ({ selectedType }: BoothListProps) => {
         )
         .map((booth) => (
           <Card
-            type="lg"
+            type="sm"
+            descType="md"
             key={booth.id}
             title={booth.name}
             assignee={booth.department}
             description={booth.info}
             imgSrc={booth.imagePath}
             imgAlt={`${booth.name} 이미지`}
-            onClick={() => handleClick(booth.id)}
+            onClick={() => handleClick(booth)}
           />
         ))}
       {hasNextPage && (

@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 import type { WinnerData } from '@pages/admin/ticket-drawing/types/winner-data';
 
@@ -26,6 +26,12 @@ const DrawingMain = ({
 }: DrawingMainProps) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [viewState, setViewState] = useState<'initial' | 'result'>('initial');
+
+  useEffect(() => {
+    if (winners.length > 0) {
+      setViewState('result');
+    }
+  }, [winners]);
 
   const handleOpenModal = () => {
     setIsModalOpen(true);

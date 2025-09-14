@@ -34,7 +34,7 @@ export const ONBOARDING_STEPS = [
           리플렛 1장 = 퍼즐 12조각
           <br />
           일차가 바뀌어도 조각 개수는
-          <span className={styles.point}>누적</span>
+          <span className={styles.point}> 누적 </span>
           (리셋되지 않음)
           <br />
           조각 개수에 따라 레벨이 올라가고, 응모권 증가

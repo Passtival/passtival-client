@@ -6,7 +6,13 @@ export const container = style({
   display: 'flex',
   flexDirection: 'column',
   whiteSpace: 'pre-wrap',
-  padding: '3rem 0 0 3rem',
+  padding: '3rem',
+});
+
+export const topNav = style({
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'center',
 });
 
 export const title = style({
@@ -20,10 +26,11 @@ export const subtitle = style({
 });
 
 export const itemTitle = style({
-  ...themeVars.fontStyles.body1_r_15,
+  ...themeVars.fontStyles.body1_r_18,
   color: themeVars.color.bg_white,
 });
 
 export const text = style({
+  ...themeVars.fontStyles.body1_r_15,
   color: themeVars.color.bg_white,
 });

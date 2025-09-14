@@ -39,10 +39,6 @@ export const button = style({
   display: 'flex',
   flexDirection: 'column',
   alignItems: 'center',
-  padding: '0 2.4rem',
-
-  position: 'fixed',
-  bottom: '13.7rem',
   width: '100%',
 });
 

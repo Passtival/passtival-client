@@ -6,7 +6,7 @@ import * as styles from './login.css';
 const LOGIN_TEXT = {
   TITLE: '로그인 후 사용 가능한 서비스입니다',
   DESCRIPTION:
-    '이 서비스는 중복참여, 매칭 결과 제공을 위해서 로그인시 참여 가능합니다.',
+    '이 서비스는 중복 참여, 매칭 결과 제공을 위해서\n로그인 시 참여 가능합니다.',
 };
 
 const Login = () => {

@@ -11,6 +11,7 @@ interface AgreementOptionProps {
   checked: boolean;
   onChange: (checked: boolean) => void;
   navigateTo: string;
+  navState?: unknown;
 }
 
 const AgreementOption = ({
@@ -18,6 +19,7 @@ const AgreementOption = ({
   checked: isChecked,
   onChange,
   navigateTo,
+  navState,
 }: AgreementOptionProps) => {
   const toggleCheck = () => {
     onChange(!isChecked);
@@ -39,7 +41,10 @@ const AgreementOption = ({
         <span className={style.labelText}>{label}</span>
       </div>
 
-      <NavLink to={navigateTo}>
+      <NavLink
+        to={navigateTo}
+        state={navState}
+      >
         <IcSvgArrowRight
           cursor="pointer"
           width="1.25rem"

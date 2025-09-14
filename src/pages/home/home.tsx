@@ -14,19 +14,15 @@ import { HOME_TEXT } from '@shared/constants/festivalSchedule';
 
 import * as styles from './home.css';
 
-const mokImages = [
-  'https://placehold.co/600x400',
-  'https://placehold.co/600x400',
-  'https://placehold.co/600x400',
-];
+const mokImages = ['/info.png'];
 
 const Home = () => {
   const [selectedDay, setSelectedDay] = useState(1);
   const navigate = useNavigate();
   const { data } = useQuery(PERFORMANCE_QUERY_OPTIONS.PERFORMANCE_LIST());
 
-  const handleClick = (id: number) => {
-    navigate(`/show-detail/${id}`);
+  const handleClick = (id: number | undefined) => {
+    if (id) navigate(`/show-detail/${id}`);
   };
 
   return (
@@ -49,7 +45,8 @@ const Home = () => {
               <img
                 key={index}
                 src={imageUrl}
-                alt={`분실물 이미지 ${index + 1}`}
+                alt={`공지 이미지 ${index + 1}`}
+                className={styles.carouselImage}
               />
             ))}
           </Carousel>
@@ -76,12 +73,17 @@ const Home = () => {
         {data
           ?.filter((schedule) => schedule.day === selectedDay)
           .map(
-            (
-              { title, artist, startTime, endTime, imagePath, introduction },
-              index: number,
-            ) => (
+            ({
+              id,
+              title,
+              artist,
+              startTime,
+              endTime,
+              imagePath,
+              introduction,
+            }) => (
               <TimeTable
-                key={index}
+                key={id}
                 startIso={startTime || ''}
                 endIso={endTime || ''}
                 title={title || ''}
@@ -89,7 +91,7 @@ const Home = () => {
                 description={introduction || ''}
                 imgSrc={imagePath || ''}
                 imgAlt={title || ''}
-                onClick={() => handleClick(index)}
+                onClick={() => handleClick(id)}
               />
             ),
           )}

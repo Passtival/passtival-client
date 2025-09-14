@@ -63,9 +63,9 @@ export const getBlindMatchResult = async (): Promise<BlindMatchResult> => {
 };
 
 export async function patchBlindMatchInfoStorage(body: {
-  instagramId: string;
-  phoneNumber: string;
-  gender: 'FEMALE' | 'MALE';
+  instagramId?: string;
+  phoneNumber?: string;
+  gender?: 'FEMALE' | 'MALE';
 }) {
   const { data } = await api.patch(END_POINT.BLIND_MATCH_INFO_STORAGE, body);
   return data;

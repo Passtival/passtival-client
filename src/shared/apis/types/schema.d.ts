@@ -831,11 +831,11 @@ export interface components {
       imagePath?: string;
     };
     LevelUpRequest: {
-      name?: string;
-      studentId?: string;
-      authenticationKey?: string;
+      name: string;
+      studentId: string;
+      authenticationKey: string;
       /** Format: int32 */
-      level?: number;
+      level: number;
     };
     MatchingApplicantPatchRequest: {
       /** @enum {string} */
@@ -1125,8 +1125,8 @@ export interface components {
       deferredSyntaxAllowedAsLiteral?: string;
       trimDirectiveWhitespaces?: string;
       errorOnUndeclaredNamespace?: string;
-      urlPatterns?: string[];
       defaultContentType?: string;
+      urlPatterns?: string[];
     };
     RedirectView: {
       applicationContext?: components['schemas']['ApplicationContext'];
@@ -1183,15 +1183,21 @@ export interface components {
       majorVersion?: number;
       /** Format: int32 */
       minorVersion?: number;
-      attributeNames?: unknown;
-      sessionTrackingModes?: ('COOKIE' | 'URL' | 'SSL')[];
-      /** Format: int32 */
-      sessionTimeout?: number;
-      contextPath?: string;
-      initParameterNames?: unknown;
       servletRegistrations?: {
         [key: string]: components['schemas']['ServletRegistration'];
       };
+      attributeNames?: unknown;
+      contextPath?: string;
+      initParameterNames?: unknown;
+      sessionTrackingModes?: ('COOKIE' | 'URL' | 'SSL')[];
+      /** Format: int32 */
+      sessionTimeout?: number;
+      defaultSessionTrackingModes?: ('COOKIE' | 'URL' | 'SSL')[];
+      effectiveSessionTrackingModes?: ('COOKIE' | 'URL' | 'SSL')[];
+      jspConfigDescriptor?: components['schemas']['JspConfigDescriptor'];
+      virtualServerName?: string;
+      requestCharacterEncoding?: string;
+      responseCharacterEncoding?: string;
       /** Format: int32 */
       effectiveMajorVersion?: number;
       /** Format: int32 */
@@ -1202,12 +1208,6 @@ export interface components {
         [key: string]: components['schemas']['FilterRegistration'];
       };
       sessionCookieConfig?: components['schemas']['SessionCookieConfig'];
-      defaultSessionTrackingModes?: ('COOKIE' | 'URL' | 'SSL')[];
-      effectiveSessionTrackingModes?: ('COOKIE' | 'URL' | 'SSL')[];
-      jspConfigDescriptor?: components['schemas']['JspConfigDescriptor'];
-      virtualServerName?: string;
-      requestCharacterEncoding?: string;
-      responseCharacterEncoding?: string;
     };
     ServletRegistration: {
       mappings?: string[];
@@ -1227,9 +1227,9 @@ export interface components {
       /** @deprecated */
       comment?: string;
       secure?: boolean;
+      domain?: string;
       /** Format: int32 */
       maxAge?: number;
-      domain?: string;
       httpOnly?: boolean;
     };
     TaglibDescriptor: {
