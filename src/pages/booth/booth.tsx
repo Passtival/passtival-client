@@ -1,6 +1,3 @@
-import { useState } from 'react';
-import { useLocation } from 'react-router-dom';
-
 import BoothList from '@pages/booth/components/booth-list';
 
 import Carousel from '@shared/components/carousel/carousel';
@@ -8,6 +5,7 @@ import Chip from '@shared/components/chip/chip';
 import Header from '@shared/components/header/header';
 import Title from '@shared/components/title/title';
 import TitlInfo from '@shared/components/title-info/title-info';
+import { usePersistedState } from '@shared/hooks/use-persisted-state';
 
 import * as styles from './booth.css';
 import {
@@ -20,10 +18,9 @@ import {
 const mokImages = ['/map1.png', '/map2.png'];
 
 const Booth = () => {
-  const location = useLocation();
-
-  const [selectedType, setSelectedType] = useState(
-    location.state?.selectedType || BOOTH_TYPES[0],
+  const [selectedType, setSelectedType] = usePersistedState(
+    'booth-selected-type',
+    BOOTH_TYPES[0],
   );
 
   return (
