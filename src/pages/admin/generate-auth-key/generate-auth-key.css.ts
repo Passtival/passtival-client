@@ -35,8 +35,3 @@ export const authKey = style({
 
   borderRadius: '12px',
 });
-
-export const buttonContainer = style({
-  width: '15rem',
-  marginTop: '2rem',
-});
