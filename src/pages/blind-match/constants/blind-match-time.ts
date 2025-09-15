@@ -5,9 +5,9 @@
 export const EVENT_YEAR = 2025;
 export const EVENT_MONTH = 8; // 9월 (0-based index)
 export const EVENT_DAYS = {
-  DAY_1: 15,
-  DAY_2: 16,
-  DAY_3: 17,
+  DAY_1: 23,
+  DAY_2: 24,
+  DAY_3: 25,
 } as const;
 
 /**
@@ -16,10 +16,10 @@ export const EVENT_DAYS = {
  */
 export const START_HOUR = 0; // 00:00부터 신청 가능
 export const START_MINUTE = 0;
-export const DEADLINE_HOUR = 22;
-export const DEADLINE_MINUTE = 5;
-export const RESULTS_HOUR = 22;
-export const RESULTS_MINUTE = 10;
+export const DEADLINE_HOUR = 17;
+export const DEADLINE_MINUTE = 30;
+export const RESULTS_HOUR = 18;
+export const RESULTS_MINUTE = 0;
 
 /**
  * 시간 포맷팅 유틸리티 함수
