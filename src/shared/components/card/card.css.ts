@@ -3,27 +3,16 @@ import { recipe } from '@vanilla-extract/recipes';
 
 import { themeVars } from '@shared/styles';
 
-export const container = recipe({
-  base: {
-    display: 'flex',
-    justifyContent: 'space-between',
+export const container = style({
+  display: 'flex',
+  justifyContent: 'space-between',
 
-    borderRadius: '10px',
-    width: '100%',
-    height: '13.3rem',
-    backgroundColor: themeVars.color.gray_500_40,
-    gap: '1rem',
-  },
-  variants: {
-    type: {
-      sm: {
-        padding: '1.2rem 1.6rem 1.6rem 1.6rem',
-      },
-      lg: {
-        padding: '1.2rem 1.6rem 1.6rem 1.6rem',
-      },
-    },
-  },
+  borderRadius: '10px',
+  width: '100%',
+  height: '13.3rem',
+  backgroundColor: themeVars.color.gray_500_40,
+  gap: '1rem',
+  padding: '1.2rem 1.6rem 1.6rem 1.6rem',
 });
 
 export const content = style({

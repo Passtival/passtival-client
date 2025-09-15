@@ -26,7 +26,7 @@ const Card = ({
 }: CardProps) => {
   return (
     <article
-      className={styles.container({ type })}
+      className={styles.container}
       onClick={onClick}
     >
       <div className={styles.content}>
