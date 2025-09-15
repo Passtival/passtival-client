@@ -1,6 +1,5 @@
 import Button from '@shared/components/button/button';
 import Title from '@shared/components/title/title';
-import { IcSvgCaution } from '@shared/icons';
 
 import * as styles from './complete.css';
 import { APPLICATION_TIME_RANGE } from '../../constants/blind-match-time';
@@ -27,12 +26,7 @@ const Closed = ({ currentDay }: CompleteProps) => {
           <p className={styles.time}>{APPLICATION_TIME_RANGE}</p>
         </div>
 
-        <Button disabled={true}>매칭 결과 대기중</Button>
-
-        <div className={styles.notice}>
-          <IcSvgCaution style={{ width: 12, height: 12 }} />
-          <p>00시부터 신청 가능합니다.</p>
-        </div>
+        <Button disabled={true}>번호팅 신청하기</Button>
       </div>
     </>
   );
