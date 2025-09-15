@@ -1,8 +1,8 @@
 export const DROP_DOWN_OPTIONS = {
   DATE: [
-    { displayName: '23일', value: '2025-08-23' },
-    { displayName: '24일', value: '2025-08-24' },
-    { displayName: '25일', value: '2025-08-25' },
+    { displayName: '23일', value: '2025-09-23' },
+    { displayName: '24일', value: '2025-09-24' },
+    { displayName: '25일', value: '2025-09-25' },
   ],
   TIME_HOUR: Array.from({ length: 16 }, (_, i) => {
     const hour = String(i + 9).padStart(2, '0');
