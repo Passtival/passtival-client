@@ -133,6 +133,7 @@ export const useApplication = (currentDay: string) => {
   useEffect(() => {
     if (userInfo?.result?.memberApplied) {
       setHasApplied(true);
+      setIsApplicationCompleted(true); // 서버에서 신청 완료 상태 확인 시 로컬 상태도 업데이트
     }
   }, [userInfo]);
 
