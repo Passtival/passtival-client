@@ -26,7 +26,7 @@ const Complete = ({ currentDay }: CompleteProps) => {
           </p>
           <p className={styles.time}>{APPLICATION_TIME_RANGE}</p>
           <p className={styles.caution}>
-            ※ 성비 불균형으로 인해 매칭이 이루어지지 않을 수 잇습니다.
+            ※ 성비 불균형으로 인해 매칭이 이루어지지 않을 수 있습니다.
           </p>
         </div>
         <div className={styles.button}>
