@@ -5,9 +5,9 @@
 export const EVENT_YEAR = 2025;
 export const EVENT_MONTH = 8; // 9월 (0-based index)
 export const EVENT_DAYS = {
-  DAY_1: 14,
-  DAY_2: 15,
-  DAY_3: 16,
+  DAY_1: 23,
+  DAY_2: 24,
+  DAY_3: 25,
 } as const;
 
 /**
