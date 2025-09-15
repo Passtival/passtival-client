@@ -22,11 +22,29 @@ const InputSection = ({
   onKeyChange,
 }: InputSectionProps) => {
   const handleNameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    onNameChange(e.target.value);
+    const { value } = e.target;
+    const koreanOnlyValue = value.replace(/[^ㄱ-ㅎㅏ-ㅣ가-힣]/g, '');
+    onNameChange(koreanOnlyValue);
   };
 
   const handleStudentNumChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    onStudentNumberChange(e.target.value);
+    const { value } = e.target;
+    let filteredValue = value;
+
+    if (value.length <= 4) {
+      filteredValue = value.replace(/[^0-9]/g, '');
+    } else if (value.length > 4) {
+      const part1 = value.substring(0, 4).replace(/[^0-9]/g, '');
+      const part2 = value
+        .substring(4, 5)
+        .replace(/[^A-Za-z]/g, '')
+        .toUpperCase();
+      const part3 = value.substring(5, 9).replace(/[^0-9]/g, '');
+
+      filteredValue = `${part1}${part2}${part3}`;
+    }
+
+    onStudentNumberChange(filteredValue);
   };
 
   const handleKeyChange = (e: React.ChangeEvent<HTMLInputElement>) => {
