@@ -22,7 +22,9 @@ const InputSection = ({
   onKeyChange,
 }: InputSectionProps) => {
   const handleNameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    onNameChange(e.target.value);
+    const { value } = e.target;
+    const koreanOnlyValue = value.replace(/[^ㄱ-ㅎㅏ-ㅣ가-힣]/g, '');
+    onNameChange(koreanOnlyValue);
   };
 
   const handleStudentNumChange = (e: React.ChangeEvent<HTMLInputElement>) => {
