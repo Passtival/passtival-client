@@ -17,7 +17,7 @@ import { HTTP_STATUS } from '@shared/constants/response';
 /**
  * 토큰 재발급을 위한 API 엔드포인트 URL입니다.
  */
-const REFRESH_ENDPOINT = `${appConfig.api.baseUrl}/api/auth/refresh`;
+const REFRESH_ENDPOINT = `${appConfig.api.baseUrl}api/auth/refresh`;
 
 /**
  * 요청 전에 accessToken을 Authorization 헤더에 설정합니다.
@@ -153,13 +153,16 @@ export const createHandleResponseError =
       const { accessToken: newAccessToken, refreshToken: newRefreshToken } =
         refreshResponse.data.result;
 
+      // refreshToken이 없으면 기존 refreshToken 유지
+      const finalRefreshToken = newRefreshToken || refreshToken;
+
       // 관리자 API면 admin 토큰, 일반 API면 일반 토큰 저장
       if (isAdminApi) {
         tokenService.saveAdminAccessToken(newAccessToken);
-        tokenService.saveAdminRefreshToken(newRefreshToken);
+        tokenService.saveAdminRefreshToken(finalRefreshToken);
       } else {
         tokenService.saveAccessToken(newAccessToken);
-        tokenService.saveRefreshToken(newRefreshToken);
+        tokenService.saveRefreshToken(finalRefreshToken);
       }
 
       if (originalRequest.headers instanceof AxiosHeaders) {
