@@ -9,14 +9,11 @@ export const boothDetailItem = style({
 });
 
 export const boothText = style({
-  display: '-webkit-box',
+  display: 'flex',
   width: '100%',
   flex: '1 1 auto',
   flexDirection: 'column',
   alignItems: 'flex-start',
-  WebkitBoxOrient: 'vertical',
-  WebkitLineClamp: 1,
-  overflow: 'hidden',
   minWidth: 0,
 });
 
@@ -25,7 +22,9 @@ export const boothName = style({
   paddingTop: '0.6rem',
   ...themeVars.fontStyles.title_b_20,
   color: themeVars.color.bg_white,
-
+  WebkitBoxOrient: 'vertical',
+  WebkitLineClamp: 1,
+  overflow: 'hidden',
   textOverflow: 'ellipsis',
   whiteSpace: 'nowrap',
 });
