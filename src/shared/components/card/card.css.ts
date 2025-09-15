@@ -17,7 +17,7 @@ export const container = recipe({
   variants: {
     type: {
       sm: {
-        padding: '1.4rem 1.1rem 0 1.5rem',
+        padding: '1.2rem 1.6rem 1.6rem 1.6rem',
       },
       lg: {
         padding: '1.2rem 1.6rem 1.6rem 1.6rem',
@@ -42,6 +42,7 @@ export const title = recipe({
       sm: {
         ...themeVars.fontStyles.title_b_18,
         color: themeVars.color.bg_white,
+        paddingTop: '0.2rem',
       },
       lg: {
         width: '100%',
