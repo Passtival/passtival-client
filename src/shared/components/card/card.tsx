@@ -25,27 +25,21 @@ const Card = ({
   imgAlt,
 }: CardProps) => {
   return (
-    <div
+    <article
       className={styles.container}
       onClick={onClick}
     >
       <div className={styles.content}>
-        <div className={styles.titleContainer}>
-          <p className={styles.title({ type })}>{title}</p>
-          {assignee && <p className={styles.assignee}>{assignee}</p>}
-        </div>
-        <div className={styles.descriptionContainer}>
-          <p className={styles.description({ descType })}>{description}</p>
-        </div>
+        <p className={styles.title({ type })}>{title}</p>
+        {assignee && <p className={styles.assignee}>{assignee}</p>}
+        <p className={styles.description({ descType })}>{description}</p>
       </div>
-      <div className={styles.img}>
-        <Thumbnail
-          src={imgSrc}
-          alt={imgAlt}
-          type="square_md"
-        />
-      </div>
-    </div>
+      <Thumbnail
+        src={imgSrc}
+        alt={imgAlt}
+        type="square_md"
+      />
+    </article>
   );
 };
 
