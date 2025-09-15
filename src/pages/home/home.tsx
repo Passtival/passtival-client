@@ -1,5 +1,4 @@
 import { useQuery } from '@tanstack/react-query';
-import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import { PERFORMANCE_QUERY_OPTIONS } from '@pages/home/apis/queries';
@@ -11,18 +10,25 @@ import TimeTable from '@shared/components/timeTable/timeTable';
 import Title from '@shared/components/title/title';
 import TitleInfo from '@shared/components/title-info/title-info';
 import { HOME_TEXT } from '@shared/constants/festivalSchedule';
+import { usePersistedState } from '@shared/hooks/use-persisted-state';
 
 import * as styles from './home.css';
 
 const mokImages = ['/info.png'];
 
 const Home = () => {
-  const [selectedDay, setSelectedDay] = useState(1);
   const navigate = useNavigate();
+  const [selectedDay, setSelectedDay] = usePersistedState('homeSelectedDay', 1);
+
   const { data } = useQuery(PERFORMANCE_QUERY_OPTIONS.PERFORMANCE_LIST());
 
   const handleClick = (id: number | undefined) => {
-    if (id) navigate(`/show-detail/${id}`);
+    if (id)
+      navigate(`/show-detail/${id}`, {
+        state: {
+          selectedDay,
+        },
+      });
   };
 
   return (
@@ -54,7 +60,7 @@ const Home = () => {
         <div className={styles.festivalScheduleText}>
           <TitleInfo
             mainTitle={HOME_TEXT.TODAY_FESTIVAL_SCHEDULE}
-            subTitle={HOME_TEXT.TODAY_FESTIVAL_SCHEDULE_DETAIL}
+            subTitle={`${selectedDay}일차 ${HOME_TEXT.TODAY_FESTIVAL_SCHEDULE_DETAIL}`}
           />
         </div>
         <div className={styles.chipContainer}>

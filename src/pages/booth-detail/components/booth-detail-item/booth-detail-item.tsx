@@ -27,13 +27,12 @@ const BoothDetailItem = ({
         {price && <div className={style.boothPrice}>{price} 원</div>}
         <p className={style.boothInfo}>{info}</p>
       </div>
-      <div>
-        <Thumbnail
-          src={imgSrc}
-          type="square_sm"
-          alt={alt}
-        />
-      </div>
+
+      <Thumbnail
+        src={imgSrc}
+        type="square_sm"
+        alt={alt}
+      />
     </article>
   );
 };

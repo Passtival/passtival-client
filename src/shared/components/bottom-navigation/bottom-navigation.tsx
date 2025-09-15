@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, matchPath } from 'react-router-dom';
 
 import { routePath } from '@router/path';
 
@@ -54,6 +54,26 @@ const BottomNavigation = () => {
     };
   }, []);
 
+  const isActiveNav = (path: string) => {
+    if (path === routePath.HOME) {
+      return !!matchPath(
+        { path: routePath.HOME, end: true },
+        location.pathname,
+      );
+    }
+
+    if (path === routePath.TICKET_ONBOARDING) {
+      return (
+        matchPath(
+          { path: routePath.TICKET_ONBOARDING, end: false },
+          location.pathname,
+        ) ||
+        matchPath({ path: routePath.TICKET, end: false }, location.pathname)
+      );
+    }
+    return !!matchPath({ path, end: false }, location.pathname);
+  };
+
   return (
     <nav
       className={styles.navBar}
@@ -64,7 +84,9 @@ const BottomNavigation = () => {
           <li key={item.path}>
             <NavLink
               to={item.path}
-              className={({ isActive }) => styles.navLinkRecipe({ isActive })}
+              className={() =>
+                styles.navLinkRecipe({ isActive: !!isActiveNav(item.path) })
+              }
             >
               <item.icon
                 width="2.4rem"

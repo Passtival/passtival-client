@@ -41,8 +41,6 @@ export const useAuthRefresh = (authType: AuthType) => {
             headers: { Authorization: `Bearer ${refreshToken}` },
           });
 
-          console.log('토큰 재발급 응답 result:', response.data.result); // result 전체 구조 확인
-
           const { accessToken: newAccessToken, refreshToken: newRefreshToken } =
             response.data.result;
 
