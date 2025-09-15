@@ -52,10 +52,12 @@ const ShowDetail = () => {
         title="소개"
         description={data?.introduction}
       />
-      <DetailDescription
-        title="설명"
-        songsData={data?.songs}
-      />
+      {data?.songs?.length && (
+        <DetailDescription
+          title="설명"
+          songsData={data.songs}
+        />
+      )}
     </>
   );
 };
