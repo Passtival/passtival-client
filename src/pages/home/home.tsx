@@ -54,7 +54,7 @@ const Home = () => {
         <div className={styles.festivalScheduleText}>
           <TitleInfo
             mainTitle={HOME_TEXT.TODAY_FESTIVAL_SCHEDULE}
-            subTitle={HOME_TEXT.TODAY_FESTIVAL_SCHEDULE_DETAIL}
+            subTitle={`${selectedDay}일차 ${HOME_TEXT.TODAY_FESTIVAL_SCHEDULE_DETAIL}`}
           />
         </div>
         <div className={styles.chipContainer}>
