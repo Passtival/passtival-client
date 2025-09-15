@@ -25,7 +25,12 @@ export const content = style({
 });
 
 export const title = recipe({
-  base: {},
+  base: {
+    WebkitLineClamp: 1,
+    overflow: 'hidden',
+    textOverflow: 'ellipsis',
+    whiteSpace: 'nowrap',
+  },
   variants: {
     type: {
       sm: {
@@ -39,10 +44,6 @@ export const title = recipe({
 
         ...themeVars.fontStyles.title_b_20,
         color: themeVars.color.main_yellow,
-        WebkitLineClamp: 1,
-        overflow: 'hidden',
-        textOverflow: 'ellipsis',
-        whiteSpace: 'nowrap',
       },
     },
   },
