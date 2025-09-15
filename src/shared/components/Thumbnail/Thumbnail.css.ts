@@ -5,8 +5,7 @@ import { themeVars } from '@shared/styles';
 
 export const container = style({
   display: 'flex',
-  width: '100%',
-  justifyContent: 'center',
+  flexShrink: 0,
 });
 
 export const img = recipe({
