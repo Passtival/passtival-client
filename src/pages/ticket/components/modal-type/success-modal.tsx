@@ -12,7 +12,9 @@ const SuccessModal = ({ name, studentNumber, onClose }: SuccessModalProps) => {
       <Modal.Body>
         <Modal.Title>응모 완료!</Modal.Title>
         <Modal.Description>
-          {name}({studentNumber})님의 응모가 정상적으로 완료되었습니다.
+          {name}({studentNumber})님의 응모가
+          <br />
+          정상적으로 완료되었습니다.
         </Modal.Description>
       </Modal.Body>
       <Modal.Footer>

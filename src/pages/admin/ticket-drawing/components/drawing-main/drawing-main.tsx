@@ -12,26 +12,24 @@ import * as styles from './drawing-main.css';
 interface DrawingMainProps {
   currentDay: string;
   onExecuteRaffle: () => void;
-  onExecuteSecondRaffle: () => void;
-  winners: WinnerData[];
+  winner: WinnerData | null;
   isLoading: boolean;
 }
 
 const DrawingMain = ({
   currentDay,
   onExecuteRaffle,
-  onExecuteSecondRaffle,
-  winners,
+  winner,
   isLoading,
 }: DrawingMainProps) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [viewState, setViewState] = useState<'initial' | 'result'>('initial');
 
   useEffect(() => {
-    if (winners.length > 0) {
+    if (winner) {
       setViewState('result');
     }
-  }, [winners]);
+  }, [winner]);
 
   const handleOpenModal = () => {
     setIsModalOpen(true);
@@ -44,16 +42,14 @@ const DrawingMain = ({
   const handleCheck = () => {
     setIsModalOpen(false);
     setViewState('result');
-    onExecuteRaffle();
   };
 
   if (viewState === 'result') {
     return (
       <Drawing
-        winners={winners}
+        winner={winner}
         isLoading={isLoading}
         onReExecuteRaffle={onExecuteRaffle}
-        onExecuteSecondRaffle={onExecuteSecondRaffle}
       />
     );
   }
