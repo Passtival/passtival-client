@@ -50,19 +50,19 @@
   <tr>
     <td align="center" style="padding:10px">
       <img src="https://avatars.githubusercontent.com/u/113702672?v=4" width="180"/><br/>
-      <a src="https://github.com/jeonghoon11">장정훈</a>
+      <a href="https://github.com/jeonghoon11">장정훈</a>
     </td>
     <td align="center" style="padding:10px">
       <img src="https://avatars.githubusercontent.com/u/201346724?v=4" width="180"/><br/>
-      <a src="https://github.com/twossu">최윤하</a>
+      <a href="https://github.com/twossu">최윤하</a>
     </td>
     <td align="center" style="padding:10px">
       <img src="https://avatars.githubusercontent.com/u/188864281?v=4" width="180"/><br/>
-      <a src="https://github.com/winchoose">오승택</a>
+      <a href="https://github.com/winchoose">오승택</a>
     </td>
     <td align="center" style="padding:10px">
       <img src="https://avatars.githubusercontent.com/u/131990545?v=4" width="180"/><br/>
-      <a src="https://github.com/h2st0ry">박연희</a>
+      <a href="https://github.com/h2st0ry">박연희</a>
     </td>
   </tr>
 </table>
