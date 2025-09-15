@@ -6,21 +6,23 @@ export const boothDetailItem = style({
   display: 'flex',
   width: '100%',
   gap: '3.8rem',
-  wordBreak: 'keep-all',
 });
 
 export const boothText = style({
-  display: 'flex',
-  width: '17.7rem',
+  display: '-webkit-box',
+  width: '100%',
   flex: '1 1 auto',
   flexDirection: 'column',
   alignItems: 'flex-start',
+  WebkitBoxOrient: 'vertical',
+  WebkitLineClamp: 1,
+  overflow: 'hidden',
   minWidth: 0,
 });
 
 export const boothName = style({
   width: '100%',
-  marginTop: '0.6rem',
+  paddingTop: '0.6rem',
   ...themeVars.fontStyles.title_b_20,
   color: themeVars.color.bg_white,
 

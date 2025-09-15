@@ -52,7 +52,6 @@ const LostItemReport = () => {
       });
     },
     onError: (error) => {
-      console.error('분실물 등록 실패:', error);
       alert(error.message || '분실물 등록에 실패했습니다.');
     },
   });
