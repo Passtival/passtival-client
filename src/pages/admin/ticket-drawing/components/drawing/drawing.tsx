@@ -1,5 +1,3 @@
-import { useState, useEffect } from 'react';
-
 import Loading from '@shared/components/loading/loading';
 import Title from '@shared/components/title/title';
 
@@ -8,26 +6,12 @@ import type { WinnerData } from '../../types/winner-data';
 import InfoSection from '../info-section/info-section';
 
 interface DrawingProps {
-  winners: WinnerData[];
+  winner: WinnerData | null;
   isLoading: boolean;
   onReExecuteRaffle: () => void;
-  onExecuteSecondRaffle: () => void;
 }
 
-const Drawing = ({
-  winners,
-  isLoading,
-  onReExecuteRaffle,
-  onExecuteSecondRaffle,
-}: DrawingProps) => {
-  const [displayWinners, setDisplayWinners] = useState<WinnerData[]>([]);
-
-  useEffect(() => {
-    if (winners.length > 0) {
-      setDisplayWinners(winners);
-    }
-  }, [winners]);
-
+const Drawing = ({ winner, isLoading, onReExecuteRaffle }: DrawingProps) => {
   return (
     <>
       <div className={styles.title}>
@@ -44,27 +28,14 @@ const Drawing = ({
         />
       ) : (
         <>
-          {/* 당첨자 1 - 항상 렌더링 */}
           <div className={styles.container}>
-            <p className={styles.text}>당첨자 1</p>
+            <p className={styles.text}>당첨자</p>
             <InfoSection
-              value={displayWinners[0]?.name || ''}
-              studentnumber={displayWinners[0]?.studentId || ''}
+              value={winner?.name || ''}
+              studentnumber={winner?.studentId || ''}
               handleButtonClick={onReExecuteRaffle}
             />
           </div>
-
-          {/* 당첨자 2 - 당첨자 1이 있을 때만 렌더링 */}
-          {displayWinners.length > 0 && (
-            <div className={styles.container}>
-              <p className={styles.text}>당첨자 2</p>
-              <InfoSection
-                value={displayWinners[1]?.name || ''}
-                studentnumber={displayWinners[1]?.studentId || ''}
-                handleButtonClick={onExecuteSecondRaffle}
-              />
-            </div>
-          )}
         </>
       )}
     </>
