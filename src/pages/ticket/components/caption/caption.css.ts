@@ -13,3 +13,8 @@ export const message = style({
   paddingTop: '0.3rem',
   marginBottom: '12rem',
 });
+
+export const infoText = style({
+  ...themeVars.fontStyles.button_r_12,
+  color: themeVars.color.bg_white,
+});
