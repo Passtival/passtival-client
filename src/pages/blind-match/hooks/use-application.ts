@@ -86,8 +86,27 @@ export const useApplication = (currentDay: string) => {
       deadline.setHours(DEADLINE_HOUR, DEADLINE_MINUTE, 0, 0);
       resultsTime.setHours(RESULTS_HOUR, RESULTS_MINUTE, 0, 0);
 
-      // 시간에 따른 상태 결정
-      if (now.getTime() >= resultsTime.getTime()) {
+      // 현재 날짜가 매칭 날짜보다 지났으면 무조건 closed
+      const currentDate = new Date(
+        now.getFullYear(),
+        now.getMonth(),
+        now.getDate(),
+      );
+      const matchingDate = new Date(
+        EVENT_YEAR,
+        EVENT_MONTH,
+        currentDay === '1일차'
+          ? EVENT_DAYS.DAY_1
+          : currentDay === '2일차'
+            ? EVENT_DAYS.DAY_2
+            : EVENT_DAYS.DAY_3,
+      );
+
+      if (currentDate.getTime() > matchingDate.getTime()) {
+        // 매칭 날짜가 지났으면 무조건 closed
+        setViewState('closed');
+      } else if (now.getTime() >= resultsTime.getTime()) {
+        // 결과 발표 시간 이후
         setViewState('results');
       } else if (now.getTime() > deadline.getTime()) {
         // 마감 시간 후: 신청 완료한 사람은 complete 유지, 신청 안한 사람은 closed
@@ -133,6 +152,7 @@ export const useApplication = (currentDay: string) => {
   useEffect(() => {
     if (userInfo?.result?.memberApplied) {
       setHasApplied(true);
+      setIsApplicationCompleted(true); // 서버에서 신청 완료 상태 확인 시 로컬 상태도 업데이트
     }
   }, [userInfo]);
 
