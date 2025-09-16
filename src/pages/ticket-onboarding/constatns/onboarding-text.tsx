@@ -5,10 +5,12 @@ export const ONBOARDING_STEPS = [
     id: 1,
     lines: [
       <div className={styles.container}>
-        <img
-          src="/ticket.svg"
-          className={styles.ticketImg}
-        />
+        <div className={styles.ticketImgWrapper}>
+          <img
+            src="/ticket.webp"
+            className={styles.ticketImg}
+          />
+        </div>
         <div>
           <h1 className={styles.title}>경품 응모 참여하는 법</h1>
           <p className={styles.description}>

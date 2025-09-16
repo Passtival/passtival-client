@@ -9,13 +9,19 @@ export const container = style({
   height: '50vh',
 });
 
-export const ticketImg = style({
+export const ticketImgWrapper = style({
   display: 'flex',
   alignItems: 'center',
-
   justifyContent: 'center',
-  height: '20rem',
   width: '100%',
+  height: '100%',
+});
+
+export const ticketImg = style({
+  display: 'block',
+  margin: '0 auto',
+  height: '20rem',
+  width: '20rem',
 });
 
 export const title = style({
