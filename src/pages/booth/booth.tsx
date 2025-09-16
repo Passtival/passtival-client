@@ -15,7 +15,7 @@ import {
   BOOTH_TYPES,
 } from './constants/booth-text';
 
-const mokImages = ['/map1.png', '/map2.png'];
+const mokImages = ['/map1.webp', '/map2.webp'];
 
 const Booth = () => {
   const [selectedType, setSelectedType] = usePersistedState(
