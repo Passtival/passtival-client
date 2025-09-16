@@ -10,12 +10,10 @@ export const container = style({
 });
 
 export const ticketImg = style({
-  display: 'flex',
-  alignItems: 'center',
-
-  justifyContent: 'center',
+  display: 'block',
+  margin: '0 auto',
   height: '20rem',
-  width: '100%',
+  width: '20rem',
 });
 
 export const title = style({
