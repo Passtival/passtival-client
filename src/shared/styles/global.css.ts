@@ -58,7 +58,7 @@ export const noBackgroundColor = style([
 export const onBoardingStyle = style([
   rootStyle,
   {
-    background: `url('/onboarding-bg.svg') no-repeat center center`,
+    background: `url('/onboarding-bg.webp') no-repeat center center`,
     backgroundSize: 'cover',
     fontFamily: `'BookkMyungjo', sans-serif`,
   },

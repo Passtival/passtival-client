@@ -6,7 +6,7 @@ export const ONBOARDING_STEPS = [
     lines: [
       <div className={styles.container}>
         <img
-          src="/ticket.svg"
+          src="/ticket.webp"
           className={styles.ticketImg}
         />
         <div>
