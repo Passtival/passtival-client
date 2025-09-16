@@ -65,8 +65,10 @@ const LostItems = () => {
           />
         ) : error ? (
           <ErrorMessage message="분실물 정보를 불러올 수 없습니다." />
+        ) : !data?.result || data.result.length === 0 ? (
+          <ErrorMessage message="분실물 정보가 없습니다." />
         ) : (
-          data?.result?.map(({ id, title, area, imagePath }) => (
+          data.result.map(({ id, title, area, imagePath }) => (
             <Card
               key={id}
               type="lg"
