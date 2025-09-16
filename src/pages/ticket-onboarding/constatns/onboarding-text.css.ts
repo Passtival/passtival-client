@@ -9,6 +9,14 @@ export const container = style({
   height: '50vh',
 });
 
+export const ticketImgWrapper = style({
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'center',
+  width: '100%',
+  height: '100%',
+});
+
 export const ticketImg = style({
   display: 'block',
   margin: '0 auto',
