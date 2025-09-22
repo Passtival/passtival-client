@@ -23,7 +23,7 @@ const InputSection = ({
 }: InputSectionProps) => {
   const handleNameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { value } = e.target;
-    const koreanOnlyValue = value.replace(/[^ㄱ-ㅎㅏ-ㅣ가-힣]/g, '');
+    const koreanOnlyValue = value.replace(/[^ㄱ-ㅎㅏ-ㅣ가-힣·]/g, '');
     onNameChange(koreanOnlyValue);
   };
 
