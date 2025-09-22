@@ -68,7 +68,7 @@ const BoothList = ({ selectedType }: BoothListProps) => {
           <Card
             type="sm"
             descType="md"
-            key={booth.id}
+            key={booth.location_id}
             title={booth.name}
             assignee={booth.department}
             description={booth.info}

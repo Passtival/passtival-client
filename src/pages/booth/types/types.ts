@@ -6,6 +6,7 @@ export type BoothCursorResponse =
 export interface BoothCursorResult {
   content: Array<{
     id: number;
+    location_id: number;
     name: string;
     type: string;
     department: string;
