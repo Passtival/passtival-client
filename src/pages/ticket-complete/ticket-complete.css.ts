@@ -6,17 +6,17 @@ export const title = style({
   padding: '1.3rem 2.4rem 1rem 2.4rem',
 });
 
+export const carouselWrapper = style({
+  padding: '0 2.4rem',
+});
+
 export const container = style({
   display: 'flex',
+  paddingTop: '2.3rem',
   flexDirection: 'column',
   alignItems: 'center',
   justifyContent: 'center',
   gap: '3.3rem',
-  position: 'absolute',
-  top: 'calc(1rem)',
-  bottom: '0',
-  left: '0',
-  right: '0',
 });
 
 export const complete = style({

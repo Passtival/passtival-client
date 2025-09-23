@@ -1,8 +1,9 @@
+import { APPLICATION_TIME_RANGE } from '@pages/blind-match/utils/time-format';
+
 import Button from '@shared/components/button/button';
 import Title from '@shared/components/title/title';
 
 import * as styles from './before-match.css';
-import { APPLICATION_TIME_RANGE } from '../../constants/blind-match-time';
 
 interface BeforeMatchProps {
   currentDay: string;

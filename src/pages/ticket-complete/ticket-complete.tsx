@@ -1,9 +1,13 @@
+import TicketCarousel from '@pages/ticket/components/carousel/carousel';
+import { useDateSelection } from '@pages/ticket/hooks/use-date-selection';
+
 import Header from '@shared/components/header/header';
 import Title from '@shared/components/title/title';
 
 import * as styles from './ticket-complete.css';
 
 const Complete = () => {
+  const { selectedDayNumber } = useDateSelection();
   return (
     <>
       <Header
@@ -16,6 +20,9 @@ const Complete = () => {
           mainTitle="상품 응모권"
           subTitle="상품 당첨의 기회를 잡아보세요!"
         />
+      </div>
+      <div className={styles.carouselWrapper}>
+        <TicketCarousel selectedDayNumber={selectedDayNumber} />
       </div>
       <div className={styles.container}>
         <p className={styles.complete}>Lv.3까지 모두 응모 완료하였습니다.</p>

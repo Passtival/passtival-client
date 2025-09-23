@@ -170,11 +170,10 @@ export const useTicketForm = () => {
   const handleCloseModal = useCallback(() => {
     setModalType(null);
     if (modalType === 'success') {
-      setForm({
-        name: '',
-        studentNum: '',
+      setForm((prevForm) => ({
+        ...prevForm,
         key: '',
-      });
+      }));
     }
   }, [modalType]);
 
