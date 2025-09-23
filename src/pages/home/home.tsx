@@ -14,7 +14,7 @@ import { usePersistedState } from '@shared/hooks/use-persisted-state';
 
 import * as styles from './home.css';
 
-const mokImages = ['/info2.webp', '/info.webp'];
+const mokImages = ['/info.webp'];
 
 const Home = () => {
   const navigate = useNavigate();
