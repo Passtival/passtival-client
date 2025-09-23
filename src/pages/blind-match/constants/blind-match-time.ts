@@ -20,15 +20,3 @@ export const DEADLINE_HOUR = 17;
 export const DEADLINE_MINUTE = 30;
 export const RESULTS_HOUR = 18;
 export const RESULTS_MINUTE = 0;
-
-/**
- * 시간 포맷팅 유틸리티 함수
- */
-export const formatTime = (hour: number, minute: number): string => {
-  return `${hour.toString().padStart(2, '0')}:${minute.toString().padStart(2, '0')}`;
-};
-
-/**
- * 신청 가능 시간 문자열
- */
-export const APPLICATION_TIME_RANGE = `[신청 가능 시간: ${formatTime(START_HOUR, START_MINUTE)} ~ ${formatTime(DEADLINE_HOUR, DEADLINE_MINUTE)}]`;
