@@ -13,7 +13,13 @@ interface TicketForm {
   key: string;
 }
 
-type ModalType = 'confirm' | 'success' | 'error' | 'premium' | null;
+type ModalType =
+  | 'confirm'
+  | 'success'
+  | 'error'
+  | 'nameError'
+  | 'premium'
+  | null;
 
 export const useTicketForm = () => {
   const queryClient = useQueryClient();
@@ -40,7 +46,7 @@ export const useTicketForm = () => {
     TICKET_MUTATION_OPTIONS.MEMBER_LEVEL_UP(),
   );
 
-  const isErrorState = modalType === 'error';
+  const isErrorState = modalType === 'error' || modalType === 'nameError';
 
   useEffect(() => {
     if (memberRaffleProfile?.result) {
@@ -81,11 +87,18 @@ export const useTicketForm = () => {
 
   const handleConfirm = useCallback(async () => {
     try {
+      // 한글 이름 유효성 검사
+      const koreanNameRegex = /^[ㄱ-ㅎㅏ-ㅣ가-힣\s]+$/;
+      if (!koreanNameRegex.test(form.name.trim())) {
+        setModalType('nameError');
+        return;
+      }
+
       // UI level을 서버 level로 변환 (UI level과 동일)
       const serverLevel = selectedLevel;
 
       const response = await levelUpMutation.mutateAsync({
-        name: form.name,
+        name: form.name.trim(),
         studentId: form.studentNum,
         authenticationKey: form.key,
         level: serverLevel,
@@ -99,7 +112,7 @@ export const useTicketForm = () => {
       // Lv.3 응모 시 자동으로 Lv.4도 응모
       if (selectedLevel === 3) {
         await levelUpMutation.mutateAsync({
-          name: form.name,
+          name: form.name.trim(),
           studentId: form.studentNum,
           authenticationKey: form.key,
           level: 4, // Lv.4
