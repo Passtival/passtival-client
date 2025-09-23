@@ -4,11 +4,11 @@ import Header from '@shared/components/header/header';
 import Tab from '@shared/components/tab/tab';
 
 import ApplyPage from './components/apply/apply';
+import { useCurrentDay } from './hooks/use-current-day';
 
 const BlindMatch = () => {
   const { day } = useParams<{ day: string }>();
-
-  const initialDay = day || '1';
+  const initialDay = useCurrentDay(day);
 
   return (
     <>
