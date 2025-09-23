@@ -20,3 +20,12 @@ export const buttonContainer = style({
   marginTop: '2rem',
   justifyContent: 'center',
 });
+
+export const confetiLottie = style({
+  width: '100%',
+  height: '100%',
+  padding: '2.4rem',
+  display: 'flex',
+  justifyContent: 'center',
+  alignItems: 'center',
+});
