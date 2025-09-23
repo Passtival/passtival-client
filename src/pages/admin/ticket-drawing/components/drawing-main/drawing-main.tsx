@@ -48,7 +48,6 @@ const DrawingMain = ({
     return (
       <Drawing
         winner={winner}
-        isLoading={isLoading}
         onReExecuteRaffle={onExecuteRaffle}
       />
     );
