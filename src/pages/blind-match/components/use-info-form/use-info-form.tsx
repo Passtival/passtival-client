@@ -14,7 +14,7 @@ const USE_INFO_FORM = {
   INSTAR_ID: '인스타그램 ID를 입력하세요 (선택)',
 };
 
-const blockKorean = (s: string) => s.replace(/[^\x20-\x7E]/g, '');
+const validateInstagramId = (s: string) => s.replace(/[^a-zA-Z0-9._]/g, '');
 
 interface UseInfoFormProps {
   instaId: string;
@@ -47,8 +47,9 @@ const UseInfoForm = ({
   }, [data?.result?.memberGender, gender, onGenderChange]);
 
   const handleInstaIdChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const cleaned = blockKorean(e.target.value);
-    onInstaIdChange(cleaned);
+    const cleaned = validateInstagramId(e.target.value);
+    const limited = cleaned.slice(0, 30);
+    onInstaIdChange(limited);
   };
 
   const handlePhoneChange = (e: React.ChangeEvent<HTMLInputElement>) => {
