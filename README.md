@@ -2,6 +2,13 @@
 
 <img width="9451" height="4815" alt="passtival" src="https://github.com/user-attachments/assets/e25c466d-548e-4010-bfa9-09d58e3a26e5" />
 
+| | | |
+|:--:|:--:|:--:|
+| <img src="https://github.com/user-attachments/assets/4705cd98-ab6b-46af-811d-dfd2803a635c" width="300"/> | <img src="https://github.com/user-attachments/assets/94ebd9de-0c41-4206-8d0d-2cdc70e4341f" width="300"/> | <img src="https://github.com/user-attachments/assets/bc5fb680-45f1-4865-b523-1206f9cd7f21" width="300"/> |
+| <img src="https://github.com/user-attachments/assets/bee3c759-af77-4ea8-bc93-84dfb5e15810" width="300"/> | <img src="https://github.com/user-attachments/assets/bab5ca71-5624-4108-b1da-b74521faf47d" width="300"/> | <img src="https://github.com/user-attachments/assets/44d8e867-8886-41e8-8c5d-1d1bf56c9e93" width="300"/> |
+| <img src="https://github.com/user-attachments/assets/df472f7a-2649-4739-8703-50d4632abcee" width="300"/> | <img src="https://github.com/user-attachments/assets/6336ff98-baa1-4534-b7c5-0558619a68c1" width="300"/> | <img src="https://github.com/user-attachments/assets/f6fe79d8-03a6-4c4d-b241-a6d2adffeb81" width="300"/> |
+| <img src="https://github.com/user-attachments/assets/c9779a14-1c7f-4c8f-9ee4-14f1e78d7d91" width="300"/> | <img src="https://github.com/user-attachments/assets/9bdf0bf3-39c6-4845-95e3-6923c62a6090" width="300"/> |  |
+
 ---
 
 <strong>안양대 축제를 한눈에 담은 단 하나의 서비스. Passtival과 함께!<strong/>
@@ -50,7 +57,7 @@
   <tr>
     <td align="center" style="padding:10px">
       <img src="https://avatars.githubusercontent.com/u/113702672?v=4" width="180"/><br/>
-      <a href="https://github.com/jeonghoon11">장정훈</a>
+      <a href="https://github.com/jeonghoon11">🤴장정훈</a>
     </td>
     <td align="center" style="padding:10px">
       <img src="https://avatars.githubusercontent.com/u/201346724?v=4" width="180"/><br/>
